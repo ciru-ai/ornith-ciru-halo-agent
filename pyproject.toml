@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ciru-halo-agent"
+version = "1.0.0"
+description = "Ornith1.5 Ciru Halo Agent: AMD Strix Halo vLLM integration"
+requires-python = ">=3.14"
+license = "Apache-2.0"
+authors = [{name = "Ciru", email = "ciru@ciru.ai"}]
+
+[project.scripts]
+ciru-halo-agent = "ornith_g256.launch:main"
+
+[project.entry-points."vllm.general_plugins"]
+ornith_g256 = "ornith_g256:register"
+
+[tool.setuptools.packages.find]
+where = ["plugin-site"]
+include = ["ornith_g256*"]
+
+[project.urls]
+Homepage = "https://llm.ciru.ai/research/ornith-strix/"
+Source = "https://github.com/ciru-ai/ornith-ciru-halo-agent"

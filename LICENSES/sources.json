@@ -1,0 +1,44 @@
+[
+  {
+    "repo": "ornith-ai/Ornith-1.5-35B-A3B",
+    "revision_requested": "10fbf86fed7ecee4a061f8b499a618f46001cac1",
+    "resolved_revision": "10fbf86fed7ecee4a061f8b499a618f46001cac1",
+    "license_notice_files": []
+  },
+  {
+    "repo": "ornith-ai/Ornith-1.5-35B-A3B",
+    "revision_requested": "main",
+    "resolved_revision": "10fbf86fed7ecee4a061f8b499a618f46001cac1",
+    "license_notice_files": []
+  },
+  {
+    "repo": "jzinno/Ornith-1.5-35B-A3B-DFlash2",
+    "revision_requested": "9b4852c05fd00b672b7434b1bb105bc03c8682b0",
+    "resolved_revision": "9b4852c05fd00b672b7434b1bb105bc03c8682b0",
+    "license_notice_files": [
+      "LICENSE"
+    ],
+    "downloads": [
+      {
+        "source": "https://huggingface.co/jzinno/Ornith-1.5-35B-A3B-DFlash2/resolve/9b4852c05fd00b672b7434b1bb105bc03c8682b0/LICENSE",
+        "local": "dflash2-9b4852c05fd0-LICENSE",
+        "bytes": 11358
+      }
+    ]
+  },
+  {
+    "repo": "jzinno/Ornith-1.5-35B-A3B-DFlash2",
+    "revision_requested": "main",
+    "resolved_revision": "9b4852c05fd00b672b7434b1bb105bc03c8682b0",
+    "license_notice_files": [
+      "LICENSE"
+    ],
+    "downloads": [
+      {
+        "source": "https://huggingface.co/jzinno/Ornith-1.5-35B-A3B-DFlash2/resolve/9b4852c05fd00b672b7434b1bb105bc03c8682b0/LICENSE",
+        "local": "dflash2-main-LICENSE",
+        "bytes": 11358
+      }
+    ]
+  }
+]

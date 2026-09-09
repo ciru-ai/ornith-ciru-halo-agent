@@ -1,0 +1,20 @@
+Ornith1.5 Ciru Halo Agent
+Copyright 2026 Ciru.
+
+Ciru's model-specific quantized kernels, dispatch, cache integration and adaptive
+serving policy are distributed under Apache License 2.0. Existing source headers
+and upstream copyright notices are preserved.
+
+This integration uses and adapts code from vLLM (Apache-2.0), including attention
+and recurrent-model execution code. Some attention code originates in SGLang
+(Apache-2.0); contributors to the vLLM project, the vLLM Team, and the SGLang Team
+retain their notices in the affected sources.
+
+The recurrent-model helpers include code originating in flash-linear-attention,
+Copyright (c) 2023-2025 Songlin Yang, Yu Zhang, under the MIT license. Its full
+license is included in LICENSES/flash-linear-attention-MIT.txt.
+
+The separately distributed runtime includes AITER, PyTorch, Triton and ROCm;
+retain each package's accompanying licenses and third-party notices. The model
+and drafter weights retain their respective upstream licenses and authorship.
+See the model card for full model/drafter credits and AMD sponsorship disclosure.

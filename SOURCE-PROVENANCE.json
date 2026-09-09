@@ -1,0 +1,111 @@
+{
+  "model": "Ornith1.5 Ciru Halo Agent",
+  "architecture": "gfx1151",
+  "compiler": "AMD clang 23.0.0git / ROCm 10.0.0",
+  "source_mapping": "Recovered from the source directories named in the measured binary debug sections and retained compiler invocations. Sources and measured library SHA256 values are recorded below. Rebuilding on a different host is not a bitwise-reproducibility guarantee.",
+  "native": [
+    {
+      "source": "kernels/dense/dense_g256_consumer.cpp",
+      "library": "libornith_dense_g256.so",
+      "source_sha256": "8dd46bf7ffbb5867d60ff3fef7035a04bc0c60dc0552fc9853bee4d5e9c97374",
+      "measured_library_sha256": "855838687084170807c5ba4556e9771f9b1b26f3556f48c0a16dbd8bbee41c9c"
+    },
+    {
+      "source": "kernels/routed/routed_direct_consumer.cpp",
+      "library": "libornith_routed_direct.so",
+      "source_sha256": "aea3b68893e7e2a8b70ddb1f83a24c444cae6ff8b995ff9794dc545da447a0ff",
+      "measured_library_sha256": "5b3ca6826547e0ff1c417e733229e104721cec403ccd8f88f7fcdb1726d6f4ed"
+    },
+    {
+      "source": "kernels/head/head_i8_tile_consumer.cpp",
+      "library": "libornith_head_i8_tile.so",
+      "source_sha256": "0c14089990d13b63a61fcaa598de2a27d34cae2624ab3c62dd6095e0cb552296",
+      "measured_library_sha256": "2c03de5ed015a052b407436c7e42b50fa33ef76cb46dccab9b226546ca1d1e09"
+    },
+    {
+      "source": "kernels/routed_n32/routed_n32_consumer.cpp",
+      "library": "libornith_routed_n32.so",
+      "source_sha256": "f045389d4cb804fe43d34425ce6c02e817a89bd8cbdb453547f20e36f060be52",
+      "measured_library_sha256": "48415e71f6c85e3aefcecf99d72607bb05900244b4aaa9a7ba2c58378d92f5fb"
+    },
+    {
+      "source": "kernels/routed_storage/routed_storage_n32_consumer.cpp",
+      "library": "libornith_routed_storage_n32.so",
+      "source_sha256": "813c3af74641fc97408c0832f9968d16aa06adf6861e767d622e1deaa7f032cc",
+      "measured_library_sha256": "3ea288cd0e37a4c373038744c3cc4cd4eac09675ac137e953d5ae7a6cd43dd3d"
+    },
+    {
+      "source": "kernels/attention/prefill.cpp",
+      "library": "libornith_attention_iu4.so",
+      "source_sha256": "2248aad2470253b3cff92bd60cb6c6a71dcbb7fa080de378a26c6b075d2b5dbb",
+      "measured_library_sha256": "2905806824bece62ce9d9140608859df869f3e3d3663c67bf79ad4ea495cd61f"
+    },
+    {
+      "source": "kernels/attention/persistent.cpp",
+      "library": "libornith_persistent_iu4.so",
+      "source_sha256": "cdd4bb4a1b03f919d2549351b77b59fa86e3f3378912c2a58d776c52a0334526",
+      "measured_library_sha256": "40e5cf35157c3e716de8067f7eef1312a3b9e787dd52a6f2e232ccd2d07fa68c"
+    },
+    {
+      "source": "kernels/dense_n32/dense_g256_consumer.cpp",
+      "library": "libornith_dense_g256_n32.so",
+      "source_sha256": "e29ada049d0fa03cfd9283325c4255c424e25f4778690374d6d184f51d726429",
+      "measured_library_sha256": "24dbf9b1eaff06ff6530e4f37292347bcf073b3c07f7e16ea6ab111711162a40"
+    }
+  ],
+  "plugin_sha256": {
+    "plugin-site/ornith_g256/__init__.py": "ee715fe60df6592ee8ce4d87a91c5469af39a10a5f80a741235e1d59ac363ef5",
+    "plugin-site/ornith_g256/adaptive_c1.py": "8e48fd874fbdf65183c20bcc7c748d2562dbcafa97e004f18a2818b98980a809",
+    "plugin-site/ornith_g256/attention.py": "2fdd3c0ed84dcb052a9e8f9df4068ddf80a969931bea0a295e022d36b753cda1",
+    "plugin-site/ornith_g256/attention_compact.py": "66bac64820a0b54756d9a9902d5f8066675aa2b0b3eb0ec73ff1b43b43407963",
+    "plugin-site/ornith_g256/attention_fast.py": "27b1a133cadb87ff3a63c027049e1da81e4112fd5d5260a4440fde85491f838a",
+    "plugin-site/ornith_g256/attention_folded.py": "73dac8203032bce6ceedf213d7eefe5987c921768ae237129e232fefd8d9bba3",
+    "plugin-site/ornith_g256/attention_iu4.py": "34235b1104eae96c55986b35985be298aec5ec66c4fa814240945ec03edac7f5",
+    "plugin-site/ornith_g256/attention_iu4_persistent.py": "ca2be4ad4631ea27b62fcf075e783bdf6c28292f590f49ee8748e99309a6cd0e",
+    "plugin-site/ornith_g256/attention_mixed.py": "cbb530697f2555be6532b7d4d3401f3a33c4c58982659e88892720d21691110a",
+    "plugin-site/ornith_g256/attention_partition.py": "41bfb44dd0d0c46a2c0a725983155018e051cd89edb8527f1195a092bef7ffdd",
+    "plugin-site/ornith_g256/attention_storage.py": "3ab813e221835370bdb503b2ab7d48f46294441b1dd9c652c5dc976438bdb6e2",
+    "plugin-site/ornith_g256/attention_tile.py": "f2bf007132bc712c8e61e036ea8a94b54f18a813d9bdd334eee46436a3ca1fea",
+    "plugin-site/ornith_g256/attention_verify.py": "3a329599694265f4badecc2f9b709b280d9960b967d7192f3959ad9e0d8c6077",
+    "plugin-site/ornith_g256/attention_window.py": "78534f9a1b0beae9ecf80cc5b2a613e4fe4827036c8df0acc7e4dfd956aae1c5",
+    "plugin-site/ornith_g256/cache_full1120.py": "3d4240a749d9671c0bf9b3937200e1cd8d4abfe6699d8c1d6857b188c2ef8a8c",
+    "plugin-site/ornith_g256/column_backend.py": "a035b839369e733b05f68ce83df0d022cb62455016fccf30c2978127ab3c5403",
+    "plugin-site/ornith_g256/column_kernel.py": "27fb053d970184732a46212026afd3152ec07a0dfc3dc4c5cc5cc0d539f17c81",
+    "plugin-site/ornith_g256/config.py": "23210d8b625ef375638e2d6043a92a26181a5b5f1c537d9d4b34c91b7109f36f",
+    "plugin-site/ornith_g256/dense_n32.py": "119fb7d25e9d28b6e520b5285c10de86c7d8ec2fe29a2399e9c086173d765903",
+    "plugin-site/ornith_g256/dense_source.py": "cdc7dd6a13c2439cd405596069c301fe28cb95ff32278f1bafe8118fe357d48e",
+    "plugin-site/ornith_g256/dflash_conv_boundary.py": "a5f46458194cade5ddcbfbb51af30c662d12b9086fc459ecbeb17463339febb1",
+    "plugin-site/ornith_g256/dflash_spec.py": "c948b99eab22d2af5c5fc0ca9f764a0855a3d86aca0609362bf5474a9beff1b3",
+    "plugin-site/ornith_g256/dynamic_graphs.py": "6f51f0dd740f6546829e46bbbe840df2780ce8c49978658eb3a05092554ff90c",
+    "plugin-site/ornith_g256/gdn_compact.py": "8b5c062d10f386d78bc9926ab0576e56359401e5d1621c397a2922e2b426ccab",
+    "plugin-site/ornith_g256/gdn_compact_kernel.py": "0eaf34a2eccef2dabbc9e4f017e6ce84317a28efdcbabecf92b3b4c4c9429a55",
+    "plugin-site/ornith_g256/gdn_spec.py": "0931b1b3601d935bb6acdfcb65d307dae4105645cd387bd9b256dd7a525376a3",
+    "plugin-site/ornith_g256/launch.py": "639f7cf0ca4c350cf81f286edea481f28e5c351acb40da5e306996eff50c40c6",
+    "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
+    "plugin-site/ornith_g256/loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
+    "plugin-site/ornith_g256/method.py": "fc301af72efd234430dbfb839d56e74328457b5b83e14a044aeb9554d8acc707",
+    "plugin-site/ornith_g256/moe_base.py": "26fb517415f2497859f2e3ff1aed8f31e7c56a4aacccfb34c6638e65d7df07c4",
+    "plugin-site/ornith_g256/native.py": "49cce0d67987b9659feb556aafb247423490c2153b7d77b750f055a4fdcda331",
+    "plugin-site/ornith_g256/no_spec.py": "561106b75328fe0e161fa1243aca4cf50c5049d8e785d22c90aacb3e1e1a0104",
+    "plugin-site/ornith_g256/phase_dispatch.py": "1a4ebdf2af709e6ca519e0a08f6a537602df178ca575332045617631640f8137",
+    "plugin-site/ornith_g256/prefill_draft.py": "d79bb29a124639543a64e198908e2eaef4cbcf492f2e5e14debcfc9c867816f5",
+    "plugin-site/ornith_g256/prefix_cache.py": "65fb972e285e37741f53b221d2f6380ec464d34a39f36bb66a82dcaacab727d0",
+    "plugin-site/ornith_g256/runtime.py": "db43b1c3766720e0dbee4e8617aee673a533c30d36fcc1fbf43919717d8ab149",
+    "plugin-site/ornith_g256/worker.py": "127d955dc564e76d0e347603fda42649a8acbd72477c831f83967983efa7eb7a",
+    "plugin-site/ornith_g256/worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868"
+  },
+  "headers_sha256": {
+    "kernels/dense/dense_g256_api.h": "82e30e3afc1c6cde95bd030f5974317b11c9025deabcbd82af63a0eddee3657d",
+    "kernels/dense_n32/dense_g256_api.h": "82e30e3afc1c6cde95bd030f5974317b11c9025deabcbd82af63a0eddee3657d",
+    "kernels/head/head_i8_tile_api.h": "ad11ace0f655b8a883d8888f07f214cb75ba5ff12471ec50a54bd2601f572463",
+    "kernels/routed/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_n32/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_n32/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_n32/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_storage/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_storage/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_storage/routed_storage_n32_prefill.h": "ac458a3888ffd0a88a2d9d3721022da601e5c3db893ef8d17092055261eaac64"
+  }
+}
