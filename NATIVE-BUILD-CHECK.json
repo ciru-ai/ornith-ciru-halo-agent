@@ -1,0 +1,41 @@
+{
+  "check": "all_eight_native_libraries_compiled",
+  "compiler": "HIP version: 7.15.26333-0000000\nAMD clang version 23.0.0git (https://github.com/ROCm/llvm-project.git 8f497e0992fb7513f7f78a6f6b6f1056c375e961)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: <runtime>/venv/lib/python3.14/site-packages/_rocm_sdk_devel/lib/llvm/bin\n",
+  "runtime": "fresh installed release runtime",
+  "gpu_work_performed": false,
+  "rebuilt_libraries_loaded_for_inference": false,
+  "libraries": {
+    "libornith_attention_iu4.so": {
+      "bytes": 186024,
+      "sha256": "443238ed0b47aefb7ef071bd33d7865ec9da738dab90cdc03661c52be3fa0367"
+    },
+    "libornith_dense_g256.so": {
+      "bytes": 69168,
+      "sha256": "9929be9ee06b0e4abe83bfec48d83ea95b7c624d971b4821909897554d715f55"
+    },
+    "libornith_dense_g256_n32.so": {
+      "bytes": 76264,
+      "sha256": "4a154a86266a58e6643bfd1bc437f3cb4fcb1f69520941cebb116ebf07a85e90"
+    },
+    "libornith_head_i8_tile.so": {
+      "bytes": 128320,
+      "sha256": "8f86e842e09d5c92abda88bd9a21babb8587bc32080faa13d0b475b019893d4b"
+    },
+    "libornith_persistent_iu4.so": {
+      "bytes": 99056,
+      "sha256": "94378bfdd2ea7e3a89654f42349e72a919e578cb45b5f2d27f07eac362cee464"
+    },
+    "libornith_routed_direct.so": {
+      "bytes": 155568,
+      "sha256": "e354a3018e6d7ca21991b1a24d7f9d8b1c5e34791e35253756d0ff69ca6871cf"
+    },
+    "libornith_routed_n32.so": {
+      "bytes": 151304,
+      "sha256": "960c1a2f638305d1d44aceac32456ef845abe410dc4d2a3a79a4bbad5ea30383"
+    },
+    "libornith_routed_storage_n32.so": {
+      "bytes": 157776,
+      "sha256": "d91541bdb1da0145ed5fb8bb988820894632f67456f798568f0cf859ab9e5559"
+    }
+  }
+}
