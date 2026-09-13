@@ -12,6 +12,10 @@ The measured production profile provides 262,144-token context capacity, up to e
 
 Recorded short HumanEval 0–9 coding bursts reached **178.17 tokens/s mean request decode at C1** and **294.89 tokens/s aggregate at C8**, completing the ten-task C8 batch in **5.52 seconds**. HumanEval 0–9 is a speed/health screen; these are workload-specific measurements, not prose or sustained-load guarantees. Quality and baseline limitations are reported on the benchmark page.
 
+## September 13 runtime fixes
+
+**Existing installations should update the serving plugin and restart.** This release fixes a reproduced graph-replay cache-corruption crash and rejects malformed or ambiguous tool calls with explicit API errors. The weights, kernels and adaptive DFlash2 settings are unchanged. [Update instructions, root cause and validation scope](RUNTIME-FIXES.md).
+
 ## Install
 
 ```bash

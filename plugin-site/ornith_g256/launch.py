@@ -22,8 +22,9 @@ def parser():
     p.add_argument('--draft', type=Path, help='DFlash2 checkpoint (required for dflash)')
     p.add_argument('--native-library-directory', type=Path, required=True)
     p.add_argument('--mode', choices=('dflash', 'ar', 'mtp1'), default='dflash')
-    p.add_argument('--draft-tokens', type=int, choices=(3, 7, 15), default=7,
-                   help='DFlash draft tokens; 15 uses the tiled 16-token verification path')
+    p.add_argument('--draft-tokens', type=int, choices=(0, 7, 15), default=None,
+                   help='Fixed C1 draft depth, including above 32K: 0, 7 or 15. '
+                        'Omit for adaptive C1; C2–8 retains 7. 0 retains drafter allocations.')
     p.add_argument('--port', type=int, default=8000)
     p.add_argument('--host', default='127.0.0.1')
     p.add_argument('--served-name', default='ornith-g256-dflash2')
@@ -198,6 +199,9 @@ def main(argv=None):
     a = parser().parse_args(argv)
     settings = make_settings(a)
     env = environment(a.cache_directory)
+    env['ORNITH_C1_POLICY'] = ('k' + str(a.draft_tokens)
+                              if a.draft_tokens is not None
+                              else os.environ.get('ORNITH_C1_POLICY', 'auto'))
     frontend = (dict(enable_auto_tool_choice=True, tool_call_parser='qwen3_xml', reasoning_parser='qwen3')
                 if a.enable_tools else {})
     if a.prefix_cache:
@@ -253,6 +257,9 @@ def main(argv=None):
             raise RuntimeError('Argument inspection unexpectedly initialized CUDA')
         print('ORNITH_G256_ARGUMENTS_OK', flush=True)
         return
+    if a.enable_tools:
+        from .parser_contract import install as install_parser_contract
+        install_parser_contract()
     import uvloop
     from vllm.entrypoints.launchers.api_server.entry import run_server
     uvloop.run(run_server(args))
@@ -263,8 +270,12 @@ def main(argv=None):
 # Isolated experiment: the original agents64k CLI establishes every base setting.
 _original_make_settings = make_settings
 def make_settings(a):
-    settings = _original_make_settings(a)
-    assert (a.mode == 'dflash' and a.draft_tokens == 7 and a.max_seqs == 8
+    # Base validator describes the retained DF15/7 graph envelope. Explicit
+    # C1 depth is applied by the scheduler policy, not by resizing that envelope.
+    base_args = argparse.Namespace(**vars(a))
+    base_args.draft_tokens = 7
+    settings = _original_make_settings(base_args)
+    assert (a.mode == 'dflash' and a.max_seqs == 8
             and a.prefix_cache and a.fine_prefix_cache and a.iu4_prefill_library)
     settings['block_size'] = 1120
     settings['prefix_cache_retention_interval'] = 1120

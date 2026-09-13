@@ -2,6 +2,8 @@
 
 
 def register():
+    from .graph_phase_guard import install as install_graph_phase_guard
+    install_graph_phase_guard()
     from .cache_full1120 import install as install_full1120
     install_full1120()
     from vllm.model_executor.layers.quantization import (
