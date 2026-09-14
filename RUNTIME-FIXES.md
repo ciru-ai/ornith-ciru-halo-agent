@@ -1,5 +1,22 @@
 # Runtime fixes — 13 September 2026
 
+## Runtime 1.0.1 — September 14, 2026
+
+Correct BF16 causal-convolution products by promoting both operands to FP32
+before multiplication. Restore the accepted recurrent state and convolution
+history when a speculative GDN batch returns to ordinary decoding. Persistent
+source/count buffers preserve this recovery under captured FULL graphs.
+The Ornith screen measured approximately 7% lower single-request throughput;
+that tradeoff is accepted for this correctness release.
+
+These source-only corrections follow vLLM
+[#52905](https://github.com/vllm-project/vllm/pull/52905) and
+[#55504](https://github.com/vllm-project/vllm/pull/55504), with Ciru's extension for
+persistent graph metadata. The pinned vLLM binaries and IU4 model tensors are
+unchanged. Both portable model packages include the versioned modules; import
+selection verifies the exact supported runtime before model construction.
+
+
 This update prevents a reproduced cache-corruption crash and makes malformed tool output fail explicitly. It updates the serving plugin; the released weights, native libraries, runtime wheels, sampler, context pool and adaptive DFlash2 policy are unchanged.
 
 ## Update an existing installation

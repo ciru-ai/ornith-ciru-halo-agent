@@ -1,0 +1,34 @@
+{
+  "runtime_version": "1.0.1",
+  "modules": {
+    "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn": {
+      "file": "qwen_gdn_linear_attn.py",
+      "native_path": "model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "native_sha256": "89f04b36241add75cadbc00e0a2dfe5b8a9b325cd107f7f1373639d83d037668",
+      "sha256": "3e58fdddc7a0b42ae3d9b5eabb375a993a4110bad499c37846bde466901dbeb3"
+    },
+    "vllm.model_executor.layers.mamba.ops.causal_conv1d": {
+      "file": "causal_conv1d.py",
+      "native_path": "model_executor/layers/mamba/ops/causal_conv1d.py",
+      "native_sha256": "044d005cfe59fd0818ed421274e04f3e8dd679b8cdb64fca9f4422f2643484b2",
+      "sha256": "230f3e554f5f1d609a37022578c84e42d5c71d46e684101278a7e21af4f7d418"
+    },
+    "vllm.v1.attention.backends.gdn_attn": {
+      "file": "gdn_attn.py",
+      "native_path": "v1/attention/backends/gdn_attn.py",
+      "native_sha256": "c65552d9aad86472544033d44ad8a872221a83e6b60ba9918cc049ab0c580c7c",
+      "sha256": "a3c361d502e8bca2aa46a0baed5ec753a3c62e3d027a298e3ed4692794f9f6ec"
+    },
+    "vllm.v1.worker.gpu_model_runner": {
+      "file": "gpu_model_runner.py",
+      "native_path": "v1/worker/gpu_model_runner.py",
+      "native_sha256": "4706fcf4b85158173d88e3b19ffb0f6a280fcb60554cfdac861a01a0cab4d4df",
+      "sha256": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf"
+    }
+  },
+  "upstream": [
+    "https://github.com/vllm-project/vllm/pull/52905",
+    "https://github.com/vllm-project/vllm/pull/55504"
+  ],
+  "local_extension": "Persistent recovery source/count tensors for FULL graphs."
+}

@@ -1,6 +1,10 @@
 """Ciru G256 prototype; no installed vLLM files are modified."""
 
 
+from .runtime_correctness import install as _install_correctness
+_install_correctness()
+
+
 def register():
     from .graph_phase_guard import install as install_graph_phase_guard
     install_graph_phase_guard()
