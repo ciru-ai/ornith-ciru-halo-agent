@@ -16,6 +16,13 @@ class CiruQwen3ReasoningParser(_ReasoningAdapter):
 class CiruQwen3ToolParser(_ToolAdapter):
     structural_tag_model = "qwen_3_coder"
 
+    def get_structural_tag(self, request, *, reasoning=False):
+        from .native_tool_schema import native_tool_tag
+        return native_tool_tag(
+            self, request, reasoning=reasoning,
+            fallback=super().get_structural_tag,
+        )
+
 
 _installed = False
 

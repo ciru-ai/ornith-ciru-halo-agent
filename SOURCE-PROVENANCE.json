@@ -54,7 +54,13 @@
     }
   ],
   "plugin_sha256": {
-    "plugin-site/ornith_g256/__init__.py": "a15cbb0679a9cc4766a77c57594e941e9a911381f42c815cfdecb189c8b6635c",
+    "plugin-site/ornith_g256/__init__.py": "b6a8416ea8ec200ec906e248352be02e9aaa35dbe26a848f786fa320d747a8f3",
+    "plugin-site/ornith_g256/_vllm_correctness/__init__.py": "963097106407a87b62b275041516144de15713dee65108accc29e27036ffc059",
+    "plugin-site/ornith_g256/_vllm_correctness/causal_conv1d.py": "230f3e554f5f1d609a37022578c84e42d5c71d46e684101278a7e21af4f7d418",
+    "plugin-site/ornith_g256/_vllm_correctness/gdn_attn.py": "a3c361d502e8bca2aa46a0baed5ec753a3c62e3d027a298e3ed4692794f9f6ec",
+    "plugin-site/ornith_g256/_vllm_correctness/gpu_model_runner.py": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf",
+    "plugin-site/ornith_g256/_vllm_correctness/manifest.json": "0ddfa489f4f9ead135006e29aa675e7522afa5cee10596c2115e07f13186478c",
+    "plugin-site/ornith_g256/_vllm_correctness/qwen_gdn_linear_attn.py": "3e58fdddc7a0b42ae3d9b5eabb375a993a4110bad499c37846bde466901dbeb3",
     "plugin-site/ornith_g256/adaptive_c1.py": "8e48fd874fbdf65183c20bcc7c748d2562dbcafa97e004f18a2818b98980a809",
     "plugin-site/ornith_g256/attention.py": "2fdd3c0ed84dcb052a9e8f9df4068ddf80a969931bea0a295e022d36b753cda1",
     "plugin-site/ornith_g256/attention_compact.py": "66bac64820a0b54756d9a9902d5f8066675aa2b0b3eb0ec73ff1b43b43407963",
@@ -81,21 +87,23 @@
     "plugin-site/ornith_g256/gdn_compact_kernel.py": "0eaf34a2eccef2dabbc9e4f017e6ce84317a28efdcbabecf92b3b4c4c9429a55",
     "plugin-site/ornith_g256/gdn_spec.py": "0931b1b3601d935bb6acdfcb65d307dae4105645cd387bd9b256dd7a525376a3",
     "plugin-site/ornith_g256/graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
-    "plugin-site/ornith_g256/launch.py": "8c17d8a738ec8b4424a1e451883cd15bd0a480525532de4c05c4b3e2ac8f22bb",
+    "plugin-site/ornith_g256/launch.py": "c2854b86e2f97dd2ea0356b4b333922f62b9b3d1b3e71f7993d803c6d0957479",
     "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
     "plugin-site/ornith_g256/loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
     "plugin-site/ornith_g256/method.py": "fc301af72efd234430dbfb839d56e74328457b5b83e14a044aeb9554d8acc707",
     "plugin-site/ornith_g256/moe_base.py": "26fb517415f2497859f2e3ff1aed8f31e7c56a4aacccfb34c6638e65d7df07c4",
     "plugin-site/ornith_g256/native.py": "49cce0d67987b9659feb556aafb247423490c2153b7d77b750f055a4fdcda331",
+    "plugin-site/ornith_g256/native_tool_schema.py": "910060689d72b47ad4a7bb1e51ef301e41ff0be1beb9cc6b3df01c423d2edef5",
     "plugin-site/ornith_g256/no_spec.py": "561106b75328fe0e161fa1243aca4cf50c5049d8e785d22c90aacb3e1e1a0104",
-    "plugin-site/ornith_g256/parser_contract.py": "2bc5885394786931b2c00693f580ee99da220c6adffc00651fc8227ca9bb1d0d",
+    "plugin-site/ornith_g256/parser_contract.py": "2cebab403dc882569f3ce67d12798df14cebd5c162c72f82becd37bcdd7e2a28",
     "plugin-site/ornith_g256/phase_dispatch.py": "1a4ebdf2af709e6ca519e0a08f6a537602df178ca575332045617631640f8137",
     "plugin-site/ornith_g256/prefill_draft.py": "d79bb29a124639543a64e198908e2eaef4cbcf492f2e5e14debcfc9c867816f5",
     "plugin-site/ornith_g256/prefix_cache.py": "65fb972e285e37741f53b221d2f6380ec464d34a39f36bb66a82dcaacab727d0",
     "plugin-site/ornith_g256/runtime.py": "db43b1c3766720e0dbee4e8617aee673a533c30d36fcc1fbf43919717d8ab149",
+    "plugin-site/ornith_g256/runtime_correctness.py": "08f41773e623a4f99cf8ab19e434d7e33bac9cfa5eb05a9dc0f4511aab8ba4bc",
     "plugin-site/ornith_g256/strict_qwen/__init__.py": "ee8a5055249f1413fc22f46421ab77b5485aa39b199c68eb5b56c75dcc40922d",
     "plugin-site/ornith_g256/strict_qwen/qwen3.py": "33c653447a144b72257e508ccd92610db6d30578e28f98c69c99281773dead1c",
-    "plugin-site/ornith_g256/strict_qwen/qwen3_contract.py": "74a0b03e3532883fa4d70494fbaecae7760e293cbb6b4e588640884f3093052a",
+    "plugin-site/ornith_g256/strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
     "plugin-site/ornith_g256/worker.py": "127d955dc564e76d0e347603fda42649a8acbd72477c831f83967983efa7eb7a",
     "plugin-site/ornith_g256/worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868"
   },
@@ -116,6 +124,24 @@
   "runtime_fixes": {
     "date": "2026-09-13",
     "notes": "RUNTIME-FIXES.md",
+    "weights_changed": false,
+    "native_libraries_changed": false,
+    "runtime_wheels_changed": false
+  },
+  "runtime_version": "1.0.2",
+  "tool_schema_patch": {
+    "version": "1.0.2",
+    "date": "2026-09-15",
+    "notes": "RUNTIME-FIXES.md",
+    "cpu_checks": {
+      "ornith": 26,
+      "apodex": 26
+    },
+    "live_checks": {
+      "ornith": 4,
+      "apodex": 4
+    },
+    "live_scope": "Plain text, multi-kilobyte tool payload, image OCR/shapes, image-to-tool; normal C8/262144 context with native speculation.",
     "weights_changed": false,
     "native_libraries_changed": false,
     "runtime_wheels_changed": false

@@ -1,21 +1,45 @@
+# Ciru runtime patch notes
+
+## Runtime 1.0.2 — September 15, 2026
+
+- Enable native vLLM/XGrammar schema constraints for automatic tool calls when
+  the function's `strict` setting is omitted. Required arguments are enforced
+  during generation; prompt-visible messages and tool definitions are unchanged.
+- Preserve explicit `strict: false`, explicit output formats, and the existing
+  required/named tool-choice behavior.
+- Align final schema validation with the function's strict setting while
+  retaining framing and lossless streaming checks.
+- Remove Apodex's inherited 32K output ceiling, matching the retained local
+  profile. Request limits and the context window still apply.
+- Enable the existing upstream BF16 image encoder/projector by default, with
+  one image per request and an explicit `--text-only` option.
+- Retain runtime 1.0.1's inference correctness fixes, IU4 tensors, native
+  libraries, runtime wheels, and speculation settings.
+
+Validation: **26/26 native schema checks** and **4/4 live serving checks**
+passed for this package. The live checks cover plain text, a 3,167-byte tool
+payload, image OCR/shapes, and image-to-tool output at the normal C8/262144
+serving settings. See [validation receipt](TOOL-SCHEMA-PATCH-1.0.2.json).
+
+
+**Ciru runtime 1.0.1 — September 14, 2026.** This accuracy patch promotes
+BF16 causal-convolution operands to FP32 before multiplication, preventing an
+extra rounding step, and restores the accepted GDN recurrent state and
+convolution history when a speculative batch returns to ordinary decoding.
+Recovery metadata uses persistent buffers so the correction also works with
+captured FULL graphs. IU4 weights and native libraries are unchanged.
+
+On Ornith, the matched local speed screen found approximately 7% lower single-request
+throughput and roughly unchanged eight-request throughput. This tradeoff is
+accepted for this correctness release.
+
+The convolution correction follows [vLLM #52905](https://github.com/vllm-project/vllm/pull/52905);
+accepted-state recovery follows [vLLM #55504](https://github.com/vllm-project/vllm/pull/55504),
+with Ciru's graph-buffer extension. See [runtime patch validation](ACCURACY-PATCH-1.0.1.json)
+for the bounded correctness and speed checks. This patch does not establish that
+all long-generation quality issues are resolved.
+
 # Runtime fixes — 13 September 2026
-
-## Runtime 1.0.1 — September 14, 2026
-
-Correct BF16 causal-convolution products by promoting both operands to FP32
-before multiplication. Restore the accepted recurrent state and convolution
-history when a speculative GDN batch returns to ordinary decoding. Persistent
-source/count buffers preserve this recovery under captured FULL graphs.
-The Ornith screen measured approximately 7% lower single-request throughput;
-that tradeoff is accepted for this correctness release.
-
-These source-only corrections follow vLLM
-[#52905](https://github.com/vllm-project/vllm/pull/52905) and
-[#55504](https://github.com/vllm-project/vllm/pull/55504), with Ciru's extension for
-persistent graph metadata. The pinned vLLM binaries and IU4 model tensors are
-unchanged. Both portable model packages include the versioned modules; import
-selection verifies the exact supported runtime before model construction.
-
 
 This update prevents a reproduced cache-corruption crash and makes malformed tool output fail explicitly. It updates the serving plugin; the released weights, native libraries, runtime wheels, sampler, context pool and adaptive DFlash2 policy are unchanged.
 
@@ -26,7 +50,7 @@ Stop your server before replacing its plugin files. Run this from the directory 
 ```bash
 uvx --from huggingface_hub hf download \
   jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo \
-  --include 'bundle/plugin-site/*' README.md RELEASE.json RUNTIME-FIXES.md \
+  --include 'bundle/plugin-site/*' 'bundle/serve*.sh' README.md INSTALL.md VISION.md RELEASE.json RUNTIME-FIXES.md TOOL-SCHEMA-PATCH-1.0.2.json \
   --local-dir .
 bash bundle/serve.sh --host 127.0.0.1 --port 8000
 ```
@@ -47,7 +71,7 @@ The graph guard is installed before the adaptive graph-width wrapper. The parser
 
 - A causal GPU reproduction of the shared graph fault changed **1,105,793 of 1,146,880 BF16 values** and produced **1,919 non-finite values** without the guard. With the guard, the same check changed **zero values**, produced **zero non-finite values**, and completed.
 - The Ornith Hermes profile on Strix Halo completed **21/21 requests**, including ten dangerous prompt-tail transitions, one exact generated write call and **10/10 HE0–9 first-sample canonical checks**. Ordinary Q16/C1 and Q8/C8 FULL decode graphs were observed. This is a deployment screen, not a full HumanEval score.
-- **430 CPU guard/dynamic-wrapper checks** passed. After the GPU screen, the final reasoning-boundary parser refinement passed **6/6 ASGI stream/full replay checks** and **3/3 installed Pi client replays**, with no tool dispatch for the rejected capture. These parser checks replayed saved output; they did not generate new GPU responses.
+- **430 CPU guard/dynamic-wrapper checks** passed. After the GPU screen, the final reasoning-boundary parser refinement passed **6/6 ASGI stream/full replay checks**, with no tool dispatch for the rejected capture. These parser checks replayed saved output; they did not generate new GPU responses.
 - GPU coverage is the Ornith Hermes text profile. The other release and vision wrappers received source/settings compatibility checks, without another image evaluation. The previously published throughput and broad quality tables describe their original benchmark runs; this patch has no matched new throughput sweep.
 
 These changes fix demonstrated runtime and parser failures. They do not establish BF16 equivalence, guarantee the correctness of generated code, or eliminate every possible model, client or service failure.

@@ -30,6 +30,8 @@ def parser():
     p.add_argument('--served-name', default='ornith-g256-dflash2')
     p.add_argument('--enable-images', action='store_true',
                    help='Enable one image per request, preserving max8 concurrent sequences')
+    p.add_argument('--text-only', dest='enable_images', action='store_false',
+                   help='Disable the image encoder for a text-only process')
     p.add_argument('--image-max-pixels', type=int, default=1048576,
                    help='Image preprocessing pixel budget when --enable-images is set')
     p.add_argument('--enable-tools', action='store_true',

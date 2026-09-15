@@ -168,11 +168,14 @@ def _reject_external_refs(node):
 
 def validate_qwen3_slots(parser, converter):
     tool_map = {}
+    strict_tools = set()
     for tool in parser._tools or []:
         obj = tool.model_dump() if hasattr(tool, "model_dump") else tool
         if obj.get("type") == "function":
             fn = obj.get("function", obj)
             tool_map[fn["name"]] = fn.get("parameters") or {"type": "object"}
+            if fn.get("strict") is True:
+                strict_tools.add(fn["name"])
     for slot in parser._tool_slots:
         if slot.name not in tool_map:
             raise Qwen3ToolContractError("unknown or incomplete tool name")
@@ -182,6 +185,11 @@ def validate_qwen3_slots(parser, converter):
         streamed_obj = _strict_json(slot.streamed_json)
         if final_obj != streamed_obj or final_json != slot.streamed_json:
             raise Qwen3ToolContractError("streamed and finalized tool arguments disagree")
+        # Non-strict calls may fail the tool schema. Return the complete call
+        # so the agent executor can report validation feedback to the model.
+        # Framing and lossless JSON checks above apply to every call.
+        if slot.name not in strict_tools:
+            continue
         schema = tool_map[slot.name]
         _reject_external_refs(schema)
         try:

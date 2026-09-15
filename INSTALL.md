@@ -1,5 +1,15 @@
 # Install and run Ornith1.5 Ciru Halo Agent
 
+## Updating to Ciru runtime 1.0.2
+
+Download the current `bundle/plugin-site/`, `bundle/serve.sh` and
+`bundle/serve-vision.sh` contents and restart the model process. Remove older `ciru_ornith_g256-*.dist-info/` directories after the
+new `ciru_ornith_g256-1.0.2.dist-info/` directory is present, leaving only the
+current metadata. The pinned runtime wheels, native libraries and IU4 weights
+do not need reinstalling. Native schemas apply to automatic tool calls by
+default; an explicit `strict: false` opts a function out of schema enforcement.
+
+
 This release includes the target model, trained DFlash2 drafter, native kernels, custom vLLM plugin, and exact vLLM/AITER runtime wheels and source archives. **Use this runtime; stock `pip install vllm` does not provide the custom quantization or serving path.**
 
 ## Hardware and platform
@@ -64,7 +74,7 @@ curl http://127.0.0.1:8000/v1/chat/completions \
   -d '{"model":"ciru-halo-agent","messages":[{"role":"user","content":"Write a Python function that merges overlapping intervals."}],"temperature":0.6,"top_p":0.95,"max_tokens":4096,"chat_template_kwargs":{"enable_thinking":false}}'
 ```
 
-The default profile supplies **262,144 tokens of per-request context capacity**, **eight active sequences**, **44 GiB shared KV/state pool**, prefix caching and adaptive speculation. Input and output share the context window; your agent client must reserve output space and compact history before filling it. Eight independent, fully populated 256K histories are not promised. The server is text-only in this release; older optional vision experiments are not presented as current-profile validation.
+The default profile supplies **262,144 tokens of per-request context capacity**, **eight active sequences**, **44 GiB shared KV/state pool**, prefix caching and adaptive speculation. Input and output share the context window; your agent client must reserve output space and compact history before filling it. Eight independent, fully populated 256K histories are not promised. The default server profile is text-only. For optional image input, run `bash bundle/serve-vision.sh --host 127.0.0.1 --port 8000` after installation. The matching native BF16 vision encoder and projector are already included in `bundle/models/target/protected-00.safetensors`; no separate GGUF mmproj is required. This enables one image per request at a 1,048,576-pixel budget with up to eight active requests. See [the model card](README.md#optional-vision--image-input) and [vision validation limits](VISION.md).
 
 First startup compiles/loads GPU kernels and creates caches. Wait for `/health` before sending work. Keep `bundle/cache` writable. Change runtime/model locations with `ORNITH_RUNTIME_ROOT`, `ORNITH_MODEL`, and `ORNITH_DRAFT`. Ordinary users do not need to change quantization or draft-policy settings.
 

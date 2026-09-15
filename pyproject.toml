@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ciru-halo-agent"
-version = "1.0.1"
+version = "1.0.2"
 description = "Ornith1.5 Ciru Halo Agent: AMD Strix Halo vLLM integration"
 requires-python = ">=3.14"
 license = "Apache-2.0"
