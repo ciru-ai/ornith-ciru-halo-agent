@@ -1,0 +1,6 @@
+include BUILD.md CREDITS.md INSTALL.md RUNTIME-FIXES.md SOURCE-PROVENANCE.json TOOL-RUNTIME.md
+recursive-include LICENSES *
+recursive-include patches *.py *.patch *.json
+recursive-include scripts *.py *.sh
+recursive-include tests/native_tools *.py *.json
+recursive-include plugin-site/ornith_g256/_xgrammar_native *.so *.json

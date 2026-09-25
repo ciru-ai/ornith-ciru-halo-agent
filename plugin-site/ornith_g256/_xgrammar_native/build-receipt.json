@@ -1,0 +1,29 @@
+{
+  "mode": "candidate",
+  "library": "libxgrammar-candidate.so",
+  "sha256": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
+  "source_commit": "557becfb64c503ae9c04344b0047661f43f44320",
+  "patch_sha256": "2c42719e948809242f230ec534f967eab1babad9be1ba6dda9c59fd706f20d45",
+  "sources": {
+    "cpp/grammar.cc": "01d1552b37ecaa72da601a3b6d43975a2c3a0de02cdf797e82c243b30eef8c9d",
+    "cpp/grammar_functor.cc": "9410c20b665093b9fb67dc30db148121b819d3aee5ff94eb82558bf79b1f8279"
+  },
+  "configure": [
+    "cmake",
+    "-S",
+    "/srv/ssd/p3700ba/scratch/crown/runtime-tool-integration-20260917/native-build-r2/source-candidate",
+    "-B",
+    "/srv/ssd/p3700ba/scratch/crown/runtime-tool-integration-20260917/native-build-r2/build-candidate",
+    "-G",
+    "Ninja",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DXGRAMMAR_BUILD_PYTHON_BINDINGS=ON",
+    "-DCMAKE_CXX_FLAGS_RELEASE=-O3 -DNDEBUG -fno-lto",
+    "-DCMAKE_CXX_FLAGS_RELWITHDEBINFO=-O3 -g -DNDEBUG -fno-lto",
+    "-DPython_EXECUTABLE=/opt/ciru/glm53-iu4/venv/bin/python",
+    "-DPython3_EXECUTABLE=/opt/ciru/glm53-iu4/venv/bin/python"
+  ],
+  "build_seconds": 67.22386657004245,
+  "compiler": "g++ (GCC) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "submodules": " 6689d14c203eed390ae7bb64f56a983cfd7dff9c 3rdparty/cpptrace (v0.1-644-g6689d14)\n bbd2f4d32427e548797929af08cfe2a9cbb3cf12 3rdparty/dlpack (v1.0)\n df1544bcee0c7ce35cd5ea0b3eb8cc81855a4140 3rdparty/googletest (release-1.8.0-3498-gdf1544bc)\n"
+}

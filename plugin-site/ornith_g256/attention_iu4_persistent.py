@@ -99,7 +99,7 @@ class State:
             raise RuntimeError(f'Expected ten target layers aliasing five banks, got {targets}/{len(self.banks)}')
         self.device = next(iter(self.banks.values())).cache.device
         device = self.device
-        self.groups = torch.empty(2048, dtype=torch.int32, device=device)
+        self.groups = torch.empty(8192, dtype=torch.int32, device=device)
         self.contexts = torch.empty(8, dtype=torch.int32, device=device)
         self.counts = torch.empty(8, dtype=torch.int32, device=device)
         self.owners = torch.empty(64, dtype=torch.int32, device=device)
@@ -122,7 +122,7 @@ class State:
         bank = self.banks.get(cache.data_ptr())
         if bank is None:
             return
-        if slots.numel() > 2048 or slots.dtype != torch.int64:
+        if slots.numel() > 8192 or slots.dtype != torch.int64:
             raise RuntimeError('Unexpected persistent IU4 slot capacity/type')
         self.call('update_cache', [cache, slots, self.groups, bank.busy,
                                    bank.valid, *bank.packed], slots.numel())

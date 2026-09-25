@@ -29,9 +29,11 @@ def parser():
     p.add_argument('--host', default='127.0.0.1')
     p.add_argument('--served-name', default='ornith-g256-dflash2')
     p.add_argument('--enable-images', action='store_true',
-                   help='Enable one image per request, preserving max8 concurrent sequences')
+                   help='Enable image input (one image per prompt by default)')
     p.add_argument('--text-only', dest='enable_images', action='store_false',
                    help='Disable the image encoder for a text-only process')
+    p.add_argument('--max-images-per-prompt', type=int, default=1,
+                   help='Maximum images across the complete request, including chat history (default: 1)')
     p.add_argument('--image-max-pixels', type=int, default=1048576,
                    help='Image preprocessing pixel budget when --enable-images is set')
     p.add_argument('--enable-tools', action='store_true',
@@ -76,6 +78,8 @@ def make_settings(a):
         raise ValueError('--draft is only used with --mode dflash; MTP1 uses its target derivative')
     if a.block_size is not None and a.block_size <= 0:
         raise ValueError('--block-size must be positive')
+    if a.max_images_per_prompt < 1:
+        raise ValueError('--max-images-per-prompt must be positive')
     if a.prefix_cache and (a.mode != 'dflash' or a.block_size not in (None, 1120)):
         raise ValueError('--prefix-cache requires DFlash7 and --block-size1120 (or omitted)')
     if a.fine_prefix_cache and not a.prefix_cache:
@@ -103,7 +107,8 @@ def make_settings(a):
         max_num_batched_tokens=2048, gpu_memory_utilization=0.8,
         kv_cache_memory_bytes=int(a.cache_gib*(1 << 30)), mamba_ssm_cache_dtype='float32',
         enable_prefix_caching=a.prefix_cache, enable_chunked_prefill=True, enforce_eager=False,
-        async_scheduling=False, limit_mm_per_prompt={'image': int(a.enable_images), 'video': 0},
+        async_scheduling=False,
+        limit_mm_per_prompt={'image': a.max_images_per_prompt if a.enable_images else 0, 'video': 0},
         seed=15035, disable_log_stats=False, quantization='ornith_g256', max_logprobs=248320, logprobs_mode='raw_logprobs',
         worker_cls='ornith_g256.worker.OrnithG256Worker',
         additional_config={'ornith_g256': dict(
@@ -193,7 +198,8 @@ def environment(cache):
         VLLM_WORKER_MULTIPROC_METHOD='spawn', OPENBLAS_NUM_THREADS='2',
         VLLM_NO_USAGE_STATS='1', DO_NOT_TRACK='1',
         PYTHONDONTWRITEBYTECODE='1', HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1',
-        XDG_CACHE_HOME=cache, AITER_JIT_DIR=cache+'/aiter', TRITON_CACHE_DIR=cache+'/triton',
+        XDG_CACHE_HOME=cache, ORNITH_OPTIMIZED_CACHE=cache,
+        AITER_JIT_DIR=cache+'/aiter', TRITON_CACHE_DIR=cache+'/triton',
         TORCHINDUCTOR_CACHE_DIR=cache+'/inductor', VLLM_CACHE_ROOT=cache+'/vllm')
 
 

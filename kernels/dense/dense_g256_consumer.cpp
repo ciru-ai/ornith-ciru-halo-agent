@@ -161,7 +161,7 @@ bool range(const void* p,size_t n,Range& out){
 extern "C" uint32_t ornith_dense_g256_abi_version(){return 1;}
 extern "C" hipError_t ornith_dense_g256_get_layout(int Mcap,int N,int K,int bits,OrnithDenseG256Layout* out){
     using namespace dense_g256;
-    if(!out||Mcap<0||Mcap>2048||!shape(N,K)||bits!=8)return hipErrorInvalidValue;
+    if(!out||Mcap<0||Mcap>8192||!shape(N,K)||bits!=8)return hipErrorInvalidValue;
     OrnithDenseG256Layout l{};size_t cursor=0,m=Mcap;
     auto add=[&](size_t& offset,size_t bytes){offset=cursor;cursor=align256(cursor+bytes);};
     add(l.transformed,m*K*4);add(l.low,m*K/2);
@@ -231,7 +231,7 @@ __global__ __launch_bounds__(256) void dequantize_bf16(const uint32_t* codes,con
 extern "C" hipError_t ornith_dense_g256_prepare_bf16(const void* input,const void* codes,const void* metadata,
         void* transformed,void* weights,void* flags,int M,int N,int K,hipStream_t stream){
     using namespace dense_g256;
-    if(M<0||M>2048||!shape(N,K))return hipErrorInvalidValue;
+    if(M<0||M>8192||!shape(N,K))return hipErrorInvalidValue;
     if(M==0)return hipSuccess;
     const void* ptr[]={input,codes,metadata,transformed,weights,flags};
     const size_t sizes[]={size_t(M)*K*2,size_t(N)*K/2,size_t(N)*(K/G)*4,size_t(M)*K*2,size_t(N)*K*2,4};

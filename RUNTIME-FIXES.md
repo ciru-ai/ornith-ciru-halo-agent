@@ -1,5 +1,32 @@
 # Ciru runtime patch notes
 
+## Ciru v4.0.1 — September 25, 2026
+
+- Set `ORNITH_OPTIMIZED_CACHE` to the launcher-selected cache directory before
+  the optimized worker starts.
+- Add `--max-images-per-prompt N`. Its default remains one image across the
+  full request, including retained chat history. `--text-only` still allows no
+  images.
+- Preserve model weights, native kernels and pinned engine wheels. An isolated
+  Strix Halo server reached `/health` and answered a two-image OCR request.
+
+See the [4.0.1 installation notes](INSTALL.md#updating-from-400-to-401).
+
+## Runtime 1.0.3 — historical native-tool integration
+
+- Add pinned native XGrammar finite repetition expansion and correct shared-FSM
+  memory accounting (R04), keeping all schema bounds and fallback cases.
+- Report explicitly requested continuous token usage while strict tool output
+  is buffered (R03). Preserve metadata restrictions and framing failures.
+- Preserve the qualified finish-reason guards: truncated generation remains
+  `length` even if a tool fragment exists.
+- Retain R01 unchanged and all prior model/kernel, parser, vision and runtime
+  improvements when composing with the complete promoted model bundle.
+
+See [source, build, testing and rollback instructions](TOOL-RUNTIME.md).
+At this stage the source integration was not a published final model or a new
+serving-speed claim. Final status is recorded against the assembled v4 bundle.
+
 ## Runtime 1.0.2 — September 15, 2026
 
 - Enable native vLLM/XGrammar schema constraints for automatic tool calls when

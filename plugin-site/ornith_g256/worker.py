@@ -79,10 +79,10 @@ class OrnithG256Worker(OrnithWorkerBase):
                        ('tensor_parallel_size', 'pipeline_parallel_size', 'data_parallel_size', 'prefill_context_parallel_size'))
                 or p.enable_expert_parallel or p.enable_dbo or p.use_sequence_parallel_moe
                 or c.use_v2_model_runner or c.scheduler_config.async_scheduling
-                or c.scheduler_config.max_num_seqs > 8 or c.scheduler_config.max_num_batched_tokens > 2048
+                or c.scheduler_config.max_num_seqs > 8 or c.scheduler_config.max_num_batched_tokens > 8192
                 or c.lora_config is not None
                 or c.model_config.runner_type != 'generate' or c.model_config.enable_sleep_mode):
-            raise ValueError("G256 prototype requires BF16, TP1 V1 generation, synchronous scheduling, <=8 sequences/2048 tokens")
+            raise ValueError("G256 prototype requires BF16, TP1 V1 generation, synchronous scheduling, <=8 sequences/8192 tokens")
         if self.settings.get('dynamic_spec_profile'):
             from .dynamic_graphs import install
             install()

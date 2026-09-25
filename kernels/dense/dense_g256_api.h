@@ -18,7 +18,7 @@ enum OrnithDenseG256Error {
     ORNITH_DENSE_G256_NONFINITE_BF16=8
 };
 // Runtime N: positive multiple16 <=12288; K: positive multiple256 <=8192.
-// 0<=M<=Mcap<=2048. Input/output are contiguous GPU BF16 tensors.
+// 0<=M<=Mcap<=8192. Input/output are contiguous GPU BF16 tensors.
 // Transform is exactly H128; bits is8. Geometry0 WMMA M16/N16;
 // geometry1 compact M1/N16; geometry2 selects compact iff M<=4.
 // G=256. This retains the measured QKVZ arithmetic for dense model families.

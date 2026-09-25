@@ -44,7 +44,7 @@ fi
 export LD_LIBRARY_PATH="$ROCM_PATH/lib:$ROCM_PATH/lib/rocm_sysdeps/lib:$site_packages/_rocm_sdk_libraries/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 common=(-x hip -std=c++20 -O2 -ffp-contract=off
         -fhip-fp32-correctly-rounded-divide-sqrt -shared -fPIC -fvisibility=hidden
-        --offload-arch=gfx1151 -gline-tables-only)
+        --offload-arch=gfx1151 -gline-tables-only -DORNITH_PREFILL_OUTPUT32=1)
 # On NixOS the HIP compiler cannot discover the host GCC/glibc by itself.
 # Derive locations from the selected compiler instead of shipping store hashes.
 host_flags=()

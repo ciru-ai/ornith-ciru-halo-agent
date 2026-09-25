@@ -1,0 +1,2772 @@
+{
+  "hash": "a1d2b0fe20580a1073c05fcaeb092c3c3c9a4cb27e707f12ba11411c12c4210c",
+  "fixtures": [
+    {
+      "role": "geometry",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "material",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "stage",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "effects",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "lighting",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "lights": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "area",
+                          "point",
+                          "directional",
+                          "spot"
+                        ]
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "intensity": {
+                        "type": "number"
+                      },
+                      "position": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "target": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "motion": {
+                        "type": "object",
+                        "properties": {
+                          "axis": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "rotation.x",
+                              "rotation.y",
+                              "rotation.z",
+                              "position.x",
+                              "position.y",
+                              "position.z"
+                            ]
+                          },
+                          "amplitude": {
+                            "type": "number"
+                          },
+                          "speed": {
+                            "type": "number"
+                          },
+                          "phase": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "axis",
+                          "amplitude",
+                          "speed",
+                          "phase"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "color",
+                      "intensity",
+                      "position",
+                      "target",
+                      "width",
+                      "height",
+                      "motion"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 3,
+                  "maxItems": 12
+                },
+                "exposure": {
+                  "type": "number",
+                  "minimum": 0.5,
+                  "maximum": 1.25
+                },
+                "bloomStrength": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.3
+                },
+                "bloomRadius": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.6
+                },
+                "bloomThreshold": {
+                  "type": "number",
+                  "minimum": 1.2,
+                  "maximum": 4
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundWidth": {
+                  "type": "number",
+                  "minimum": 25,
+                  "maximum": 60
+                },
+                "backgroundHeight": {
+                  "type": "number",
+                  "minimum": 18,
+                  "maximum": 40
+                },
+                "backgroundZ": {
+                  "type": "number",
+                  "minimum": -20,
+                  "maximum": -8
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "lights",
+                "exposure",
+                "bloomStrength",
+                "bloomRadius",
+                "bloomThreshold",
+                "background",
+                "backgroundWidth",
+                "backgroundHeight",
+                "backgroundZ",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "filaments",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "matrix",
+                    "bars",
+                    "waveform",
+                    "trace"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "secondary": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0.45,
+                  "maximum": 1
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "minItems": 8,
+                  "maxItems": 48
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "minItems": 1,
+                  "maxItems": 48
+                },
+                "seed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "speed": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 2
+                },
+                "variation": {
+                  "type": "number",
+                  "minimum": 0.08,
+                  "maximum": 0.4
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "kind",
+                "title",
+                "subtitle",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "secondary",
+                "background",
+                "opacity",
+                "values",
+                "labels",
+                "seed",
+                "speed",
+                "variation"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "particles",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "shape": {
+                  "type": "string",
+                  "enum": [
+                    "box",
+                    "plane",
+                    "torus"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "emissive": {
+                  "type": "string"
+                },
+                "emissiveIntensity": {
+                  "type": "number"
+                },
+                "opacity": {
+                  "type": "number"
+                },
+                "motion": {
+                  "type": "object",
+                  "properties": {
+                    "axis": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "rotation.x",
+                        "rotation.y",
+                        "rotation.z",
+                        "position.x",
+                        "position.y",
+                        "position.z"
+                      ]
+                    },
+                    "amplitude": {
+                      "type": "number"
+                    },
+                    "speed": {
+                      "type": "number"
+                    },
+                    "phase": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "axis",
+                    "amplitude",
+                    "speed",
+                    "phase"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "shape",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "metalness",
+                "roughness",
+                "emissive",
+                "emissiveIntensity",
+                "opacity",
+                "motion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    },
+    {
+      "role": "accents",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "matrix",
+                    "bars",
+                    "waveform",
+                    "trace"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "secondary": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0.45,
+                  "maximum": 1
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "minItems": 8,
+                  "maxItems": 48
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "minItems": 1,
+                  "maxItems": 48
+                },
+                "seed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "speed": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 2
+                },
+                "variation": {
+                  "type": "number",
+                  "minimum": 0.08,
+                  "maximum": 0.4
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "kind",
+                "title",
+                "subtitle",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "secondary",
+                "background",
+                "opacity",
+                "values",
+                "labels",
+                "seed",
+                "speed",
+                "variation"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "sourceRun": "live-20260917172206184",
+      "sourceFile": "material-11-response.json",
+      "name": "review_peer",
+      "args": {
+        "layer": "geometry",
+        "verdict": "revise",
+        "assessment": "A letter fails to compile: the fragment shader writes 'vec3 n = normalize(n);', which redefines the built-in input parameter 'n'. The compiler reports: 'Fragment shader is not compiled... ERROR: 0:1511: 'n' : redefinition'.",
+        "suggestion": "Rename the local normal variable so it does not shadow the input 'n'. Change line: vec3 n = normalize(n); -> vec3 nn = normalize(n); and update subsequent uses of the normal to 'nn' (e.g., dot(nn, ...) etc.). This restores A so all three letters + reference render."
+      }
+    }
+  ]
+}

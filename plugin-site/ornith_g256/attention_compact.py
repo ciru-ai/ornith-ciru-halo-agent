@@ -107,9 +107,9 @@ def configure(*, max_num_seqs, max_model_len, max_num_batched_tokens, device,
             raise RuntimeError('Compact attention arena was configured differently')
         return _arena['bytes']
     if (not 1 <= max_num_seqs <= 8 or not 1 <= max_model_len <= 262144
-            or not 1 <= max_num_batched_tokens <= 2048
+            or not 1 <= max_num_batched_tokens <= 8192
             or torch.cuda.is_current_stream_capturing()):
-        raise ValueError('Configure target compact prefill before capture, within C8/256K/2048 tokens')
+        raise ValueError('Configure target compact prefill before capture, within C8/256K/8192 tokens')
     _prefill = _graph_safe_prefill()
     key = torch.empty((max_num_seqs * max_model_len, 2, 256),
                       dtype=torch.bfloat16, device=device)
@@ -177,14 +177,14 @@ def try_forward(query, key_cache, value_cache, output, block_table,
         num_warps=8, num_stages=1)
     # Graph-padded rows are not real requests and receive defined zero output.
     output.zero_()
-    if (_arena['iu4'] is not None and requests == 1 and max_query_len == 1120
+    if (_arena['iu4'] is not None and requests == 1 and max_query_len in (1120, 4480)
             and max_seq_len >= 4096 and max_seq_len % 32 == 0
             and max_query_len <= rows and sm_scale == 256**-.5):
         _arena['iu4'].forward(query, key, value, output, query_start_loc,
-                              seq_lens, max_seq_len)
+                              seq_lens, max_seq_len, query_rows=max_query_len)
         logger.info_once('Ornith C1 IU4 prefill active: BF16 cache gather + '
                          'normalized Q/K H256 and P/V H32, signed IU4 QK/PV; '
-                         'Q1120 and aligned K>=4096, existing BF16 fallback elsewhere')
+                         'Q%d and aligned K>=4096, existing BF16 fallback elsewhere', max_query_len)
         return True
     _prefill(q=query, k=key, v=value, o=output, softmax_lse=lse,
         sd_mask=None, sm_scale=sm_scale, alibi_slopes=None, causal=True,

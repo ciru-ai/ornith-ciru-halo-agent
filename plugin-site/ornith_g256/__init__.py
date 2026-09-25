@@ -1,6 +1,9 @@
 """Ciru G256 prototype; no installed vLLM files are modified."""
 
 
+from .xgrammar_native import install as _install_native_grammar
+_install_native_grammar()
+
 from .runtime_correctness import install as _install_correctness
 _install_correctness()
 
@@ -30,3 +33,6 @@ def register():
 
     from .adaptive_c1 import install as install_adaptive_c1
     install_adaptive_c1()
+
+    from .optimized.grammar_parallel import install as install_parallel_grammar
+    install_parallel_grammar()

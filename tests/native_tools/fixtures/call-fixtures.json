@@ -1,0 +1,3042 @@
+{
+  "hash": "4b3fcc3aa697b8d60f943719724bdc314a1565201bec7d76371501a14599658d",
+  "fixtures": [
+    {
+      "role": "geometry",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "geometry-2-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_design",
+      "args": {
+        "summary": "Letter A geometry + material: substantial platinum extrusion with a crisp triangular counter, satin edges, and a subtle drifting spectral grain on the face.",
+        "part": "A",
+        "depth": 0.6,
+        "bevel": 0.035,
+        "tiltX": 0.01,
+        "tiltY": 0.02,
+        "rockAmplitude": 0.01,
+        "rockSpeed": 0.25,
+        "color": "#e6ebf0",
+        "metalness": 0.87,
+        "roughness": 0.24,
+        "clearcoat": 0.45,
+        "clearcoatRoughness": 0.16,
+        "iridescence": 0.1,
+        "envMapIntensity": 1.2,
+        "edgeColor": "#7a8692",
+        "edgeMetalness": 0.78,
+        "edgeRoughness": 0.36,
+        "functions": "",
+        "body": "// Layer 1: slow drifting satin grain, sweeping along the X axis of the face\nfloat g1 = gln_simplex(p * vec3(10.0, 1.8, 4.0) + t * vec3(0.04, 0.0, 0.0));\nfloat g2 = gln_simplex(p * vec3(30.0, 0.6, 9.0) - t * vec3(0.16, 0.0, 0.0));\n\n// Normalize both into 0..1 and blend into a soft flowing value\nfloat satin = gln_normalize(g1) * 0.5 + gln_normalize(g2) * 0.4;\n\n// Layer 2: subtle cool-white spectral sheen where the grain peaks,\n// slightly enhanced toward the upper-left (typical highlight zone)\nfloat shine = smoothstep(0.55, 1.0, satin) * (0.5 + 0.4 * smoothstep(0.0, 1.0, n.x));\nvec3 spectral = mix(base, base * vec3(1.0, 1.01, 1.02), shine * 0.6);\n\n// Final albedo: keep the platinum mostly intact, add thin luminous banding\nreturn spectral * (0.97 + 0.03 * gln_normalize(g1));"
+      }
+    },
+    {
+      "role": "material",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "material-3-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_design",
+      "args": {
+        "summary": "M: machined platinum letterform — fine satin grain, slow travelling brush ridges, gentle drifting cyan tint, and a restrained ticking signal detail in the central notch valley.",
+        "part": "M",
+        "depth": 0.6,
+        "bevel": 0.035,
+        "tiltX": 0,
+        "tiltY": 0,
+        "rockAmplitude": 0,
+        "rockSpeed": 0,
+        "color": "#d4dae0",
+        "metalness": 0.88,
+        "roughness": 0.28,
+        "clearcoat": 0.4,
+        "clearcoatRoughness": 0.18,
+        "iridescence": 0.08,
+        "envMapIntensity": 1,
+        "edgeColor": "#6f7983",
+        "edgeMetalness": 0.8,
+        "edgeRoughness": 0.34,
+        "functions": "",
+        "body": "// M — machined satin, travelling signal\nfloat g = gln_simplex(p.xy * vec2(24.0, 32.0) + vec2(t * 0.04, 0.0));\ng = 0.5 * (g + 1.0);\nfloat brightness = 0.99 + 0.025 * g;\n\n// Machined vertical brush ridges, slowly travelling\nfloat b = sin(p.y * 26.0 - t * 0.6);\nb = smoothstep(0.485, 0.515, abs(b - 0.5));\nfloat striation = 0.013 * b;\n\n// Gentle travelling color drift across the face\nfloat d = gln_simplex(vec3(p.xy * 0.3, t * 0.09));\nd = 0.5 * (d + 1.0);\nfloat k = 0.35 + 0.55 * d;\nvec3 shift = vec3(0.0, 0.0, 0.0) * (1.0 - k) + mix(base * vec3(0.0, 0.025, 0.05), vec3(0.0), k * 0.7);\n\n// Central notch: machined tick row + soft cyan pulse\nfloat notch = smoothstep(-0.02, 0.0, p.y + 0.42) * smoothstep(0.22, 0.48, -(p.y + 0.42)) * smoothstep(0.11, 0.0, abs(p.x)) * (0.5 + 0.5 * sin(t * 2.5));\nfloat notchOut = 0.02 * notch;\n\nvec3 outAlbedo = base * (brightness + striation) + vec3(notchOut);\nreturn outAlbedo;"
+      }
+    },
+    {
+      "role": "stage",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "stage-2-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_design",
+      "args": {
+        "summary": "D: extruded platinum glyph with a flowing satin face, fine bevel at the curved outer edge and open counter, coordinating with the AMD wordmark/arrow finish.",
+        "part": "D",
+        "depth": 0.6,
+        "bevel": 0.035,
+        "tiltX": 0.006,
+        "tiltY": 0.012,
+        "rockAmplitude": 0.008,
+        "rockSpeed": 0.25,
+        "color": "#dfe5ec",
+        "metalness": 0.86,
+        "roughness": 0.26,
+        "clearcoat": 0.38,
+        "clearcoatRoughness": 0.17,
+        "iridescence": 0.07,
+        "envMapIntensity": 1,
+        "edgeColor": "#7b8692",
+        "edgeMetalness": 0.72,
+        "edgeRoughness": 0.36,
+        "functions": "",
+        "body": "// D designer — flowing satin face: slow wave sweep + fine grain + subtle edge fringe\nfloat wave = smoothstep(-0.45, 0.55, sin(p.y * 2.2 + t * 0.35) * 0.5 + 0.5);\nfloat grain = gln_normalize(gln_simplex(p.zx * vec2(10.0, 12.0) + t * 0.12));\nfloat fringe = smoothstep(0.62, 0.92, abs(p.z) * 3.2 / 0.6);\nreturn base * (0.945 + 0.022 * grain + 0.055 * wave + 0.035 * fringe);"
+      }
+    },
+    {
+      "role": "effects",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "effects-2-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "part": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "M",
+                    "D",
+                    "arrow"
+                  ],
+                  "description": "Your assigned part, registered to its original position in the complete AMD vector."
+                },
+                "depth": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 1
+                },
+                "bevel": {
+                  "type": "number",
+                  "minimum": 0.01,
+                  "maximum": 0.065
+                },
+                "tiltX": {
+                  "type": "number",
+                  "minimum": -0.06,
+                  "maximum": 0.06
+                },
+                "tiltY": {
+                  "type": "number",
+                  "minimum": -0.08,
+                  "maximum": 0.08
+                },
+                "rockAmplitude": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.035
+                },
+                "rockSpeed": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "clearcoat": {
+                  "type": "number"
+                },
+                "clearcoatRoughness": {
+                  "type": "number"
+                },
+                "iridescence": {
+                  "type": "number"
+                },
+                "envMapIntensity": {
+                  "type": "number"
+                },
+                "edgeColor": {
+                  "type": "string"
+                },
+                "edgeMetalness": {
+                  "type": "number"
+                },
+                "edgeRoughness": {
+                  "type": "number"
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "part",
+                "depth",
+                "bevel",
+                "tiltX",
+                "tiltY",
+                "rockAmplitude",
+                "rockSpeed",
+                "color",
+                "metalness",
+                "roughness",
+                "clearcoat",
+                "clearcoatRoughness",
+                "iridescence",
+                "envMapIntensity",
+                "edgeColor",
+                "edgeMetalness",
+                "edgeRoughness",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_design",
+      "args": {
+        "summary": "AMD arrow: thick 0.6 extrusion, 0.035 bevel. Bright platinum faces with controlled satin finish, darker satin edge, subtle rocking. Surface shader flows a refined directional satin grain across the chevron, moving slowly like brushed metal catching light.",
+        "part": "arrow",
+        "depth": 0.6,
+        "bevel": 0.035,
+        "tiltX": 0.008,
+        "tiltY": 0.012,
+        "rockAmplitude": 0.009,
+        "rockSpeed": 0.25,
+        "color": "#dfe4eb",
+        "metalness": 0.85,
+        "roughness": 0.22,
+        "clearcoat": 0.35,
+        "clearcoatRoughness": 0.14,
+        "iridescence": 0.06,
+        "envMapIntensity": 1.2,
+        "edgeColor": "#5c6570",
+        "edgeMetalness": 0.75,
+        "edgeRoughness": 0.38,
+        "functions": "vec3 satin_grain(vec3 p, float t){\n    vec2 uv = p.xy * vec2(9.0, 3.5);\n    float a = atan(uv.y, uv.x);\n    vec2 grain = uv + vec2(-cos(a*1.7)*3.0, sin(a*1.4)*3.0);\n    return gln_simplex(grain + vec2(t * 0.06, t * 0.015)) * 0.5 + 0.5;\n}",
+        "body": "// Layer 1: directional satin grain that flows along the chevron\nvec2 baseUV = p.xy * vec2(9.0, 3.0);\nfloat grain = gln_simplex(baseUV + vec2(t * 0.055, t * 0.012));\nfloat grainSoft = smoothstep(0.35, 0.65, abs(grain));\nfloat grainDir = gln_normalize(gln_simplex(baseUV * vec2(2.2, 0.7) + vec3(t * 0.09, t * 0.02, 0.0)) - 0.5) * 0.18;\n\n// Layer 2: soft rim shimmer along the arrow's edges, independent of vertex position\nvec3 rim = pow(max(0.0, dot(n, vec3(0.0, 1.0, -1.0))), 2.0) * 0.45;\nrim *= smoothstep(0.55, 1.0, length(p.xy) / 5.0);\n\n// Layer 3: faint linear sheen stripe following the arrow's diagonal\nfloat sheen = smoothstep(-0.4, 0.2, dot(normalize(p), normalize(vec3(0.7, 0.5, 0.0)))) * 0.12 * (1.0 - smoothstep(0.0, 2.0, length(p.z + 0.3)));\n\nreturn base * (0.97 + grainDir + grainSoft * 0.03 + rim * 0.18 + sheen * 0.25);"
+      }
+    },
+    {
+      "role": "lighting",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "lighting-2-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_design",
+            "description": "Publish your complete contribution using native typed fields. Write GLSL directly in functions/body strings.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "lights": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "area",
+                          "point",
+                          "directional",
+                          "spot"
+                        ]
+                      },
+                      "color": {
+                        "type": "string"
+                      },
+                      "intensity": {
+                        "type": "number"
+                      },
+                      "position": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "target": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      },
+                      "motion": {
+                        "type": "object",
+                        "properties": {
+                          "axis": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "rotation.x",
+                              "rotation.y",
+                              "rotation.z",
+                              "position.x",
+                              "position.y",
+                              "position.z"
+                            ]
+                          },
+                          "amplitude": {
+                            "type": "number"
+                          },
+                          "speed": {
+                            "type": "number"
+                          },
+                          "phase": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "axis",
+                          "amplitude",
+                          "speed",
+                          "phase"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "color",
+                      "intensity",
+                      "position",
+                      "target",
+                      "width",
+                      "height",
+                      "motion"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 3,
+                  "maxItems": 12
+                },
+                "exposure": {
+                  "type": "number",
+                  "minimum": 0.5,
+                  "maximum": 1.25
+                },
+                "bloomStrength": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.3
+                },
+                "bloomRadius": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 0.6
+                },
+                "bloomThreshold": {
+                  "type": "number",
+                  "minimum": 1.2,
+                  "maximum": 4
+                },
+                "background": {
+                  "type": "string"
+                },
+                "backgroundWidth": {
+                  "type": "number",
+                  "minimum": 25,
+                  "maximum": 60
+                },
+                "backgroundHeight": {
+                  "type": "number",
+                  "minimum": 18,
+                  "maximum": 40
+                },
+                "backgroundZ": {
+                  "type": "number",
+                  "minimum": -20,
+                  "maximum": -8
+                },
+                "functions": {
+                  "type": "string",
+                  "description": "Optional GLSL helper function definitions, or an empty string."
+                },
+                "body": {
+                  "type": "string",
+                  "description": "GLSL function body using the inputs in your brief. End with return vec3(...). The renderer supplies its wrapper and uniforms. Use decimal float literals."
+                }
+              },
+              "required": [
+                "summary",
+                "lights",
+                "exposure",
+                "bloomStrength",
+                "bloomRadius",
+                "bloomThreshold",
+                "background",
+                "backgroundWidth",
+                "backgroundHeight",
+                "backgroundZ",
+                "functions",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_design",
+      "args": {
+        "summary": "Key/fill/rim area-light rig for platinum AMD wordmark plus deep animated charcoal-cyan background",
+        "lights": [
+          {
+            "kind": "area",
+            "color": "#eef2f7",
+            "intensity": 4.5,
+            "position": [
+              -6.5,
+              5.5,
+              5
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "width": 7,
+            "height": 6,
+            "motion": {
+              "axis": "position.y",
+              "amplitude": 0.35,
+              "speed": 0.15,
+              "phase": 0.7
+            }
+          },
+          {
+            "kind": "area",
+            "color": "#dde4ef",
+            "intensity": 1.7,
+            "position": [
+              7,
+              2.2,
+              -2
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "width": 6,
+            "height": 4,
+            "motion": {
+              "axis": "rotation.y",
+              "amplitude": 0.12,
+              "speed": 0.09,
+              "phase": 1.1
+            }
+          },
+          {
+            "kind": "area",
+            "color": "#7bb0cc",
+            "intensity": 2.3,
+            "position": [
+              0,
+              3,
+              -9
+            ],
+            "target": [
+              0,
+              0,
+              0
+            ],
+            "width": 9,
+            "height": 5,
+            "motion": {
+              "axis": "none",
+              "amplitude": 0,
+              "speed": 0,
+              "phase": 0
+            }
+          },
+          {
+            "kind": "area",
+            "color": "#1a2544",
+            "intensity": 0.8,
+            "position": [
+              -9,
+              2,
+              0
+            ],
+            "target": [
+              -4,
+              0,
+              0
+            ],
+            "width": 4,
+            "height": 4,
+            "motion": {
+              "axis": "none",
+              "amplitude": 0,
+              "speed": 0,
+              "phase": 0
+            }
+          }
+        ],
+        "exposure": 0.92,
+        "bloomStrength": 0.18,
+        "bloomRadius": 0.38,
+        "bloomThreshold": 1.6,
+        "background": "#020306",
+        "backgroundWidth": 36,
+        "backgroundHeight": 24,
+        "backgroundZ": -9,
+        "functions": "",
+        "body": "// AMD atmospheric ground: deep near-black base with a faint, slow-moving cyan field\nfloat cx = uv.x - 0.5;\nfloat cy = uv.y - 0.5;\nfloat d = length(vec2(cx * 2.4, cy * 1.3));\nfloat grad = smoothstep(0.0, 1.0, max(0.0, 1.0 - d * 1.25));\n\n// slow spatial noise, subtle color shift toward cyan\nvec2 s = vec2(uv.x * 3.2 + t * 0.018, uv.y * 2.2);\nfloat n = gln_normalize(gln_simplex(s) * 0.45) * 0.6;\nvec3 base = vec3(0.0045, 0.0065, 0.010) + vec3(n * 0.0012, n * 0.0018, n * 0.0025);\n\n// a single very-faint horizon band under the dashboard level\nfloat band = smoothstep(-0.14, 0.15, cy + 0.12);\nband *= 0.38;\nbase += vec3(band * 0.0014, band * 0.002, band * 0.0028);\n\nreturn base * grad;"
+      }
+    },
+    {
+      "role": "filaments",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "filaments-5-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "matrix",
+                    "bars",
+                    "waveform",
+                    "trace"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "secondary": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0.45,
+                  "maximum": 1
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "minItems": 8,
+                  "maxItems": 48
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "minItems": 1,
+                  "maxItems": 48
+                },
+                "seed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "speed": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 2
+                },
+                "variation": {
+                  "type": "number",
+                  "minimum": 0.08,
+                  "maximum": 0.4
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "kind",
+                "title",
+                "subtitle",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "secondary",
+                "background",
+                "opacity",
+                "values",
+                "labels",
+                "seed",
+                "speed",
+                "variation"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_element",
+      "args": {
+        "summary": "Dashboard foundation: title panel \"Ciru Halo Agent\" centered high, deep navy-chrome glass, platinum text, animated.",
+        "index": 0,
+        "kind": "title",
+        "title": "Ciru Halo Agent",
+        "subtitle": "Synthetic LLM internals — expert routing & MoE activity",
+        "size": [
+          6,
+          1.8,
+          0
+        ],
+        "position": [
+          0,
+          4.7,
+          -4.6
+        ],
+        "rotation": [
+          0,
+          0.06,
+          0
+        ],
+        "color": "#ffffff",
+        "secondary": "#3fd1d9",
+        "background": "#061222",
+        "opacity": 0.95,
+        "values": [
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          0.3,
+          0.7,
+          0.5,
+          0.4
+        ],
+        "labels": [
+          "Ciru Halo Agent"
+        ],
+        "seed": 7,
+        "speed": 0.6,
+        "variation": 0.1
+      }
+    },
+    {
+      "role": "particles",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "particles-1-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 3,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "shape": {
+                  "type": "string",
+                  "enum": [
+                    "box",
+                    "plane",
+                    "torus"
+                  ]
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "metalness": {
+                  "type": "number"
+                },
+                "roughness": {
+                  "type": "number"
+                },
+                "emissive": {
+                  "type": "string"
+                },
+                "emissiveIntensity": {
+                  "type": "number"
+                },
+                "opacity": {
+                  "type": "number"
+                },
+                "motion": {
+                  "type": "object",
+                  "properties": {
+                    "axis": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "rotation.x",
+                        "rotation.y",
+                        "rotation.z",
+                        "position.x",
+                        "position.y",
+                        "position.z"
+                      ]
+                    },
+                    "amplitude": {
+                      "type": "number"
+                    },
+                    "speed": {
+                      "type": "number"
+                    },
+                    "phase": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "axis",
+                    "amplitude",
+                    "speed",
+                    "phase"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "shape",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "metalness",
+                "roughness",
+                "emissive",
+                "emissiveIntensity",
+                "opacity",
+                "motion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_element",
+      "args": {
+        "summary": "Charcoal platform main base — broad, low, satin grounded support beneath the AMD exhibit",
+        "index": 0,
+        "shape": "box",
+        "size": [
+          20,
+          0.4,
+          10
+        ],
+        "position": [
+          0,
+          -2.3,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "color": "#13171f",
+        "metalness": 0.55,
+        "roughness": 0.42,
+        "emissive": "#000000",
+        "emissiveIntensity": 0,
+        "opacity": 1,
+        "motion": {
+          "axis": "none",
+          "amplitude": 0,
+          "speed": 0,
+          "phase": 0
+        }
+      }
+    },
+    {
+      "role": "accents",
+      "sourceRun": "live-20260917165108630",
+      "sourceFile": "accents-4-response.json",
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "publish_element",
+            "description": "Create or update one element of your scene layer using native typed fields. Each successful element appears immediately.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string",
+                  "description": "What this change adds to the visible scene."
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "Zero-based index: 0 is the first element. Replace that element or append at the current count. Only this one element changes; other published elements remain."
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "matrix",
+                    "bars",
+                    "waveform",
+                    "trace"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rotation": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "color": {
+                  "type": "string"
+                },
+                "secondary": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0.45,
+                  "maximum": 1
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "minItems": 8,
+                  "maxItems": 48
+                },
+                "labels": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "minItems": 1,
+                  "maxItems": 48
+                },
+                "seed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "speed": {
+                  "type": "number",
+                  "minimum": 0.3,
+                  "maximum": 2
+                },
+                "variation": {
+                  "type": "number",
+                  "minimum": 0.08,
+                  "maximum": 0.4
+                }
+              },
+              "required": [
+                "summary",
+                "index",
+                "kind",
+                "title",
+                "subtitle",
+                "size",
+                "position",
+                "rotation",
+                "color",
+                "secondary",
+                "background",
+                "opacity",
+                "values",
+                "labels",
+                "seed",
+                "speed",
+                "variation"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_guide",
+            "description": "Read concise renderer semantics and a tested native-call example for your own role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string",
+                  "enum": [
+                    "role",
+                    "publishing",
+                    "shaders",
+                    "collaboration",
+                    "dashboard"
+                  ]
+                }
+              },
+              "required": [
+                "topic"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "remove_element",
+            "description": "Remove one distracting or unnecessary element. Remaining indices shift down by one. Use the zero-based index shown in your current design.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "summary": {
+                  "type": "string"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "summary",
+                "index"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "review_peer",
+            "description": "Directly review a published peer contribution using the latest scene image. An approval records that version; a revision request is delivered to its designer automatically and reactivates them when needed.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                },
+                "verdict": {
+                  "type": "string",
+                  "enum": [
+                    "approve",
+                    "revise"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1400
+                },
+                "suggestion": {
+                  "type": "string",
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "layer",
+                "verdict",
+                "assessment",
+                "suggestion"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "respond_peer",
+            "description": "Resolve a delivered peer request after inspecting your current contribution. Explain the exact improvement, or why retaining the current design best serves the shared composition.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "requestId": {
+                  "type": "string"
+                },
+                "resolution": {
+                  "type": "string",
+                  "enum": [
+                    "updated",
+                    "retained"
+                  ]
+                },
+                "assessment": {
+                  "type": "string",
+                  "minLength": 10,
+                  "maxLength": 1800
+                }
+              },
+              "required": [
+                "requestId",
+                "resolution",
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "inspect_scene",
+            "description": "See a fresh image of the current shared render and all workers’ latest status. Use it to judge your output and integration.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "focus": {
+                  "type": "string",
+                  "description": "The visual details you are checking in this review."
+                }
+              },
+              "required": [
+                "focus"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "team_board",
+            "description": "Read the team’s live status and notes, optionally post a concise integration note. Workers continue independently.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "note": {
+                  "type": "string",
+                  "description": "An actionable note to peers; empty to read only."
+                }
+              },
+              "required": [
+                "note"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "read_layer",
+            "description": "Read the exact latest published source for one role.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "layer": {
+                  "type": "string",
+                  "enum": [
+                    "geometry",
+                    "material",
+                    "stage",
+                    "effects",
+                    "lighting",
+                    "filaments",
+                    "particles",
+                    "accents"
+                  ]
+                }
+              },
+              "required": [
+                "layer"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        {
+          "type": "function",
+          "function": {
+            "name": "finish_layer",
+            "description": "Mark your contribution ready after inspecting your latest successfully published version. Explain the visual evidence briefly.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "assessment": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "assessment"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "name": "publish_element",
+      "args": {
+        "summary": "Left trace panel: scrolling runtime trace of token-pipeline ops (prefill, decode, kv-fetch, route)",
+        "index": 0,
+        "kind": "trace",
+        "title": "RUNTIME TRACE",
+        "subtitle": "pipeline • 342 active ops",
+        "size": [
+          3.4,
+          3.2,
+          0
+        ],
+        "position": [
+          -7.4,
+          3,
+          -5.3
+        ],
+        "rotation": [
+          0.04,
+          -0.13,
+          0
+        ],
+        "color": "#72dfea",
+        "secondary": "#9ad1e8",
+        "background": "#04101a",
+        "opacity": 0.88,
+        "values": [
+          0.3,
+          0.8,
+          0.5,
+          0.2,
+          0.9,
+          0.4,
+          0.7,
+          0.6
+        ],
+        "labels": [
+          "PREFILL",
+          "DECODE",
+          "KV-FETCH",
+          "RECOMP",
+          "ROUTER",
+          "HEAD-MRG",
+          "EVICT",
+          "SYNC"
+        ],
+        "seed": 13,
+        "speed": 0.9,
+        "variation": 0.14
+      }
+    }
+  ]
+}

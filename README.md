@@ -1,5 +1,13 @@
 # Ornith1.5 Ciru Halo Agent
 
+## Ciru v4.0.1 — September 25, 2026
+
+This launcher patch supplies `ORNITH_OPTIMIZED_CACHE` and adds
+`--max-images-per-prompt N` for image-bearing agent histories. The default is
+one image across the complete request. Weights, native libraries and pinned
+engine wheels are unchanged. See [patch notes](RUNTIME-FIXES.md) and the
+[published update instructions](https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/blob/main/INSTALL.md).
+
 ## Runtime 1.0.2 — September 15, 2026
 
 Automatic tool calls now use native vLLM/XGrammar schema constraints, enforcing

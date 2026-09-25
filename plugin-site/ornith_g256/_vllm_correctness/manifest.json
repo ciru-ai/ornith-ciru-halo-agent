@@ -1,5 +1,5 @@
 {
-  "runtime_version": "1.0.1",
+  "runtime_version": "1.0.3",
   "modules": {
     "vllm.model_executor.layers.mamba.gdn.qwen_gdn_linear_attn": {
       "file": "qwen_gdn_linear_attn.py",
@@ -24,6 +24,12 @@
       "native_path": "v1/worker/gpu_model_runner.py",
       "native_sha256": "4706fcf4b85158173d88e3b19ffb0f6a280fcb60554cfdac861a01a0cab4d4df",
       "sha256": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf"
+    },
+    "vllm.entrypoints.openai.chat_completion.serving": {
+      "file": "chat_completion_serving_r03.py",
+      "native_path": "entrypoints/openai/chat_completion/serving.py",
+      "native_sha256": "9982953285e9df469032a82fffa4095d0e9d86278bede6e2b91d03d02373d182",
+      "sha256": "5720371f5bcb351e340a3e8d9a0235ec01ff27ed93e4f35542e31b83a055ef45"
     }
   },
   "upstream": [

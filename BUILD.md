@@ -15,8 +15,8 @@ Use the release launch instructions for inference after building.
 ## Build the eight native libraries
 
 ```bash
-git clone https://github.com/ciru-ai/ornith-ciru-halo-agent.git
-cd ornith-ciru-halo-agent
+tar -xzf ciru-v4-ornith-source.tar.gz
+cd ciru-v4-ornith-source
 
 # Set this to the directory produced by the release runtime installer.
 RUNTIME="$HOME/ornith-runtime"
@@ -61,6 +61,11 @@ Keep the distributed libraries available until the rebuilt bundle passes the
 same startup and workload checks on your host.
 
 ## Python plugin
+
+For the 1.0.3 native-tool extension, build/stage the pinned XGrammar payload
+first; see [TOOL-RUNTIME.md](TOOL-RUNTIME.md). The complete upgraded model uses
+the composition script with its promoted parent bundle. The base plugin wheel
+alone does not contain that parent's campaign optimizations.
 
 `plugin-site/ornith_g256/` is the current plugin, including adaptive speculation
 and the current single-token dense kernel binding. Module and library names are
@@ -151,12 +156,16 @@ switching to them. Engine build dependencies and system linkers vary by host;
 this source route is provided for development, not an assertion that a full
 engine rebuild has been qualified on every Linux distribution.
 
-## Release source checks
+## Ciru v4 source checks
 
-All eight native libraries were successfully compiled from this source tree with
-the clean installed release runtime on the development Strix Halo host. The
-compiler was AMD clang 23 / ROCm 10. The check exercised the portable script,
-including automatic discovery of NixOS GCC/glibc paths. It did not run inference
-with the newly compiled libraries or replace any running model's libraries.
-All plugin Python files passed syntax parsing. Engine wheel rebuilding was not
-repeated; the shipped engine wheels retain their existing runtime evidence.
+This archive contains the qualified combined plugin, output32 expert tile,
+Q4480 capacity, fused attention prefill and repaired persistent attention
+sources. `SOURCE-PROVENANCE.json` maps each source to the measured binary.
+The portable recipe preserves the required output32 compile definition and
+the numerical compiler flags. Its earlier version compiled all eight libraries
+on the development host; this updated source recipe has not yet been compiled
+on a fresh external machine. Published inference uses the hash-pinned binaries.
+
+Use the model bundle's `bundle/serve.sh` entry point. The optimized wrapper
+selects the combined worker and Q4480 prefill policy; a base-plugin development
+entry point does not select the complete release configuration.

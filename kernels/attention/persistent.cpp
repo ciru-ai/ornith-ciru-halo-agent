@@ -124,9 +124,14 @@ __global__ __launch_bounds__(256) void attention(const uint32_t* qp,const __half
     int kh=blockIdx.y,dhalf=tid/128,split=blockIdx.z,folded=wave*16+row16;
     int row=starts[req]+qtile*8+folded/8,h=kh*8+folded%8;
     bool live=qtile*8+folded/8<query_count;float sq=live && dhalf==0?__half2float(qs[h*Q+row]):1.f;
-    int hist=contexts[req]/32;
-    // Retain exact 64-group partitions through64K, cover longer histories in32splits.
-    int span=max(64,(hist+SPLITS-1)/SPLITS), begin=split*span,end=min(begin+span,hist);
+    // Each query chooses its own precision boundary; keep at least32 recent
+    // tokens in BF16 regardless of speculative batch start or accepted depth.
+    int query_pos=contexts[req]+qtile*8+folded/8;
+    int row_hist=max(0,(query_pos-32)/32);
+    int hist=max(0,(contexts[req]+query_count-1-32)/32);
+    // Fixed blocks of64 groups preserve the public partition order through64K.
+    // Further blocks use a fixed2048-group stride, independent of batch maximum.
+    int begin=split*64,end=hist;
     if(begin>=end){
         if(live){
 #pragma unroll
@@ -142,7 +147,7 @@ __global__ __launch_bounds__(256) void attention(const uint32_t* qp,const __half
     }
     float accum[64]={},m=-INFINITY,l=0;
     // All lanes participate in barriers, including the final CTA query tail.
-    for(int block=begin;block<end;++block){
+    for(int block=begin;block<end;block+=((block&63)==63 ? (SPLITS-1)*64+1 : 1)){
         size_t pg=size_t(table[req*cols+block/GROUPS])*GROUPS+block%GROUPS;
         size_t bank=pg*2+kh;
 #pragma unroll
@@ -154,7 +159,7 @@ __global__ __launch_bounds__(256) void attention(const uint32_t* qp,const __half
         __syncthreads();
         uint32_t pp[4]={};float alpha,sp,pdc;
         if(dhalf==0){
-        float p[16];
+        float p[16];float old_m=m,old_l=l;
 #pragma unroll
         for(int tile=0;tile<2;++tile){
             i32x8 dots={};
@@ -201,6 +206,11 @@ __global__ __launch_bounds__(256) void attention(const uint32_t* qp,const __half
                 pp[w]|=(piece?peer:own)<<(8*j);pp[w]|=(piece?own:peer)<<(8*j+4);
             }
         }
+        if(block>=row_hist){
+            alpha=1.f;sp=0.f;pdc=0.f;l=old_l;m=old_m;
+#pragma unroll
+            for(int w=0;w<4;++w)pp[w]=0;
+        }
         if(piece==0){
 #pragma unroll
             for(int w=0;w<4;++w)spp[folded*4+w]=pp[w];
@@ -235,7 +245,7 @@ __global__ __launch_bounds__(256) void attention(const uint32_t* qp,const __half
     if(dhalf!=0)l=snorm[folded];
     if(live){
 #pragma unroll
-        for(int j=0;j<64;++j)out[((size_t(row)*16+h)*PARTS+split)*257+dhalf*128+2*j+piece]=accum[j]/l;
+        for(int j=0;j<64;++j)out[((size_t(row)*16+h)*PARTS+split)*257+dhalf*128+2*j+piece]=l>0.f?accum[j]/l:0.f;
         if(piece==0 && dhalf==0)out[((size_t(row)*16+h)*PARTS+split)*257+256]=m+logf(l);
     }
 }
@@ -248,7 +258,7 @@ __global__ __launch_bounds__(128) void tail(const bf16* q,const bf16* cache,cons
     int qr=row/16,h=row%16,req=owners[qr];
     if(req<0 || seq[req]<threshold)return;
     int context=contexts[req];table+=req*cols;
-    int first=(context/32)*32,last=context+qr-starts[req];
+    int last=context+qr-starts[req],first=max(0,(last-32)/32)*32;
     float query[8],acc[8]={},m=-INFINITY,l=0;
 #pragma unroll
     for(int j=0;j<8;j++)query[j]=float(q[size_t(qr)*q_stride0+h*q_stride1+lane*8+j]);

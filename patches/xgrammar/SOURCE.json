@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/mlc-ai/xgrammar.git",
+  "commit": "557becfb64c503ae9c04344b0047661f43f44320",
+  "version": "0.2.3",
+  "patch_sha256": "2c42719e948809242f230ec534f967eab1babad9be1ba6dda9c59fd706f20d45",
+  "candidate_source_sha256": {
+    "cpp/grammar.cc": "01d1552b37ecaa72da601a3b6d43975a2c3a0de02cdf797e82c243b30eef8c9d",
+    "cpp/grammar_functor.cc": "9410c20b665093b9fb67dc30db148121b819d3aee5ff94eb82558bf79b1f8279"
+  },
+  "owner_qualified_library_sha256": "5ae1d32469bc0022b3dcfcaf5883cb44d8968ecc19937d7d92789a8815874d65",
+  "scope": "Rebuilds must be qualified by loaded-library identity and equivalence; a new build is not promised byte-identical."
+}

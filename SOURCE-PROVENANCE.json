@@ -1,14 +1,13 @@
 {
-  "model": "Ornith1.5 Ciru Halo Agent",
-  "architecture": "gfx1151",
-  "compiler": "AMD clang 23.0.0git / ROCm 10.0.0",
-  "source_mapping": "Recovered from the source directories named in the measured binary debug sections and retained compiler invocations. Sources and measured library SHA256 values are recorded below. Rebuilding on a different host is not a bitwise-reproducibility guarantee.",
+  "release": "Ciru v4",
+  "package_version": "4.0.1",
+  "qualified_build_sha256": "c970d175624455ca30dd3efbc6f52225f6ad32595764232050342a23ced99d94",
   "native": [
     {
       "source": "kernels/dense/dense_g256_consumer.cpp",
       "library": "libornith_dense_g256.so",
-      "source_sha256": "8dd46bf7ffbb5867d60ff3fef7035a04bc0c60dc0552fc9853bee4d5e9c97374",
-      "measured_library_sha256": "855838687084170807c5ba4556e9771f9b1b26f3556f48c0a16dbd8bbee41c9c"
+      "source_sha256": "28fe913a6fd5b3e97ae106563a3fe843cf55ba84413a989a7e414ec3357a8150",
+      "measured_library_sha256": "dc9bbf04f02f951fb444feaea2f612671867aad44929a30fdfadef8e5d5513a9"
     },
     {
       "source": "kernels/routed/routed_direct_consumer.cpp",
@@ -31,43 +30,68 @@
     {
       "source": "kernels/routed_storage/routed_storage_n32_consumer.cpp",
       "library": "libornith_routed_storage_n32.so",
-      "source_sha256": "813c3af74641fc97408c0832f9968d16aa06adf6861e767d622e1deaa7f032cc",
-      "measured_library_sha256": "3ea288cd0e37a4c373038744c3cc4cd4eac09675ac137e953d5ae7a6cd43dd3d"
+      "source_sha256": "171dacf56f553dd586dc0bb559b60108c225e93787044c5ee5118c898a5382ea",
+      "measured_library_sha256": "2002bf6f82a637f5842f7c5f09a09f3b7a0db55edc4b3e35181c8f9a12ffb4b1"
     },
     {
       "source": "kernels/attention/prefill.cpp",
       "library": "libornith_attention_iu4.so",
-      "source_sha256": "2248aad2470253b3cff92bd60cb6c6a71dcbb7fa080de378a26c6b075d2b5dbb",
-      "measured_library_sha256": "2905806824bece62ce9d9140608859df869f3e3d3663c67bf79ad4ea495cd61f"
+      "source_sha256": "7d0a21917fbeff75811d7a7ed9df9438852762c28914eb61ec3b1ba31fc66dae",
+      "measured_library_sha256": "3d29cf3616c69f9fe2b89f8d3564d479dda682fdc06572886e7b60faccc9a53a"
     },
     {
       "source": "kernels/attention/persistent.cpp",
       "library": "libornith_persistent_iu4.so",
-      "source_sha256": "cdd4bb4a1b03f919d2549351b77b59fa86e3f3378912c2a58d776c52a0334526",
-      "measured_library_sha256": "40e5cf35157c3e716de8067f7eef1312a3b9e787dd52a6f2e232ccd2d07fa68c"
+      "source_sha256": "b430bee407b2c00ee7c2e75dcc39b8dab504767219755c24259f42327975b055",
+      "measured_library_sha256": "c70ba14d5aebf67b761ea54cfc9a38f8bbedf74cfca8b19050048acda9c8a06c"
     },
     {
       "source": "kernels/dense_n32/dense_g256_consumer.cpp",
       "library": "libornith_dense_g256_n32.so",
-      "source_sha256": "e29ada049d0fa03cfd9283325c4255c424e25f4778690374d6d184f51d726429",
-      "measured_library_sha256": "24dbf9b1eaff06ff6530e4f37292347bcf073b3c07f7e16ea6ab111711162a40"
+      "source_sha256": "92ff49dc74cdc54a54cbbc2e618ca312f7b17ba502e8c1e83fa2a53570c4567f",
+      "measured_library_sha256": "db3e265fca6daf51fca412579160db7f98d81cd295fffd54a0c7edc3f5fd45da"
     }
   ],
+  "native_source_files": {
+    "kernels/attention/persistent.cpp": "b430bee407b2c00ee7c2e75dcc39b8dab504767219755c24259f42327975b055",
+    "kernels/attention/prefill.cpp": "7d0a21917fbeff75811d7a7ed9df9438852762c28914eb61ec3b1ba31fc66dae",
+    "kernels/dense/dense_g256_api.h": "487320b066d2b033982a02cd8e94b3e2075dbec9f7bdb2f7c53b895a060813a2",
+    "kernels/dense/dense_g256_consumer.cpp": "28fe913a6fd5b3e97ae106563a3fe843cf55ba84413a989a7e414ec3357a8150",
+    "kernels/dense_n32/dense_g256_api.h": "487320b066d2b033982a02cd8e94b3e2075dbec9f7bdb2f7c53b895a060813a2",
+    "kernels/dense_n32/dense_g256_consumer.cpp": "92ff49dc74cdc54a54cbbc2e618ca312f7b17ba502e8c1e83fa2a53570c4567f",
+    "kernels/head/head_i8_tile_api.h": "ad11ace0f655b8a883d8888f07f214cb75ba5ff12471ec50a54bd2601f572463",
+    "kernels/head/head_i8_tile_consumer.cpp": "0c14089990d13b63a61fcaa598de2a27d34cae2624ab3c62dd6095e0cb552296",
+    "kernels/routed/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed/routed_direct_consumer.cpp": "aea3b68893e7e2a8b70ddb1f83a24c444cae6ff8b995ff9794dc545da447a0ff",
+    "kernels/routed/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_n32/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_n32/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_n32/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_n32/routed_n32_consumer.cpp": "f045389d4cb804fe43d34425ce6c02e817a89bd8cbdb453547f20e36f060be52",
+    "kernels/routed_storage/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_storage/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_storage/routed_storage_n32_consumer.cpp": "171dacf56f553dd586dc0bb559b60108c225e93787044c5ee5118c898a5382ea",
+    "kernels/routed_storage/routed_storage_n32_prefill.h": "15e5f92d7c3f06a05010bb997ee07556007122858c04332ceb794a4c3d1a2bf9"
+  },
   "plugin_sha256": {
-    "plugin-site/ornith_g256/__init__.py": "b6a8416ea8ec200ec906e248352be02e9aaa35dbe26a848f786fa320d747a8f3",
+    "plugin-site/ornith_g256/__init__.py": "60abbb51a475487e3abcb9e5b34d8836b4d4b36e0bced062d2382dc7b1076cf6",
     "plugin-site/ornith_g256/_vllm_correctness/__init__.py": "963097106407a87b62b275041516144de15713dee65108accc29e27036ffc059",
     "plugin-site/ornith_g256/_vllm_correctness/causal_conv1d.py": "230f3e554f5f1d609a37022578c84e42d5c71d46e684101278a7e21af4f7d418",
+    "plugin-site/ornith_g256/_vllm_correctness/chat_completion_serving_r03.py": "5720371f5bcb351e340a3e8d9a0235ec01ff27ed93e4f35542e31b83a055ef45",
     "plugin-site/ornith_g256/_vllm_correctness/gdn_attn.py": "a3c361d502e8bca2aa46a0baed5ec753a3c62e3d027a298e3ed4692794f9f6ec",
     "plugin-site/ornith_g256/_vllm_correctness/gpu_model_runner.py": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf",
-    "plugin-site/ornith_g256/_vllm_correctness/manifest.json": "0ddfa489f4f9ead135006e29aa675e7522afa5cee10596c2115e07f13186478c",
+    "plugin-site/ornith_g256/_vllm_correctness/manifest.json": "bdef4ca7151a7a5e0410dd3e8bcd2e8a85f125938ec104451cb8777267c3c4d9",
     "plugin-site/ornith_g256/_vllm_correctness/qwen_gdn_linear_attn.py": "3e58fdddc7a0b42ae3d9b5eabb375a993a4110bad499c37846bde466901dbeb3",
+    "plugin-site/ornith_g256/_xgrammar_native/build-receipt.json": "3bdf77657e5157c35938b66dfb46266608ade3b599a62ce74abb3f807d579e84",
+    "plugin-site/ornith_g256/_xgrammar_native/selection.json": "7cb93b3fe902de6d604bf96f79fdc3efbd8d612e494da838f6a8f0d731eb89ae",
     "plugin-site/ornith_g256/adaptive_c1.py": "8e48fd874fbdf65183c20bcc7c748d2562dbcafa97e004f18a2818b98980a809",
     "plugin-site/ornith_g256/attention.py": "2fdd3c0ed84dcb052a9e8f9df4068ddf80a969931bea0a295e022d36b753cda1",
-    "plugin-site/ornith_g256/attention_compact.py": "66bac64820a0b54756d9a9902d5f8066675aa2b0b3eb0ec73ff1b43b43407963",
+    "plugin-site/ornith_g256/attention_compact.py": "50df61a02a3890a2825b205ed18c7d18a2b002333d382c572440b58ca9b2b9fe",
     "plugin-site/ornith_g256/attention_fast.py": "27b1a133cadb87ff3a63c027049e1da81e4112fd5d5260a4440fde85491f838a",
     "plugin-site/ornith_g256/attention_folded.py": "73dac8203032bce6ceedf213d7eefe5987c921768ae237129e232fefd8d9bba3",
-    "plugin-site/ornith_g256/attention_iu4.py": "34235b1104eae96c55986b35985be298aec5ec66c4fa814240945ec03edac7f5",
-    "plugin-site/ornith_g256/attention_iu4_persistent.py": "ca2be4ad4631ea27b62fcf075e783bdf6c28292f590f49ee8748e99309a6cd0e",
+    "plugin-site/ornith_g256/attention_iu4.py": "15c5341fc848c43ac956546e563cf8ab7f7649f05a674fb0153b0e2d76438cae",
+    "plugin-site/ornith_g256/attention_iu4_persistent.py": "cef74ae423974063212637a49cd64a5a10b9077f3a5e2287746722749a1e6297",
     "plugin-site/ornith_g256/attention_mixed.py": "cbb530697f2555be6532b7d4d3401f3a33c4c58982659e88892720d21691110a",
     "plugin-site/ornith_g256/attention_partition.py": "41bfb44dd0d0c46a2c0a725983155018e051cd89edb8527f1195a092bef7ffdd",
     "plugin-site/ornith_g256/attention_storage.py": "3ab813e221835370bdb503b2ab7d48f46294441b1dd9c652c5dc976438bdb6e2",
@@ -87,7 +111,7 @@
     "plugin-site/ornith_g256/gdn_compact_kernel.py": "0eaf34a2eccef2dabbc9e4f017e6ce84317a28efdcbabecf92b3b4c4c9429a55",
     "plugin-site/ornith_g256/gdn_spec.py": "0931b1b3601d935bb6acdfcb65d307dae4105645cd387bd9b256dd7a525376a3",
     "plugin-site/ornith_g256/graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
-    "plugin-site/ornith_g256/launch.py": "c2854b86e2f97dd2ea0356b4b333922f62b9b3d1b3e71f7993d803c6d0957479",
+    "plugin-site/ornith_g256/launch.py": "70779de3f769b11798cddb78e04d3283a16d55434ee35b5eba187535d6149c57",
     "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
     "plugin-site/ornith_g256/loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
     "plugin-site/ornith_g256/method.py": "fc301af72efd234430dbfb839d56e74328457b5b83e14a044aeb9554d8acc707",
@@ -95,6 +119,28 @@
     "plugin-site/ornith_g256/native.py": "49cce0d67987b9659feb556aafb247423490c2153b7d77b750f055a4fdcda331",
     "plugin-site/ornith_g256/native_tool_schema.py": "910060689d72b47ad4a7bb1e51ef301e41ff0be1beb9cc6b3df01c423d2edef5",
     "plugin-site/ornith_g256/no_spec.py": "561106b75328fe0e161fa1243aca4cf50c5049d8e785d22c90aacb3e1e1a0104",
+    "plugin-site/ornith_g256/optimized/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+    "plugin-site/ornith_g256/optimized/compile_scope.py": "18971a73b3a5ad80e6212de7f7e419a1dd00eb7380a5e6c8559f5ac6f5ec8d4d",
+    "plugin-site/ornith_g256/optimized/draft.py": "e801301cf03d69998758d35fb5463754ccc30a18e030ed2b988b26cef43f429c",
+    "plugin-site/ornith_g256/optimized/draft_kernel.py": "3d6da6ef0c144505f888cbd35ba50b6b95ad8e48c376ab73297746bff228919e",
+    "plugin-site/ornith_g256/optimized/grammar_parallel.py": "e9c3608438712521980d7fcd60f58862d0b0a2876620183f304c64a03817edea",
+    "plugin-site/ornith_g256/optimized/greedy.py": "386443ad8729f8fe21ec5fef84ead3acfbd4d6c5dd3b4c1e50a7995ed1d1761f",
+    "plugin-site/ornith_g256/optimized/greedy_kernel.py": "2ebe2a25d1011a45eea7eda3c0964ca1eb2638df7d60f54db02c91435550dc42",
+    "plugin-site/ornith_g256/optimized/launch.py": "c1d42602154674916a94b9907b7746fac3ea48cc505fa69babf116f0f127e03d",
+    "plugin-site/ornith_g256/optimized/mixed_qk_sum.py": "17b18769ae84c2e9707a0257181e5c314e9774fc3b4796f8e6787a8302cb5e1f",
+    "plugin-site/ornith_g256/optimized/pipeline/SOURCE-PROOF.json": "5939bc8a53a831715d05d0fa0290beaa0cb00eda1597fe3bf1f1cfc53699fd0d",
+    "plugin-site/ornith_g256/optimized/pipeline/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+    "plugin-site/ornith_g256/optimized/pipeline/adapter.py": "6af97a8d5e0d79b7dfc32f2f0fe5f5c53b5c1c50d03542ff99c64cae7f3909e1",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/causal_conv1d.py": "254c540f77b01694696a1ab535abd0e5a23d54e7211e202cf9beead04face16b",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/chunk_o.py": "a93f951048958265b4d1c3f9e67341329196e7a57525433934215fde4b16e61b",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/chunk_scaled_dot_kkt.py": "71735d2b1c4a19eecbb6058708481817bb610426c48f96a5f646784afcf0c65c",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/solve_tril.py": "bdd04b69c0f91562048d25834bd53d298dc1f1bd068b9494af88776b2bf4b1d1",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/wy_fast.py": "4cc0be519bfcf3812d810a4bebb3dd45fb9b13a8d0ab62d0ad463a1a2e36f61f",
+    "plugin-site/ornith_g256/optimized/postconv.py": "c58ee5d2b8418fbf69eda5d9ee4f342b11cc012ab77ae25b6ce2b2aea51aa50f",
+    "plugin-site/ornith_g256/optimized/prefix.py": "c695a899ab12b58c3b89b6ecc276e82efa3f0833a319911a8528cc4e237710cd",
+    "plugin-site/ornith_g256/optimized/qk.py": "d86f1a94086668ac6402eaec7a19c0ad8e55dc8e6377f8d4a9eeab6aa96f9664",
+    "plugin-site/ornith_g256/optimized/qk_schedule.py": "66038781f0667486fba458ef3118ca89ad9640dc2c2bd05cf8576440f0f178a2",
+    "plugin-site/ornith_g256/optimized/worker.py": "38579b767235e7fcac3f2e6b0507438f155c134e1e85f3d1c205a43bece95512",
     "plugin-site/ornith_g256/parser_contract.py": "2cebab403dc882569f3ce67d12798df14cebd5c162c72f82becd37bcdd7e2a28",
     "plugin-site/ornith_g256/phase_dispatch.py": "1a4ebdf2af709e6ca519e0a08f6a537602df178ca575332045617631640f8137",
     "plugin-site/ornith_g256/prefill_draft.py": "d79bb29a124639543a64e198908e2eaef4cbcf492f2e5e14debcfc9c867816f5",
@@ -104,46 +150,10 @@
     "plugin-site/ornith_g256/strict_qwen/__init__.py": "ee8a5055249f1413fc22f46421ab77b5485aa39b199c68eb5b56c75dcc40922d",
     "plugin-site/ornith_g256/strict_qwen/qwen3.py": "33c653447a144b72257e508ccd92610db6d30578e28f98c69c99281773dead1c",
     "plugin-site/ornith_g256/strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
-    "plugin-site/ornith_g256/worker.py": "127d955dc564e76d0e347603fda42649a8acbd72477c831f83967983efa7eb7a",
-    "plugin-site/ornith_g256/worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868"
+    "plugin-site/ornith_g256/worker.py": "acc27240c21f3478ca452ddf04244df4ee770efaac38192ef64d328ef22701d5",
+    "plugin-site/ornith_g256/worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868",
+    "plugin-site/ornith_g256/xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
   },
-  "headers_sha256": {
-    "kernels/dense/dense_g256_api.h": "82e30e3afc1c6cde95bd030f5974317b11c9025deabcbd82af63a0eddee3657d",
-    "kernels/dense_n32/dense_g256_api.h": "82e30e3afc1c6cde95bd030f5974317b11c9025deabcbd82af63a0eddee3657d",
-    "kernels/head/head_i8_tile_api.h": "ad11ace0f655b8a883d8888f07f214cb75ba5ff12471ec50a54bd2601f572463",
-    "kernels/routed/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
-    "kernels/routed/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
-    "kernels/routed/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
-    "kernels/routed_n32/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
-    "kernels/routed_n32/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
-    "kernels/routed_n32/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
-    "kernels/routed_storage/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
-    "kernels/routed_storage/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
-    "kernels/routed_storage/routed_storage_n32_prefill.h": "ac458a3888ffd0a88a2d9d3721022da601e5c3db893ef8d17092055261eaac64"
-  },
-  "runtime_fixes": {
-    "date": "2026-09-13",
-    "notes": "RUNTIME-FIXES.md",
-    "weights_changed": false,
-    "native_libraries_changed": false,
-    "runtime_wheels_changed": false
-  },
-  "runtime_version": "1.0.2",
-  "tool_schema_patch": {
-    "version": "1.0.2",
-    "date": "2026-09-15",
-    "notes": "RUNTIME-FIXES.md",
-    "cpu_checks": {
-      "ornith": 26,
-      "apodex": 26
-    },
-    "live_checks": {
-      "ornith": 4,
-      "apodex": 4
-    },
-    "live_scope": "Plain text, multi-kilobyte tool payload, image OCR/shapes, image-to-tool; normal C8/262144 context with native speculation.",
-    "weights_changed": false,
-    "native_libraries_changed": false,
-    "runtime_wheels_changed": false
-  }
+  "runtime_native_grammar": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
+  "note": "Same measured model libraries and plugin code; R04 source pinned by patches/xgrammar/SOURCE.json. Portable recipe includes output32 compile definition. Rebuilding with another toolchain need not produce identical binaries."
 }

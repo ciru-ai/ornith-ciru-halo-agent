@@ -1,0 +1,80 @@
+diff --git i/cpp/grammar.cc w/cpp/grammar.cc
+index 0eb69c3..23ceed8 100644
+--- i/cpp/grammar.cc
++++ w/cpp/grammar.cc
+@@ -6,6 +6,7 @@
+ #include <xgrammar/grammar.h>
+ 
+ #include <string>
++#include <unordered_set>
+ 
+ #include "grammar_functor.h"
+ #include "grammar_parser.h"
+@@ -25,9 +26,30 @@ std::size_t MemorySize(const Grammar::Impl& impl) {
+   /// TODO: Now, we evaluatve memory size of rule strings as sizeof(std::string),
+   /// with an assumption that the string is small.
+   /// This should be improved in the future.
+-  return impl.rules_.size() * sizeof(std::string) + MemorySize(impl.grammar_expr_data_) +
+-         MemorySize(impl.grammar_expr_indptr_) + MemorySize(impl.complete_fsm) +
+-         MemorySize(impl.per_rule_fsms) + MemorySize(impl.allow_empty_rule_ids);
++  std::size_t size = impl.rules_.size() * sizeof(std::string) +
++                     MemorySize(impl.grammar_expr_data_) +
++                     MemorySize(impl.grammar_expr_indptr_) +
++                     impl.per_rule_fsms.size() * sizeof(impl.per_rule_fsms[0]) +
++                     MemorySize(impl.allow_empty_rule_ids);
++  // The per-rule views normally share complete_fsm. Count its allocation once;
++  // deserialized grammars may instead contain distinct FSM allocations.
++  std::unordered_set<const void*> seen_fsms;
++  auto count_fsm = [&](const CompactFSM& fsm) {
++    if (fsm.ImplPtr() != nullptr && seen_fsms.insert(fsm.ImplPtr()).second) {
++      size += MemorySize(fsm);
++    }
++  };
++  count_fsm(impl.complete_fsm);
++  for (const auto& rule_fsm : impl.per_rule_fsms) {
++    if (!rule_fsm.has_value()) {
++      continue;
++    }
++    const auto& view = rule_fsm->GetFsm();
++    count_fsm(view.GetFsm());
++    // vector<bool> stores packed bits, not one byte per logical bool.
++    size += (view.GetEnds().capacity() + 7) / 8;
++  }
++  return size;
+ }
+ 
+ /******************* Grammar *******************/
+diff --git i/cpp/grammar_functor.cc w/cpp/grammar_functor.cc
+index 4424aca..a4abf11 100644
+--- i/cpp/grammar_functor.cc
++++ w/cpp/grammar_functor.cc
+@@ -1667,6 +1667,10 @@ class RepetitionRangeExpanderImpl : public GrammarMutator {
+   using GrammarMutator::GrammarMutator;
+ 
+  private:
++  // Bound the additional finite-state expansion across one complete grammar.
++  // Large/complex repetitions retain the counted representation below.
++  int64_t finite_character_budget_ = 8192;
++
+   int32_t VisitRepeat(const GrammarExpr& grammar_expr) final {
+     int32_t ref_rule_id = grammar_expr[0];
+     int64_t lower = grammar_expr[1];
+@@ -1794,6 +1798,18 @@ int32_t RepetitionRangeExpanderImpl::HandleRepetitionRange(
+     return LegacyHandleRepetitionRange(cur_rule_name, grammar_expr_id, lower, upper);
+   }
+ 
++  // A bounded character string can use a deterministic chain of remaining
++  // lengths. Counted repetition followed by an overlapping 128-character tail
++  // otherwise makes ordinary tokens uncertain and reparses them at every mask.
++  // Preserve both bounds exactly, and cap expansion rather than changing the
++  // accepted language when the grammar exceeds the compilation budget.
++  if (upper > kUnzipThreshold && upper <= 4096 && upper <= finite_character_budget_ &&
++      builder_->GetGrammarExpr(grammar_expr_id).type ==
++          GrammarBuilder::GrammarExprType::kCharacterClass) {
++    finite_character_budget_ -= upper;
++    return LegacyHandleRepetitionRange(cur_rule_name, grammar_expr_id, lower, upper);
++  }
++
+   // Case 2. upper is unbounded, and lower is large (>threshold).
+   // Or upper is bounded, but upper > threshold.
+ 

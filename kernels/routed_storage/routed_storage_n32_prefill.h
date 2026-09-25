@@ -1,6 +1,9 @@
 // Copyright (c) Ciru. Grouped G256 prefill with N32 packed banks.
 // Routing and WMMA lane ownership adapted from grouped_tilebank_n16_consumer.
 #pragma once
+#ifndef ORNITH_PREFILL_OUTPUT32
+#define ORNITH_PREFILL_OUTPUT32 0
+#endif
 namespace routed_direct {
 using i32x2=int32_t __attribute__((ext_vector_type(2)));
 using i32x8=int32_t __attribute__((ext_vector_type(8)));
@@ -88,15 +91,75 @@ template<int N,int K,bool Gate,bool A8> __device__ __forceinline__ void wmma_job
         }
     }
 }
+// A4 only: share activation loads across adjacent N16 output tiles.
+template<int N,int K,bool Gate> __device__ __forceinline__ void wmma_output32_job(
+        const uint32_t* codes,const Meta* metadata,const uint32_t* low,
+        const __half* scales,const int32_t* sums,float* output,uint32_t* sticky,
+        const Descriptor& desc,const int32_t* routes,int tile){
+    constexpr int Groups=K/G;
+    int lane=threadIdx.x,lane16=lane&15,piece=lane>>4;
+    bool live=lane16<desc.rows;
+    int route=live?routes[desc.first+lane16]:0,row=Gate?route/Top:route;
+    size_t bankbase=(size_t(desc.expert)*(N/32)+tile)*Groups;
+    float values[2][8]={};
+    for(int group=0;group<Groups;++group){
+        i32x8 acc[2]={};
+#pragma unroll
+        for(int step=0;step<Words/2;++step){
+            int word=group*Words+2*step;
+            i32x2 lo={live?int32_t(low[size_t(row)*(K/8)+word]):0,live?int32_t(low[size_t(row)*(K/8)+word+1]):0};
+#pragma unroll
+            for(int half=0;half<2;++half){
+                int laneN=half*16+lane16;
+                size_t wi=((bankbase+group)*Words+2*step)*32+laneN;
+                i32x2 w={int32_t(codes[wi]),int32_t(codes[wi+32])};
+                acc[half]=__builtin_amdgcn_wmma_i32_16x16x16_iu4_w32(false,w,true,lo,acc[half],false);
+            }
+        }
+        float sa=0.f,scaled_sum=0.f;
+        if(live){sa=__half2float(scales[size_t(row)*Groups+group]);scaled_sum=sa*float(sums[size_t(row)*Groups+group]);}
+#pragma unroll
+        for(int half=0;half<2;++half){
+            uint32_t own_meta=0;
+            if(piece==0)own_meta=reinterpret_cast<const uint32_t*>(metadata)[(bankbase+group)*32+half*16+lane16];
+            uint32_t wm_words[8];
+#pragma unroll
+            for(int v=0;v<8;++v)wm_words[v]=__shfl(own_meta,2*v+piece,32);
+            if(live){
+#pragma unroll
+                for(int v=0;v<8;++v){
+                    Meta wm={__ushort_as_half(uint16_t(wm_words[v])),__ushort_as_half(uint16_t(wm_words[v]>>16))};
+                    float scaled_dot=sa*float(acc[half][v]),product=__half2float(wm.scale)*scaled_dot;
+                    float correction=__half2float(wm.offset)*scaled_sum;
+                    values[half][v]=values[half][v]+(product+correction);
+                }
+            }
+        }
+    }
+    if(live){
+#pragma unroll
+        for(int half=0;half<2;++half){
+#pragma unroll
+            for(int v=0;v<8;++v){
+                float value=values[half][v];output[size_t(route)*N+tile*32+half*16+2*v+piece]=value;
+                if(!isfinite(value))atomicOr(sticky,8u);
+            }
+        }
+    }
+}
 template<int N,int K,bool Gate,bool A8> __global__ __launch_bounds__(32) void grouped_projection(
         const int32_t* ids,const uint32_t* codes,const Meta* metadata,
         const uint32_t* low,const uint32_t* high,const __half* scales,const int32_t* sums,
         float* output,uint32_t* sticky,const Descriptor* descriptors,const int32_t* routes,
         const int32_t* compact,const uint32_t* queue){
-    constexpr int Tiles=N/16,SparseTiles=N/32;
+    constexpr bool PairOutput=ORNITH_PREFILL_OUTPUT32 && !A8;
+    constexpr int Tiles=PairOutput?N/32:N/16,SparseTiles=N/32;
     uint32_t nw=queue[0],nc=queue[1],wjobs=nw*Tiles,jobs=wjobs+nc*SparseTiles;
     for(uint32_t job=blockIdx.x;job<jobs;job+=gridDim.x){
-        if(job<wjobs)wmma_job<N,K,Gate,A8>(codes,metadata,low,high,scales,sums,output,sticky,descriptors[job/Tiles],routes,job%Tiles);
+        if(job<wjobs){
+            if constexpr(PairOutput)wmma_output32_job<N,K,Gate>(codes,metadata,low,scales,sums,output,sticky,descriptors[job/Tiles],routes,job%Tiles);
+            else wmma_job<N,K,Gate,A8>(codes,metadata,low,high,scales,sums,output,sticky,descriptors[job/Tiles],routes,job%Tiles);
+        }
         else{uint32_t local=job-wjobs;projection_n32_job<N,K,Gate,A8>(ids,codes,metadata,low,high,scales,sums,output,sticky,compact[local/SparseTiles],local%SparseTiles);}
     }
 }

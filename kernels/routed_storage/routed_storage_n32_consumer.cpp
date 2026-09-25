@@ -185,7 +185,7 @@ __global__ void reduce_slots(const float* routes,const float* weights,const int3
 }
 #include "routed_storage_n32_prefill.h"
 extern "C" hipError_t ornith_routed_direct_get_layout(int Tcap,OrnithRoutedDirectLayout* out){
-    using namespace routed_direct;if(!out||Tcap<0||Tcap>2048)return hipErrorInvalidValue;
+    using namespace routed_direct;if(!out||Tcap<0||Tcap>8192)return hipErrorInvalidValue;
     OrnithRoutedDirectLayout l{};size_t cursor=0,t=Tcap,r=t*Top;
     auto add=[&](size_t& field,size_t bytes){field=cursor;cursor=align256(cursor+bytes);};
     add(l.gate_x,t*H*4);add(l.gate_low,t*H/2);add(l.gate_high,t*H/2);
@@ -248,3 +248,4 @@ extern "C" hipError_t ornith_routed_direct_launch_a4_prefill(
 }
 
 extern "C" ORNITH_ROUTED_DIRECT_EXPORT int ornith_routed_storage_n32(){return 32;}
+extern "C" ORNITH_ROUTED_DIRECT_EXPORT int ornith_routed_prefill_output_tile(){return ORNITH_PREFILL_OUTPUT32?32:16;}

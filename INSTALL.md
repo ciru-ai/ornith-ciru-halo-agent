@@ -1,5 +1,22 @@
 # Install and run Ornith1.5 Ciru Halo Agent
 
+## Updating from 4.0.0 to 4.0.1
+
+The published package needs only the updated launcher and 4.0.1 metadata;
+weights, native libraries and pinned runtime wheels are unchanged. Stop the
+server, follow the [Hub update command](https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/blob/main/INSTALL.md), remove the old
+`ciru_ornith_g256-4.0.0.dist-info/` directory after the new one arrives, then
+restart. Pass `--max-images-per-prompt 4` to `bundle/serve.sh` if your agent
+sends multiple images in one complete request. The default remains one.
+
+## Historical unified 1.0.3 integration record
+
+Use the complete promoted parent plus the isolated native-tool composition in
+[TOOL-RUNTIME.md](TOOL-RUNTIME.md). The resulting bundle includes all retained
+model/kernel improvements and R01/R03/R04. Keep its BUILD identity with its
+qualification evidence. The public 4.0.1 update instructions above supersede
+the older download procedure below.
+
 ## Updating to Ciru runtime 1.0.2
 
 Download the current `bundle/plugin-site/`, `bundle/serve.sh` and
@@ -74,7 +91,7 @@ curl http://127.0.0.1:8000/v1/chat/completions \
   -d '{"model":"ciru-halo-agent","messages":[{"role":"user","content":"Write a Python function that merges overlapping intervals."}],"temperature":0.6,"top_p":0.95,"max_tokens":4096,"chat_template_kwargs":{"enable_thinking":false}}'
 ```
 
-The default profile supplies **262,144 tokens of per-request context capacity**, **eight active sequences**, **44 GiB shared KV/state pool**, prefix caching and adaptive speculation. Input and output share the context window; your agent client must reserve output space and compact history before filling it. Eight independent, fully populated 256K histories are not promised. The default server profile is text-only. For optional image input, run `bash bundle/serve-vision.sh --host 127.0.0.1 --port 8000` after installation. The matching native BF16 vision encoder and projector are already included in `bundle/models/target/protected-00.safetensors`; no separate GGUF mmproj is required. This enables one image per request at a 1,048,576-pixel budget with up to eight active requests. See [the model card](README.md#optional-vision--image-input) and [vision validation limits](VISION.md).
+The default profile supplies **262,144 tokens of per-request context capacity**, **eight active sequences**, **44 GiB shared KV/state pool**, prefix caching and adaptive speculation. Input and output share the context window; your agent client must reserve output space and compact history before filling it. Eight independent, fully populated 256K histories are not promised. The v4 server profile enables image input; `--text-only` disables it. The matching native BF16 vision encoder and projector are already included in `bundle/models/target/protected-00.safetensors`; no separate GGUF mmproj is required. The default permits one image across the **entire API request**, including images retained in chat history, at a 1,048,576-pixel budget per image. To accept more, start the server with `bash bundle/serve.sh --max-images-per-prompt 4`; choose the number for your client and available memory. The limit does not change the eight-active-request setting. See [the model card](README.md#optional-vision--image-input) and [vision validation limits](VISION.md).
 
 First startup compiles/loads GPU kernels and creates caches. Wait for `/health` before sending work. Keep `bundle/cache` writable. Change runtime/model locations with `ORNITH_RUNTIME_ROOT`, `ORNITH_MODEL`, and `ORNITH_DRAFT`. Ordinary users do not need to change quantization or draft-policy settings.
 

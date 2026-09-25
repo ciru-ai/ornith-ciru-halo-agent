@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": false,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": false,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": false,
+      "hidden": true,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": false,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": false,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": false,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": false,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": true,
+      "token_ids": false,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": true,
+      "token_ids": false,
+      "n": 2,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": true,
+      "token_ids": true,
+      "n": 1,
+      "passed": true
+    },
+    {
+      "usage": true,
+      "continuous": true,
+      "hidden": true,
+      "token_ids": true,
+      "n": 2,
+      "passed": true
+    }
+  ],
+  "invalid_frame_still_errors": true,
+  "note": "Full original async serving method with deterministic model/parser/serialization collaborators; real native API confirmation remains required."
+}
