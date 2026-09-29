@@ -1,5 +1,19 @@
 # Ornith1.5 Ciru Halo Agent
 
+## Ciru v4.1.0 — September 29, 2026
+
+Community decode optimizations from [dzannotti's PR #2](https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2)
+reduce launch and projection overhead. Rebuild the three changed native libraries
+or update the Hugging Face bundle. The pinned runtime, weights and 256K/eight-slot
+profile are retained. Apodex receives the bit-exact native kernel subset while
+retaining its released state copy, target arithmetic and native MTP4.
+
+The approximate target-head shortlist is experimental and disabled by default:
+INT4 ranking cannot guarantee recovery of omitted target tokens. The full target
+head is used in the qualified default. Auto mode retains the released initial
+DF15 depth; `ORNITH_C1_START_DEPTH=3` opts into the experimental block-4 start.
+See [update notes](RUNTIME-FIXES.md).
+
 ## Ciru v4.0.1 — September 25, 2026
 
 This launcher patch supplies `ORNITH_OPTIMIZED_CACHE` and adds

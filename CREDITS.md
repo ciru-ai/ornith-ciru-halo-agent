@@ -46,3 +46,7 @@ The final ROCmFP4 comparisons use Julian’s recommended engine. They should not
 Credit to **[EvalScope](https://github.com/modelscope/evalscope)** and the creators of **HumanEval, EvalPlus, GSM8K, IFEval**, and the **Hermes agent ecosystem**. Ciru used full public suites and native agent/tool scenarios alongside a small difficult subset and fixed BF16-prefix probes. Native benchmark licenses and attribution remain applicable to any redistributed fixtures.
 
 The public **[benchmark report](https://llm.ciru.ai/research/ornith-strix/)** records the model-specific scores, timing definitions, source runs, runner builds, serving settings, and limitations. No endorsement by any upstream project or comparison author is implied.
+
+## Community decode optimization
+
+[dzannotti](https://github.com/dzannotti) contributed the decode kernel, projection, routing and adaptive drafting improvements in [PR #2](https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2). Ciru integrated and qualified the update for Ornith and Apodex with the pinned release runtime.

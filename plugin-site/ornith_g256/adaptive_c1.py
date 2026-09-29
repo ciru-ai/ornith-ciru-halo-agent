@@ -20,9 +20,12 @@ class RequestCost:
 
     def __init__(self):
         self.mode = os.environ.get('ORNITH_C1_POLICY') or CONTROL.read_text().strip()
-        if self.mode not in ('k0', 'k7', 'k15', 'auto'):
+        if self.mode not in ('k0', 'k1', 'k3', 'k7', 'k15', 'auto'):
             raise ValueError(f'Unknown C1 mode {self.mode!r}')
-        self.depth = 15 if self.mode == 'auto' else int(self.mode[1:])
+        start_depth = int(os.environ.get('ORNITH_C1_START_DEPTH', '15'))
+        if start_depth not in (3, 15):
+            raise ValueError('ORNITH_C1_START_DEPTH must be 3 or 15')
+        self.depth = start_depth if self.mode == 'auto' else int(self.mode[1:])
         self.cycles = 0
         self.samples = deque(maxlen=self.WINDOW)
         self.floor_ms = self.INITIAL_FLOOR_MS
@@ -32,12 +35,14 @@ class RequestCost:
         self.warm = 2
         self.bad_windows = 0
         self.probe = None
-        self.retry_after = {0: 0, 7: 0, 15: 0}
+        self.retry_after = {0: 0, 1: 0, 3: 0, 7: 0, 15: 0}
         self.last_15_probe = 0
         self.last_7_probe = 0
         self.paused = False
         self.long_context = False
         self.rid = None
+        self.floor_interval = 63
+        self.df15_backoff = 64
 
     def event(self, kind, **values):
         print('ORNITH_C1_' + kind + ' ' + json.dumps(dict(
@@ -94,6 +99,14 @@ class RequestCost:
         self.floor_tokens = 0
         if not accept:
             self.retry_after[candidate] = self.tokens + 64
+        if incumbent == 3 and candidate == 15:
+            if accept:
+                self.df15_backoff = 64
+            else:
+                self.retry_after[15] = self.tokens + self.df15_backoff
+                self.df15_backoff = min(self.df15_backoff * 2, 1024)
+        if incumbent == 0 and candidate in (3, 7):
+            self.floor_interval = 63 if accept else min(self.floor_interval * 2, 504)
         if accept and incumbent == 15:
             self.last_15_probe = self.tokens
             self.retry_after[15] = self.tokens + 32
@@ -167,15 +180,33 @@ class RequestCost:
                 self.cycle_ms[actual] = ms/n
                 if actual == 0:
                     self.floor_ms = cost
-                self.finish_probe(cost <= self.GAIN*probe['baseline_ms'], cost, 'four_steady_cycles')
+                self.finish_probe(cost <= (.97 if (probe['incumbent'], probe['candidate']) == (3, 0) else self.GAIN)*probe['baseline_ms'], cost, 'four_steady_cycles')
             return
         # Bound recovery latency by output progress, including warm K0 work.
-        if actual == 0 and self.floor_tokens >= 63:
+        if actual == 0 and self.floor_tokens >= self.floor_interval:
             ms = sum(x[0] for x in self.samples)
             progress = sum(x[1] for x in self.samples)
             self.floor_ms = ms/progress
             self.floor_tokens = 0
-            self.start_probe(7, self.floor_ms, 'floor_recovery_after_63_tokens')
+            self.start_probe(3, self.floor_ms, 'floor_recovery')
+            return
+        if actual == 15 and len(self.samples) == 3 and self.tokens < 64 and self.tokens >= self.retry_after[0]:
+            ms = sum(x[0] for x in self.samples)
+            progress = sum(x[1] for x in self.samples)
+            if progress < 6:
+                self.samples.clear()
+                self.start_probe(0, ms/progress, 'early_low_df15_progress_try_floor')
+                return
+        if actual == 3:
+            recent = list(self.samples)[-2:]
+            if len(recent) == 2 and all(p == 4 for _, p in recent) and self.tokens >= self.retry_after[15]:
+                self.start_probe(15, sum(x[0] for x in recent)/8, 'df3_full_blocks')
+                return
+            if len(self.samples) >= self.WINDOW and self.tokens >= self.retry_after[0]:
+                ms = sum(x[0] for x in self.samples)
+                progress = sum(x[1] for x in self.samples)
+                if progress < 2.2*len(self.samples):
+                    self.start_probe(0, ms/progress, 'df3_low_progress_try_floor')
             return
         if len(self.samples) < self.WINDOW:
             return
@@ -192,6 +223,9 @@ class RequestCost:
             self.floor_ms = cost
             return
         if actual == 15:
+            if progress < 2.0*len(samples) and self.tokens >= self.retry_after[0]:
+                self.start_probe(0, cost, 'low_df15_progress_try_floor')
+                return
             # Prefix truncation predicts opportunity only, never a measured
             # speed claim: Q8 and Q16 noncausal proposals need not be identical.
             cycle7 = self.cycle_ms.get(7, self.cycle_ms[15]*.76)
@@ -282,7 +316,7 @@ def install():
         depth = len(scheduler_output.scheduled_spec_decode_tokens.get(rid, ()))
         eligible = (rid is not None and not scheduler_output.scheduled_new_reqs
                     and rid in cached.req_ids and not cached.is_context_phase(rid)
-                    and depth in (0, 7, 15)
+                    and depth in (0, 1, 3, 7, 15)
                     and scheduler_output.num_scheduled_tokens[rid] == depth + 1)
         policy.observing = dict(rid=rid, accepted=0 if depth == 0 else None) if eligible else None
         try:

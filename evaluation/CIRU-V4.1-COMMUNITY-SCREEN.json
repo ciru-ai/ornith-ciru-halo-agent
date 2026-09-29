@@ -1,0 +1,455 @@
+{
+  "status": "PASS_BOUNDED",
+  "positions": 4,
+  "quality_positions": 2,
+  "reasoning_budget": "full remaining context; no completion cap; native reasoning",
+  "auto_initial_depth": 15,
+  "short_start_depth_3": "experimental opt-in; default retained at 15 after short-code latency regression",
+  "performance_rows": [
+    {
+      "position": "A1",
+      "label": "prose",
+      "elapsed_s": 60.89863479370251,
+      "first_token_s": 0.09638306591659784,
+      "decode_tps": 73.91188711834259,
+      "usage": {
+        "prompt_tokens": 42,
+        "total_tokens": 4537,
+        "completion_tokens": 4495,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 3932
+        }
+      }
+    },
+    {
+      "position": "A1",
+      "label": "code",
+      "elapsed_s": 16.644350160844624,
+      "first_token_s": 0.13108240719884634,
+      "decode_tps": 106.75576243055157,
+      "usage": {
+        "prompt_tokens": 54,
+        "total_tokens": 1811,
+        "completion_tokens": 1757,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 998
+        }
+      }
+    },
+    {
+      "position": "A1",
+      "label": "json",
+      "elapsed_s": 11.698129566852003,
+      "first_token_s": 0.09924385510385036,
+      "decode_tps": 187.17491023989444,
+      "usage": {
+        "prompt_tokens": 46,
+        "total_tokens": 2218,
+        "completion_tokens": 2172,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 824
+        }
+      }
+    },
+    {
+      "position": "C1",
+      "label": "prose",
+      "elapsed_s": 52.50015941867605,
+      "first_token_s": 0.09231666987761855,
+      "decode_tps": 117.95969227632109,
+      "usage": {
+        "prompt_tokens": 42,
+        "total_tokens": 6225,
+        "completion_tokens": 6183,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 5661
+        }
+      }
+    },
+    {
+      "position": "C1",
+      "label": "code",
+      "elapsed_s": 21.325698345899582,
+      "first_token_s": 0.1208570240996778,
+      "decode_tps": 124.63512168643346,
+      "usage": {
+        "prompt_tokens": 54,
+        "total_tokens": 2691,
+        "completion_tokens": 2637,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1738
+        }
+      }
+    },
+    {
+      "position": "C1",
+      "label": "json",
+      "elapsed_s": 10.271149910986423,
+      "first_token_s": 0.0950418240390718,
+      "decode_tps": 213.96188722146996,
+      "usage": {
+        "prompt_tokens": 46,
+        "total_tokens": 2213,
+        "completion_tokens": 2167,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 819
+        }
+      }
+    },
+    {
+      "position": "C2",
+      "label": "prose",
+      "elapsed_s": 60.88246090430766,
+      "first_token_s": 0.09562963293865323,
+      "decode_tps": 111.43874646728506,
+      "usage": {
+        "prompt_tokens": 42,
+        "total_tokens": 6817,
+        "completion_tokens": 6775,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6237
+        }
+      }
+    },
+    {
+      "position": "C2",
+      "label": "code",
+      "elapsed_s": 24.123267059214413,
+      "first_token_s": 0.09946410218253732,
+      "decode_tps": 111.11855140798242,
+      "usage": {
+        "prompt_tokens": 54,
+        "total_tokens": 2718,
+        "completion_tokens": 2664,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1766
+        }
+      }
+    },
+    {
+      "position": "C2",
+      "label": "json",
+      "elapsed_s": 10.127406754065305,
+      "first_token_s": 0.09400082984939218,
+      "decode_tps": 217.03047275555585,
+      "usage": {
+        "prompt_tokens": 46,
+        "total_tokens": 2213,
+        "completion_tokens": 2167,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 819
+        }
+      }
+    },
+    {
+      "position": "A2",
+      "label": "prose",
+      "elapsed_s": 40.92488622805104,
+      "first_token_s": 0.09700210625305772,
+      "decode_tps": 80.72932381111892,
+      "usage": {
+        "prompt_tokens": 42,
+        "total_tokens": 3339,
+        "completion_tokens": 3297,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2709
+        }
+      }
+    },
+    {
+      "position": "A2",
+      "label": "code",
+      "elapsed_s": 17.203505866229534,
+      "first_token_s": 0.10196478199213743,
+      "decode_tps": 104.26102761517537,
+      "usage": {
+        "prompt_tokens": 54,
+        "total_tokens": 1838,
+        "completion_tokens": 1784,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1097
+        }
+      }
+    },
+    {
+      "position": "A2",
+      "label": "json",
+      "elapsed_s": 11.183120300062,
+      "first_token_s": 0.09679544996470213,
+      "decode_tps": 195.55786162705746,
+      "usage": {
+        "prompt_tokens": 46,
+        "total_tokens": 2215,
+        "completion_tokens": 2169,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "created_cache_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 821
+        }
+      }
+    }
+  ],
+  "code_validation": {
+    "A1": {
+      "external_implementation_tests": "PASS",
+      "missing_value": null,
+      "random_get_checks": 145,
+      "generated_self_tests_returncode": 0,
+      "generated_self_tests_output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+    },
+    "C1": {
+      "external_implementation_tests": "PASS",
+      "missing_value": -1,
+      "random_get_checks": 145,
+      "generated_self_tests_returncode": 0,
+      "generated_self_tests_output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n"
+    },
+    "C2": {
+      "external_implementation_tests": "PASS",
+      "missing_value": -1,
+      "random_get_checks": 145,
+      "generated_self_tests_returncode": 0,
+      "generated_self_tests_output": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n"
+    },
+    "A2": {
+      "external_implementation_tests": "PASS",
+      "missing_value": null,
+      "random_get_checks": 145,
+      "generated_self_tests_returncode": 0,
+      "generated_self_tests_output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+    }
+  },
+  "native_validation": {
+    "status": "PASS",
+    "cases": [
+      {
+        "kind": "dense",
+        "n": 512,
+        "k": 2048,
+        "rows": 1,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 512,
+        "k": 2048,
+        "rows": 2,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 512,
+        "k": 2048,
+        "rows": 4,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 512,
+        "k": 2048,
+        "rows": 8,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 512,
+        "k": 2048,
+        "rows": 16,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 12288,
+        "k": 2048,
+        "rows": 1,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 12288,
+        "k": 2048,
+        "rows": 2,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 12288,
+        "k": 2048,
+        "rows": 4,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 12288,
+        "k": 2048,
+        "rows": 8,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 12288,
+        "k": 2048,
+        "rows": 16,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 2048,
+        "k": 8192,
+        "rows": 1,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 2048,
+        "k": 8192,
+        "rows": 2,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 2048,
+        "k": 8192,
+        "rows": 4,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 2048,
+        "k": 8192,
+        "rows": 8,
+        "bit_exact": true
+      },
+      {
+        "kind": "dense",
+        "n": 2048,
+        "k": 8192,
+        "rows": 16,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 256,
+        "k": 2048,
+        "rows": 1,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 256,
+        "k": 2048,
+        "rows": 2,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 256,
+        "k": 2048,
+        "rows": 4,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 248320,
+        "k": 2048,
+        "rows": 1,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 248320,
+        "k": 2048,
+        "rows": 2,
+        "bit_exact": true
+      },
+      {
+        "kind": "head",
+        "n": 248320,
+        "k": 2048,
+        "rows": 4,
+        "bit_exact": true
+      }
+    ]
+  },
+  "plugin_validation": {
+    "status": "PASS",
+    "results": {
+      "bf16_gemv": [
+        {
+          "m": 1,
+          "n": 256,
+          "k": 2048,
+          "relative_rms": 0.0
+        },
+        {
+          "m": 4,
+          "n": 256,
+          "k": 2048,
+          "relative_rms": 0.0
+        },
+        {
+          "m": 4,
+          "n": 4096,
+          "k": 2048,
+          "relative_rms": 6.736887007718906e-05
+        },
+        {
+          "m": 8,
+          "n": 64,
+          "k": 4096,
+          "relative_rms": 0.0003529518435243517
+        }
+      ],
+      "router": "PASS_32_rows",
+      "gdn_copy": "PASS_4_exact_cases",
+      "shared_dead_routes": "PASS_exact_nonzero_shared_output"
+    }
+  },
+  "quality_scope": "10 naturally completed serving requests each on original A1 and final C1; independent LRU and generated self-tests at all four positions"
+}
