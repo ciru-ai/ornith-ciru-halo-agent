@@ -104,38 +104,3 @@ The graph guard is installed before the adaptive graph-width wrapper. The parser
 These changes fix demonstrated runtime and parser failures. They do not establish BF16 equivalence, guarantee the correctness of generated code, or eliminate every possible model, client or service failure.
 
 Source: [Ciru Ornith runtime](https://github.com/ciru-ai/ornith-ciru-halo-agent). Exact changed-file hashes are recorded in `RELEASE.json` on Hugging Face and `SOURCE-PROVENANCE.json` in the source repository.
-
-## Ciru v4.1.0 community decode update — September 29, 2026
-
-Integrated [dzannotti's PR #2](https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2):
-fused dense transform/quantization, dense/head row projections, shared expert
-fusion, small BF16 projection kernels, fast routing, and an exact GDN state copy.
-Ornith also receives Q2/Q4 target graphs and shorter adaptive drafting probes.
-Apodex keeps its native MTP4 policy and model-specific cache stride. Its full
-port entered a repeating reasoning loop on the code screen, so its qualified
-update retains only bit-exact fused dense M1 and compact head rows.
-Its released BF16 projection, router, shared expert and multi-row dense
-arithmetic are retained. The partial failing stream is preserved in validation
-evidence; it was stopped after the observed loop with no token cap.
-The narrower port with the new GDN copy produced an incorrect generated test
-suite on both candidate loads while both controls passed, and slowed JSON.
-Apodex therefore retains its released state-copy implementation. The final
-native-only qualification is reported separately without carrying forward
-the rejected variant's performance or quality claims.
-
-Target-head pruning is guarded by `ORNITH_EXPERIMENTAL_HEAD_SHORTLIST=1` and is
-excluded from the qualified default. Approximate ranking followed by exact
-rescoring does not guarantee exact full-vocabulary target logits. The shared
-expert remains live when every routed slot is disabled.
-
-Update both serving code and the three changed native libraries, then restart.
-Weights, pinned vLLM/AITER wheels and the native tool parser are unchanged.
-Qualification is a bounded regression and performance screen at the normal
-262144 context, 44 GiB cache and eight-slot configuration. It does not replace
-the historical full benchmark scores. Exact results ship with the model bundle.
-
-The block-4 initial policy passed functional checks but slowed one short code
-case by about 0.26 seconds (identical 253-token response). The qualified default
-retains the released DF15 initial depth. `ORNITH_C1_START_DEPTH=3` opts into the
-new initial policy. Short floor-recovery probes and the new native kernels
-remain available. Final default-policy measurements are recorded separately.

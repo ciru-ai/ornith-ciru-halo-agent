@@ -20,7 +20,7 @@ __device__ __forceinline__ size_t tile_word(int n,int kword){
     return ((size_t(n/16)*(K/16)+kword/4)*4+(kword&3))*16+(n&15);
 }
 template<class T>T* at(void* p,size_t offset){return reinterpret_cast<T*>(static_cast<uint8_t*>(p)+offset);}
-bool shape(int N){return N==256||N==1024||N==4096||N==65536||N==248320;}
+bool shape(int N){return N==256||N==248320;}
 __device__ __forceinline__ float divide(float a,float b){return __fdiv_rn(a,b);}
 __device__ __forceinline__ uint16_t bf16_rne(float value){
     uint32_t bits=__float_as_uint(value);
@@ -181,44 +181,6 @@ template<int N,bool Diagnostic>__global__ __launch_bounds__(128) void shared64_p
         for(int v=0;v<8;++v)store(values[v],size_t(row)*N+nbase+2*v+half,diagnostic,output,sticky);
     }
 }
-template<int N,bool Diagnostic>__global__ __launch_bounds__(32) void compact_projection_rows(
-        const uint32_t* weights,const __half* weight_scales,const uint32_t* activations,
-        const __half* activation_scales,float* diagnostic,uint16_t* output,
-        int32_t* group_dots,uint32_t* sticky,int M){
-    constexpr int NTiles=N/8,MR=4;
-    const int lane=threadIdx.x,piece=lane&3;
-    const int n=(blockIdx.x%NTiles)*8+lane/4;
-    float value[MR];
-#pragma unroll
-    for(int m=0;m<MR;++m)value[m]=0.f;
-    for(int group=0;group<Groups;++group){
-        int w[8];
-#pragma unroll
-        for(int word=0;word<8;++word)w[word]=int(weights[tile_word(n,group*32+piece*8+word)]);
-        const float sw=__half2float(weight_scales[size_t(n)*Groups+group]);
-#pragma unroll
-        for(int m=0;m<MR;++m){
-            if(m<M){
-                const size_t ab=size_t(m)*(K/4);
-                int dot=0;
-#pragma unroll
-                for(int word=0;word<8;++word){
-                    const int kword=group*32+piece*8+word;
-                    dot=__builtin_amdgcn_sudot4(true,w[word],true,int(activations[ab+kword]),dot,false);
-                }
-                dot=dot+__shfl_xor(dot,1,32);dot=dot+__shfl_xor(dot,2,32);
-                if(piece==0){
-                    if constexpr(Diagnostic)group_dots[(size_t(m)*N+n)*Groups+group]=dot;
-                    const float sa=__half2float(activation_scales[size_t(m)*Groups+group]);
-                    const float scaled=sa*float(dot),term=sw*scaled;
-                    value[m]=value[m]+term;
-                }
-            }
-        }
-    }
-#pragma unroll
-    for(int m=0;m<MR;++m)if(m<M&&piece==0)store(value[m],size_t(m)*N+n,diagnostic,output,sticky);
-}
 template<int N,bool Diagnostic>hipError_t dispatch(const void* weights,const void* scales,
         void* workspace,void* output,void* group_dots,void* flags,int M,int geometry,
         OrnithHeadI8Layout layout,hipStream_t stream){
@@ -231,8 +193,7 @@ template<int N,bool Diagnostic>hipError_t dispatch(const void* weights,const voi
     const auto dots=static_cast<int32_t*>(group_dots);
     const auto sticky=static_cast<uint32_t*>(flags);
     const bool compact=geometry==1||(geometry==2&&M<=4);
-    if(compact&&M>1&&M<=4)compact_projection_rows<N,Diagnostic><<<N/8,32,0,stream>>>(w,sw,a,sa,diagnostic,out,dots,sticky,M);
-    else if(compact)compact_projection<N,Diagnostic><<<M*(N/8),32,0,stream>>>(w,sw,a,sa,diagnostic,out,dots,sticky);
+    if(compact)compact_projection<N,Diagnostic><<<M*(N/8),32,0,stream>>>(w,sw,a,sa,diagnostic,out,dots,sticky);
     else if(M>=32)shared64_projection<N,Diagnostic><<<((M+63)/64)*(N/16),128,0,stream>>>(w,sw,a,sa,diagnostic,out,dots,sticky,M);
     else wmma_projection<N,Diagnostic><<<((M+15)/16)*(N/16),32,0,stream>>>(w,sw,a,sa,diagnostic,out,dots,sticky,M);
     return hipGetLastError();
@@ -285,9 +246,7 @@ extern "C" hipError_t ornith_head_i8_tile_launch(const void* input,const void* w
         at<__half>(workspace,layout.activation_scales),sticky);
     status=hipGetLastError();if(status!=hipSuccess)return status;
 #define HEAD_DISPATCH(NV) if(N==NV){if(group_dots)return dispatch<NV,true>(weights,scales,workspace,output,group_dots,flags,M,geometry,layout,stream);return dispatch<NV,false>(weights,scales,workspace,output,nullptr,flags,M,geometry,layout,stream);}
-    HEAD_DISPATCH(256) HEAD_DISPATCH(1024) HEAD_DISPATCH(4096) HEAD_DISPATCH(65536) HEAD_DISPATCH(248320)
+    HEAD_DISPATCH(256) HEAD_DISPATCH(248320)
 #undef HEAD_DISPATCH
     return hipErrorInvalidValue;
 }
-
-extern "C" __attribute__((visibility("default"))) int ornith_head_i8_tile_shortlist(){return 1;}

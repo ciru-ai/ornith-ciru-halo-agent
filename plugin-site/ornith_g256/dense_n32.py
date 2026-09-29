@@ -41,13 +41,12 @@ def install():
    print('ORNITH_DENSE_N32 '+json.dumps({'matrices':len(_BANKS),'extra_payload_bytes':_TOTAL,'last_shape':[n,k],'scope':'M1 only; N16 retained'}),flush=True)
  G256LinearMethod.process_weights_after_loading=load
  original_dense=native._dense_impl
- rows=16 if hasattr(_LIB,'ornith_dense_g256_n32_rows') else 1
  def dense(x,codes,metadata,workspace,out,flags,capacity,n,k,geometry,a8_max_rows):
-  if 1<=x.shape[0]<=min(rows,a8_max_rows) and geometry==2:
+  if x.shape[0]==1 and a8_max_rows>=1 and geometry==2:
    bank=_BANKS.get(codes.data_ptr())
    if bank is None:raise RuntimeError('Missing dense N32 shadow for M1')
    native.validate(x,out,capacity,k)
-   native.check(_LAUNCH(native.ptr(x),native.ptr(bank[0]),native.ptr(bank[1]),native.ptr(workspace),workspace.numel(),native.ptr(out),native.ptr(flags),x.shape[0],capacity,n,k,8,128,2,native.stream(x)),'G256 dense N32')
+   native.check(_LAUNCH(native.ptr(x),native.ptr(bank[0]),native.ptr(bank[1]),native.ptr(workspace),workspace.numel(),native.ptr(out),native.ptr(flags),1,capacity,n,k,8,128,2,native.stream(x)),'G256 dense N32 M1')
    return
   return original_dense(x,codes,metadata,workspace,out,flags,capacity,n,k,geometry,a8_max_rows)
  native._dense_impl=dense

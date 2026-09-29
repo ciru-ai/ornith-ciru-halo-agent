@@ -5,7 +5,7 @@
       "file": "qwen_gdn_linear_attn.py",
       "native_path": "model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
       "native_sha256": "89f04b36241add75cadbc00e0a2dfe5b8a9b325cd107f7f1373639d83d037668",
-      "sha256": "130ccbbbb90da1a648c5ca170c3b205c3f15ce09b612ca326753f5940003af41"
+      "sha256": "3e58fdddc7a0b42ae3d9b5eabb375a993a4110bad499c37846bde466901dbeb3"
     },
     "vllm.model_executor.layers.mamba.ops.causal_conv1d": {
       "file": "causal_conv1d.py",

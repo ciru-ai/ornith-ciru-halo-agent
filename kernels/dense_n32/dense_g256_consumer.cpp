@@ -17,7 +17,7 @@ struct Meta { __half scale,offset; };
 static_assert(sizeof(Meta)==4 && sizeof(size_t)==8);
 size_t align256(size_t n){return (n+255)&~size_t(255);}
 template<class T>T* at(void* w,size_t offset){return offset==SIZE_MAX?nullptr:reinterpret_cast<T*>(static_cast<uint8_t*>(w)+offset);}
-bool shape(int N,int K){return N>0 && (N<=12288||N==248320) && N%16==0 && K>0 && K<=8192 && K%G==0;}
+bool shape(int N,int K){return N>0 && N<=12288 && N%16==0 && K>0 && K<=8192 && K%G==0;}
 __device__ __forceinline__ float divide(float a,float b){return __fdiv_rn(a,b);}
 __device__ __forceinline__ uint16_t bf16_rne(float value){
     unsigned bits=__float_as_uint(value);
@@ -272,109 +272,16 @@ __global__ __launch_bounds__(32) void compact_projection_n32(
     store(value,n,diagnostic,out,sticky);
 }
 }
-namespace dense_g256 {
-__global__ __launch_bounds__(256) void transform_quantize_a8(const uint16_t* x,uint32_t* low,uint32_t* high,
-        __half* scales,int32_t* sums,uint32_t* sticky){
-    size_t group=blockIdx.x;int t=threadIdx.x,chunk=t>>7,lane=t&127;
-    __shared__ float first[2][128],second[2][128],tx[G];
-    float value=__uint_as_float(uint32_t(x[group*G+chunk*128+lane])<<16);
-    if(!isfinite(value))atomicOr(sticky,unsigned(ORNITH_DENSE_G256_NONFINITE_INPUT_TRANSFORM));
-    first[chunk][lane]=value;__syncthreads();
-    float* src=first[chunk];float* dst=second[chunk];
-#pragma unroll
-    for(int step=1;step<128;step*=2){
-        int lo=lane&~step;dst[lane]=(lane&step)?src[lo]-src[lo+step]:src[lo]+src[lo+step];
-        __syncthreads();float* swap=src;src=dst;dst=swap;
-    }
-    float result=src[lane]*InvSqrt128;tx[chunk*128+lane]=result;
-    if(!isfinite(result))atomicOr(sticky,unsigned(ORNITH_DENSE_G256_NONFINITE_INPUT_TRANSFORM));
-    __syncthreads();
-    if(t>=32)return;
-    float values[Parts],absmax=0.f;
-#pragma unroll
-    for(int part=0;part<Parts;++part){
-        float original=tx[part*32+t];bool finite=isfinite(original);
-        if(!finite)atomicOr(sticky,unsigned(ORNITH_DENSE_G256_INVALID_ACTIVATION));
-        values[part]=finite?original:0.f;absmax=fmaxf(absmax,fabsf(values[part]));
-    }
-#pragma unroll
-    for(int delta=16;delta>0;delta/=2)absmax=fmaxf(absmax,__shfl_xor(absmax,delta,32));
-    constexpr int qmax=127;
-    float raw=divide(absmax,float(qmax));bool valid=isfinite(raw)&&raw<=65504.f;
-    if(!valid)atomicOr(sticky,unsigned(ORNITH_DENSE_G256_INVALID_ACTIVATION));
-    __half scale=__float2half_rn(absmax==0.f||!valid?1.f:fmaxf(raw,0x1p-14f));
-    int sum=0;
-#pragma unroll
-    for(int part=0;part<Parts;++part){
-        int q=absmax==0.f||!valid?0:__float2int_rn(divide(values[part],__half2float(scale)));
-        q=q< -qmax?-qmax:(q>qmax?qmax:q);sum+=q;
-        int lo=q&15,hi=(q-lo)/16,first_lane=t&~7;uint32_t wl=0,wh=0;
-#pragma unroll
-        for(int d=0;d<8;++d){
-            wl|=(unsigned(__shfl(lo,first_lane+d,32))&15u)<<(4*d);
-            wh|=(unsigned(__shfl(hi,first_lane+d,32))&15u)<<(4*d);
-        }
-        if(!(t&7)){low[group*Words+part*4+t/8]=wl;high[group*Words+part*4+t/8]=wh;}
-    }
-#pragma unroll
-    for(int delta=16;delta>0;delta/=2)sum+=__shfl_xor(sum,delta,32);
-    if(t==0){scales[group]=scale;sums[group]=sum;}
-}
-}
-namespace dense_g256 {
-template<int MR> __global__ __launch_bounds__(32) void compact_projection_n32_rows(
-        const uint32_t* weights,const Meta* metadata,const uint32_t* low,const uint32_t* high,
-        const __half* scales,const int32_t* sums,float* diagnostic,uint16_t* out,uint32_t* sticky,int M,int N,int K){
-    const int Groups=K/G;int lane=threadIdx.x,n=blockIdx.x*32+lane;
-    float value[MR];
-#pragma unroll
-    for(int m=0;m<MR;++m)value[m]=0.f;
-    for(int group=0;group<Groups;++group){
-        int w[Words];
-#pragma unroll
-        for(int j=0;j<Words;++j)w[j]=int(weights[((size_t(n/32)*Groups+group)*Words+j)*32+(n&31)]);
-        Meta wm=metadata[(size_t(n/32)*Groups+group)*32+(n&31)];
-#pragma unroll
-        for(int m=0;m<MR;++m){
-            if(m<M){
-                const uint32_t* lrow=low+size_t(m*Groups+group)*Words;
-                const uint32_t* hrow=high+size_t(m*Groups+group)*Words;
-                int dot=0;
-#pragma unroll
-                for(int j=0;j<Words;++j){
-                    int dl=__builtin_amdgcn_sudot8(false,w[j],false,int(lrow[j]),0,false);
-                    int dh=__builtin_amdgcn_sudot8(false,w[j],true,int(hrow[j]),0,false);
-                    dot+=dl+16*dh;
-                }
-                float sa=__half2float(scales[m*Groups+group]);
-                float scaled_dot=sa*float(dot),scaled_sum=sa*float(sums[m*Groups+group]);
-                float product=__half2float(wm.scale)*scaled_dot,correction=__half2float(wm.offset)*scaled_sum;
-                value[m]=value[m]+(product+correction);
-            }
-        }
-    }
-#pragma unroll
-    for(int m=0;m<MR;++m)if(m<M)store(value[m],size_t(m)*N+n,diagnostic,out,sticky);
-}
-}
 extern "C" __attribute__((visibility("default"))) hipError_t ornith_dense_g256_launch_n32(
         const void* input,const void* codes,const void* metadata,void* workspace,size_t bytes,
         void* output,void* flags,int M,int Mcap,int N,int K,int bits,int transform_kind,int geometry,hipStream_t stream){
     using namespace dense_g256;OrnithDenseG256Layout l{};
-    if(M<1||M>16||M>Mcap||N%32||transform_kind!=128||geometry!=2||ornith_dense_g256_get_layout(Mcap,N,K,bits,&l)!=hipSuccess||bytes<l.workspace_bytes)return hipErrorInvalidValue;
-    auto sticky=static_cast<uint32_t*>(flags);
-    transform_quantize_a8<<<M*(K/G),256,0,stream>>>(static_cast<const uint16_t*>(input),at<uint32_t>(workspace,l.low),at<uint32_t>(workspace,l.high),at<__half>(workspace,l.scales),at<int32_t>(workspace,l.sums),sticky);
+    if(M!=1||N%32||transform_kind!=128||geometry!=2||ornith_dense_g256_get_layout(Mcap,N,K,bits,&l)!=hipSuccess||bytes<l.workspace_bytes)return hipErrorInvalidValue;
+    auto sticky=static_cast<uint32_t*>(flags);auto tx=at<float>(workspace,l.transformed);
+    transform<<<K/128,128,0,stream>>>(static_cast<const uint16_t*>(input),tx,sticky);
     auto status=hipGetLastError();if(status!=hipSuccess)return status;
-    if(M>1){
-        auto launch=[&](auto kernel){kernel<<<N/32,32,0,stream>>>(static_cast<const uint32_t*>(codes),static_cast<const Meta*>(metadata),at<uint32_t>(workspace,l.low),at<uint32_t>(workspace,l.high),at<__half>(workspace,l.scales),at<int32_t>(workspace,l.sums),at<float>(workspace,l.projection),static_cast<uint16_t*>(output),sticky,M,N,K);};
-        if(M<=2)launch(compact_projection_n32_rows<2>);
-        else if(M<=4)launch(compact_projection_n32_rows<4>);
-        else if(M<=8)launch(compact_projection_n32_rows<8>);
-        else launch(compact_projection_n32_rows<16>);
-        return hipGetLastError();
-    }
+    quantize<true><<<K/G,32,0,stream>>>(tx,at<uint32_t>(workspace,l.low),at<uint32_t>(workspace,l.high),at<__half>(workspace,l.scales),at<int32_t>(workspace,l.sums),sticky);
+    status=hipGetLastError();if(status!=hipSuccess)return status;
     compact_projection_n32<<<N/32,32,0,stream>>>(static_cast<const uint32_t*>(codes),static_cast<const Meta*>(metadata),at<uint32_t>(workspace,l.low),at<uint32_t>(workspace,l.high),at<__half>(workspace,l.scales),at<int32_t>(workspace,l.sums),at<float>(workspace,l.projection),static_cast<uint16_t*>(output),sticky,N,K);
     return hipGetLastError();
 }
-
-extern "C" __attribute__((visibility("default"))) int ornith_dense_g256_n32_rows(){return 16;}

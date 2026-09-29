@@ -121,8 +121,6 @@ def _supported_query_len(num_tokens, num_reqs, max_query_len):
         return None
     if max_query_len == 1 and num_reqs == 1:
         return 1
-    if max_query_len in (2, 4) and num_reqs == 1:
-        return max_query_len
     if max_query_len == 16 and num_reqs == 1:
         return 16
     if max_query_len == 8 and 1 <= num_reqs <= 8:
@@ -162,12 +160,8 @@ def _replace_full_keys(runner):
     # Do not change global capture sizes: those also configure DFlash.
     # Add only an exact target Q1/C1 key after upstream's Q16 initialization.
     lookup[1] = 1
-    lookup[2] = 2
-    lookup[4] = 4
     lookup[8] = 8
     keys = {BatchDescriptor(num_tokens=1, num_reqs=1, uniform=True),
-            BatchDescriptor(num_tokens=2, num_reqs=1, uniform=True),
-            BatchDescriptor(num_tokens=4, num_reqs=1, uniform=True),
             BatchDescriptor(num_tokens=16, num_reqs=1, uniform=True)}
     for num_reqs in range(1, 9):
         padded = lookup[num_reqs * 8]
@@ -247,7 +241,7 @@ def install():
                 desc.num_tokens, desc.num_reqs, desc.num_tokens // desc.num_reqs)
         if query_len is None or not _enabled(runner):
             return original_capture(runner, desc, *args, **kwargs)
-        if query_len in (1, 2, 4):
+        if query_len == 1:
             # Only target Q1 is captured. The K0 diagnostic never uses the
             # drafter, whose trained convolution cannot warm up a one-row input.
             # Retain all its ordinary Q8/Q16 warmup and construction unchanged.

@@ -1,56 +1,41 @@
 {
-  "check": "all_eight_native_libraries_compiled; three changed libraries deployed and exercised",
+  "check": "all_eight_native_libraries_compiled",
   "compiler": "HIP version: 7.15.26333-0000000\nAMD clang version 23.0.0git (https://github.com/ROCm/llvm-project.git 8f497e0992fb7513f7f78a6f6b6f1056c375e961)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: <runtime>/venv/lib/python3.14/site-packages/_rocm_sdk_devel/lib/llvm/bin\n",
-  "gpu_work_performed": true,
-  "rebuilt_libraries_loaded_for_inference": [
-    "libornith_dense_g256_n32.so",
-    "libornith_head_i8_tile.so",
-    "libornith_routed_storage_n32.so"
-  ],
-  "other_five_libraries": "original released binaries retained",
-  "compiled_libraries": {
-    "libornith_routed_storage_n32.so": {
-      "sha256": "c7482e6432353b03980943929577605d9b7b2eea045360039d318c24cf996712",
-      "bytes": 216600
-    },
+  "runtime": "fresh installed release runtime",
+  "gpu_work_performed": false,
+  "rebuilt_libraries_loaded_for_inference": false,
+  "libraries": {
     "libornith_attention_iu4.so": {
-      "sha256": "cbdf7392710ee25037ebd470656c56db4d6a65f9410438d408a6a4a45501d8d1",
-      "bytes": 252048
+      "bytes": 186024,
+      "sha256": "443238ed0b47aefb7ef071bd33d7865ec9da738dab90cdc03661c52be3fa0367"
     },
     "libornith_dense_g256.so": {
-      "sha256": "f94d7c5d5b70363d18570d7d26ec1fde2c1a8e612a890828d49a5456cbe61e4e",
-      "bytes": 69384
-    },
-    "libornith_persistent_iu4.so": {
-      "sha256": "2e54277e2c98fec5b89d0d461dcb0e7b3617f5fb0ecdc3e241d40637faa85bc9",
-      "bytes": 100192
+      "bytes": 69168,
+      "sha256": "9929be9ee06b0e4abe83bfec48d83ea95b7c624d971b4821909897554d715f55"
     },
     "libornith_dense_g256_n32.so": {
-      "sha256": "504b832eea9279f98be4eab3342f0ddd31a5b3d191235f856acaf1c1b0e970c9",
-      "bytes": 172456
-    },
-    "libornith_routed_n32.so": {
-      "sha256": "454e5f65ffad22d2b56b3f1eaf588d4e8dbfa90c8dace03b3a5564f407e55cec",
-      "bytes": 151432
+      "bytes": 76264,
+      "sha256": "4a154a86266a58e6643bfd1bc437f3cb4fcb1f69520941cebb116ebf07a85e90"
     },
     "libornith_head_i8_tile.so": {
-      "sha256": "99ccdf750ebfd3286c8039287032f221861b81963dcbece2701831c83bb3746e",
-      "bytes": 343280
+      "bytes": 128320,
+      "sha256": "8f86e842e09d5c92abda88bd9a21babb8587bc32080faa13d0b475b019893d4b"
+    },
+    "libornith_persistent_iu4.so": {
+      "bytes": 99056,
+      "sha256": "94378bfdd2ea7e3a89654f42349e72a919e578cb45b5f2d27f07eac362cee464"
     },
     "libornith_routed_direct.so": {
-      "sha256": "aefad2e40f98cbc8ad75e20f66ed92ed9d07452a415159ed3b5f282bbdd6e76b",
-      "bytes": 155688
+      "bytes": 155568,
+      "sha256": "e354a3018e6d7ca21991b1a24d7f9d8b1c5e34791e35253756d0ff69ca6871cf"
+    },
+    "libornith_routed_n32.so": {
+      "bytes": 151304,
+      "sha256": "960c1a2f638305d1d44aceac32456ef845abe410dc4d2a3a79a4bbad5ea30383"
+    },
+    "libornith_routed_storage_n32.so": {
+      "bytes": 157776,
+      "sha256": "d91541bdb1da0145ed5fb8bb988820894632f67456f798568f0cf859ab9e5559"
     }
-  },
-  "deployed_libraries": {
-    "libornith_dense_g256.so": "dc9bbf04f02f951fb444feaea2f612671867aad44929a30fdfadef8e5d5513a9",
-    "libornith_routed_direct.so": "5b3ca6826547e0ff1c417e733229e104721cec403ccd8f88f7fcdb1726d6f4ed",
-    "libornith_head_i8_tile.so": "99ccdf750ebfd3286c8039287032f221861b81963dcbece2701831c83bb3746e",
-    "libornith_routed_n32.so": "48415e71f6c85e3aefcecf99d72607bb05900244b4aaa9a7ba2c58378d92f5fb",
-    "libornith_routed_storage_n32.so": "c7482e6432353b03980943929577605d9b7b2eea045360039d318c24cf996712",
-    "libornith_attention_iu4.so": "3d29cf3616c69f9fe2b89f8d3564d479dda682fdc06572886e7b60faccc9a53a",
-    "libornith_persistent_iu4.so": "c70ba14d5aebf67b761ea54cfc9a38f8bbedf74cfca8b19050048acda9c8a06c",
-    "libornith_dense_g256_n32.so": "504b832eea9279f98be4eab3342f0ddd31a5b3d191235f856acaf1c1b0e970c9"
-  },
-  "bounded_validation": "evaluation/CIRU-V4.1-COMMUNITY-SCREEN.json"
+  }
 }

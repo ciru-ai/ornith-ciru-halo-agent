@@ -107,7 +107,7 @@ def install():
         if mask is None:
             return original_inputs(self, *args, **kwargs)
         width = 1 + self.num_speculative_tokens
-        if width not in (2, 4, 8, 16):
+        if width not in (8, 16):
             raise ValueError(f'Unexpected current DFlash query width{width}')
         token = _ACTIVE_MASK.set(mask)
         try:
