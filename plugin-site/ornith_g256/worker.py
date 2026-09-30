@@ -95,6 +95,8 @@ class OrnithG256Worker(OrnithWorkerBase):
         install_dense_source()
         from .dense_n32 import install as install_dense_n32
         install_dense_n32()
+        from .moe_shared import install as install_moe_shared
+        install_moe_shared()
         from .gdn_compact import install
         install()
         from .phase_dispatch import install

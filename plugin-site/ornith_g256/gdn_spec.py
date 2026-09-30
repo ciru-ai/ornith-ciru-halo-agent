@@ -20,6 +20,8 @@ from vllm.third_party.flash_linear_attention.ops.fused_sigmoid_gating import (
     fused_sigmoid_gating_delta_rule_update_kernel,
 )
 
+from .gdn_canonical_kernel import fused_sigmoid_gating_delta_rule_update_kernel
+
 logger = init_logger(__name__)
 _upstream_rocm_core = None
 
@@ -62,7 +64,7 @@ def fused_sigmoid_gating_delta_rule_update(
     NK, NV = triton.cdiv(K, BK), triton.cdiv(V, BV)
     assert NK == 1, "NK > 1 is not supported yet"
     num_stages = 3
-    num_warps = 4
+    num_warps = 1
 
     if cu_seqlens is not None and q.shape[0] != 1:
         raise ValueError(

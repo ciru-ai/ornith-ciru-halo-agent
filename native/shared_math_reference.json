@@ -1,0 +1,16 @@
+{
+  "sha256": "11552ec53b62b229d0ab42b4e865d0175724cd51c4eef01c05e66e930f27d2eb",
+  "checks": {
+    "finite_inputs": 65280,
+    "silu_FP32_bit_differences": 0,
+    "sigmoid_BF16_bit_differences": 0
+  },
+  "input_index": "Raw sixteen BF16 bits; every one of 65536 patterns has an entry.",
+  "payload_bytes": 393216,
+  "source_sha256": "270a708196e9875ae9559b655f464140b162c42add00c5cd43d2a87fb9c0c965",
+  "torch_version": "2.13.0+rocm10.0.0",
+  "triton_version": "3.8.0",
+  "device": "AMD Radeon 8060S Graphics",
+  "semantics": "Released compiled shared SiLU FP32 result before multiplication by BF16 up; released shared sigmoid stored as BF16.",
+  "verification_scope": "All 65280 finite BF16 input patterns match independent compiled released expressions by bits; nonfinite behavior remains subject to existing runtime flags."
+}

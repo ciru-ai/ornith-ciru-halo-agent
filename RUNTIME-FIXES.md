@@ -1,3 +1,13 @@
+# Ciru v4.1.1
+
+The retained community subset accelerates dense M1 projections, compact head rows and the shared expert while preserving the released numerical storage boundaries. The shared activation uses a 384 KiB reference table derived from the released compiled expression; all 65,280 finite BF16 gate patterns match by bits. The PR's router and small BF16 projection substitutions are excluded after actual GPU replay reproduced arithmetic forks.
+
+Q/K normalization now selects the qualified reduction bodies structurally. Compiler-assigned kernel numbers previously allowed the same input graph to silently switch reduction order. Startup refuses serving when the qualified substitution did not execute. Cache identity includes all executable plugin, native, launcher and reference-data files.
+
+Weights, BF16 vision tensors, trained draft/MTP tensors, pinned engine wheels and model sampling policy are unchanged. Complete scored requests use the full 262,144-token context, native reasoning and no completion cap. These are bounded runtime comparisons, with existing broad benchmark scores retaining their original build labels.
+
+Community decode optimizations: **Daniele Zannotti**, [PR #2](https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2) (`7220d47a9428ec75dd0b1506168541b8bd9203b4`). Ciru supplied the numerical repairs, runtime consistency fixes and qualification of the retained subset. Upstream authorship is preserved in Git history.
+
 # Ciru runtime patch notes
 
 ## Ciru v4.0.1 — September 25, 2026

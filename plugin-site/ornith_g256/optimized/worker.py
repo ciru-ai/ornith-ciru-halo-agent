@@ -59,6 +59,8 @@ class Worker(Parent):
         # Original traversal selects the initial tuner configurations. A new
         # signature later executes its original stage once before switching.
         self._optimized_ready = True
+        from .qk import validate_execution
+        self._optimized_qk = validate_execution()
         return result
 
     def ornith_optimized_snapshot(self):
@@ -66,3 +68,6 @@ class Worker(Parent):
                     pipeline=self._optimized_pipeline.snapshot(),
                     compile_scope=self._optimized_compile_scope(),
                     prefix=dict(self._optimized_prefix))
+
+from ornith_g256.runtime_canonical_attention import install_worker_hook
+install_worker_hook(Worker)

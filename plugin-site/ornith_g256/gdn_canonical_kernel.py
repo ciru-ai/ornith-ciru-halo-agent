@@ -34,7 +34,6 @@ def fused_sigmoid_gating_delta_rule_update_kernel(
     o,
     h0,
     ht,
-    compact_base, compact_k, compact_v, compact_g,
     cu_seqlens,
     ssm_state_indices,
     num_accepted_tokens,
@@ -119,9 +118,6 @@ def fused_sigmoid_gating_delta_rule_update_kernel(
             p_h0 = h0 + bos * HV * V * K
         p_h0 = p_h0 + i_hv * V * K + o_v[:, None] * K + o_k[None, :]
         b_h += tl.load(p_h0, mask=mask_h, other=0).to(tl.float32)
-    p_base=compact_base + i_n*HV*V*K + i_hv*V*K + o_v[:,None]*K+o_k[None,:]
-    tl.store(p_base,b_h,mask=mask_h)
-
 
     for i_t in range(0, T):
         b_q = tl.load(p_q, mask=mask_k, other=0).to(tl.float32)
@@ -145,24 +141,33 @@ def fused_sigmoid_gating_delta_rule_update_kernel(
         b_q = b_q * scale
         # [BV, BK]
         if not IS_KDA:
-            b_decay=tl.exp(b_g)
-            b_h *= b_decay
+            b_h *= tl.exp(b_g)
         else:
             b_h *= tl.exp(b_g[None, :])
         # [BV]
         b_v -= tl.sum(b_h * b_k[None, :], 1)
         b_v *= b_beta
-        log_token=bos+i_t
-        if i_v == 0:
-            tl.store(compact_k+(log_token*HV+i_hv)*K+o_k,b_k,mask=mask_k)
-            tl.store(compact_g+log_token*HV+i_hv,b_decay)
-        tl.store(compact_v+(log_token*HV+i_hv)*V+o_v,b_v,mask=mask_v)
-
         # [BV, BK]
         b_h += b_v[:, None] * b_k[None, :]
         # [BV]
         b_o = tl.sum(b_h * b_q[None, :], 1)
         tl.store(p_o, b_o.to(p_o.dtype.element_ty), mask=mask_v)
+
+        # keep the states for multi-query tokens
+        if INPLACE_FINAL_STATE:
+            # Load state index and check for invalid entries
+            final_state_idx = tl.load(
+                ssm_state_indices + i_n * stride_indices_seq + i_t
+            ).to(tl.int64)
+            # Only store if state index is valid (not NULL_BLOCK_ID=0)
+            if final_state_idx > 0:
+                p_ht = ht + final_state_idx * stride_final_state_token
+                p_ht = p_ht + i_hv * V * K + o_v[:, None] * K + o_k[None, :]
+                tl.store(p_ht, b_h.to(p_ht.dtype.element_ty), mask=mask_h)
+        else:
+            p_ht = ht + (bos + i_t) * stride_final_state_token
+            p_ht = p_ht + i_hv * V * K + o_v[:, None] * K + o_k[None, :]
+            tl.store(p_ht, b_h.to(p_ht.dtype.element_ty), mask=mask_h)
 
         # Update pointers for next timestep
         p_q += H * K
@@ -191,7 +196,6 @@ def fused_sigmoid_gating_delta_rule_update(
     num_accepted_tokens: torch.Tensor | None = None,
     use_qk_l2norm_in_kernel: bool = False,
     is_kda: bool = False,
-    compact_base=None, compact_k=None, compact_v=None, compact_g=None,
 ):
     """
     Fused triton implementation of sigmoid gating delta rule update.
@@ -248,7 +252,6 @@ def fused_sigmoid_gating_delta_rule_update(
         o=o,
         h0=initial_state,
         ht=final_state,
-        compact_base=compact_base, compact_k=compact_k, compact_v=compact_v, compact_g=compact_g,
         cu_seqlens=cu_seqlens,
         ssm_state_indices=ssm_state_indices,
         num_accepted_tokens=num_accepted_tokens,
@@ -274,29 +277,3 @@ def fused_sigmoid_gating_delta_rule_update(
     )
     o = o.squeeze(0)
     return o, final_state
-
-
-@triton.jit
-def replay_physical(base,keys,values,decays,accepted,cu,indices,states,
-                    computed,scheduled,drafted,
-                    HV:tl.constexpr,K:tl.constexpr,V:tl.constexpr,
-                    STATE_STRIDE:tl.constexpr,BLOCK:tl.constexpr,BV:tl.constexpr):
-    iv,nh=tl.program_id(0),tl.program_id(1)
-    n,h=nh//HV,nh%HV
-    kk=tl.arange(0,K);vv=iv*BV+tl.arange(0,BV)
-    offset=h*V*K+vv[:,None]*K+kk[None,:]
-    count=tl.load(accepted+n)
-    bos=tl.load(cu+n);eos=tl.load(cu+n+1)
-    count=tl.minimum(count,eos-bos)
-    if count<=0:return
-    state=tl.load(base+n*HV*V*K+offset)
-    running=tl.load(computed+n)+tl.load(scheduled+n)-tl.load(drafted+n)
-    for t in range(count):
-        token=bos+t
-        key=tl.load(keys+(token*HV+h)*K+kk)
-        value=tl.load(values+(token*HV+h)*V+vv)
-        decay=tl.load(decays+token*HV+h)
-        state=tl.fma(value[:,None],key[None,:],state*decay)
-        if t==count-1 or (running+t)%BLOCK==0:
-            dest=tl.load(indices+n*16+t).to(tl.int64)
-            if dest>0:tl.store(states+dest*STATE_STRIDE+offset,state)

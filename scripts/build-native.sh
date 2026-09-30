@@ -80,6 +80,10 @@ for i in "${!sources[@]}"; do
     [[ -f "$root/kernels/${sources[$i]}" ]] || { echo "Missing source: ${sources[$i]}" >&2; exit 2; }
     [[ ! -e "$out/libornith_${names[$i]}.so" ]] || { echo "Choose a fresh output directory; library already exists: ${names[$i]}" >&2; exit 2; }
 done
+for data_file in shared_math_reference.safetensors shared_math_reference.json; do
+    [[ -f "$root/native/$data_file" ]] || { echo "Missing shared reference data: $data_file" >&2; exit 2; }
+    [[ ! -e "$out/$data_file" ]] || { echo "Choose a fresh output directory; data already exists: $data_file" >&2; exit 2; }
+done
 "$hipcc" --version
 if ((check)); then
     echo 'CPU preflight passed: compiler found, eight source targets present, output files clear.'
@@ -98,5 +102,10 @@ for i in "${!sources[@]}"; do
     printf '\n' >> "$library.command.txt"
     echo "Building $(basename -- "$library")"
     "${command[@]}"
+done
+for data_file in shared_math_reference.safetensors shared_math_reference.json; do
+    [[ -f "$root/native/$data_file" ]] || { echo "Missing shared reference data: $data_file" >&2; exit 2; }
+    [[ ! -e "$out/$data_file" ]] || { echo "Choose a fresh output directory; data already exists: $data_file" >&2; exit 2; }
+    cp -- "$root/native/$data_file" "$out/$data_file"
 done
 echo "Built ${#names[@]} native libraries in $out"

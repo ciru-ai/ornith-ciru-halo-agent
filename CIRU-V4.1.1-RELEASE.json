@@ -1,0 +1,22 @@
+{
+  "version": "4.1.1",
+  "qualification": "PASS_BOUNDED",
+  "packages": {
+    "ornith": {
+      "fingerprint": "4358fccd283da2caefe3c4709eae41aa4bc88fa352170c670fe684fe4e272ccc",
+      "upload_files": 37,
+      "upload_bytes": 19964383
+    },
+    "apodex": {
+      "fingerprint": "47c2d35004a53903888890a2f2d6375fcc1f27ff77ce9c0d9a79599800b565cb",
+      "upload_files": 30,
+      "upload_bytes": 19893881
+    }
+  },
+  "community_pr": "https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2",
+  "community_commit": "7220d47a9428ec75dd0b1506168541b8bd9203b4",
+  "community_author": "Daniele Zannotti",
+  "repairs_and_qualification": "Ciru",
+  "weights_modified": false,
+  "limitations": "See CIRU-V4.1.1-QUALIFICATION.md; no universal correctness or batch-invariance claim."
+}

@@ -8,6 +8,8 @@ def settings(args):
     result = original(args)
     result.update(worker_cls='ornith_g256.optimized.worker.Worker',
                   max_num_batched_tokens=8192, long_prefill_token_threshold=4480)
+    if args.cache_gib <= 16:
+        result['gpu_memory_utilization'] = 0.35
     return result
 
 

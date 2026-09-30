@@ -90,6 +90,37 @@ MAX_FUSED_GDN_MTP_TOKENS = 8
 FUSED_GDN_STATE_DTYPES = (torch.float32, torch.bfloat16)
 
 
+import triton as _triton
+import triton.language as _tl
+
+
+@_triton.jit
+def _gdn_state_copy_kernel(state_ptr, src_ptr, dst_ptr, row_stride, row_elems, num_rows, BLOCK: _tl.constexpr):
+    row = _tl.program_id(0)
+    src = _tl.load(src_ptr + row).to(_tl.int64)
+    dst = _tl.load(dst_ptr + row).to(_tl.int64)
+    # Match PyTorch indexing for valid negative indices.
+    src = _tl.where(src < 0, src + num_rows, src)
+    dst = _tl.where(dst < 0, dst + num_rows, dst)
+    if src != dst:
+        offs = _tl.program_id(1) * BLOCK + _tl.arange(0, BLOCK)
+        mask = offs < row_elems
+        values = _tl.load(state_ptr + src * row_stride + offs, mask=mask)
+        _tl.store(state_ptr + dst * row_stride + offs, values, mask=mask)
+
+
+def _copy_state_rows(state, src, dst):
+    if src.shape != (1,) or dst.shape != (1,):
+        state[dst] = state[src]
+        return
+    row = state[0]
+    if not row.is_contiguous() or state.stride(0) < row.numel():
+        state[dst] = state[src]
+        return
+    elems = row.numel()
+    _gdn_state_copy_kernel[(1, _triton.cdiv(elems, 4096))](state, src, dst, state.stride(0), elems, state.shape[0], BLOCK=4096)
+
+
 def _resolve_gdn_prefill_backend(
     vllm_config: VllmConfig,
 ) -> tuple[str, Literal["triton", "flashinfer", "cutedsl"]]:
@@ -1312,7 +1343,7 @@ class QwenGatedDeltaNetAttention(GatedDeltaNetAttention):
             assert non_spec_state_indices_tensor is not None
             num_corrected_states = spec_decode_src_indices.shape[0]
             destination_indices = non_spec_state_indices_tensor[:num_corrected_states]
-            ssm_state[destination_indices] = ssm_state[spec_decode_src_indices]
+            _copy_state_rows(ssm_state, spec_decode_src_indices, destination_indices)
 
         mixed_qkv = mixed_qkv[:num_actual_tokens]
         b = b[:num_actual_tokens]
@@ -1681,7 +1712,7 @@ class QwenGatedDeltaNetAttention(GatedDeltaNetAttention):
             assert non_spec_state_indices_tensor is not None
             num_corrected_states = spec_decode_src_indices.shape[0]
             destination_indices = non_spec_state_indices_tensor[:num_corrected_states]
-            ssm_state[destination_indices] = ssm_state[spec_decode_src_indices]
+            _copy_state_rows(ssm_state, spec_decode_src_indices, destination_indices)
 
         mixed_qkv = mixed_qkv[:num_actual_tokens]
         b = b[:num_actual_tokens]

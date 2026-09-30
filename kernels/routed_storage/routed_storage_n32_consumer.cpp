@@ -183,6 +183,128 @@ __global__ void reduce_slots(const float* routes,const float* weights,const int3
     if(!isfinite(sum)||(result&0x7f80u)==0x7f80u)atomicOr(sticky,32u);
 }
 }
+namespace routed_direct {
+template<int N,int K,bool Gate> __global__ __launch_bounds__(32) void projection_n32_shared(
+        const int32_t* ids,const uint32_t* codes,const Meta* metadata,const uint32_t* shared_codes,const Meta* shared_metadata,
+        const uint32_t* low,const uint32_t* high,const __half* scales,const int32_t* sums,
+        float* output,uint32_t* sticky,int R){
+    constexpr int Groups=K/G;
+    const int route=blockIdx.x/(N/32),tile=blockIdx.x%(N/32);
+    const int lane=threadIdx.x,n=tile*32+lane;
+    const bool shared=route>=R;
+    const int expert=shared?0:__builtin_amdgcn_readfirstlane(ids[route]);
+    if(!shared&&(expert<0||expert>=E)){
+        if(expert>=E||expert< -1)atomicOr(sticky,4u);
+        output[size_t(route)*N+n]=0.f;return;
+    }
+    const uint32_t* bank=shared?shared_codes:codes;
+    const Meta* meta=shared?shared_metadata:metadata;
+    const int row=shared?(Gate?route-R:route):(Gate?route/Top:route);
+    const size_t abase=size_t(row)*(K/8),wbase=size_t(expert)*N*(K/8),mbase=size_t(expert)*N*Groups;
+    float value=0.f;
+    for(int group=0;group<Groups;++group){
+        int dot=0;
+#pragma unroll
+        for(int j=0;j<Words;++j){
+            int word=group*Words+j;
+            int w=int(bank[wbase+((size_t(n/32)*Groups+group)*Words+j)*32+(n&31)]);
+            int lo=int(low[abase+word]);
+            int hi=int(high[abase+word]);
+            int dl=__builtin_amdgcn_sudot8(false,w,false,lo,0,false);
+            int dh=__builtin_amdgcn_sudot8(false,w,true,hi,0,false);
+            dot+=dl+16*dh;
+        }
+        {
+            float sa=__half2float(scales[size_t(row)*Groups+group]);
+            Meta wm=meta[mbase+(size_t(n/32)*Groups+group)*32+(n&31)];
+            float scaled_dot=sa*float(dot),scaled_sum=sa*float(sums[size_t(row)*Groups+group]);
+            float product=__half2float(wm.scale)*scaled_dot,correction=__half2float(wm.offset)*scaled_sum;
+            value=value+(product+correction);
+        }
+    }
+    {
+        // Shared MLP linear outputs are BF16 in the released execution path.
+        if(shared)value=__uint_as_float(uint32_t(bf16_rne(value))<<16);
+        output[size_t(route)*N+n]=value;if(!isfinite(value))atomicOr(sticky,8u);
+    }
+}
+template<int Mode> __global__ __launch_bounds__(256) void fused_transform_quantize(const void* input,const float* gate,const float* shared_silu,
+        uint32_t* low,uint32_t* high,__half* scales,int32_t* sums,uint32_t* sticky,const int32_t* ids,int R){
+    const size_t group=blockIdx.x;const int t=threadIdx.x,chunk=t>>7,lane=t&127;
+    __shared__ float first[2][128],second[2][128],tx[G];
+    const size_t element=group*G+chunk*128+lane;
+    float value;bool live=true;
+    if constexpr(Mode==0){
+        // The shared slot is live even when every routed slot is disabled.
+        value=__uint_as_float(uint32_t(static_cast<const uint16_t*>(input)[element])<<16);
+    }else{
+        size_t route=element/I,column=element%I;
+        if(route<size_t(R)&&(ids[route]<0||ids[route]>=E))value=0.f;
+        else{
+            float g=gate[route*(2*I)+column],up=gate[route*(2*I)+I+column];
+            float silu;
+            if(route>=size_t(R))silu=shared_silu[__float_as_uint(g)>>16];
+            else silu=divide(g,1.f+ornith_portable_exp(-g));
+            value=silu*up;
+            // Match the BF16 activation output before the down transform.
+            if(route>=size_t(R))value=__uint_as_float(uint32_t(bf16_rne(value))<<16);
+            if(!isfinite(value))atomicOr(sticky,16u);
+        }
+    }
+    if(live&&!isfinite(value))atomicOr(sticky,unsigned(1));
+    first[chunk][lane]=value;__syncthreads();
+    float* src=first[chunk];float* dst=second[chunk];
+#pragma unroll
+    for(int step=1;step<128;step*=2){
+        int lo=lane&~step;dst[lane]=(lane&step)?src[lo]-src[lo+step]:src[lo]+src[lo+step];
+        __syncthreads();float* swap=src;src=dst;dst=swap;
+    }
+    float result=live?src[lane]*InvSqrt128:0.f;tx[chunk*128+lane]=result;
+    if(live&&!isfinite(result))atomicOr(sticky,unsigned(1));
+    __syncthreads();
+    if(t>=32)return;
+    float values[Parts],absmax=0.f;
+#pragma unroll
+    for(int part=0;part<Parts;++part){
+        float original=tx[part*32+t];bool finite=isfinite(original);
+        if(!finite)atomicOr(sticky,unsigned(2));
+        values[part]=finite?original:0.f;absmax=fmaxf(absmax,fabsf(values[part]));
+    }
+#pragma unroll
+    for(int delta=16;delta>0;delta/=2)absmax=fmaxf(absmax,__shfl_xor(absmax,delta,32));
+    constexpr int qmax=127;
+    float raw=divide(absmax,float(qmax));bool valid=isfinite(raw)&&raw<=65504.f;
+    if(!valid)atomicOr(sticky,unsigned(2));
+    __half scale=__float2half_rn(absmax==0.f||!valid?1.f:fmaxf(raw,0x1p-14f));
+    int sum=0;
+#pragma unroll
+    for(int part=0;part<Parts;++part){
+        int q=absmax==0.f||!valid?0:__float2int_rn(divide(values[part],__half2float(scale)));
+        q=q< -qmax?-qmax:(q>qmax?qmax:q);sum+=q;
+        int lo=q&15,hi=(q-lo)/16,first_lane=t&~7;uint32_t wl=0,wh=0;
+#pragma unroll
+        for(int d=0;d<8;++d){
+            wl|=(unsigned(__shfl(lo,first_lane+d,32))&15u)<<(4*d);
+            wh|=(unsigned(__shfl(hi,first_lane+d,32))&15u)<<(4*d);
+        }
+        if(!(t&7)){low[group*Words+part*4+t/8]=wl;high[group*Words+part*4+t/8]=wh;}
+    }
+#pragma unroll
+    for(int delta=16;delta>0;delta/=2)sum+=__shfl_xor(sum,delta,32);
+    if(t==0){scales[group]=scale;sums[group]=sum;}
+}
+__global__ void reduce_slots_shared(const float* routes,const float* weights,const int32_t* ids,const uint16_t* shared_logit,const uint16_t* shared_sigmoid,
+        float* diagnostic,uint16_t* out,uint16_t* shared_out,uint32_t* sticky,size_t values,int R){
+    size_t index=size_t(blockIdx.x)*blockDim.x+threadIdx.x;if(index>=values)return;
+    size_t token=index/H,column=index%H;float sum=0.f;
+#pragma unroll
+    for(int slot=0;slot<Top;++slot){size_t r=token*Top+slot;if(ids[r]>=0 && ids[r]<E){float product=routes[r*H+column]*weights[r];sum=sum+product;}}
+    float gate=__uint_as_float(uint32_t(shared_sigmoid[shared_logit[token]])<<16);
+    float shared=routes[(size_t(R)+token)*H+column]*gate;
+    diagnostic[index]=sum;uint16_t result=bf16_rne(sum),shared_result=bf16_rne(shared);out[index]=result;shared_out[index]=shared_result;
+    if(!isfinite(sum)||(result&0x7f80u)==0x7f80u||!isfinite(shared))atomicOr(sticky,32u);
+}
+}
 #include "routed_storage_n32_prefill.h"
 extern "C" hipError_t ornith_routed_direct_get_layout(int Tcap,OrnithRoutedDirectLayout* out){
     using namespace routed_direct;if(!out||Tcap<0||Tcap>8192)return hipErrorInvalidValue;
@@ -249,3 +371,31 @@ extern "C" hipError_t ornith_routed_direct_launch_a4_prefill(
 
 extern "C" ORNITH_ROUTED_DIRECT_EXPORT int ornith_routed_storage_n32(){return 32;}
 extern "C" ORNITH_ROUTED_DIRECT_EXPORT int ornith_routed_prefill_output_tile(){return ORNITH_PREFILL_OUTPUT32?32:16;}
+
+extern "C" ORNITH_ROUTED_DIRECT_EXPORT hipError_t ornith_routed_shared_get_layout(int Tcap,OrnithRoutedDirectLayout* out){
+    using namespace routed_direct;if(!out||Tcap<0||Tcap>16)return hipErrorInvalidValue;
+    OrnithRoutedDirectLayout l{};size_t cursor=0,t=Tcap,r=t*(Top+1);
+    auto add=[&](size_t& field,size_t bytes){field=cursor;cursor=align256(cursor+bytes);};
+    add(l.gate_x,t*H*4);add(l.gate_low,t*H/2);add(l.gate_high,t*H/2);
+    add(l.gate_scales,t*(H/G)*2);add(l.gate_sums,t*(H/G)*4);add(l.gate_y,r*(2*I)*4);
+    add(l.middle,r*I*4);add(l.down_x,r*I*4);add(l.down_low,r*I/2);add(l.down_high,r*I/2);
+    add(l.down_scales,r*(I/G)*2);add(l.down_sums,r*(I/G)*4);add(l.route_out,r*H*4);add(l.final_f32,t*H*4);
+    l.workspace_bytes=cursor;*out=l;return hipSuccess;
+}
+extern "C" ORNITH_ROUTED_DIRECT_EXPORT hipError_t ornith_routed_direct_launch_shared_tables(const void* input,const void* weights,const void* ids,
+        const void* gate_codes,const void* gate_meta,const void* down_codes,const void* down_meta,
+        const void* shared_gate_codes,const void* shared_gate_meta,const void* shared_down_codes,const void* shared_down_meta,
+        const void* shared_logit,const void* shared_silu,const void* shared_sigmoid,void* workspace,size_t bytes,void* output,void* shared_output,void* flags,int T,int Tcap,hipStream_t stream){
+    using namespace routed_direct;OrnithRoutedDirectLayout l{};
+    if(ornith_routed_shared_get_layout(Tcap,&l)!=hipSuccess||T<0||T>Tcap||bytes<l.workspace_bytes)return hipErrorInvalidValue;
+    if(!T)return hipSuccess;
+    auto sticky=static_cast<uint32_t*>(flags);auto rid=static_cast<const int32_t*>(ids);int R=T*Top,RS=R+T;
+#define CHECK_LAUNCH() {auto s=hipGetLastError();if(s!=hipSuccess)return s;}
+    fused_transform_quantize<0><<<T*(H/G),256,0,stream>>>(input,nullptr,nullptr,at<uint32_t>(workspace,l.gate_low),at<uint32_t>(workspace,l.gate_high),at<__half>(workspace,l.gate_scales),at<int32_t>(workspace,l.gate_sums),sticky,rid,R);CHECK_LAUNCH();
+    projection_n32_shared<2*I,H,true><<<RS*(2*I/32),32,0,stream>>>(rid,static_cast<const uint32_t*>(gate_codes),static_cast<const Meta*>(gate_meta),static_cast<const uint32_t*>(shared_gate_codes),static_cast<const Meta*>(shared_gate_meta),at<uint32_t>(workspace,l.gate_low),at<uint32_t>(workspace,l.gate_high),at<__half>(workspace,l.gate_scales),at<int32_t>(workspace,l.gate_sums),at<float>(workspace,l.gate_y),sticky,R);CHECK_LAUNCH();
+    fused_transform_quantize<1><<<RS*(I/G),256,0,stream>>>(nullptr,at<float>(workspace,l.gate_y),static_cast<const float*>(shared_silu),at<uint32_t>(workspace,l.down_low),at<uint32_t>(workspace,l.down_high),at<__half>(workspace,l.down_scales),at<int32_t>(workspace,l.down_sums),sticky,rid,R);CHECK_LAUNCH();
+    projection_n32_shared<H,I,false><<<RS*(H/32),32,0,stream>>>(rid,static_cast<const uint32_t*>(down_codes),static_cast<const Meta*>(down_meta),static_cast<const uint32_t*>(shared_down_codes),static_cast<const Meta*>(shared_down_meta),at<uint32_t>(workspace,l.down_low),at<uint32_t>(workspace,l.down_high),at<__half>(workspace,l.down_scales),at<int32_t>(workspace,l.down_sums),at<float>(workspace,l.route_out),sticky,R);CHECK_LAUNCH();
+    reduce_slots_shared<<<(T*H+255)/256,256,0,stream>>>(at<float>(workspace,l.route_out),static_cast<const float*>(weights),rid,static_cast<const uint16_t*>(shared_logit),static_cast<const uint16_t*>(shared_sigmoid),at<float>(workspace,l.final_f32),static_cast<uint16_t*>(output),static_cast<uint16_t*>(shared_output),sticky,size_t(T)*H,R);CHECK_LAUNCH();
+#undef CHECK_LAUNCH
+    return hipSuccess;
+}

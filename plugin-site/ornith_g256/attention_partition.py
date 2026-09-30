@@ -108,7 +108,7 @@ def forward(query, key_cache, value_cache, output, block_table, query_start_loc,
     """Write and return ``output``; allocate scratch only for this call.
 
     Caller eligibility: BF16 causal target attention, no sinks/alibi/window/output
-    scaling, at most 8 requests and max_query_len <= 8, at most 64 query rows
+    scaling, at most 8 requests and max_query_len <= 16, at most 128 query rows
     including padding. ``query_start_loc`` has
     len(seq_lens)+1 entries and includes zero-query slots; trailing query padding
     beyond its final entry is allowed and gets zero output. Metadata and cached
@@ -124,7 +124,7 @@ def forward(query, key_cache, value_cache, output, block_table, query_start_loc,
             or key_cache.shape[0] != value_cache.shape[0]
             or key_cache.shape[0] == 0 or output.shape != query.shape):
         raise ValueError("Partitioned attention requires target H16/KV2/D256/page1120 or2240")
-    if (not 1 <= max_query_len <= 8 or query.shape[0] > 64
+    if (not 1 <= max_query_len <= 16 or query.shape[0] > 128
             or not 1 <= seq_lens.numel() <= 8
             or block_table.ndim != 2 or block_table.shape[0] < seq_lens.numel()
             or block_table.shape[1] < 1 or query_start_loc.numel() != seq_lens.numel() + 1

@@ -81,3 +81,13 @@ def install(output):
   if (T,captured) not in shapes:shapes.add((T,captured));persist()
   return None
  CachingAutotuner.run=run;_installed=True;persist()
+
+def validate_execution():
+    """Refuse serving when the qualified target normalization path was skipped."""
+    if _state is None:
+        raise RuntimeError('Target Q/K normalization hook was not installed')
+    launches = _state['original_combined_launches_replaced'] + _state['separate_pairs_replaced']
+    if launches == 0 or _state['pending_pairs'] != 0:
+        raise RuntimeError('Qualified target Q/K normalization path did not execute during warmup')
+    persist()
+    return dict(_state)
