@@ -1,0 +1,171 @@
+{
+  "version": "4.1.2",
+  "model": "ornith",
+  "scope": "Matched actual frontend renderer, source identity, packaged launcher inspection; existing live Ornith barrier qualification",
+  "renderer": {
+    "status": "PASS",
+    "original_rejection": "This model's maximum context length is 262144 tokens. However, you requested 262144 output tokens and your prompt contains 41 input tokens, for a total of 262185 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=41)",
+    "results": [
+      {
+        "request": {},
+        "rendered_prompt_tokens": 41,
+        "sampler_output_budget": 262103,
+        "changed_fields": {}
+      },
+      {
+        "request": {
+          "max_tokens": 262144
+        },
+        "rendered_prompt_tokens": 41,
+        "sampler_output_budget": 262103,
+        "changed_fields": {
+          "max_output_tokens": [
+            262144,
+            0
+          ]
+        }
+      },
+      {
+        "request": {
+          "max_completion_tokens": 262144
+        },
+        "rendered_prompt_tokens": 41,
+        "sampler_output_budget": 262103,
+        "changed_fields": {
+          "max_output_tokens": [
+            262144,
+            0
+          ]
+        }
+      },
+      {
+        "request": {
+          "max_completion_tokens": 65536
+        },
+        "rendered_prompt_tokens": 41,
+        "sampler_output_budget": 65536,
+        "changed_fields": {}
+      }
+    ]
+  },
+  "context": 262144,
+  "max_num_seqs": 8,
+  "kv_cache_gib": 44,
+  "native_reasoning": true,
+  "image_support": true,
+  "weights_modified": false,
+  "pinned_engine_wheels_modified": false,
+  "sampling_defaults_modified": false,
+  "scored_agent_benchmark_rerun": false,
+  "live_barrier_provenance": {
+    "barrier_source_sha256": "9321a3721076171377f610c03870ea794e7239fc8159a6fad754061b4be21644",
+    "original_ast_sha256": "119c21631928d7a4f9b57bcce5d7e28e10091b8ccf33a5159ac13b468c667401",
+    "kernels": [
+      {
+        "ast_sha256": "119c21631928d7a4f9b57bcce5d7e28e10091b8ccf33a5159ac13b468c667401"
+      },
+      {
+        "ast_sha256": "119c21631928d7a4f9b57bcce5d7e28e10091b8ccf33a5159ac13b468c667401"
+      }
+    ],
+    "calls": {
+      "128": 6,
+      "64": 12,
+      "48": 12,
+      "32": 12,
+      "16": 24,
+      "8": 1
+    },
+    "captured_rows": [],
+    "preflight_rows": [
+      1,
+      8,
+      16,
+      24,
+      32,
+      40,
+      48,
+      56,
+      64
+    ]
+  },
+  "upgrade_checks": {
+    "status": "PASS",
+    "checks": [
+      {
+        "model": "ornith",
+        "from_version": "4.0.0",
+        "status": "PASS",
+        "weights_sha256_unchanged": true,
+        "weights_inode_unchanged": true,
+        "cache_preserved": true,
+        "stale_metadata_removed": true,
+        "rollback_code_retained": true
+      },
+      {
+        "model": "ornith",
+        "from_version": "4.1.1",
+        "status": "PASS",
+        "weights_sha256_unchanged": true,
+        "weights_inode_unchanged": true,
+        "cache_preserved": true,
+        "stale_metadata_removed": true,
+        "rollback_code_retained": true
+      },
+      {
+        "model": "ornith",
+        "case": "copy-failure",
+        "status": "PASS",
+        "original_installation_restored": true
+      },
+      {
+        "model": "apodex",
+        "from_version": "4.0.0",
+        "status": "PASS",
+        "weights_sha256_unchanged": true,
+        "weights_inode_unchanged": true,
+        "cache_preserved": true,
+        "stale_metadata_removed": true,
+        "rollback_code_retained": true
+      },
+      {
+        "model": "apodex",
+        "from_version": "4.1.1",
+        "status": "PASS",
+        "weights_sha256_unchanged": true,
+        "weights_inode_unchanged": true,
+        "cache_preserved": true,
+        "stale_metadata_removed": true,
+        "rollback_code_retained": true
+      },
+      {
+        "model": "apodex",
+        "case": "copy-failure",
+        "status": "PASS",
+        "original_installation_restored": true
+      },
+      {
+        "case": "checksum-tampering",
+        "status": "PASS",
+        "installation_untouched": true
+      },
+      {
+        "case": "pre-v4-engine-guard",
+        "status": "PASS",
+        "explicit_fresh_runtime_required": true,
+        "installation_untouched": true
+      }
+    ]
+  },
+  "inspected_settings": {
+    "max_model_len": 262144,
+    "max_num_seqs": 8,
+    "kv_cache_memory_bytes": 47244640256,
+    "limit_mm_per_prompt": {
+      "image": 1,
+      "video": 0
+    },
+    "worker_cls": "ornith_g256.optimized.worker.Worker"
+  },
+  "draft_method": "dflash"
+}

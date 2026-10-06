@@ -45,6 +45,8 @@ class Worker(Parent):
         from .qk_schedule import install as install_qk_schedule
         install_qk(audit / 'qk')
         install_draft(audit / 'draft', cache_root)
+        from .first_draft_norm import install as install_first_norm
+        install_first_norm(audit / 'draft', cache_root)
         self._optimized_compile_scope = install_compile_scope(original_tuner_run, audit)
         install_qk_schedule(audit)
 

@@ -233,6 +233,8 @@ def main(argv=None):
         if not Path(path).is_file():
             raise FileNotFoundError(path)
     os.environ.update(env)
+    from .optimized.output_ceiling import install as install_output_ceiling
+    install_output_ceiling(a.context)
     # Keep all vLLM imports after environment selection. The project's installed
     # plugin entry point is also visible to worker processes via PYTHONPATH.
     from vllm.entrypoints.serve.utils.api_utils import cli_env_setup

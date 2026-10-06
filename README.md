@@ -1,5 +1,11 @@
 # Ornith1.5 Ciru Halo Agent
 
+## Ciru v4.1.2 — October 5, 2026
+
+Adds the verified first DFlash normalization store/reload barrier from ornithtest and the shared full-context output-budget correction. Apodex receives the frontend correction while retaining its native MTP4 worker. [Patch notes](PATCH-NOTES-4.1.2.md). Existing Hugging Face model cards retain their content and include a compact update section. Both downloads include a checksum-verified updater that preserves model weights and keeps the previous code for rollback.
+
+The recent improvements would not have been possible without **Cinderblade from the toolbox discord**.
+
 ## Ciru v4.1.1 — September 30, 2026
 
 The retained community subset accelerates dense M1 projections, compact head rows and the shared expert while preserving the released numerical storage boundaries. The shared activation uses a 384 KiB reference table derived from the released compiled expression; all 65,280 finite BF16 gate patterns match by bits. The PR's router and small BF16 projection substitutions are excluded after actual GPU replay reproduced arithmetic forks.

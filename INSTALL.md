@@ -1,5 +1,14 @@
 # Install and run Ornith1.5 Ciru Halo Agent
 
+## Upgrading to 4.1.2
+
+The current model downloads include `runtime/UPGRADE-CIRU.py`, a checksum-verified updater that preserves existing model weights and caches, replaces the complete plugin/native bundle, removes superseded package metadata and retains the previous code for rollback. Stop the model before updating.
+
+Use the model-specific commands and the fresh-runtime option for pre-v4 engines:
+
+- [Ornith installation and upgrade](https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/blob/main/INSTALL.md#upgrading-to-412)
+- [Apodex installation and upgrade](https://huggingface.co/jcbtc/Apodex1.1-mini-Ciru-Halo-Agent-vllm-strix-halo/blob/main/INSTALL.md#upgrading-to-412)
+
 ## Updating from 4.0.0 to 4.0.1
 
 The published package needs only the updated launcher and 4.0.1 metadata;
