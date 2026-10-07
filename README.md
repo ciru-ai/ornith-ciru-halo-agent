@@ -2,6 +2,8 @@
 
 ## Ciru v4.1.2 — October 5, 2026
 
+**Release source references refreshed October 7, 2026.** [Current source provenance](SOURCE-PROVENANCE.json) and [pinned Ornith/Apodex packages](CIRU-V4.1.2-RELEASE.json) identify the published v4.1.2 code, source archives and weight-preserving upgrade helpers by checksum. This refresh changes release metadata only.
+
 Adds the verified first DFlash normalization store/reload barrier from ornithtest and the shared full-context output-budget correction. Apodex receives the frontend correction while retaining its native MTP4 worker. [Patch notes](PATCH-NOTES-4.1.2.md). Existing Hugging Face model cards retain their content and include a compact update section. Both downloads include a checksum-verified updater that preserves model weights and keeps the previous code for rollback.
 
 The recent improvements would not have been possible without **Cinderblade from the toolbox discord**.
