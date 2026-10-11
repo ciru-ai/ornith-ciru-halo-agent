@@ -23,6 +23,9 @@ tags:
   - image-text-to-text
 ---
 
+**DFlash physical-slot repair (4.1.6):** Multimodal draft-cache slots now use physical sequence positions while rotary positions stay unchanged. Native address/reentry and compiled boundary checks, matched uncapped text/one-image 8K/64K replies, a complete image/tool/artifact continuation, retained concurrency/arrival protections and vision/thinking ON plus text/thinking OFF checks passed on Sozo. Weights, numerical kernels, K0/K3/K7 policy and prefill cadence 16/threshold 8192/chunk 1120 are retained. K15 remains parked and the cached-target hold remains. This is a scoped runtime repair, not a new full-agent score or KLD qualification. See [validation](evaluation/CIRU-V4.1.6-VALIDATION.json).
+
+
 **Long-prefill service update (4.1.5):** Bounded native scheduling gives existing replies decode service while long prompts arrive. In the matched 8k/128k arrival pilot, the existing reply delivered 12.29 tokens/s versus 0.52, and its worst delivery pause during the new prompt's TTFT fell to 1.54s from 5.63s. The new prompt's TTFT increased to 154.7s from 114.5s (+35.1%) because decode receives service during prefill. Sozo checks passed three fresh 128k arrivals during an established 8k reply, with at least 8 incumbent tokens/s over each complete newcomer TTFT and no delivery pause above 2 seconds within that phase. Uncapped short/8k/64k, cold C8, vision/thinking ON and text/thinking OFF checks also passed. Weights, numerical kernels, K0/cache protections and the sole-prefill path are retained. A fresh mixed K0 diagnostic passed paired logits, full probabilities, emitted IDs and discarded-row RNG checks. This is a decode-service/arrival-latency tradeoff; it is not a general PP speedup. Previous numerical and agent-quality results remain historical; K15 stays parked. See [validation](evaluation/CIRU-V4.1.5-VALIDATION.json).
 
 

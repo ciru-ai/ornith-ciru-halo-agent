@@ -45,6 +45,7 @@
     "iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
     "iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
     "iu4_correctness/adaptive_k3_geometry.py": "88210bc120dda6527d85ca56a6d0d91323c2ff7d28c4506ea5d1a828dc6ff155",
+    "iu4_correctness/dflash_physical_slots.py": "14d88124a1971e752809a09bdef816b3a7b612e0b83283714e75be2216764722",
     "iu4_correctness/final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
     "iu4_correctness/final_router_ablation.py": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
     "iu4_correctness/final_sampler.py": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
@@ -52,11 +53,12 @@
     "iu4_correctness/gates_phase.py": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
     "iu4_correctness/gates_projection.py": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
     "iu4_correctness/integration.py": "883c76aa0bf2f47b3c54de11edda48285a18c4870f0432fffc54dd704c6e0f94",
+    "iu4_correctness/prefill_service.py": "ab52765ec35e9fa59b090ea04a97382993f6389acb94cb41e7cd66936058e50c",
     "iu4_correctness/rng_exact_restore.py": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
     "iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
     "iu4_correctness/shared_kernel.py": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
     "iu4_correctness/shared_live.py": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
-    "iu4_correctness/worker.py": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
+    "iu4_correctness/worker.py": "7b31c135807557104fc601e9c7dca80b98f2b6aee388ec733839c6094716256d",
     "launch.py": "f724b1130de4c5c38bdcda8c46dafb754bbf94887a8cb9e23a0b765d82d4bbe0",
     "lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
     "loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
@@ -103,7 +105,6 @@
     "strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
     "worker.py": "b2004e6fcbd3bd3cc5b42db666af3dabd1157734689fbae7151e363ff6671968",
     "worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868",
-    "xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623",
-    "iu4_correctness/prefill_service.py": "ab52765ec35e9fa59b090ea04a97382993f6389acb94cb41e7cd66936058e50c"
+    "xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
   }
 }

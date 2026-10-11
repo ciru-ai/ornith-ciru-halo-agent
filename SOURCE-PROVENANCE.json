@@ -1,7 +1,7 @@
 {
-  "release": "Ciru v4.1.5 bounded long-prefill service release",
-  "package_version": "4.1.5",
-  "qualified_build_sha256": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
+  "release": "Ciru v4.1.6 DFlash physical-slot release",
+  "package_version": "4.1.6",
+  "qualified_build_sha256": "460baee3fff8dc4f4852beddd6d31dfbe395190b4ea6ddb42372a27e5285a2c6",
   "native": [
     {
       "source": "kernels/dense/dense_g256_consumer.cpp",
@@ -118,6 +118,7 @@
     "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
     "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
     "plugin-site/ornith_g256/iu4_correctness/adaptive_k3_geometry.py": "88210bc120dda6527d85ca56a6d0d91323c2ff7d28c4506ea5d1a828dc6ff155",
+    "plugin-site/ornith_g256/iu4_correctness/dflash_physical_slots.py": "14d88124a1971e752809a09bdef816b3a7b612e0b83283714e75be2216764722",
     "plugin-site/ornith_g256/iu4_correctness/final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
     "plugin-site/ornith_g256/iu4_correctness/final_router_ablation.py": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
     "plugin-site/ornith_g256/iu4_correctness/final_sampler.py": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
@@ -130,8 +131,8 @@
     "plugin-site/ornith_g256/iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
     "plugin-site/ornith_g256/iu4_correctness/shared_kernel.py": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
     "plugin-site/ornith_g256/iu4_correctness/shared_live.py": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
-    "plugin-site/ornith_g256/iu4_correctness/source-pins.json": "11bad6a8ebb5ddd7ec229d89485aae676470f4b54bfdf5572004bbe8dd1a21ba",
-    "plugin-site/ornith_g256/iu4_correctness/worker.py": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
+    "plugin-site/ornith_g256/iu4_correctness/source-pins.json": "1731570e2a4636e9027ff3f0cabc8b8dd5e9cbb04277e0b05af04fb21a829787",
+    "plugin-site/ornith_g256/iu4_correctness/worker.py": "7b31c135807557104fc601e9c7dca80b98f2b6aee388ec733839c6094716256d",
     "plugin-site/ornith_g256/launch.py": "f724b1130de4c5c38bdcda8c46dafb754bbf94887a8cb9e23a0b765d82d4bbe0",
     "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
     "plugin-site/ornith_g256/loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
@@ -181,8 +182,8 @@
     "plugin-site/ornith_g256/xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
   },
   "runtime_native_grammar": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
-  "parent_qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
-  "executable_bundle_fingerprint": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
+  "parent_qualified_build_sha256": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
+  "executable_bundle_fingerprint": "460baee3fff8dc4f4852beddd6d31dfbe395190b4ea6ddb42372a27e5285a2c6",
   "community_pr": "https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2",
   "community_pr_head": "7220d47a9428ec75dd0b1506168541b8bd9203b4",
   "reference_data_sha256": "11552ec53b62b229d0ab42b4e865d0175724cd51c4eef01c05e66e930f27d2eb",
@@ -195,18 +196,18 @@
     "measured_candidate_fingerprint": "4358fccd283da2caefe3c4709eae41aa4bc88fa352170c670fe684fe4e272ccc",
     "stage": "QUALIFIED_FOR_PUBLICATION"
   },
-  "stage": "PREFILL_SERVICE_V415_SCOPED_RUNTIME_QUALIFIED_FOR_PUBLICATION",
-  "note": "Fresh complete-model long-arrival, normal-profile and correctness regression gates. Unchanged parent numerical and agent-quality scopes remain historical.",
+  "stage": "MM_SLOTS_V416_SCOPED_RUNTIME_QUALIFIED_FOR_PUBLICATION",
+  "note": "Physical DFlash slots, matched natural8K/64K text/one-image serving, a complete native image/tool/artifact continuation, retained C2/long-arrival K0 behavior and ON/OFF normal checks. Prior teacher/KLD/model-agent evidence remains historical; no manual tuning or arithmetic-policy override was introduced. Equality of automatic tuning selections across fresh builds is not claimed.",
   "publication_ready": true,
-  "parent_release": "4.1.4",
-  "parent_hf_revision": "b4708c958986241aeca8f0ceaa90073b2187adf1",
-  "proposed_source_inventory_sha256": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
+  "parent_release": "4.1.5",
+  "parent_hf_revision": "f2ca98d6f82674c30c9bfa30d1efda282f07a009",
+  "proposed_source_inventory_sha256": "c3490cca7a43960575765d73bdf76f4a02645b5d74050f91f00a955b3ebe0f9d",
   "concurrent_k0_source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
   "underlying_shared_checkpoint_ownership_repaired": false,
   "updater_patch": {
-    "source_sha256": "8bf0b8eeae17bab9bddaa19267ed1a12eac24cbeb572b2ddb546949a99174212",
-    "cpu_check_source_sha256": "774d8febc267cf742487420a04f8c46f0615cb1ab88446447cfde5b821d300e4",
-    "change": "Exact version-only 4.1.4 to 4.1.5 compatibility transformation; safety logic unchanged.",
+    "source_sha256": "cfdfdc81397865bf5b687c6a1373a588e81a7c3dd8f96148adf8bf938f1e268f",
+    "cpu_check_source_sha256": "a33a3b44f498115d68f712fbdef3a76a74abce9265d361b5e4e733d9ed025ce8",
+    "change": "Exact frozen-stage version-only 4.1.4 to 4.1.6 compatibility transformation; safety logic unchanged.",
     "version_only_parent_sha256": "b948a925586a1f13eae9ed226bd38567b5854bc420b823542b7137df6391ed0d",
     "cpu_check_parent_sha256": "08aa8ba7c746f861a82d31dc0e7d43e4e3eb73a29731ae79e05839cb4d1fd324",
     "cpu_check_change": "Exact version-only transformation; existing owned distribution assertion and all eight safety cases retained.",
@@ -272,24 +273,24 @@
   "source_port_audit": "evaluation/SOURCE-PORT-CPU-AUDIT.json",
   "port_input_mapping": "tests/correctness/port-inputs.json",
   "production_promoted": false,
-  "assembled_bundle_fingerprint": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
-  "parent_bundle_fingerprint": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "assembled_bundle_fingerprint": "460baee3fff8dc4f4852beddd6d31dfbe395190b4ea6ddb42372a27e5285a2c6",
+  "parent_bundle_fingerprint": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
   "source_wheel": {
     "passed": true,
-    "source_pins": 103,
-    "record_entries": 120,
-    "sha256": "f7519ff869711cefa347bc5fe1d53ff6fff2f40ebe7abf3295b726601ac132af",
-    "filename": "ciru_ornith_g256-4.1.5-py3-none-linux_x86_64.whl",
+    "source_pins": 104,
+    "record_entries": 121,
+    "sha256": "cc105a3fc4a62f9473a021a46592faffa22c564823c4972686deca34ef16f789",
+    "filename": "ciru_ornith_g256-4.1.6-py3-none-linux_x86_64.whl",
     "native_payload_rebuilt": false,
     "runtime_qualified": false
   },
   "source_archive": {
     "filename": "ciru-v4-ornith-source.tar.gz",
-    "sha256": "1e28c4cda7ac9ed318cdd0cf791a84a7aab8e38c703ac3768dd60342df006aa7",
+    "sha256": "cfcc73970677c42f1073f38181f8f45d9e3bf4604e931f977eed935afecf1049",
     "native_built": false,
-    "source_stage_sha256": "ec0398102a958c05b9f7ea4db2486b3f945299e36cc9678b5c428300ac520626"
+    "source_stage_sha256": "926b89af6ebf7e6e58b8b0c6c1c2d80722d6dc486c935c1242beacbdb0de9ceb"
   },
-  "status": "PREFILL_SERVICE_V415_FRESH_LONG_ARRIVAL_NORMAL_AND_CORRECTNESS_GATES_PASS",
+  "status": "MM_SLOTS_V416_NATIVE_GEOMETRY_NATURAL_SERVING_TOOL_AND_PROFILE_GATES_PASS",
   "historical_assembly_proposal": {
     "release": "Ciru v4.1.3 source proposal",
     "package_version": "4.1.3",
@@ -525,57 +526,65 @@
     },
     "status": "ASSEMBLED_PENDING_PRODUCTION_NAMESPACE_QUALIFICATION"
   },
-  "source_inventory_sha256": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
-  "source_stage_fingerprint": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
+  "source_inventory_sha256": "c3490cca7a43960575765d73bdf76f4a02645b5d74050f91f00a955b3ebe0f9d",
+  "source_stage_fingerprint": "c3490cca7a43960575765d73bdf76f4a02645b5d74050f91f00a955b3ebe0f9d",
   "production_activated": false,
   "current_selector_preserved": true,
   "runtime_validation": {
-    "status": "PREFILL_SERVICE_V415_FRESH_LONG_ARRIVAL_NORMAL_AND_CORRECTNESS_GATES_PASS",
-    "report": "evaluation/CIRU-V4.1.5-VALIDATION.json",
-    "report_sha256": "eb57b700a473bb397d141ac4c00adcf0af36624bc12812ad63c4580f28debccc",
+    "status": "MM_SLOTS_V416_NATIVE_GEOMETRY_NATURAL_SERVING_TOOL_AND_PROFILE_GATES_PASS",
+    "report": "evaluation/CIRU-V4.1.6-VALIDATION.json",
+    "report_sha256": "9166bbad05575235a077da0626775b3d17acedd32f505e676c483b1acc894d58",
     "required_scopes": [
-      "long_mixed_arrival_serving",
+      "multimodal_physical_slots",
+      "text_and_policy_guardrails",
       "normal_profiles",
-      "correctness_regressions"
+      "complete_native_agent"
     ],
     "scopes": {
-      "long_mixed_arrival_serving": {
+      "multimodal_physical_slots": {
         "status": "PASS",
         "receipt_targets": [
-          "evaluation/prefill-service-v415/on/arrival-full/long-prefill-arrival-regression.json",
-          "evaluation/prefill-service-v415/candidate-pilot/arrival-pilot/long-prefill-arrival-regression.json"
-        ],
-        "repeated_arrivals": 3,
-        "full_ttft_covered": true,
-        "max_delivered_gap_portion_within_ttft_s": 2,
-        "minimum_incumbent_tokens_per_s": 8
+          "evaluation/mm-slots-v416/baseline-geometry/mm-slot-geometry-assessment.json",
+          "evaluation/mm-slots-v416/candidate-geometry/mm-slot-geometry-assessment.json",
+          "evaluation/mm-slots-v416/operator/operator-gate.json",
+          "evaluation/mm-slots-v416/matched-natural-comparison.json",
+          "evaluation/mm-slots-v416/clean-native-comparison.json"
+        ]
+      },
+      "text_and_policy_guardrails": {
+        "status": "PASS",
+        "receipt_targets": [
+          "evaluation/mm-slots-v416/c1/natural-serving/natural-serving.json",
+          "evaluation/mm-slots-v416/c2/natural-serving/natural-serving.json",
+          "evaluation/mm-slots-v416/c1/long-arrival/long-prefill-arrival-regression.json",
+          "evaluation/mm-slots-v416/c2/cold-c8/mm-slots-cold-c8.json",
+          "evaluation/mm-slots-v416/matched-natural-comparison.json",
+          "evaluation/mm-slots-v416/clean-native-comparison.json"
+        ]
       },
       "normal_profiles": {
         "status": "PASS",
         "receipt_targets": [
-          "evaluation/prefill-service-v415/on/normal-profile-smoke.json",
-          "evaluation/prefill-service-v415/off/normal-profile-smoke.json"
-        ],
-        "completion_cap_omitted": true
+          "evaluation/mm-slots-v416/c1/normal-profile-smoke.json",
+          "evaluation/mm-slots-v416/normal-off/normal-profile-smoke.json",
+          "evaluation/mm-slots-v416/normal-off/natural-serving/natural-serving.json"
+        ]
       },
-      "correctness_regressions": {
+      "complete_native_agent": {
         "status": "PASS",
         "receipt_targets": [
-          "evaluation/prefill-service-v415/on/c1-guardrails/c1-guardrails.json",
-          "evaluation/prefill-service-v415/on/cold-c8/concurrent-q1-serving.json",
-          "evaluation/prefill-service-v415/on/arrival-full/long-prefill-arrival-regression.json",
-          "evaluation/prefill-service-v415/numerical/mixed-long-numerical-summary.json"
-        ],
-        "natural_stop": true,
-        "native_reasoning_unrestricted": true,
-        "paired_mixed_numerical_positions_exact": 64
+          "evaluation/mm-slots-v416/c1/natural-serving/complete-vision-tool-episode/episode.json",
+          "evaluation/mm-slots-v416/c2/natural-serving/complete-vision-tool-episode/episode.json"
+        ]
       }
     },
     "limitations": {
       "cached_shared_checkpoint_ownership_repaired": false,
       "k15_active": false,
       "concurrent_k7_qualified": false,
-      "unrestricted_agent_quality_scored": false
+      "unrestricted_agent_quality_scored": false,
+      "q8_autotune_choices_imported": false,
+      "tuning_choices_changed": false
     }
   },
   "qualification_limitations": {
@@ -584,17 +593,17 @@
     "concurrent_k7_qualified": false,
     "unrestricted_agent_quality_scored": false
   },
-  "version": "4.1.5",
-  "runtime_version": "4.1.5",
-  "parent_release_sha256": "79e2173eb2643304b0b408c61de1ccc8d60548b31b49d1770e4b9ddaf2e9b0a3",
+  "version": "4.1.6",
+  "runtime_version": "4.1.6",
+  "parent_release_sha256": "de34654b7b70534f19c5ef0e5344dc2898ac1fc373127aaa1ada12407a851c7e",
   "parent_evidence": {
-    "hf_revision": "b4708c958986241aeca8f0ceaa90073b2187adf1",
-    "release_sha256": "79e2173eb2643304b0b408c61de1ccc8d60548b31b49d1770e4b9ddaf2e9b0a3",
-    "qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
-    "previous_scope_report": "history/prefill-service-v415-parent/evaluation/CIRU-V4.1.4-VALIDATION.json",
+    "hf_revision": "f2ca98d6f82674c30c9bfa30d1efda282f07a009",
+    "release_sha256": "de34654b7b70534f19c5ef0e5344dc2898ac1fc373127aaa1ada12407a851c7e",
+    "qualified_build_sha256": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
+    "previous_scope_report": "history/mm-slots-v416-parent/evaluation/CIRU-V4.1.5-VALIDATION.json",
     "previous_scopes_reexecuted": false,
     "previous_scopes_are_new_build_qualification": false,
-    "previous_scope_report_sha256": "afbe22514d9a8eeaf4d7130d3191eeb65eb216b777f30c48e7fd67f22c955e0e"
+    "previous_scope_report_sha256": "eb57b700a473bb397d141ac4c00adcf0af36624bc12812ad63c4580f28debccc"
   },
   "concurrency_receipts": {
     "gpu_oracle": {
@@ -668,5 +677,12 @@
         "sha256": "5c3485816f703899a7456eba05100b7b024ea563990981fccb38ff18cb2864d9"
       }
     }
+  },
+  "automatic_tuning_choice_equality_claimed": false,
+  "tuning_scope": {
+    "manual_tuning_or_seed_override_introduced": false,
+    "q8_choices_imported": false,
+    "automatic_selection_equality_verified": false,
+    "retained_tuning_choices_changed_limit": "No manual config-selection/seed-policy override in this source delta; not an assertion of equal automatic choices across fresh builds"
   }
 }

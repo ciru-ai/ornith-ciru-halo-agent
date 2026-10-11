@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """CPU source parity and reservation checks; no GPU runtime imports or writes."""
-import ast, hashlib, importlib.util, io, json, pathlib, unittest
+import ast, hashlib, importlib.util, io, json, pathlib, unittest, contextlib
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 GRAMMAR = '_xgrammar_native/libxgrammar-candidate.so'
 EXPECTED_GRAMMAR = '92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7'
@@ -13,7 +13,7 @@ def main():
     assert __debug__, 'Run without -O'
     plugin = ROOT/'plugin-site/ornith_g256'
     pins = json.loads((plugin/'iu4_correctness/source-pins.json').read_text())['files']
-    assert len(pins)==103 and pins[GRAMMAR]==EXPECTED_GRAMMAR
+    assert len(pins)==104 and pins[GRAMMAR]==EXPECTED_GRAMMAR
     for name,h in pins.items():
         path=plugin/name
         if name==GRAMMAR and not path.exists(): continue
@@ -54,7 +54,14 @@ def main():
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     service_result=unittest.TextTestRunner(stream=stream).run(unittest.defaultTestLoader.loadTestsFromModule(module))
     assert service_result.wasSuccessful() and service_result.testsRun==13, stream.getvalue()
-    print(json.dumps(dict(passed=True, source_pins=103, source_files_local=102 if not (plugin/GRAMMAR).exists() else 103,
+    path=ROOT/'tests/correctness/test_dflash_physical_slots.py'
+    spec=importlib.util.spec_from_file_location('source_physical_slots_cpu_tests',path)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    with contextlib.redirect_stdout(stream):
+        slot_result=unittest.TextTestRunner(stream=stream).run(unittest.defaultTestLoader.loadTestsFromModule(module))
+    assert slot_result.wasSuccessful() and slot_result.testsRun==21, stream.getvalue()
+    print(json.dumps(dict(passed=True, source_pins=104, source_files_local=103 if not (plugin/GRAMMAR).exists() else 104,
+        physical_slot_cpu_tests=slot_result.testsRun,
         prefill_service_cpu_tests=service_result.testsRun,
         compiled_grammar_packaged_hf_only=not (plugin/GRAMMAR).exists(), grammar_sha256=EXPECTED_GRAMMAR,
         helper_ports_ast_equal=len(inputs['qualified_input_mapping']), guard_cpu_tests=result.testsRun,

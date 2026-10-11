@@ -15,6 +15,8 @@ class Worker(Released):
         pins = verify_sources()
         self._iu4_correctness_audit = Path(os.environ['ORNITH_OPTIMIZED_CACHE']) / 'iu4-correctness' / str(os.getpid())
         self._iu4_correctness_audit.mkdir(parents=True, exist_ok=False)
+        from .dflash_physical_slots import install as install_physical_slots
+        self._iu4_physical_slots = install_physical_slots(self, self._iu4_correctness_audit)
         from .final_router_ablation import install_components
         install_components(self, self._iu4_correctness_audit, dict(
             variant='all', repairs=self._iu4_production_selection['repairs']))

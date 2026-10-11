@@ -1,3 +1,7 @@
+# Ciru v4.1.6 physical DFlash-slot release
+
+Use this release's runtime/UPGRADE-CIRU.py for the4.1.6 distribution. The pinned engine, weights and prior release remain available. Existing ON/OFF,262144 context,8 slots,44GiB and prefill16/8192/1120 settings are retained. See evaluation/CIRU-V4.1.6-VALIDATION.json for scoped evidence.
+
 # Ciru v4.1.5 bounded long-prefill service release
 
 This release adds bounded native prefill scheduling while preserving the installed pinned engine, weights and numerical kernels. Use this release's runtime/UPGRADE-CIRU.py for the 4.1.5 distribution. The preceding release and caches remain available for rollback. Fresh long-arrival, ON/OFF normal-profile and correctness checks are recorded in evaluation/CIRU-V4.1.5-VALIDATION.json.
