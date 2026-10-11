@@ -1,0 +1,98 @@
+{
+  "stage": ".",
+  "qualified_input_mapping": {
+    "gates.py": {
+      "source": "tests/correctness/qualified/gates.py",
+      "source_sha256": "20b5766358aff83eb8f99415aac46d9e9781e422c0625ecb6ca79a24c601f3ad",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/gates.py",
+      "staged_sha256": "3c729a9006fc925aef16cb97aab9e198ab12d2c3dacb9a84aee6163f466641d4",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "gates_phase.py": {
+      "source": "tests/correctness/qualified/gates_phase.py",
+      "source_sha256": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/gates_phase.py",
+      "staged_sha256": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "gates_projection.py": {
+      "source": "tests/correctness/qualified/gates_projection.py",
+      "source_sha256": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/gates_projection.py",
+      "staged_sha256": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "shared_live.py": {
+      "source": "tests/correctness/qualified/shared_live.py",
+      "source_sha256": "aee82ac48e2bcc6988475dcfb6ca0669b1f7d6367ed0deae9f725f3665bd1aaa",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/shared_live.py",
+      "staged_sha256": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "shared_kernel.py": {
+      "source": "tests/correctness/qualified/shared_kernel.py",
+      "source_sha256": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/shared_kernel.py",
+      "staged_sha256": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "rng_exact_restore.py": {
+      "source": "tests/correctness/qualified/rng_exact_restore.py",
+      "source_sha256": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/rng_exact_restore.py",
+      "staged_sha256": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "final_sampler.py": {
+      "source": "tests/correctness/qualified/final_sampler.py",
+      "source_sha256": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/final_sampler.py",
+      "staged_sha256": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "final_native_sampling.py": {
+      "source": "tests/correctness/qualified/final_native_sampling.py",
+      "source_sha256": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/final_native_sampling.py",
+      "staged_sha256": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "adaptive_fallback_policy.py": {
+      "source": "tests/correctness/qualified/adaptive_fallback_policy.py",
+      "source_sha256": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_policy.py",
+      "staged_sha256": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "adaptive_fallback_ceiling.py": {
+      "source": "tests/correctness/qualified/adaptive_fallback_ceiling.py",
+      "source_sha256": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_ceiling.py",
+      "staged_sha256": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "adaptive_k3_geometry.py": {
+      "source": "tests/correctness/qualified/adaptive_k3_geometry.py",
+      "source_sha256": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/adaptive_k3_geometry.py",
+      "staged_sha256": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+      "change": "Qualified namespace only; numerical/function AST audit pending"
+    },
+    "final_router_ablation.py": {
+      "source": "tests/correctness/qualified/final_router_ablation.py",
+      "source_sha256": "b19a726e67fda6c54588baba0789737bd70aafa92fdb1e67eead1f4458da2fcc",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/final_router_ablation.py",
+      "staged_sha256": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
+      "change": "Qualified namespace and exact staged source-hash pins only; numerical/function AST audit pending"
+    },
+    "adaptive_concurrent_k0.py": {
+      "source": "tests/correctness/qualified/adaptive_concurrent_k0.py",
+      "source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "staged": "plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py",
+      "staged_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "change": "Byte-exact source-reviewed conservative K0 guard with fresh prefix-read isolation; cached shared-checkpoint ownership gate remains held and actual cold concurrent runtime/pq qualification is pending"
+    }
+  },
+  "public_base_revision": "d8bd86d618c792522efaaad49adcd0de837bb523",
+  "source_inventory_status": "PROPOSED_SOURCE_ONLY_NOT_QUALIFIED"
+}

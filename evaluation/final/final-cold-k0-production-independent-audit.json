@@ -1,0 +1,665 @@
+{
+  "schema": "ciru.ornith.final_cold_k0.production_independent_audit.v1",
+  "audit_utc": "2026-10-11T07:15:49.198386+00:00",
+  "status": "INDEPENDENT_PRODUCTION_NAMESPACE_ORDERED_COLD_C8_NATIVE_K0_NUMERICAL_AUDIT_PASS",
+  "run": "evidence/20261011T070515Z-final-all-oracle-k0-candidate",
+  "review_mode": "Local CPU read-only evidence reassessment; no GPU or remote actions",
+  "frozen_assessor_recomputed_exact": {
+    "status": "NATIVE_ORDERED_COLD_C8_K0_PAIRED_NUMERICAL_DIAGNOSTIC_PASS",
+    "actual_prefix_cache_reads_bypassed_fresh_only": true,
+    "actual_initial_computed_tokens": 0,
+    "actual_prefill_and_decode_history_by_key_and_row_order_exact": true,
+    "discarded_prefill_steps": 20,
+    "discarded_rng_offsets_exact_restored": true,
+    "paired_positions_exact": 256,
+    "reference_and_probe_outputs_each": 256,
+    "same_prefix_raw_full_sparse_p_and_native_emitted_ids_exact": true,
+    "actual_current_and_future_drafts": 0,
+    "api_checks": [
+      {
+        "phase": "ref",
+        "key": "c8-8k-r01",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r02",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r03",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r04",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r05",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r06",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r07",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "ref",
+        "key": "c8-8k-r08",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r01",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r02",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r03",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r04",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r05",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r06",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r07",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      },
+      {
+        "phase": "probe7",
+        "key": "c8-8k-r08",
+        "native_output_ids": 32,
+        "cached_tokens": 0
+      }
+    ],
+    "quality_evidence": false,
+    "performance_eligible": false,
+    "promotion": false
+  },
+  "counts": {
+    "nonempty_steps": 84,
+    "steps_per_phase": 42,
+    "valid_output_rows": 512,
+    "paired_positions": 256,
+    "discarded_prefill_events": 20,
+    "discarded_prefill_rows_total": 38,
+    "actual_batch_sizes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "source_bound_prefix_bypass_events": 30,
+    "unique_prefix_bypass_request_identities": 16
+  },
+  "production_namespace": {
+    "plugin_root": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/plugin-site/ornith_g256",
+    "worker_source_path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/plugin-site/ornith_g256/iu4_correctness/worker.py",
+    "worker_source_sha256": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
+    "source_pin_count": 102,
+    "all_source_pins_verified_exact_to_local_stage": true,
+    "source_pins": {
+      "__init__.py": "6b8b03b748a722d0b37919d8316ea72ca9918848f9eaca30667e96278a88a945",
+      "_vllm_correctness/__init__.py": "963097106407a87b62b275041516144de15713dee65108accc29e27036ffc059",
+      "_vllm_correctness/causal_conv1d.py": "230f3e554f5f1d609a37022578c84e42d5c71d46e684101278a7e21af4f7d418",
+      "_vllm_correctness/chat_completion_serving_r03.py": "5720371f5bcb351e340a3e8d9a0235ec01ff27ed93e4f35542e31b83a055ef45",
+      "_vllm_correctness/gdn_attn.py": "a3c361d502e8bca2aa46a0baed5ec753a3c62e3d027a298e3ed4692794f9f6ec",
+      "_vllm_correctness/gpu_model_runner.py": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf",
+      "_vllm_correctness/manifest.json": "cb6c229fee608c33fd60dfe9e5db48ef8e26917f90fbc53af9d721f1637c2266",
+      "_vllm_correctness/qwen_gdn_linear_attn.py": "9fee739a1298621642513492962df81802be8f8283d520771ba055b369549b6f",
+      "_xgrammar_native/build-receipt.json": "3bdf77657e5157c35938b66dfb46266608ade3b599a62ce74abb3f807d579e84",
+      "_xgrammar_native/libxgrammar-candidate.so": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
+      "_xgrammar_native/selection.json": "7cb93b3fe902de6d604bf96f79fdc3efbd8d612e494da838f6a8f0d731eb89ae",
+      "adaptive_c1.py": "8e48fd874fbdf65183c20bcc7c748d2562dbcafa97e004f18a2818b98980a809",
+      "attention.py": "2fdd3c0ed84dcb052a9e8f9df4068ddf80a969931bea0a295e022d36b753cda1",
+      "attention_compact.py": "50df61a02a3890a2825b205ed18c7d18a2b002333d382c572440b58ca9b2b9fe",
+      "attention_fast.py": "27b1a133cadb87ff3a63c027049e1da81e4112fd5d5260a4440fde85491f838a",
+      "attention_folded.py": "73dac8203032bce6ceedf213d7eefe5987c921768ae237129e232fefd8d9bba3",
+      "attention_iu4.py": "15c5341fc848c43ac956546e563cf8ab7f7649f05a674fb0153b0e2d76438cae",
+      "attention_iu4_persistent.py": "cef74ae423974063212637a49cd64a5a10b9077f3a5e2287746722749a1e6297",
+      "attention_mixed.py": "cbb530697f2555be6532b7d4d3401f3a33c4c58982659e88892720d21691110a",
+      "attention_partition.py": "a8748277d2c121f26e2570581af5a57f1bc1a1a7072f8a213c8cd04d874333a7",
+      "attention_storage.py": "3ab813e221835370bdb503b2ab7d48f46294441b1dd9c652c5dc976438bdb6e2",
+      "attention_tile.py": "f2bf007132bc712c8e61e036ea8a94b54f18a813d9bdd334eee46436a3ca1fea",
+      "attention_verify.py": "3a329599694265f4badecc2f9b709b280d9960b967d7192f3959ad9e0d8c6077",
+      "attention_window.py": "78534f9a1b0beae9ecf80cc5b2a613e4fe4827036c8df0acc7e4dfd956aae1c5",
+      "cache_full1120.py": "3d4240a749d9671c0bf9b3937200e1cd8d4abfe6699d8c1d6857b188c2ef8a8c",
+      "column_backend.py": "a035b839369e733b05f68ce83df0d022cb62455016fccf30c2978127ab3c5403",
+      "column_kernel.py": "27fb053d970184732a46212026afd3152ec07a0dfc3dc4c5cc5cc0d539f17c81",
+      "config.py": "23210d8b625ef375638e2d6043a92a26181a5b5f1c537d9d4b34c91b7109f36f",
+      "dense_n32.py": "119fb7d25e9d28b6e520b5285c10de86c7d8ec2fe29a2399e9c086173d765903",
+      "dense_source.py": "cdc7dd6a13c2439cd405596069c301fe28cb95ff32278f1bafe8118fe357d48e",
+      "dflash_conv_boundary.py": "a5f46458194cade5ddcbfbb51af30c662d12b9086fc459ecbeb17463339febb1",
+      "dflash_spec.py": "c948b99eab22d2af5c5fc0ca9f764a0855a3d86aca0609362bf5474a9beff1b3",
+      "dynamic_graphs.py": "6f51f0dd740f6546829e46bbbe840df2780ce8c49978658eb3a05092554ff90c",
+      "gdn_canonical_kernel.py": "f49e3b0136771ab52360e2fbd1e85ae9ef12e14a97ee72e3043c4c5fd42bc0be",
+      "gdn_compact.py": "8b5c062d10f386d78bc9926ab0576e56359401e5d1621c397a2922e2b426ccab",
+      "gdn_compact_kernel.py": "c6d5940ca2c64e1d814ee274610b2b85be96395c86f46f215c0ba0ac133be6c1",
+      "gdn_spec.py": "bdb0abf70c8b9ffbaa25a1334b0a260ae62ca0aebfa3ada8d9de72e3f0539624",
+      "graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
+      "iu4_correctness/__init__.py": "0f998843138e2d50cedc2092353aca8b2d86a21b9216f707da8f691dff72f597",
+      "iu4_correctness/adaptive_concurrent_k0.py": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+      "iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "iu4_correctness/adaptive_k3_geometry.py": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+      "iu4_correctness/final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+      "iu4_correctness/final_router_ablation.py": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
+      "iu4_correctness/final_sampler.py": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+      "iu4_correctness/gates.py": "3c729a9006fc925aef16cb97aab9e198ab12d2c3dacb9a84aee6163f466641d4",
+      "iu4_correctness/gates_phase.py": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+      "iu4_correctness/gates_projection.py": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+      "iu4_correctness/integration.py": "883c76aa0bf2f47b3c54de11edda48285a18c4870f0432fffc54dd704c6e0f94",
+      "iu4_correctness/rng_exact_restore.py": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+      "iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
+      "iu4_correctness/shared_kernel.py": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+      "iu4_correctness/shared_live.py": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
+      "iu4_correctness/worker.py": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
+      "launch.py": "f724b1130de4c5c38bdcda8c46dafb754bbf94887a8cb9e23a0b765d82d4bbe0",
+      "lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
+      "loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
+      "method.py": "fc301af72efd234430dbfb839d56e74328457b5b83e14a044aeb9554d8acc707",
+      "moe_base.py": "26fb517415f2497859f2e3ff1aed8f31e7c56a4aacccfb34c6638e65d7df07c4",
+      "moe_shared.py": "b1ba457cc20d6ad150dc1fc6854e73365a7476c80d57e687dec7d085d47b98c1",
+      "native.py": "49cce0d67987b9659feb556aafb247423490c2153b7d77b750f055a4fdcda331",
+      "native_tool_schema.py": "910060689d72b47ad4a7bb1e51ef301e41ff0be1beb9cc6b3df01c423d2edef5",
+      "no_spec.py": "561106b75328fe0e161fa1243aca4cf50c5049d8e785d22c90aacb3e1e1a0104",
+      "optimized/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+      "optimized/compile_scope.py": "18971a73b3a5ad80e6212de7f7e419a1dd00eb7380a5e6c8559f5ac6f5ec8d4d",
+      "optimized/draft.py": "e801301cf03d69998758d35fb5463754ccc30a18e030ed2b988b26cef43f429c",
+      "optimized/draft_kernel.py": "3d6da6ef0c144505f888cbd35ba50b6b95ad8e48c376ab73297746bff228919e",
+      "optimized/first_draft_norm.py": "e72ab94df04ef209b7db1f005aa4796b2c94e5c3fc6c0807bf14c71738eef59d",
+      "optimized/grammar_parallel.py": "e9c3608438712521980d7fcd60f58862d0b0a2876620183f304c64a03817edea",
+      "optimized/greedy.py": "386443ad8729f8fe21ec5fef84ead3acfbd4d6c5dd3b4c1e50a7995ed1d1761f",
+      "optimized/greedy_kernel.py": "2ebe2a25d1011a45eea7eda3c0964ca1eb2638df7d60f54db02c91435550dc42",
+      "optimized/launch.py": "880679b2e33881306916db83dd3844d56e3923bd6676a4f196940a8627e393dd",
+      "optimized/mixed_qk_sum.py": "17b18769ae84c2e9707a0257181e5c314e9774fc3b4796f8e6787a8302cb5e1f",
+      "optimized/norm0_barrier.py": "9321a3721076171377f610c03870ea794e7239fc8159a6fad754061b4be21644",
+      "optimized/output_ceiling.py": "3ab42553a52fb32b58bae9b987ffb4f796f3d60bab4345a5ecdf1e85117cf93c",
+      "optimized/pipeline/SOURCE-PROOF.json": "5939bc8a53a831715d05d0fa0290beaa0cb00eda1597fe3bf1f1cfc53699fd0d",
+      "optimized/pipeline/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+      "optimized/pipeline/adapter.py": "6af97a8d5e0d79b7dfc32f2f0fe5f5c53b5c1c50d03542ff99c64cae7f3909e1",
+      "optimized/pipeline/candidate/causal_conv1d.py": "254c540f77b01694696a1ab535abd0e5a23d54e7211e202cf9beead04face16b",
+      "optimized/pipeline/candidate/chunk_o.py": "a93f951048958265b4d1c3f9e67341329196e7a57525433934215fde4b16e61b",
+      "optimized/pipeline/candidate/chunk_scaled_dot_kkt.py": "71735d2b1c4a19eecbb6058708481817bb610426c48f96a5f646784afcf0c65c",
+      "optimized/pipeline/candidate/solve_tril.py": "bdd04b69c0f91562048d25834bd53d298dc1f1bd068b9494af88776b2bf4b1d1",
+      "optimized/pipeline/candidate/wy_fast.py": "4cc0be519bfcf3812d810a4bebb3dd45fb9b13a8d0ab62d0ad463a1a2e36f61f",
+      "optimized/postconv.py": "c58ee5d2b8418fbf69eda5d9ee4f342b11cc012ab77ae25b6ce2b2aea51aa50f",
+      "optimized/prefix.py": "c695a899ab12b58c3b89b6ecc276e82efa3f0833a319911a8528cc4e237710cd",
+      "optimized/qk.py": "33f9d0775079253400ece382003e66bbe4aae582d2206da5a469025515ac3639",
+      "optimized/qk_schedule.py": "911206de6a416264fd2207262dc91077d733f7dc1c5145a19b13ee128ef7bdee",
+      "optimized/worker.py": "dd32a2ab0b1eb6749584dcbf117329702d82b02c9d2f05f6fe59386675f9af9b",
+      "parser_contract.py": "2cebab403dc882569f3ce67d12798df14cebd5c162c72f82becd37bcdd7e2a28",
+      "phase_dispatch.py": "1a4ebdf2af709e6ca519e0a08f6a537602df178ca575332045617631640f8137",
+      "prefill_draft.py": "d79bb29a124639543a64e198908e2eaef4cbcf492f2e5e14debcfc9c867816f5",
+      "prefix_cache.py": "65fb972e285e37741f53b221d2f6380ec464d34a39f36bb66a82dcaacab727d0",
+      "runtime.py": "db43b1c3766720e0dbee4e8617aee673a533c30d36fcc1fbf43919717d8ab149",
+      "runtime_canonical_attention.py": "790b1af6cb1ad470ee72f078357fcc64634797aecdce728050a06fdbdd335b9e",
+      "runtime_correctness.py": "08f41773e623a4f99cf8ab19e434d7e33bac9cfa5eb05a9dc0f4511aab8ba4bc",
+      "strict_qwen/__init__.py": "ee8a5055249f1413fc22f46421ab77b5485aa39b199c68eb5b56c75dcc40922d",
+      "strict_qwen/qwen3.py": "33c653447a144b72257e508ccd92610db6d30578e28f98c69c99281773dead1c",
+      "strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
+      "worker.py": "b2004e6fcbd3bd3cc5b42db666af3dabd1157734689fbae7151e363ff6671968",
+      "worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868",
+      "xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
+    },
+    "selection": {
+      "schema": "ciru.ornith.iu4.correctness.production-selection.v1",
+      "version": "4.1.3",
+      "variant": "all",
+      "repairs": {
+        "ba": true,
+        "router": "all",
+        "shared": true
+      },
+      "filter_backend": "native-pytorch",
+      "native_forward": true,
+      "mixed_routed_adapter": false,
+      "default_policy": "auto",
+      "initial_auto_depth": 3,
+      "active_c1_depths": [
+        0,
+        3,
+        7
+      ],
+      "auto_ceiling": 7,
+      "allocation_depth": 15,
+      "concurrency_depth": 0,
+      "concurrency_decision": "PROPOSED_GUARDED_CONCURRENT_K0_PENDING_MATCHED_RUNTIME_GATE",
+      "context": 262144,
+      "max_sequences": 8,
+      "kv_cache_gib": 44,
+      "qualification": "PROPOSED_SOURCE_ONLY",
+      "publication_ready": false,
+      "promotion": false,
+      "concurrent_k0_guard": true
+    },
+    "actual_rng_source_path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/plugin-site/ornith_g256/iu4_correctness/rng_exact_restore.py",
+    "actual_guard_source_path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py",
+    "actual_native_discard_audit_path": "/srv/llm/work/ornith-iu4-correctness-20261010/cache-final-all/iu4-correctness/3452657/discard-rng.jsonl",
+    "original_native_audit_mirrored_only": true,
+    "numerical_policy_sampler_rng_adapters_reinstalled": false,
+    "production_lifecycle_preserved": true
+  },
+  "observer_sources_as_run_and_current_exact": {
+    "adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+    "adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+    "adaptive_k3_geometry.py": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+    "adaptive_concurrent_k0.py": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+    "final_launch.py": "75777d7f3fcc6c583f90e777e29fe4b189f79b5d8d43a708372e56dff3f96019",
+    "final_numerical_worker.py": "d8e7880ba53c5e8f48a570adbcd6cf2d828cc632c3998844930d6cecf86f469d",
+    "final_sampler.py": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+    "final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+    "final_mixed_routed.py": "a4c5ed60c576c6419110af65afdd354fa0b8a602b961fadba9674b3bf8908928",
+    "final_router_ablation.py": "b19a726e67fda6c54588baba0789737bd70aafa92fdb1e67eead1f4458da2fcc",
+    "final_matched_c8_anchor_capture.py": "7596d1376995c7a6036fadd1ca2fc2dad274e4eec71a5fc4be5895a4e1269a4a",
+    "final_matched_c8_oracle_client.py": "ee89fe0769bf5e8c07cdced5023fd2f9cb2c27c847de29d97d305968a805520d",
+    "final_matched_c8_oracle_client_v2.py": "923d66e4249ff61f11ef9ad5525a4e632fb71a482429c6dbf7b2215de12aafdb",
+    "final_matched_api.py": "9eddcbe28200c0c635dab8599aee1417a924ccd53add789e20ddecf46d3af002",
+    "final_concurrent_k0_capture.py": "eeed889f0468d3486c6271db9421d6cf93b4794a303904b13929ac1694d93297",
+    "final_concurrent_k0_client.py": "22edc568eb04c5339ac103eb84e2d0a7ec25e2a0fdf97b29a332afd611c14d79",
+    "final_cold_validation_worker.py": "89f3a9ab67a30e8be45ff7548c64ef3c446298a21324bf1fe1d263a835406ff3",
+    "final_cold_launch.py": "2f2b848196d932ca7e09498d8c21e10981bfaedce135f1e121be1a472691c5f5",
+    "final_cold_k0_capture.py": "e1c0388ec08aa72e99fa1d5b6e89b05f01b572bc37aade3facb91510bc9a0352",
+    "final_cold_k0_client.py": "ba30814084ccfa2e6125f49fdb8f6fa6cfff19d2658fe3f3a4b91309280c4e43",
+    "production_validation_worker_v2.py": "cee58ab2041031eb41653c77c3e368e9ca517b4ebcf9c2a38c66e62f4af15a85",
+    "production_validation_launch_v2.py": "26bd7ed14e1ec52f00350512e6cb040021aacd14e7c300e0364c258d54607aa8",
+    "production_validation_identity_v2.py": "33c84574064a514cd464344d55b3932393b20d48991a5c069c3f31892d55c43f",
+    "final_cold_k0_production_capture.py": "4d2bed2fde3504ff43f65e845f26a9cb3fd07e3b2c8a278ecdf15515b2ae28ed"
+  },
+  "actual_engine": {
+    "pid": 3452657,
+    "hostname": "sozo",
+    "runtime_packages": {
+      "torch": "2.13.0+rocm10.0.0",
+      "vllm": "0.1.0rc2.dev9+g9255fd9fb9.rocm100",
+      "triton": "3.8.0+git4cff872c.rocm10.0.0"
+    },
+    "quantization": "ornith_g256",
+    "context": 262144,
+    "kv_cache_gib": 44,
+    "max_num_sequences": 8,
+    "source_and_config_bound_install_receipt": {
+      "pid": 3452657,
+      "adapter_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "policy_module": "ornith_g256.iu4_correctness.adaptive_fallback_policy",
+      "policy_source_sha256": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "scheduler_source_sha256": "30160d4df0366e22f9ff583d991e2898b3b65c5d25e471a209578336e24001b5",
+      "request_source_sha256": "da610d5203e72d2d524adc5fb39df11502a23520f2f31d9a44cf13d343f9c25d",
+      "runtime_source_verified": true,
+      "runtime_config_verified": true,
+      "runtime_config": {
+        "max_concurrent_batches": 1,
+        "async_scheduling": false,
+        "pipeline_parallel": false,
+        "use_v2_model_runner": false,
+        "max_num_running_reqs": 8,
+        "unfinished_requests_zero_in_flight_tokens": true,
+        "unfinished_requests_zero_output_placeholders": true
+      },
+      "single_concurrent_batch_required": true,
+      "scheduled_concurrency_range": [
+        2,
+        8
+      ],
+      "concurrent_draft_depth": 0,
+      "conservative_multiple_unfinished_requests": true,
+      "clears_before_reservation": true,
+      "clears_future_concurrent_rows": true,
+      "preserves_original_auto_pause_and_k3_reset": true,
+      "true_solo_c1_policy_unchanged": true,
+      "c1_fixed_modes_unchanged": true,
+      "fresh_concurrent_prefix_reads_bypassed": true,
+      "prefix_read_bypass_latched_for_fresh_recompute": true,
+      "unlatched_true_solo_c1_prefix_reads_unchanged": true,
+      "ongoing_committed_kv_reset": false,
+      "underlying_shared_checkpoint_ownership_repaired": false,
+      "allocation_capacity_unchanged": true,
+      "committed_tokens_or_kv_positions_changed": false,
+      "numerical_or_sampling_rng_changes": false,
+      "performance_qualified": false,
+      "default_selected": false,
+      "promotion": false
+    }
+  },
+  "cross_research_comparison": {
+    "run": "evidence/20261011T070201Z-final-all-oracle-k0-candidate",
+    "positions_per_phase": 256,
+    "positions_total": 512,
+    "complete_actual_prefill_decode_history_by_key_and_order_exact": true,
+    "all_observed_raw_full_p_prefix_and_native_ids_exact": true,
+    "initial_full_vocab_tensor_storages_byte_exact": 16,
+    "weights_stat_inventory_exact_ignoring_stage_path_only": true,
+    "mapped_native_libraries_names_and_sha256_exact_ignoring_stage_path_only": true
+  },
+  "raw_tensor_checks": [
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r01-initial.pt",
+      "sha256": "7986ccf29131e408de9ef70d81a81729363b39af4005f04323fe1cd7d8f5ff29",
+      "raw_storage_sha256": "a3b561455455799196c11f1d26aa0d4b35b2c9d08fcbcf34c27112cf3f1d0e0b",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r02-initial.pt",
+      "sha256": "8aa321d4011fb3002ff7c1099cd41a51b87f5790c338a2b999e61e4b97ae66a0",
+      "raw_storage_sha256": "87fe0460de61c89e006811baabbe0145de69434b78cd8ec77838287bc47dde10",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r03-initial.pt",
+      "sha256": "6c7fe3df950434a7466695bf005134db67ce0627cbbbbdb7d6577602864c4a8a",
+      "raw_storage_sha256": "f4b88e16432753729537ed624553382a1ebc1a5e0cb4262bc984a98d054f06c1",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r04-initial.pt",
+      "sha256": "c5aa43e2a4786097dc670434cf2959f2157aae2af69c96a2abfc6927544c68de",
+      "raw_storage_sha256": "dadfbb74348d6d38bcb184f83543e96e6aae529eeacc1b713a59ab92f8cdcad0",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r05-initial.pt",
+      "sha256": "657f113ded395fbb292790e2708cb61afbdc9854cf80aa888da63b53afda2e0d",
+      "raw_storage_sha256": "d2a5873d9d16cae0df6b0391c5010adb50487f11fcfb58bceb72bb76f926d64f",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r06-initial.pt",
+      "sha256": "788c82946807534704fc417b70d143695302483532526af541a266237fd1bb5b",
+      "raw_storage_sha256": "d596d19313e0417ed1a8dd183979322ded27e471369800aee1a866f40a98b86b",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r07-initial.pt",
+      "sha256": "6c9ce1159454c2c594356e2c8d26e675e4944451ed1933c70b8d95d06a7b4edb",
+      "raw_storage_sha256": "5618948b9507b9e5e691105bb2b65dfb453b55cd71afb400d252247f8a46a3b5",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/ref-c8-8k-r08-initial.pt",
+      "sha256": "51630ce5ee32bcb63f5322292081907e3b9f1346ed438a51783a84382c158b69",
+      "raw_storage_sha256": "c9a2ee9e7ebcb4bbfb4d7969dd2e28e6b6c3b32ecd3319a3514976539f27cf94",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r01-initial.pt",
+      "sha256": "e3e0fcfbb497f734510efbc96437d8a56f52d94a0ebfec9602772f1ff7c18cb6",
+      "raw_storage_sha256": "a3b561455455799196c11f1d26aa0d4b35b2c9d08fcbcf34c27112cf3f1d0e0b",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r02-initial.pt",
+      "sha256": "4c6013048fbc847b20cc8faca70ef7b60a19dbb40df2bc40bb05095dd14a1409",
+      "raw_storage_sha256": "87fe0460de61c89e006811baabbe0145de69434b78cd8ec77838287bc47dde10",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r03-initial.pt",
+      "sha256": "8983b68c04dd83ae1ffd778d145616f36c92b24b8b2ec490e3b936e25d5294f2",
+      "raw_storage_sha256": "f4b88e16432753729537ed624553382a1ebc1a5e0cb4262bc984a98d054f06c1",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r04-initial.pt",
+      "sha256": "e8946249aec77d73b3613ff3cb5a8b55b2a522e8e3407aa5ab93b4c1cae229e4",
+      "raw_storage_sha256": "dadfbb74348d6d38bcb184f83543e96e6aae529eeacc1b713a59ab92f8cdcad0",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r05-initial.pt",
+      "sha256": "c33630978dddcb8e73b141581bc83d171cd9ad8ca701a33dd029459a4088f51b",
+      "raw_storage_sha256": "d2a5873d9d16cae0df6b0391c5010adb50487f11fcfb58bceb72bb76f926d64f",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r06-initial.pt",
+      "sha256": "92a6cc55fa396c57765bd6f57448bdd7c481ce157b46744f299af53d3ca00992",
+      "raw_storage_sha256": "d596d19313e0417ed1a8dd183979322ded27e471369800aee1a866f40a98b86b",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r07-initial.pt",
+      "sha256": "7fd6e86b9820b454a61b41e9fc015e26e2f77237fd677598434f5ed3c8af4055",
+      "raw_storage_sha256": "5618948b9507b9e5e691105bb2b65dfb453b55cd71afb400d252247f8a46a3b5",
+      "matches_trace_and_research_tensor_byte_exact": true
+    },
+    {
+      "path": "cold-k0-trace/probe7-c8-8k-r08-initial.pt",
+      "sha256": "21ab93f9175b3c440da2d0f3f5fd6d8813c35e508c8ca470e37bc3f5565bce78",
+      "raw_storage_sha256": "c9a2ee9e7ebcb4bbfb4d7969dd2e28e6b6c3b32ecd3319a3514976539f27cf94",
+      "matches_trace_and_research_tensor_byte_exact": true
+    }
+  ],
+  "raw_sse_checks": [
+    {
+      "phase": "ref",
+      "key": "c8-8k-r01",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r02",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r03",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r04",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r05",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r06",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r07",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "ref",
+      "key": "c8-8k-r08",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r01",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r02",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r03",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r04",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r05",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r06",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r07",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    },
+    {
+      "phase": "probe7",
+      "key": "c8-8k-r08",
+      "raw_sse_tokens_exact_to_trace": true,
+      "completion_tokens": 32,
+      "finish_reason": "length"
+    }
+  ],
+  "weights_identity": {
+    "method": "Retained file stat inventory and prior provenance; no fresh full weight hash",
+    "files": 57,
+    "bytes": 21502533416,
+    "weights_rehashed": false,
+    "stat_inventory_sha256": "6547132eede06c60e528fbd05212bbc6bfbea8883a22408b214f2f053dc91762"
+  },
+  "mapped_native_libraries": [
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_attention_iu4.so",
+      "sha256": "3d29cf3616c69f9fe2b89f8d3564d479dda682fdc06572886e7b60faccc9a53a"
+    },
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_dense_g256.so",
+      "sha256": "dc9bbf04f02f951fb444feaea2f612671867aad44929a30fdfadef8e5d5513a9"
+    },
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_dense_g256_n32.so",
+      "sha256": "504b832eea9279f98be4eab3342f0ddd31a5b3d191235f856acaf1c1b0e970c9"
+    },
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_head_i8_tile.so",
+      "sha256": "99ccdf750ebfd3286c8039287032f221861b81963dcbece2701831c83bb3746e"
+    },
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_persistent_iu4.so",
+      "sha256": "c70ba14d5aebf67b761ea54cfc9a38f8bbedf74cfca8b19050048acda9c8a06c"
+    },
+    {
+      "path": "/srv/llm/work/ornith-v413-k037-assembled-v2/bundle/native/libornith_routed_storage_n32.so",
+      "sha256": "d1d7d7eafebf90091c3f996825e41592c311be62bebac653062ea8a4e31f1c56"
+    }
+  ],
+  "restoration": {
+    "exit_code": 0,
+    "restored_previously_active_main": true,
+    "main_healthy": true,
+    "service": "ActiveState=active\nFragmentPath=/etc/systemd/user/qwen-main.service\nUnitFileState=enabled\nMainPID=3461950\n"
+  },
+  "evidence_sha256": {
+    "server.log": "c58a414984157666e1656976e18abeb194d9f7ea8c8aa3dcd471c6afd87c392e",
+    "identity.json": "46967c6dbbde82fd04eba753ee9967bebe4bab0f2e42f830f6080c4860082d6a",
+    "runtime-proof.json": "64d895ce66054fafe5e0ea466dcaaca2846cd387b86e07556f2adf386894f103",
+    "engine-maps.txt": "491386eec0c589312e99ffde9414c65de654c703043aa66fe41179cb0a510a90",
+    "cold-k0-trace/contract.json": "a15a8903522ad534c6f8e56e9d0c829990cb259158826575ba313b81c60dd6ca",
+    "cold-k0-trace/steps.jsonl": "58901861cc4ed24631c908dd61f88c5ecb48cb5f5ec0d7864090afd947ad9b14",
+    "discard-rng.jsonl": "37f10e054dca8032b0ed3b03b346a7c7562f29f157320b85b891c4270eb4f5de",
+    "cold-k0-strict-summary.json": "8db37ec7bbfd559e7da7b00cefd2fc943bfb43701da92d7cad968fa257906e8f",
+    "candidate-contract.json": "8f8c9ea656fa1688842fe1a4746d30f62ee375ca8cc3c2ca05dcf42318ba9782",
+    "final-selection.json": "d627563e233d213b0e0fbea87ff9fe3d98abd596112ce901984f5af030c47458",
+    "settings.json": "d410481c7e6d66cb23aa69c3047d452a15ecc824439ffa2974755946d5e77b6f",
+    "restoration.json": "5fbc4522e7aa9746f2ffbe6027cfd937a420591c7ba112cc2cb79e45a3113f8a",
+    "cold-k0-ref-admission.json": "a2c96357a8686dac82c9607a6e991db8cddb3b5494c16985b5e7d30309074897",
+    "cold-k0-probe7-admission.json": "da101c10fa7bc6ba3ab294b902500980d17e00f49a564bed96e1efb01fb751ce"
+  },
+  "scope": {
+    "qualification": "Actual production namespace cold C8 K0 repeated native32/32 diagnostic; exact research comparison",
+    "fixed_k0_diagnostic_only": true,
+    "native_temperature": 1.0,
+    "native_top_p": 0.95,
+    "native_top_k": 20,
+    "native_seed": 15035,
+    "no_oracle_coupling": true,
+    "no_draft_q_injection": true,
+    "quality_evidence": false,
+    "performance_eligible": false,
+    "auto_recovery_qualified": false,
+    "production_c1_k3_k7_qualified": false,
+    "k15_qualified": false,
+    "promotion": false,
+    "underlying_shared_checkpoint_ownership_repaired": false,
+    "prior_cached_c8_gate_remains_held": true,
+    "mapped_libraries_not_complete_dispatch_proof": true
+  }
+}

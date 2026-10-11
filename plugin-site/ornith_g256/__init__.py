@@ -1,11 +1,17 @@
 """Ciru G256 prototype; no installed vLLM files are modified."""
 
 
+from .iu4_correctness.integration import prepare_policy as _prepare_iu4_policy
+_prepare_iu4_policy()
+
 from .xgrammar_native import install as _install_native_grammar
 _install_native_grammar()
 
 from .runtime_correctness import install as _install_correctness
 _install_correctness()
+
+from .iu4_correctness.integration import prepare_geometry as _prepare_iu4_geometry
+_prepare_iu4_geometry()
 
 
 def register():

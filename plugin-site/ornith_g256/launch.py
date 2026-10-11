@@ -22,9 +22,9 @@ def parser():
     p.add_argument('--draft', type=Path, help='DFlash2 checkpoint (required for dflash)')
     p.add_argument('--native-library-directory', type=Path, required=True)
     p.add_argument('--mode', choices=('dflash', 'ar', 'mtp1'), default='dflash')
-    p.add_argument('--draft-tokens', type=int, choices=(0, 7, 15), default=None,
-                   help='Fixed C1 draft depth, including above 32K: 0, 7 or 15. '
-                        'Omit for adaptive C1; C2–8 retains 7. 0 retains drafter allocations.')
+    p.add_argument('--draft-tokens', type=int, choices=(0, 3, 7), default=None,
+                   help='Fixed C1 draft depth at every context: 0, 3 or 7. '
+                        'Omit for AUTO starting at3 with ceiling7; allocation capacity remains15.')
     p.add_argument('--port', type=int, default=8000)
     p.add_argument('--host', default='127.0.0.1')
     p.add_argument('--served-name', default='ornith-g256-dflash2')
@@ -315,6 +315,14 @@ def make_settings(a):
     s['prefix_cache_retention_interval'] = 0
     s['additional_config']['ornith_g256']['draft_full_retention'] = False
     return s
+
+
+
+# Source-proposed production integration; numerical/serving gates are separate.
+_iu4_parent_make_settings = make_settings
+def make_settings(a):
+    from .iu4_correctness.integration import validate_settings
+    return validate_settings(_iu4_parent_make_settings(a))
 
 if __name__ == '__main__':
     main()

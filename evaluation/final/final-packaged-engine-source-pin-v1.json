@@ -1,0 +1,14 @@
+{
+  "schema": "ciru.ornith.packaged-engine-source-pin.v1",
+  "utc": "2026-10-11T07:10:10.212663+00:00",
+  "wheel": "/srv/llm/work/ornith-v413-public-parent/runtime/wheels/vllm-0.1.0rc2.dev9+g9255fd9fb9.rocm100-cp314-cp314-linux_x86_64.whl",
+  "wheel_sha256": "ba5b1c0f957c41cf0d4d0af36df59cbe25ae5d0640766baea6d7ce32506d2317",
+  "zip_member_sha256": {
+    "vllm/v1/core/sched/scheduler.py": "30160d4df0366e22f9ff583d991e2898b3b65c5d25e471a209578336e24001b5",
+    "vllm/v1/request.py": "da610d5203e72d2d524adc5fb39df11502a23520f2f31d9a44cf13d343f9c25d"
+  },
+  "actual_loaded_source_pin_match": true,
+  "engine_wheel_modified": false,
+  "unused_opt_source_checkout_not_runtime": true,
+  "promotion": false
+}

@@ -1,5 +1,13 @@
 # Ornith1.5 Ciru Halo Agent
 
+## Ciru v4.1.3 — October 11, 2026
+
+The Ornith IU4 runtime now uses qualified K0/K3/K7 adaptive DFlash2, canonical native sampling, and conservative depth-zero concurrent serving with fresh-request prefix-read isolation. K15 remains parked; the underlying cached checkpoint ownership issue remains unresolved. The scored agent benchmarks keep their original build labels.
+
+[Release checksums and pinned download](CIRU-V4.1.3-RELEASE.json), [seven scoped validation gates](CIRU-V4.1.3-VALIDATION.json), [install/update instructions](docs/CIRU-V4.1.3/INSTALL.md), [measured results and limits](docs/CIRU-V4.1.3/RESULTS.md). This update qualifies Ornith only; previous Apodex results and attribution are retained. Weights, native libraries and pinned engine wheels are preserved.
+
+[Pinned Hugging Face release](https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/tree/2bf99aea28065e2bb67159f8fe19153b0a6e850f).
+
 ## Ciru v4.1.2 — October 5, 2026
 
 **Release source references refreshed October 7, 2026.** [Current source provenance](SOURCE-PROVENANCE.json) and [pinned Ornith/Apodex packages](CIRU-V4.1.2-RELEASE.json) identify the published v4.1.2 code, source archives and weight-preserving upgrade helpers by checksum. This refresh changes release metadata only.

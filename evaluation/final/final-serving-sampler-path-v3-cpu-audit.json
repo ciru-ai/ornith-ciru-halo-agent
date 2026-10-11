@@ -1,0 +1,77 @@
+{
+  "schema": "ciru.ornith.final_serving.sampler_path.cpu_audit.v3",
+  "passed": true,
+  "finalized": true,
+  "cpu_only": true,
+  "gpu_or_remote_work": false,
+  "numerical_or_scheduler_changes": false,
+  "raw_metrics_math_changed": false,
+  "existing_captures_modified": false,
+  "checks": {
+    "status": "FINAL_MEASUREMENT_CPU_SELF_CHECK_PASSED",
+    "real_c1_rows": 4,
+    "real_c8_raw_streams": 8,
+    "counter_negative_mutations": 4,
+    "pool_mirror_memory_checks": true,
+    "zero_proposal_acceptance_is_na": true,
+    "numerical_contract": {
+      "positive": 8,
+      "negative_mutations": 57,
+      "missing_field_mutations": 14,
+      "native_target_path_positive": 2,
+      "native_target_path_negative_mutations": 7,
+      "concurrent_guard_install_and_actual8_source_pid_binding": true,
+      "concurrent_fresh_prefix_read_isolation_source_pid_and_all8_request_binding": true,
+      "cached_shared_checkpoint_ownership_gate_closed": false
+    },
+    "controlled_admission": {
+      "source_pid_and_exact_frontend8_verified": true,
+      "partial_frontend_is_not_engine_queue_proof": true,
+      "resume_timing_excludes_paused_admission_wait": true,
+      "early_token_and_invalid_source_mutations_rejected": 37,
+      "failure_path_native_resume_is_idempotent": true
+    },
+    "engine_environment": {
+      "passed": true,
+      "exact_environment_keys": 10,
+      "negative_mutations": 38,
+      "actual_worker_source_parent_source_pid_run_binding_required": true,
+      "proc_environ_not_used": true,
+      "numerical_or_scheduler_changes": false
+    },
+    "measurement_source_pairs": {
+      "reviewed_pairs": 2,
+      "negative_mutations": 14,
+      "legacy_allowed_only_exact_complete_a1": true
+    }
+  },
+  "source_sha256": {
+    "tools/final_serving_client_v2.py": "5793491d137da6359155bb8316213f69ff7e3de9d838f7f8b97d07453a26faf2",
+    "tools/final_serving_client_v3.py": "22add3ed119a5ca28d2a834b4e4b65b9d6db3a9f84f35f098b16949527ea85e3",
+    "tools/final_measurement_compare_v2.py": "fa0c51bfc3ea08dacba852746014268ca1924711a3740bd3cdd7e1517b2268d8",
+    "tools/final_measurement_compare_v3.py": "f0048e78fd16cff224b131137c2d8e10019f59c5dbe480d3cab9133ac1eb9a8a",
+    "tools/final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f"
+  },
+  "scope": "Exact target native sampler property or nn.Module path representation compatibility; one complete source-bound A1 retained; other three measurements require new reviewed source pair.",
+  "ast_changes": {
+    "final_serving_client_v3.py": {
+      "changed_existing_definitions": [
+        "check_native_sampling_binding",
+        "self_check_contract"
+      ],
+      "new_definitions": [],
+      "unchanged_existing_definitions": 20
+    },
+    "final_measurement_compare_v3.py": {
+      "changed_existing_definitions": [
+        "load_run",
+        "self_check"
+      ],
+      "new_definitions": [
+        "measurement_source_pair",
+        "self_check_source_pairs"
+      ],
+      "unchanged_existing_definitions": 9
+    }
+  }
+}

@@ -1,0 +1,822 @@
+{
+  "status": "OFFLINE_RELEASE_ASSEMBLED_PENDING_QUALIFICATION",
+  "passed": true,
+  "parent_hf_revision": "d8bd86d618c792522efaaad49adcd0de837bb523",
+  "parent_manifest_sha256": "0e1f55dc236052460a91f3f1458dc1207bb75f8527b2ebb87e45f2043bebfca5",
+  "verified_parent_files": 234,
+  "model_bytes_read_once": 24316669672,
+  "physical_model_bytes_copied": 0,
+  "immutable_links": {
+    "bundle/models/draft/model.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/draft/model.safetensors",
+      "sha256": "a42e77e19c74a31e990aac9b62e9ac82a01268a202ade1751baefc6574b082aa",
+      "stat": {
+        "device": 66308,
+        "inode": 31098985,
+        "bytes": 1052513488,
+        "mtime_ns": 1788719723635611933
+      }
+    },
+    "bundle/models/source-prefill.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/source-prefill.safetensors",
+      "sha256": "8c247cf39886fc9f7d41eecdf92f5a08a4248d2df047c26bffbd9f1b82099fee",
+      "stat": {
+        "device": 66308,
+        "inode": 30836380,
+        "bytes": 1761622768,
+        "mtime_ns": 1788866087525015884
+      }
+    },
+    "bundle/models/target/g256-layer-00.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-00.safetensors",
+      "sha256": "2694c2ecf5f763fdf3ae657e71d9fed15976aeca55049f77d84674437fb94e21",
+      "stat": {
+        "device": 66308,
+        "inode": 30836962,
+        "bytes": 434161416,
+        "mtime_ns": 1788772960362346225
+      }
+    },
+    "bundle/models/target/g256-layer-01.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-01.safetensors",
+      "sha256": "341e7463ae071bbfcc3e106b8addad920ae4da796341a0c8ee3019d2c3c4431e",
+      "stat": {
+        "device": 66308,
+        "inode": 30836963,
+        "bytes": 434161416,
+        "mtime_ns": 1788773015519468620
+      }
+    },
+    "bundle/models/target/g256-layer-02.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-02.safetensors",
+      "sha256": "7d15a2b21d86a558b8d49d7a8d4185ea547a8a6715819ba669c53f598273f2c3",
+      "stat": {
+        "device": 66308,
+        "inode": 30836964,
+        "bytes": 434161416,
+        "mtime_ns": 1788773074775414811
+      }
+    },
+    "bundle/models/target/g256-layer-03.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-03.safetensors",
+      "sha256": "fbcff37ef0e3918292759ea9b08e6a8e1aab6b984a6bdc89aec8b80a1f9ccd5b",
+      "stat": {
+        "device": 66308,
+        "inode": 30836965,
+        "bytes": 430917376,
+        "mtime_ns": 1788773127403731880
+      }
+    },
+    "bundle/models/target/g256-layer-04.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-04.safetensors",
+      "sha256": "0ff4d98002fa8f83b22795564110f41b8957c902fe7dea88767564de569fdfdd",
+      "stat": {
+        "device": 66308,
+        "inode": 30836966,
+        "bytes": 434161416,
+        "mtime_ns": 1788773177892181350
+      }
+    },
+    "bundle/models/target/g256-layer-05.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-05.safetensors",
+      "sha256": "acaf51aa415f36156b22778e99bae3bb4d53b01765cba4774feb77ba9c641574",
+      "stat": {
+        "device": 66308,
+        "inode": 30836967,
+        "bytes": 434161416,
+        "mtime_ns": 1788773228453647831
+      }
+    },
+    "bundle/models/target/g256-layer-06.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-06.safetensors",
+      "sha256": "63437d70b4a0d63e384e83a58f57d9c5b79224b2e7f4189560ab2ccd4b430e9f",
+      "stat": {
+        "device": 66308,
+        "inode": 30836968,
+        "bytes": 434161416,
+        "mtime_ns": 1788773274677348131
+      }
+    },
+    "bundle/models/target/g256-layer-07.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-07.safetensors",
+      "sha256": "9a43faceb88129feab96f8a722b37cce0ff1e25d04b6d43929fb4f4f984b5805",
+      "stat": {
+        "device": 66308,
+        "inode": 30836969,
+        "bytes": 430917376,
+        "mtime_ns": 1788773321065054674
+      }
+    },
+    "bundle/models/target/g256-layer-08.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-08.safetensors",
+      "sha256": "b219b2a2ad9077f0937bd170e04d204eb08952d5e0a6474d3f9fba2ebf97f53a",
+      "stat": {
+        "device": 66308,
+        "inode": 30836970,
+        "bytes": 434161416,
+        "mtime_ns": 1788773367451774441
+      }
+    },
+    "bundle/models/target/g256-layer-09.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-09.safetensors",
+      "sha256": "67e1820120740d6e8cd5ab2cd1c357265c09dc60c9e42171f24e62014e1b0b5d",
+      "stat": {
+        "device": 66308,
+        "inode": 30836971,
+        "bytes": 434161416,
+        "mtime_ns": 1788773413976499512
+      }
+    },
+    "bundle/models/target/g256-layer-10.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-10.safetensors",
+      "sha256": "a7cb0142f13de82bca4210a908def2aa8a760829a9ea3d9bcb5656c5dac4e6dc",
+      "stat": {
+        "device": 66308,
+        "inode": 30836972,
+        "bytes": 434161432,
+        "mtime_ns": 1788773461711176901
+      }
+    },
+    "bundle/models/target/g256-layer-11.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-11.safetensors",
+      "sha256": "12926c6e327a1923a06238a184d03d4ae8d55f619053878e2e4203f4a3cac157",
+      "stat": {
+        "device": 66308,
+        "inode": 30836973,
+        "bytes": 430917392,
+        "mtime_ns": 1788773512880698904
+      }
+    },
+    "bundle/models/target/g256-layer-12.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-12.safetensors",
+      "sha256": "2bae20ab1fd5c3a9fdcd816b5247ac8b9d7cc701e53c1875a91e40efbcf97e41",
+      "stat": {
+        "device": 66308,
+        "inode": 30836974,
+        "bytes": 434161432,
+        "mtime_ns": 1788773564519209365
+      }
+    },
+    "bundle/models/target/g256-layer-13.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-13.safetensors",
+      "sha256": "0e4392814980c8a92f5a14fa9ddf6944dfbdf3ae9891ff84ecd2769a2ceef972",
+      "stat": {
+        "device": 66308,
+        "inode": 30836975,
+        "bytes": 434161432,
+        "mtime_ns": 1788773613467858891
+      }
+    },
+    "bundle/models/target/g256-layer-14.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-14.safetensors",
+      "sha256": "44835617cb2d63df2bb1f1687e1175b483f6a68f1ae1ead725988e5eac7b6b05",
+      "stat": {
+        "device": 66308,
+        "inode": 30836976,
+        "bytes": 434161432,
+        "mtime_ns": 1788773665045391129
+      }
+    },
+    "bundle/models/target/g256-layer-15.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-15.safetensors",
+      "sha256": "255a1cf529717c474847f6b18cf91dfc82682defefb7ee50d5ec9ffd893bb819",
+      "stat": {
+        "device": 66308,
+        "inode": 30836977,
+        "bytes": 430917392,
+        "mtime_ns": 1788773715306994336
+      }
+    },
+    "bundle/models/target/g256-layer-16.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-16.safetensors",
+      "sha256": "f76287106467e4654b07cb03e0e457c03e6e76e93d90d6ea155e76b97e81ce2c",
+      "stat": {
+        "device": 66308,
+        "inode": 30836978,
+        "bytes": 434161432,
+        "mtime_ns": 1788773763261714235
+      }
+    },
+    "bundle/models/target/g256-layer-17.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-17.safetensors",
+      "sha256": "72a09dd4f86e3517b2c3e86ba2cfc8ae9ef115574b77db1e8b2c5cf30795c2cd",
+      "stat": {
+        "device": 66308,
+        "inode": 30836979,
+        "bytes": 434161432,
+        "mtime_ns": 1788773812268390241
+      }
+    },
+    "bundle/models/target/g256-layer-18.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-18.safetensors",
+      "sha256": "961d8bb374ecc9e87189f99c058afa8c053dcfa7f2745d22684c9c141e94e29f",
+      "stat": {
+        "device": 66308,
+        "inode": 30836980,
+        "bytes": 434161432,
+        "mtime_ns": 1788773864168935141
+      }
+    },
+    "bundle/models/target/g256-layer-19.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-19.safetensors",
+      "sha256": "b2141170820a3c74e4baea9848d97d334991eda5caee27b277a47e22c673ed35",
+      "stat": {
+        "device": 66308,
+        "inode": 30836981,
+        "bytes": 430917392,
+        "mtime_ns": 1788773915788498993
+      }
+    },
+    "bundle/models/target/g256-layer-20.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-20.safetensors",
+      "sha256": "ab472b98a70588028256fb13b156321ed72c5886aef0c188fc527cafc97ee90c",
+      "stat": {
+        "device": 66308,
+        "inode": 30836942,
+        "bytes": 434161432,
+        "mtime_ns": 1788773027782793558
+      }
+    },
+    "bundle/models/target/g256-layer-21.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-21.safetensors",
+      "sha256": "be0ac2057cd2ae5960a5bb97f236b409c0478dc5e763114768c515590a0c008b",
+      "stat": {
+        "device": 66308,
+        "inode": 30836943,
+        "bytes": 434161432,
+        "mtime_ns": 1788773074872932946
+      }
+    },
+    "bundle/models/target/g256-layer-22.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-22.safetensors",
+      "sha256": "038de60de85136a808e1311f4a69a1237c6fe5d0b46f0f18e5832f69732c0836",
+      "stat": {
+        "device": 66308,
+        "inode": 30836944,
+        "bytes": 434161432,
+        "mtime_ns": 1788773124408110355
+      }
+    },
+    "bundle/models/target/g256-layer-23.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-23.safetensors",
+      "sha256": "980245a0cb079d820bcf8f35316d7c7a32c11656d5e2dc3daaab584dedc7df33",
+      "stat": {
+        "device": 66308,
+        "inode": 30836945,
+        "bytes": 430917392,
+        "mtime_ns": 1788773173088248236
+      }
+    },
+    "bundle/models/target/g256-layer-24.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-24.safetensors",
+      "sha256": "a08ea701863150d27a1989548a120a79b8ef263bc4bb260c379648d5c17ce4ee",
+      "stat": {
+        "device": 66308,
+        "inode": 30836946,
+        "bytes": 434161432,
+        "mtime_ns": 1788773228079512910
+      }
+    },
+    "bundle/models/target/g256-layer-25.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-25.safetensors",
+      "sha256": "797b1d326fef7cfde315378fc2e7a5bcca65c776161c49a7e705c6647e56e2f7",
+      "stat": {
+        "device": 66308,
+        "inode": 30836947,
+        "bytes": 434161432,
+        "mtime_ns": 1788773277733637745
+      }
+    },
+    "bundle/models/target/g256-layer-26.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-26.safetensors",
+      "sha256": "da7713ca0734bfc2c102f061d48a5be56b02e774d5e8e00b4796eae36f7903bb",
+      "stat": {
+        "device": 66308,
+        "inode": 30836948,
+        "bytes": 434161432,
+        "mtime_ns": 1788773330445815833
+      }
+    },
+    "bundle/models/target/g256-layer-27.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-27.safetensors",
+      "sha256": "0c2b16ebae90e52c86fb60f42e4db7ff44da16cf9f7d744916ba2f1f26bb5c37",
+      "stat": {
+        "device": 66308,
+        "inode": 30836949,
+        "bytes": 430917392,
+        "mtime_ns": 1788773382865972601
+      }
+    },
+    "bundle/models/target/g256-layer-28.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-28.safetensors",
+      "sha256": "f4f27b7b13e9b2505c52d267f5ae522740a84c923f78dc5405d622c703c4c577",
+      "stat": {
+        "device": 66308,
+        "inode": 30836950,
+        "bytes": 434161432,
+        "mtime_ns": 1788773433437075932
+      }
+    },
+    "bundle/models/target/g256-layer-29.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-29.safetensors",
+      "sha256": "558d88193e7f8a6be2186f762ba0e886d0128d8e662e2993790a45c279bf0392",
+      "stat": {
+        "device": 66308,
+        "inode": 30836951,
+        "bytes": 434161432,
+        "mtime_ns": 1788773480664096147
+      }
+    },
+    "bundle/models/target/g256-layer-30.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-30.safetensors",
+      "sha256": "edde95b6db60edfda3d672da03847953bffa7456df3539515d8964956d1e1dac",
+      "stat": {
+        "device": 66308,
+        "inode": 30836952,
+        "bytes": 434161432,
+        "mtime_ns": 1788773530218157052
+      }
+    },
+    "bundle/models/target/g256-layer-31.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-31.safetensors",
+      "sha256": "430ea41d5960db61b62834a50e0d1a2260d422734fe0d06d12f72c3afa37b04f",
+      "stat": {
+        "device": 66308,
+        "inode": 30836953,
+        "bytes": 430917392,
+        "mtime_ns": 1788773578763187699
+      }
+    },
+    "bundle/models/target/g256-layer-32.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-32.safetensors",
+      "sha256": "c6493430ba796fd3f2d02239fb1acb8488fe9e6ba1bed735d5b1c445de9a3cbd",
+      "stat": {
+        "device": 66308,
+        "inode": 30836954,
+        "bytes": 434161432,
+        "mtime_ns": 1788773624289147164
+      }
+    },
+    "bundle/models/target/g256-layer-33.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-33.safetensors",
+      "sha256": "6718f1a60b5e385056b3ed1b7201824121da2ce7ba29472b8cfd01a345151256",
+      "stat": {
+        "device": 66308,
+        "inode": 30836955,
+        "bytes": 434161432,
+        "mtime_ns": 1788773668579074563
+      }
+    },
+    "bundle/models/target/g256-layer-34.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-34.safetensors",
+      "sha256": "811adabbdc1b8bfe0c7a8a6edaccbe832ec28d12d01564d24dd7b93ea75025f2",
+      "stat": {
+        "device": 66308,
+        "inode": 30836956,
+        "bytes": 434161432,
+        "mtime_ns": 1788773709616929006
+      }
+    },
+    "bundle/models/target/g256-layer-35.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-35.safetensors",
+      "sha256": "3a738359249812452021edf1495cbdec0783cda61b2712c53bdfcf5db24b7c06",
+      "stat": {
+        "device": 66308,
+        "inode": 30836957,
+        "bytes": 430917392,
+        "mtime_ns": 1788773758359938309
+      }
+    },
+    "bundle/models/target/g256-layer-36.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-36.safetensors",
+      "sha256": "4727657481fd9a8b152955a5c716e8c99c48282e37eaa7dfb75ce31e4aafa5df",
+      "stat": {
+        "device": 66308,
+        "inode": 30836958,
+        "bytes": 434161432,
+        "mtime_ns": 1788773805037899666
+      }
+    },
+    "bundle/models/target/g256-layer-37.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-37.safetensors",
+      "sha256": "00d65f148ac6da953599008133a1b31682fe078ff9f0240ced724811db120e97",
+      "stat": {
+        "device": 66308,
+        "inode": 30836959,
+        "bytes": 434161432,
+        "mtime_ns": 1788773843466687639
+      }
+    },
+    "bundle/models/target/g256-layer-38.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-38.safetensors",
+      "sha256": "fda9957348758fe8880e80b0b47af815cb9843a86f04f83795a1d82088e0857d",
+      "stat": {
+        "device": 66308,
+        "inode": 30836960,
+        "bytes": 434161432,
+        "mtime_ns": 1788773887224581357
+      }
+    },
+    "bundle/models/target/g256-layer-39.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/g256-layer-39.safetensors",
+      "sha256": "1b9dd11b72419b280776dc7f9e20c42bf1d4ea5a8db0d35be9154d7dd74d5a8e",
+      "stat": {
+        "device": 66308,
+        "inode": 30836961,
+        "bytes": 430917392,
+        "mtime_ns": 1788773929646444481
+      }
+    },
+    "bundle/models/target/head-w8.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/head-w8.safetensors",
+      "sha256": "14ee8f1fd2a62d17e8917ae6c06ee23348ba2ced8872be73df689b84df02a337",
+      "stat": {
+        "device": 66308,
+        "inode": 30836882,
+        "bytes": 516505840,
+        "mtime_ns": 1788717033549173455
+      }
+    },
+    "bundle/models/target/protected-00.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-00.safetensors",
+      "sha256": "45aa66672bdc60b6bbba0c53cef095669227f97fc99ceab1747da27b10bea953",
+      "stat": {
+        "device": 66308,
+        "inode": 30836860,
+        "bytes": 1913075328,
+        "mtime_ns": 1788717032857205513
+      }
+    },
+    "bundle/models/target/protected-01.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-01.safetensors",
+      "sha256": "38200f400a8e071deda72df0d5d04ee842f6ef1c614320a07588ab2b9cb3eadd",
+      "stat": {
+        "device": 66308,
+        "inode": 30836931,
+        "bytes": 3842944,
+        "mtime_ns": 1788717032859205420
+      }
+    },
+    "bundle/models/target/protected-02.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-02.safetensors",
+      "sha256": "31f098483ef31195834de2b25ce58ec8c1483b0151634cab03b1e24072ecc81e",
+      "stat": {
+        "device": 66308,
+        "inode": 30836890,
+        "bytes": 2784544,
+        "mtime_ns": 1788717032860205374
+      }
+    },
+    "bundle/models/target/protected-03.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-03.safetensors",
+      "sha256": "938327435b0eebe2340c7da04875322929264cd699291d69759d15360feca57d",
+      "stat": {
+        "device": 66308,
+        "inode": 30836907,
+        "bytes": 3838744,
+        "mtime_ns": 1788717032860205374
+      }
+    },
+    "bundle/models/target/protected-04.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-04.safetensors",
+      "sha256": "5b70428d58700f7123f3d18549147ff66a8fce0db217e8dda5d14a4425075bce",
+      "stat": {
+        "device": 66308,
+        "inode": 30836837,
+        "bytes": 3842968,
+        "mtime_ns": 1788717032861205328
+      }
+    },
+    "bundle/models/target/protected-05.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-05.safetensors",
+      "sha256": "b058701e2d978fe76d04b9c342dc2688a7cdd7bd77f1c644edf0ad6916dfb4ec",
+      "stat": {
+        "device": 66308,
+        "inode": 30836839,
+        "bytes": 2784560,
+        "mtime_ns": 1788717032862205282
+      }
+    },
+    "bundle/models/target/protected-06.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-06.safetensors",
+      "sha256": "1b2df1a2e86385dedb5d03c9dd930624396ef9be6d008a20cf65afa0ad28027b",
+      "stat": {
+        "device": 66308,
+        "inode": 30836937,
+        "bytes": 3838768,
+        "mtime_ns": 1788717032863205235
+      }
+    },
+    "bundle/models/target/protected-07.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-07.safetensors",
+      "sha256": "36b9adae8221c465bf28bd986f86fdd405905a04f69e8da6fab9bbfdccd2135a",
+      "stat": {
+        "device": 66308,
+        "inode": 30836855,
+        "bytes": 3842968,
+        "mtime_ns": 1788717032864205189
+      }
+    },
+    "bundle/models/target/protected-08.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-08.safetensors",
+      "sha256": "07c4905f1bcab1c143f8cc0a7b28c79462381c7394ca39d7de158f1935155d4b",
+      "stat": {
+        "device": 66308,
+        "inode": 30836859,
+        "bytes": 2784560,
+        "mtime_ns": 1788717032864205189
+      }
+    },
+    "bundle/models/target/protected-09.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-09.safetensors",
+      "sha256": "77ffe2de3bebe52f8a3c5b5cab2650838df030c390a23f38df90ce3cafb418a6",
+      "stat": {
+        "device": 66308,
+        "inode": 30836834,
+        "bytes": 3838768,
+        "mtime_ns": 1788717032865205143
+      }
+    },
+    "bundle/models/target/protected-10.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-10.safetensors",
+      "sha256": "03c82a87e423076ae52d748aacee5571d72befa750d20aec2545f6c3b7f39e2a",
+      "stat": {
+        "device": 66308,
+        "inode": 30836933,
+        "bytes": 3842968,
+        "mtime_ns": 1788717032866205096
+      }
+    },
+    "bundle/models/target/protected-11.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-11.safetensors",
+      "sha256": "5fd4b14ed73ea72e1f6004852553521cbeae62a97df5d7e15a7b19653907fc7e",
+      "stat": {
+        "device": 66308,
+        "inode": 30836850,
+        "bytes": 2784560,
+        "mtime_ns": 1788717032867205050
+      }
+    },
+    "bundle/models/target/protected-12.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-12.safetensors",
+      "sha256": "ad8a3d629ac50f3f9a9c3fd8b33cb18bd13b2cec0b18f483536f239dcba4c7c0",
+      "stat": {
+        "device": 66308,
+        "inode": 30836932,
+        "bytes": 3838768,
+        "mtime_ns": 1788717032867205050
+      }
+    },
+    "bundle/models/target/protected-13.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-13.safetensors",
+      "sha256": "276f5c92fc297566e5957227e01f9b968226f9067c76279d693559442a66abc3",
+      "stat": {
+        "device": 66308,
+        "inode": 30836838,
+        "bytes": 3842968,
+        "mtime_ns": 1788717032868205003
+      }
+    },
+    "bundle/models/target/protected-14.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-14.safetensors",
+      "sha256": "bd29a25d325d6c26934ea62380832e5d9c7faed9c621bccc160a30e05023cc76",
+      "stat": {
+        "device": 66308,
+        "inode": 30836861,
+        "bytes": 2784560,
+        "mtime_ns": 1788717032869204957
+      }
+    },
+    "bundle/models/target/protected-15.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/models/target/protected-15.safetensors",
+      "sha256": "8a8d151ab8d46464164a5972a2f1b9faa56d66afae89a5d661776f7fae61cbf4",
+      "stat": {
+        "device": 66308,
+        "inode": 30836928,
+        "bytes": 1690442880,
+        "mtime_ns": 1788717033504175540
+      }
+    },
+    "bundle/native/libornith_attention_iu4.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_attention_iu4.so",
+      "sha256": "3d29cf3616c69f9fe2b89f8d3564d479dda682fdc06572886e7b60faccc9a53a",
+      "stat": {
+        "device": 66308,
+        "inode": 77857094,
+        "bytes": 252976,
+        "mtime_ns": 1789668646000000000
+      }
+    },
+    "bundle/native/libornith_dense_g256.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_dense_g256.so",
+      "sha256": "dc9bbf04f02f951fb444feaea2f612671867aad44929a30fdfadef8e5d5513a9",
+      "stat": {
+        "device": 66308,
+        "inode": 77857095,
+        "bytes": 70152,
+        "mtime_ns": 1789657980000000000
+      }
+    },
+    "bundle/native/libornith_dense_g256_n32.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_dense_g256_n32.so",
+      "sha256": "504b832eea9279f98be4eab3342f0ddd31a5b3d191235f856acaf1c1b0e970c9",
+      "stat": {
+        "device": 66308,
+        "inode": 77857096,
+        "bytes": 172456,
+        "mtime_ns": 1790714908138932753
+      }
+    },
+    "bundle/native/libornith_head_i8_tile.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_head_i8_tile.so",
+      "sha256": "99ccdf750ebfd3286c8039287032f221861b81963dcbece2701831c83bb3746e",
+      "stat": {
+        "device": 66308,
+        "inode": 77857097,
+        "bytes": 343280,
+        "mtime_ns": 1790714899826318184
+      }
+    },
+    "bundle/native/libornith_persistent_iu4.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_persistent_iu4.so",
+      "sha256": "c70ba14d5aebf67b761ea54cfc9a38f8bbedf74cfca8b19050048acda9c8a06c",
+      "stat": {
+        "device": 66308,
+        "inode": 77857098,
+        "bytes": 104904,
+        "mtime_ns": 1789647248000000000
+      }
+    },
+    "bundle/native/libornith_routed_direct.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_routed_direct.so",
+      "sha256": "5b3ca6826547e0ff1c417e733229e104721cec403ccd8f88f7fcdb1726d6f4ed",
+      "stat": {
+        "device": 66308,
+        "inode": 77857099,
+        "bytes": 156392,
+        "mtime_ns": 1788741254000000000
+      }
+    },
+    "bundle/native/libornith_routed_n32.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_routed_n32.so",
+      "sha256": "48415e71f6c85e3aefcecf99d72607bb05900244b4aaa9a7ba2c58378d92f5fb",
+      "stat": {
+        "device": 66308,
+        "inode": 77857100,
+        "bytes": 151928,
+        "mtime_ns": 1788751761000000000
+      }
+    },
+    "bundle/native/libornith_routed_storage_n32.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/libornith_routed_storage_n32.so",
+      "sha256": "d1d7d7eafebf90091c3f996825e41592c311be62bebac653062ea8a4e31f1c56",
+      "stat": {
+        "device": 66308,
+        "inode": 77857101,
+        "bytes": 216880,
+        "mtime_ns": 1790758730761854692
+      }
+    },
+    "bundle/native/shared_math_reference.safetensors": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/bundle/native/shared_math_reference.safetensors",
+      "sha256": "11552ec53b62b229d0ab42b4e865d0175724cd51c4eef01c05e66e930f27d2eb",
+      "stat": {
+        "device": 66308,
+        "inode": 77857103,
+        "bytes": 393376,
+        "mtime_ns": 1790758591186333613
+      }
+    },
+    "runtime/aiter-jit-gfx1151/module_aiter_core.so": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/runtime/aiter-jit-gfx1151/module_aiter_core.so",
+      "sha256": "3580569033331d904b3ca2b899e3bea00324d098dc5a28c3c8f76a124f24f846",
+      "stat": {
+        "device": 66308,
+        "inode": 34500287,
+        "bytes": 567024,
+        "mtime_ns": 1791701089475367676
+      }
+    },
+    "runtime/wheels/amd_aiter-0.1.0rc1-cp314-cp314-linux_x86_64.whl": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/runtime/wheels/amd_aiter-0.1.0rc1-cp314-cp314-linux_x86_64.whl",
+      "sha256": "e392272a101a5f11809818df222ccfe68892c4d541a83eefdfd3e6e3e08d7cb1",
+      "stat": {
+        "device": 66308,
+        "inode": 34500296,
+        "bytes": 67412360,
+        "mtime_ns": 1791701095042410910
+      }
+    },
+    "runtime/wheels/vllm-0.1.0rc2.dev9+g9255fd9fb9.rocm100-cp314-cp314-linux_x86_64.whl": {
+      "mode": "hardlink",
+      "source": "/srv/llm/work/ornith-v413-public-parent/runtime/wheels/vllm-0.1.0rc2.dev9+g9255fd9fb9.rocm100-cp314-cp314-linux_x86_64.whl",
+      "sha256": "ba5b1c0f957c41cf0d4d0af36df59cbe25ae5d0640766baea6d7ce32506d2317",
+      "stat": {
+        "device": 66308,
+        "inode": 34500297,
+        "bytes": 44318322,
+        "mtime_ns": 1791701096498422219
+      }
+    }
+  },
+  "cross_filesystem_nonweight_copy_bytes": 0,
+  "stage_fingerprint": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "source_port_audit_sha256": "317a09da886ed94bf06826e39b69b25d69437ea8b5dbeb68ff7f8adcbaf11d56",
+  "executable_bundle_fingerprint": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+  "parent_bundle_fingerprint": "097e85f3ce1ba97e835bc609de9f1961a165e09bd8b3ba3c9e70fd5166c24f10",
+  "source_wheel": {
+    "passed": true,
+    "source_pins": 102,
+    "record_entries": 119,
+    "sha256": "86b8feeaa47ca14e12216d7e9499ffc19305d6b1f87a4fba33964cb720929fa7",
+    "filename": "ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl",
+    "native_payload_rebuilt": false,
+    "runtime_qualified": false
+  },
+  "source_archive": {
+    "sha256": "55c8fb7191cb3bcfa3d5a28fd2fa0a8e9fae824a19709a5166d0ef090fad1f7f",
+    "native_built": false,
+    "source_stage_sha256": "d27f07079cf332edf964ea5673aff28ae212dce7c1118447f774a51343499d21"
+  },
+  "helpers": 13,
+  "source_pins": 102,
+  "weights_modified": false,
+  "pinned_engine_wheels_modified": false,
+  "native_libraries_modified": false,
+  "updater_safety": "REQUIRED_POST_ASSEMBLY_SIDECAR",
+  "updater_safety_receipt": "ornith-v413-k037-assembled-v3.updater-checks.json",
+  "runtime_or_numerical_qualified": false,
+  "publication_ready": false,
+  "promotion": false,
+  "assembler_sha256": "e029a370543cb51a349ecd99bcdfeb6edd2530e06b083205088695c92403c05d"
+}

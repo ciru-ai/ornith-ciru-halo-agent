@@ -1,0 +1,145 @@
+{
+  "schema": "ciru.ornith.k037.release-validation.v1",
+  "status": "SCOPED_K0_K3_K7_RELEASE_GATES_PASS",
+  "passed": true,
+  "publication_ready": true,
+  "production_activated": false,
+  "current_selector_preserved": true,
+  "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+  "executable_bundle_fingerprint": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+  "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "source_stage_fingerprint": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "required_scopes": [
+    "teacher_fixed_prefix",
+    "production_c1",
+    "production_cold_c8",
+    "production_auto_transition",
+    "balanced_serving",
+    "source_ports",
+    "packaged_engine_sources"
+  ],
+  "scopes": {
+    "teacher_fixed_prefix": {
+      "status": "PASS",
+      "scope": "Full 1,980-position, seven-case BF16 teacher fixed-prefix panel; aggregate fidelity with documented turn regressions, not unrestricted agent quality.",
+      "receipt_targets": [
+        "evaluation/final/targeted-kld-comparison.json"
+      ]
+    },
+    "production_c1": {
+      "status": "PASS",
+      "scope": "Actual packaged production Worker exact target p/q at 157 K3/K7 proposed positions across 8K/64K; coupled diagnostic acceptance is not natural acceptance.",
+      "receipt_targets": [
+        "evaluation/final/final-c1-production-independent-audit.json"
+      ]
+    },
+    "production_cold_c8": {
+      "status": "PASS",
+      "scope": "Actual packaged production Worker 256-position ordered cold C8 native K0 paired numerical replay, including discarded-row RNG restoration. Cached shared-checkpoint ownership remains held.",
+      "receipt_targets": [
+        "evaluation/final/final-cold-k0-production-independent-audit.json"
+      ]
+    },
+    "production_auto_transition": {
+      "status": "PASS",
+      "scope": "Actual native production C1/C8/C1 lifecycle clears real pending drafts, forces current/future K0 under concurrency, preserves ongoing committed state and returns to AUTO. Scheduling/isolation scope, not a numerical quality score.",
+      "receipt_targets": [
+        "evaluation/final/final-concurrent-transition-production-independent-audit.json"
+      ]
+    },
+    "balanced_serving": {
+      "status": "PASS",
+      "scope": "Four fresh Sozo engines live/candidate/candidate/live with frozen bounded 8K/64K and cold C8 serving diagnostics, source-bound counters, raw SSE, admission and memory observations. Timing mirrors and short-reply regressions remain visible.",
+      "receipt_targets": [
+        "evaluation/final/final-serving-comparison.json",
+        "evaluation/final/final-serving-independent-raw-audit.json",
+        "evaluation/final/final-serving-sampler-path-v3-cpu-audit.json",
+        "evaluation/final/final-serving-root-independent-review.json"
+      ]
+    },
+    "source_ports": {
+      "status": "PASS",
+      "scope": "Byte-pinned portable production implementation, selected source inventory, CPU source-port checks and actual production namespace tests. No blanket optimizer or unrestricted agent-quality claim.",
+      "receipt_targets": [
+        "evaluation/final/production-source-stage-v4.1.3-cpu-audit.json",
+        "evaluation/final/v413-release-assembly-v3.json"
+      ]
+    },
+    "packaged_engine_sources": {
+      "status": "PASS",
+      "scope": "Unmodified packaged vLLM wheel scheduler/request sources exactly match the actual qualified runtime.",
+      "receipt_targets": [
+        "evaluation/final/final-packaged-engine-source-pin-v1.json"
+      ]
+    }
+  },
+  "receipts": [
+    {
+      "target": "evaluation/final/targeted-kld-comparison.json",
+      "sha256": "50e406eac6c931f7305cf5d5ca8a9954b03335debd5ff57cf3dbc55a0f013355",
+      "scope": "teacher_fixed_prefix"
+    },
+    {
+      "target": "evaluation/final/final-c1-production-independent-audit.json",
+      "sha256": "56c4ae4f8af9abfae8f55954f6e6f2d5c03f76afff1e8c988cc20071c9d7bbc8",
+      "scope": "production_c1"
+    },
+    {
+      "target": "evaluation/final/final-cold-k0-production-independent-audit.json",
+      "sha256": "48f0240f2999eb730a1d6140cbbc2899fed0aed07dc70cf43b7592194c6ac8ce",
+      "scope": "production_cold_c8"
+    },
+    {
+      "target": "evaluation/final/final-concurrent-transition-production-independent-audit.json",
+      "sha256": "c8a19e86b8d14b96c551ce632b23e7ff3b88abab999cbca98f28ac9b1aa3d67b",
+      "scope": "production_auto_transition"
+    },
+    {
+      "target": "evaluation/final/final-serving-comparison.json",
+      "sha256": "d03df9bb35df3d6bf8e1a7814135405f416e05918bdb44b88ccb55afbe655afa",
+      "scope": "balanced_serving"
+    },
+    {
+      "target": "evaluation/final/final-serving-independent-raw-audit.json",
+      "sha256": "2eb942f9625156e3e80546f49cfd1569dcad86d632436ebe21df8036ed6bdb93",
+      "scope": "balanced_serving"
+    },
+    {
+      "target": "evaluation/final/final-serving-sampler-path-v3-cpu-audit.json",
+      "sha256": "820f35c89ddb88d9faa8fcbedc710d49a43ec33858d72458db8dca502c8e7061",
+      "scope": "balanced_serving"
+    },
+    {
+      "target": "evaluation/final/final-serving-root-independent-review.json",
+      "sha256": "ba251ad1eab8d78f864eab7c54f57263aeb23434975a133382b50820f6ff9ee7",
+      "scope": "balanced_serving"
+    },
+    {
+      "target": "evaluation/final/production-source-stage-v4.1.3-cpu-audit.json",
+      "sha256": "317a09da886ed94bf06826e39b69b25d69437ea8b5dbeb68ff7f8adcbaf11d56",
+      "scope": "source_ports"
+    },
+    {
+      "target": "evaluation/final/v413-release-assembly-v3.json",
+      "sha256": "0dbca174ea46281f0bbc1a22f1477b3f7a6a1e581a3d5790e6584e71e7866c13",
+      "scope": "source_ports"
+    },
+    {
+      "target": "evaluation/final/final-packaged-engine-source-pin-v1.json",
+      "sha256": "572a65b004794de138e5d842cc6c43397936641c4b00fae71ff0d49e6a2a88d3",
+      "scope": "packaged_engine_sources"
+    }
+  ],
+  "limitations": {
+    "cached_shared_checkpoint_ownership_repaired": false,
+    "k15_active": false,
+    "concurrent_k7_qualified": false,
+    "unrestricted_agent_quality_scored": false
+  },
+  "limits": {
+    "cached_shared_checkpoint_ownership_repaired": false,
+    "k15_active": false,
+    "concurrent_k7_qualified": false,
+    "unrestricted_agent_quality_scored": false
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "status": "CPU_PROPOSED_SOURCE_PORT_AUDIT_PASSED",
+  "passed": true,
+  "runtime_or_numerical_qualified": false,
+  "publication_ready": false,
+  "concurrency_decision_pending": false,
+  "concurrency_runtime_qualification_pending": true,
+  "proposed_concurrent_depth": 0,
+  "concurrent_guard_byte_exact_source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+  "fresh_concurrent_prefix_read_isolation_proposed": true,
+  "cached_shared_checkpoint_ownership_gate_closed": false,
+  "updater_control_completeness": {
+    "updater_sha256": "172bc492f169c9bcf5612183ac10cd7b8b49d2582b4b18731b844833e630c886",
+    "analysis_source_sha256": "b4acdad3f30528e55950e1598b65934d8a664638079bd15dbe76ff5ed971b1fe",
+    "selected_manifest_controls_required_before_swap": true,
+    "source_ast_unchanged_except_version_and_dedicated_verifier": true,
+    "safety_checks_required_against_final_assembled_manifest": 8
+  },
+  "concurrent_guard_cpu_tests": {
+    "passed": true,
+    "tests": 25,
+    "analysis_source_sha256": "69e15afc504ed9d81876c607191264bf91577ed04876fce0339ed433c46ce61a",
+    "runtime_fixture_source_sha256": {
+      "scheduler.py": "30160d4df0366e22f9ff583d991e2898b3b65c5d25e471a209578336e24001b5",
+      "request.py": "da610d5203e72d2d524adc5fb39df11502a23520f2f31d9a44cf13d343f9c25d"
+    }
+  },
+  "source_stage": "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/research/production-source-stage-v4.1.3",
+  "source_base_hf_revision": "d8bd86d618c792522efaaad49adcd0de837bb523",
+  "qualified_helper_ports": [
+    {
+      "file": "gates.py",
+      "qualified_source_sha256": "20b5766358aff83eb8f99415aac46d9e9781e422c0625ecb6ca79a24c601f3ad",
+      "staged_source_sha256": "3c729a9006fc925aef16cb97aab9e198ab12d2c3dacb9a84aee6163f466641d4",
+      "namespace_normalized_module_ast_sha256": "d66cac402c5c3458d48dd94816685f5da8653c2f423f79d1e2a59f8012cae2f3",
+      "function_ast_sha256": {
+        "_kernel_receipt": "8ffd67ab10db7a77fdaa05d89c122be85246ef9aceb1133c9ac5867f4c8b05aa",
+        "install": "9cc228898fe6eb7479031c27e706ed22ea94a486c3f56d882386bf8280a4985d"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "gates_phase.py",
+      "qualified_source_sha256": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+      "staged_source_sha256": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+      "namespace_normalized_module_ast_sha256": "a3fe01458a7b62d8304806cbe6f0ca5ad65d508810add8470c973d4f764630e2",
+      "function_ast_sha256": {
+        "plan_from_requests": "68c37a2dbfb03288c80d930cc9215eaafa66ff9cd8e8b6f1fa9c59cd88752844",
+        "scope": "2d75aba62da300566a65f39b2a5b552ad1534fe9c054f9e4dc7bad906a46b722",
+        "segments_for": "4eae7570c782bbc4693a55d85a5738bc018e668db6c6c95d6a17dffd36621812",
+        "install": "15be4402fbe251969b2f0269f3fd799544c638e8b54e7a3b3a2aa3c17d57bcd8"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "gates_projection.py",
+      "qualified_source_sha256": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+      "staged_source_sha256": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+      "namespace_normalized_module_ast_sha256": "1304e85e681aadeff859ef40e26604d1ea55831cfec06ff7422511b5c1b90b5a",
+      "function_ast_sha256": {
+        "_ba_rows": "f1a1de45eae822d66189a91fea9e331e22b62cecd9eab6ae469bfd5c94123833",
+        "_router_rows": "95158744fcb5f5f1e659352033c0a9ade2505b662cead9feb288fa4bc49e492d",
+        "ba_into": "5095ef7e02bfd0d3c1f63843e5638d5275b9fb4140006431550a5667bfe25244",
+        "router": "75a7c1e220b2084a721c2972a36946e89015053c0b92f4f024648bf711876da9"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "shared_live.py",
+      "qualified_source_sha256": "aee82ac48e2bcc6988475dcfb6ca0669b1f7d6367ed0deae9f725f3665bd1aaa",
+      "staged_source_sha256": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
+      "namespace_normalized_module_ast_sha256": "50542e36b16b28bf288a90e470a7909cd99f6ff23a17ed2b6fb2f69ac1f05600",
+      "function_ast_sha256": {
+        "install": "1fdea3b1a74c2834d953081ecd7c6e5523e2f7ade2000645527df81a74f149e3"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "shared_kernel.py",
+      "qualified_source_sha256": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+      "staged_source_sha256": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+      "namespace_normalized_module_ast_sha256": "cb22e74c6efd1d0c8b067f461cbfca6d16afeea766963208cc68238813a467da",
+      "function_ast_sha256": {
+        "scalar_gate": "77f41fe82e0ccb81f51cf144118ccf54d8c30a34c938e4743cc5501ab47a9bdc",
+        "gate": "3f921986405e5ef54464bbd45ea5799285189fc0cadef180795c0fdfb8312160",
+        "fixed8": "f52c49bd4aec56c5792eeed263bc8c2180c1747dd9b0c5ce4993a3c145c11ff9"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "rng_exact_restore.py",
+      "qualified_source_sha256": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+      "staged_source_sha256": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+      "namespace_normalized_module_ast_sha256": "90c6c9b81eaa67443befccc2e2f499ec7a1920d995ddab14d3ae5fd9e733015e",
+      "function_ast_sha256": {
+        "install": "cf70eef518e7b49917336283a8f555914caa20f179d6d3db05c52e45a1e5733b"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "final_sampler.py",
+      "qualified_source_sha256": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+      "staged_source_sha256": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+      "namespace_normalized_module_ast_sha256": "0a3187635826ffe33c7e27490efbe55eec30a68432da054d8ae33c66fb94dbe6",
+      "function_ast_sha256": {
+        "_digest": "dc182265cb67b1c5b25e31e6261b278256dddcf78566db2b8e477a75bd86b7f2",
+        "install": "244853bf40f6982dcf61eb184a0afc1953bb8e2eb71b1e32d8da0549596e63df"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "final_native_sampling.py",
+      "qualified_source_sha256": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+      "staged_source_sha256": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+      "namespace_normalized_module_ast_sha256": "0daabddc375f5a0edb02a518baafed368b2c42463ef4b9e30016dd626869fcda",
+      "function_ast_sha256": {
+        "_digest": "0d932477032d2ed02b1fac7d470741f58cd69a82865278a67553ab4b81c51af4",
+        "_function": "3f9d3d829a5c95889d3603a958cd5a5eb3fcd90980c38dbf2e8bd26b743e02f3",
+        "_describe": "a9c102ec8560ceb7d08514820a115b5092cdb51cc11899d016b604ed945b6cc4",
+        "_instances": "dce3834b1ed0b5d150808a8535b498a3b49258e6e0352dede40410b6ba82cbaf",
+        "_validate_forward": "df716b2c616736ec607e88ae65ccc397d169f7203b2ab339d716f9d0a0cb8bb8",
+        "install": "c4d3080e92ee255f20df6ccedb155825d22b96d707fbc63ce647ddfd482ad33f"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "adaptive_fallback_policy.py",
+      "qualified_source_sha256": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "staged_source_sha256": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+      "namespace_normalized_module_ast_sha256": "95cc3404b1f8d531fdc7294c75d7b379174432bbaaa2f88f1f984f95643e07a0",
+      "function_ast_sha256": {
+        "RequestCost.__init__": "2a116f9cd7e30dc4447832369ec31c5eb3b5f03059cb079ca284f9e5e38ac53b",
+        "RequestCost.event": "0113e53640d6f55182ea0044762b81a7f5c6af3646f8c415cd62336aefe719c2",
+        "RequestCost.reset_to_3": "41809beb1578ed1fd8471ef0ccc218ef2d54ba376f58059f15f0cdbc7a258b6c",
+        "RequestCost.budget": "a40f3e143a94dc4f7a2c5f246e195d78c20ae045c882f26fe3ebb301274f0fa3",
+        "RequestCost.start_probe": "23931371f627bfef36b29d13651203426a23fb60efedfc53a7c9bc601ea30020",
+        "RequestCost.finish_probe": "23b6f939bc29caf8239c4a7fd15059c59519f2dcfc6ca2cb9191e8afac4da969",
+        "RequestCost.observe": "8606602fe9b3c478189d5e021e3121cf4b35af9b854a26a14daebf8f743f925b",
+        "Policy.__init__": "d4cec9531313be3a4a38d2ae86ce7ea53d6ebe11186833fe83ade55e8efc71df",
+        "Policy.budget": "ec0480b7d9f46656ea499271badaa1673faeb209fc247f5cd166dd74f3e83586",
+        "_policy": "ba2bbc39551377f60a52673dc429dfa402ce1008f5b7457a606964844ccd94a5",
+        "install": "52f611ddf477fb66fb3df06cd3e9bfd7b83bfd97d9018ca0e2360ca00d8ca6b8"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "adaptive_fallback_ceiling.py",
+      "qualified_source_sha256": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+      "staged_source_sha256": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+      "namespace_normalized_module_ast_sha256": "4b973b52b1370e1164b9d90e420b271c717db4910be138a73817f938f986c343",
+      "function_ast_sha256": {
+        "install": "ea262a692e7f7a351c537cfe4735037b5a90d10404fb0a3261c8bfd56158b419"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "adaptive_k3_geometry.py",
+      "qualified_source_sha256": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+      "staged_source_sha256": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+      "namespace_normalized_module_ast_sha256": "2d3804b0632ffeea5d23f926ce2a3cefd5ac0577ad8fb863d8db969cc9770620",
+      "function_ast_sha256": {
+        "_sha256": "d1a5784a5a451ef63c0188855d4244cf2450484556c9c07a5da174db416126bb",
+        "_source_contract": "5d2f91fa6783e34819d11bfcfb5f15ffd0b3843dac4025bc11f717f33b8c557b",
+        "_install_dispatch_proof": "68c8bbe09dafeb89cb959e8f3a2d87425090c38be859d5e1effbb2c200c1e2a6",
+        "install_modules": "bea240e062c4908c1a00912c31e64a6f0dd567fe69a32b909f5f95107114d57d",
+        "install": "447f0fb80b83c312e3de772760f66f2705603bb0d86d5ff7c2c26e27d7609f07"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "final_router_ablation.py",
+      "qualified_source_sha256": "b19a726e67fda6c54588baba0789737bd70aafa92fdb1e67eead1f4458da2fcc",
+      "staged_source_sha256": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
+      "namespace_normalized_module_ast_sha256": "d732a2d25a6c92a47fd9023724d0b3ad8fa04dde08749ba060b6d1277e1636b7",
+      "function_ast_sha256": {
+        "variant_plan": "b9933993ac03aefebdcf73306a74e67fbe40901fcd7f1b7a951f2e1c3e093bf7",
+        "read_config": "d472a0318f97886afe4e11f8558922cddd59807d4a2bee4f860299d65970ab10",
+        "verify_frozen_sources": "9cc91d4035e0cac4c89f03fb77d5bdd14a63d0a0c108b42c92b247443eea2165",
+        "route_scores": "d53e9882ce223130c8be1cea7bf36254fecbbcfd15619ce0d2082e7fce88a197",
+        "install_components": "3853be59901e47eec5ad3cdeae729f609794a8bec94f136a6c1e3a2e43dd9a8f"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    },
+    {
+      "file": "adaptive_concurrent_k0.py",
+      "qualified_source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "staged_source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+      "namespace_normalized_module_ast_sha256": "42dde503ef1e91b9f976607964b72b875e1207a8b04645035f526c49bd255d41",
+      "function_ast_sha256": {
+        "_sha": "6b6593971c6c4d8e012db644369f53dc51c4464fa77558df01300dab338388fb",
+        "_enabled": "5fc9f9c882abfd3fa7f5cd41befc7cb9458f6874a414e603e53dd603c3da88f7",
+        "_live": "1b62f1098b31131f23caa8c0020ab14bcaf653b3a3a45aee4aef0cc091d502d4",
+        "_check_runtime": "6ea9c2f6f3009b1038735bc27f2e459f84bf91f1cb9936e418dae0a2e1f75a9d",
+        "_clear": "7f8e7486ef71312775781ba4071bec8a32fe5377b1e494a3e98833f2d6f4475c",
+        "_emit_install": "aeacd6f6012bdd2c5930145e9ea1ac9246c59b7291aeafb8dde8fba9c0e5cff3",
+        "_bind_scheduler": "df84b0858eac194fbae91b662f3a13f394a4757e761eac0b1ed669e04aa52685",
+        "install": "33d0dc3c9632798e812bfaada5849eb6acacb999ad108f23d8444079db9af63b"
+      },
+      "math_ast_equal": true,
+      "allowed_changes": "Absolute helper import namespace only; final_router_ablation exact source-pin dictionary additionally remapped"
+    }
+  ],
+  "unchanged_parent_plugin_files": 82,
+  "pinned_plugin_files": 102,
+  "metadata_record_rows": 111,
+  "negative_checks": {
+    "math_gain_mutation_rejected": true,
+    "incompatible_concurrency_selections_rejected": 5,
+    "forbidden_policies_rejected": 2,
+    "incompatible_serving_settings_rejected": 5
+  },
+  "production_only_imports": true,
+  "portable_load_order_verified": true,
+  "active_c1_depths": [
+    0,
+    3,
+    7
+  ],
+  "allocation_depth": 15,
+  "stage_fingerprint": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "analysis_source_sha256": "87864d27e509c17edf48e99d707e5cebb04b01789b39f93e562ea443b3878dc8"
+}

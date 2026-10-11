@@ -1,0 +1,459 @@
+{
+  "status": "FINAL_STOCK_CANDIDATE_MATCHED_SERVING_COMPLETE",
+  "utc": "2026-10-11T08:05:25.531530+00:00",
+  "cells": [
+    {
+      "family": "site",
+      "length": "8k",
+      "arms": {
+        "baseline": {
+          "tg_tps": 123.5104790411322,
+          "tg_tokens": 32,
+          "tg_seconds": 0.25908732804236934,
+          "pp_tps": 2138.940347660152,
+          "mean_wall_s": 3.969598367490107,
+          "mean_ttft_s": 3.839845719980076,
+          "proposed_drafts": 60,
+          "accepted_drafts": 32,
+          "draft_rounds": 4,
+          "accepted_fraction": 0.5333333333333333
+        },
+        "candidate": {
+          "tg_tps": 76.07603934528946,
+          "tg_tokens": 32,
+          "tg_seconds": 0.42063178203534335,
+          "pp_tps": 2114.0094528647205,
+          "mean_wall_s": 4.096079411014216,
+          "mean_ttft_s": 3.88553524701274,
+          "proposed_drafts": 30,
+          "accepted_drafts": 24,
+          "draft_rounds": 10,
+          "accepted_fraction": 0.8
+        }
+      },
+      "pooled_tg_delta_percent": -38.40519449369623,
+      "mirror_tg_deltas_percent": [
+        -39.07146657970827,
+        -37.738999999202136
+      ],
+      "mirror_gap_percentage_points": 1.3324665805061358,
+      "geometric_mirror_tg_delta_percent": -38.408836515865396,
+      "whole_wall_delta_percent": 3.186242834034614,
+      "whole_wall_delta_seconds": 0.12648104352410883,
+      "native_pp_delta_percent": -1.1655722340599195
+    },
+    {
+      "family": "site",
+      "length": "64k",
+      "arms": {
+        "baseline": {
+          "tg_tps": 88.39010548004289,
+          "tg_tokens": 32,
+          "tg_seconds": 0.3620314720319584,
+          "pp_tps": 1557.617945512607,
+          "mean_wall_s": 42.3116458535078,
+          "mean_ttft_s": 42.130454200989334,
+          "proposed_drafts": 60,
+          "accepted_drafts": 32,
+          "draft_rounds": 4,
+          "accepted_fraction": 0.5333333333333333
+        },
+        "candidate": {
+          "tg_tps": 64.61044622004879,
+          "tg_tokens": 32,
+          "tg_seconds": 0.4952759479638189,
+          "pp_tps": 1541.8494668143296,
+          "mean_wall_s": 42.80612936851685,
+          "mean_ttft_s": 42.558300551521825,
+          "proposed_drafts": 30,
+          "accepted_drafts": 24,
+          "draft_rounds": 10,
+          "accepted_fraction": 0.8
+        }
+      },
+      "pooled_tg_delta_percent": -26.903078269731427,
+      "mirror_tg_deltas_percent": [
+        -28.458522964473666,
+        -25.353051891295276
+      ],
+      "mirror_gap_percentage_points": 3.105471073178389,
+      "geometric_mirror_tg_delta_percent": -26.922281618190723,
+      "whole_wall_delta_percent": 1.1686700080660195,
+      "whole_wall_delta_seconds": 0.4944835150090512,
+      "native_pp_delta_percent": -1.0123457259660795
+    },
+    {
+      "family": "ultra",
+      "length": "8k",
+      "arms": {
+        "baseline": {
+          "tg_tps": 49.07817375072578,
+          "tg_tokens": 1022,
+          "tg_seconds": 20.823920734925196,
+          "pp_tps": 2076.0649703217446,
+          "mean_wall_s": 14.369543103995966,
+          "mean_ttft_s": 3.9574061490420718,
+          "proposed_drafts": 946,
+          "accepted_drafts": 86,
+          "draft_rounds": 94,
+          "accepted_fraction": 0.09090909090909091
+        },
+        "candidate": {
+          "tg_tps": 48.37592848383199,
+          "tg_tokens": 1022,
+          "tg_seconds": 21.126209501933772,
+          "pp_tps": 2054.2195155676527,
+          "mean_wall_s": 14.561347801529337,
+          "mean_ttft_s": 3.9980436870246194,
+          "proposed_drafts": 574,
+          "accepted_drafts": 200,
+          "draft_rounds": 170,
+          "accepted_fraction": 0.34843205574912894
+        }
+      },
+      "pooled_tg_delta_percent": -1.4308708194004538,
+      "mirror_tg_deltas_percent": [
+        -1.3466548652273702,
+        -1.5149245220699714
+      ],
+      "mirror_gap_percentage_points": 0.1682696568426012,
+      "geometric_mirror_tg_delta_percent": -1.4308256007570908,
+      "whole_wall_delta_percent": 1.3348002517911128,
+      "whole_wall_delta_seconds": 0.19180469753337093,
+      "native_pp_delta_percent": -1.0522529432547723
+    },
+    {
+      "family": "ultra",
+      "length": "64k",
+      "arms": {
+        "baseline": {
+          "tg_tps": 17.26248773740565,
+          "tg_tokens": 1022,
+          "tg_seconds": 59.20351779804332,
+          "pp_tps": 1573.2375053291003,
+          "mean_wall_s": 70.8450681459799,
+          "mean_ttft_s": 41.24312097748043,
+          "proposed_drafts": 7830,
+          "accepted_drafts": 500,
+          "draft_rounds": 522,
+          "accepted_fraction": 0.06385696040868455
+        },
+        "candidate": {
+          "tg_tps": 36.30312641843828,
+          "tg_tokens": 1022,
+          "tg_seconds": 28.151845332002267,
+          "pp_tps": 1543.8608407872741,
+          "mean_wall_s": 56.10446564797894,
+          "mean_ttft_s": 42.028361060481984,
+          "proposed_drafts": 608,
+          "accepted_drafts": 168,
+          "draft_rounds": 184,
+          "accepted_fraction": 0.27631578947368424
+        }
+      },
+      "pooled_tg_delta_percent": 110.30066448518863,
+      "mirror_tg_deltas_percent": [
+        108.55128736001687,
+        112.05375535933987
+      ],
+      "mirror_gap_percentage_points": 3.5024679993230023,
+      "geometric_mirror_tg_delta_percent": 110.29522978355075,
+      "whole_wall_delta_percent": -20.80681532781814,
+      "whole_wall_delta_seconds": -14.740602498000953,
+      "native_pp_delta_percent": -1.867274613166614
+    }
+  ],
+  "c8": {
+    "arms": {
+      "baseline": {
+        "cohorts": 2,
+        "requests": 16,
+        "completed_tokens": 2048,
+        "wall_sum_s": 87.58401617401978,
+        "selected_concurrent_depth": 7,
+        "fresh_prefix_read_isolation_verified": false,
+        "mean_cohort_wall_s": 43.79200808700989,
+        "aggregate_completed_tps": 23.38326203186264,
+        "timing_scope": "Native resume request to final response; paused HTTP admission wait excluded, resume RPC/transport included.",
+        "mean_http_admission_inclusive_cohort_wall_s": 43.86049763252959,
+        "mean_excluded_http_admission_wait_s": 0.06848954551969655,
+        "mean_http_admission_inclusive_ttft_s": 23.988488004244573,
+        "aggregate_decode_tps": 31.568892814899808,
+        "aggregate_decode_tokens": 2032,
+        "aggregate_decode_span_s": 64.36716079700273,
+        "pooled_request_decode_tps": 6.625021824210519,
+        "pp_tps": 701.7363669380826,
+        "mean_ttft_s": 23.924986419242487,
+        "proposed_drafts": 6236,
+        "accepted_drafts": 1166,
+        "accepted_fraction": 0.18697883258499037,
+        "memories": [
+          {
+            "gpu_memory": {
+              "/sys/class/drm/card1/device/mem_info_preempt_used": {
+                "idle_bytes": 280997888,
+                "peak_bytes": 283852800,
+                "peak_delta_bytes": 2854912
+              },
+              "/sys/class/drm/card1/device/mem_info_vram_used": {
+                "idle_bytes": 187904000,
+                "peak_bytes": 189157376,
+                "peak_delta_bytes": 1253376
+              },
+              "/sys/class/drm/card1/device/mem_info_vis_vram_used": {
+                "idle_bytes": 187904000,
+                "peak_bytes": 189157376,
+                "peak_delta_bytes": 1253376
+              },
+              "/sys/class/drm/card1/device/mem_info_gtt_used": {
+                "idle_bytes": 90170388480,
+                "peak_bytes": 91469250560,
+                "peak_delta_bytes": 1298862080
+              }
+            },
+            "engine_memory": {
+              "VmHWM_bytes": {
+                "idle_bytes": 4292706304,
+                "peak_bytes": 4292706304,
+                "peak_delta_bytes": 0
+              },
+              "VmRSS_bytes": {
+                "idle_bytes": 3066593280,
+                "peak_bytes": 3134877696,
+                "peak_delta_bytes": 68284416
+              }
+            },
+            "host_available": {
+              "idle_bytes": 35725680640,
+              "minimum_bytes": 34167328768,
+              "max_consumption_delta_bytes": 1558351872
+            },
+            "scope": "Observed0.5s snapshots; peaks between snapshots are not captured. GPU/system APU accounting can overlap and must not be summed."
+          },
+          {
+            "gpu_memory": {
+              "/sys/class/drm/card1/device/mem_info_preempt_used": {
+                "idle_bytes": 280997888,
+                "peak_bytes": 283836416,
+                "peak_delta_bytes": 2838528
+              },
+              "/sys/class/drm/card1/device/mem_info_vram_used": {
+                "idle_bytes": 187584512,
+                "peak_bytes": 188026880,
+                "peak_delta_bytes": 442368
+              },
+              "/sys/class/drm/card1/device/mem_info_vis_vram_used": {
+                "idle_bytes": 187584512,
+                "peak_bytes": 188026880,
+                "peak_delta_bytes": 442368
+              },
+              "/sys/class/drm/card1/device/mem_info_gtt_used": {
+                "idle_bytes": 90170388480,
+                "peak_bytes": 91469234176,
+                "peak_delta_bytes": 1298845696
+              }
+            },
+            "engine_memory": {
+              "VmHWM_bytes": {
+                "idle_bytes": 4294737920,
+                "peak_bytes": 4294737920,
+                "peak_delta_bytes": 0
+              },
+              "VmRSS_bytes": {
+                "idle_bytes": 3065114624,
+                "peak_bytes": 3068461056,
+                "peak_delta_bytes": 3346432
+              }
+            },
+            "host_available": {
+              "idle_bytes": 35912679424,
+              "minimum_bytes": 34641698816,
+              "max_consumption_delta_bytes": 1270980608
+            },
+            "scope": "Observed0.5s snapshots; peaks between snapshots are not captured. GPU/system APU accounting can overlap and must not be summed."
+          }
+        ]
+      },
+      "candidate": {
+        "cohorts": 2,
+        "requests": 16,
+        "completed_tokens": 2048,
+        "wall_sum_s": 98.8749413669575,
+        "selected_concurrent_depth": 0,
+        "fresh_prefix_read_isolation_verified": true,
+        "mean_cohort_wall_s": 49.43747068347875,
+        "aggregate_completed_tps": 20.71303377464667,
+        "timing_scope": "Native resume request to final response; paused HTTP admission wait excluded, resume RPC/transport included.",
+        "mean_http_admission_inclusive_cohort_wall_s": 49.506285160488915,
+        "mean_excluded_http_admission_wait_s": 0.06881447701016441,
+        "mean_http_admission_inclusive_ttft_s": 24.62405096656221,
+        "aggregate_decode_tps": 27.21235397610479,
+        "aggregate_decode_tokens": 2032,
+        "aggregate_decode_span_s": 74.67196706996765,
+        "pooled_request_decode_tps": 5.171147525009716,
+        "pp_tps": 685.6003274018458,
+        "mean_ttft_s": 24.558430038734514,
+        "proposed_drafts": 6,
+        "accepted_drafts": 4,
+        "accepted_fraction": 0.6666666666666666,
+        "memories": [
+          {
+            "gpu_memory": {
+              "/sys/class/drm/card1/device/mem_info_preempt_used": {
+                "idle_bytes": 281702400,
+                "peak_bytes": 282660864,
+                "peak_delta_bytes": 958464
+              },
+              "/sys/class/drm/card1/device/mem_info_vram_used": {
+                "idle_bytes": 193769472,
+                "peak_bytes": 194785280,
+                "peak_delta_bytes": 1015808
+              },
+              "/sys/class/drm/card1/device/mem_info_vis_vram_used": {
+                "idle_bytes": 193769472,
+                "peak_bytes": 194785280,
+                "peak_delta_bytes": 1015808
+              },
+              "/sys/class/drm/card1/device/mem_info_gtt_used": {
+                "idle_bytes": 90169847808,
+                "peak_bytes": 91169038336,
+                "peak_delta_bytes": 999190528
+              }
+            },
+            "engine_memory": {
+              "VmHWM_bytes": {
+                "idle_bytes": 4281745408,
+                "peak_bytes": 4281745408,
+                "peak_delta_bytes": 0
+              },
+              "VmRSS_bytes": {
+                "idle_bytes": 3171139584,
+                "peak_bytes": 3172642816,
+                "peak_delta_bytes": 1503232
+              }
+            },
+            "host_available": {
+              "idle_bytes": 35709452288,
+              "minimum_bytes": 34571317248,
+              "max_consumption_delta_bytes": 1138135040
+            },
+            "scope": "Observed0.5s snapshots; peaks between snapshots are not captured. GPU/system APU accounting can overlap and must not be summed."
+          },
+          {
+            "gpu_memory": {
+              "/sys/class/drm/card1/device/mem_info_preempt_used": {
+                "idle_bytes": 281698304,
+                "peak_bytes": 282652672,
+                "peak_delta_bytes": 954368
+              },
+              "/sys/class/drm/card1/device/mem_info_vram_used": {
+                "idle_bytes": 198172672,
+                "peak_bytes": 199331840,
+                "peak_delta_bytes": 1159168
+              },
+              "/sys/class/drm/card1/device/mem_info_vis_vram_used": {
+                "idle_bytes": 198172672,
+                "peak_bytes": 199331840,
+                "peak_delta_bytes": 1159168
+              },
+              "/sys/class/drm/card1/device/mem_info_gtt_used": {
+                "idle_bytes": 90169847808,
+                "peak_bytes": 91169038336,
+                "peak_delta_bytes": 999190528
+              }
+            },
+            "engine_memory": {
+              "VmHWM_bytes": {
+                "idle_bytes": 4284186624,
+                "peak_bytes": 4284186624,
+                "peak_delta_bytes": 0
+              },
+              "VmRSS_bytes": {
+                "idle_bytes": 3107360768,
+                "peak_bytes": 3107504128,
+                "peak_delta_bytes": 143360
+              }
+            },
+            "host_available": {
+              "idle_bytes": 35889229824,
+              "minimum_bytes": 34710327296,
+              "max_consumption_delta_bytes": 1178902528
+            },
+            "scope": "Observed0.5s snapshots; peaks between snapshots are not captured. GPU/system APU accounting can overlap and must not be summed."
+          }
+        ]
+      }
+    },
+    "pooled_completed_tps_delta_percent": -11.41940014005508,
+    "policy_comparison": "Released stock C2-8 K7 versus candidate guarded concurrent K0; policies differ.",
+    "pooled_aggregate_decode_delta_percent": -13.800100194641063,
+    "whole_cohort_wall_delta_percent": 12.891536248467862,
+    "mirror_completed_tps_deltas_percent": [
+      -11.614528338829967,
+      -11.225864755538794
+    ],
+    "mirror_gap_percentage_points": 0.3886635832911729
+  },
+  "decision": {
+    "named_decision": "Describe whether the final numerical candidate retains long-context serving gain against captured stock, reporting all short8k and C8 tradeoffs for the user's already authorized selection.",
+    "long_context_tg_gain_observed": true,
+    "material_speed_tradeoffs": [
+      {
+        "fixture": "site-8k",
+        "tg_delta_percent": -38.40519449369623,
+        "whole_wall_delta_seconds": 0.12648104352410883
+      },
+      {
+        "fixture": "site-64k",
+        "tg_delta_percent": -26.903078269731427,
+        "whole_wall_delta_seconds": 0.4944835150090512
+      },
+      {
+        "fixture": "ultra-8k",
+        "tg_delta_percent": -1.4308708194004538,
+        "whole_wall_delta_seconds": 0.19180469753337093
+      }
+    ],
+    "measurement_confirmation_flagged": true,
+    "confirmation_triggers": [
+      {
+        "cell": "site-64k",
+        "reason": "mirror gap exceeds3percentagepoints"
+      },
+      {
+        "cell": "ultra-64k",
+        "reason": "mirror gap exceeds3percentagepoints"
+      }
+    ],
+    "outcome": "LONG_CONTEXT_GAIN_WITH_REPORTED_TRADEOFFS",
+    "hard_speed_release_block": false,
+    "numerical_quality_qualification": "Separate C1/C8 p/q and teacher-fidelity receipts must pass; serving audit does not close these gates.",
+    "cached_shared_checkpoint_ownership_gate_closed": false,
+    "scope": "Descriptive serving outcome. Already accepted short/8k tradeoffs are reported explicitly; arbitrary speed thresholds do not override user selection or numerical gates."
+  },
+  "ordered_runs": [
+    "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/evidence/20261011T073829Z-final-all-clean-auto-baseline",
+    "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/evidence/20261011T074930Z-final-all-clean-auto-candidate",
+    "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/evidence/20261011T075407Z-final-all-clean-auto-candidate",
+    "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/evidence/20261011T075837Z-final-all-clean-auto-baseline"
+  ],
+  "candidate_variant": "all",
+  "candidate_sampler": "1",
+  "candidate_mixed": "0",
+  "candidate_native_sampling": "1",
+  "candidate_concurrent_k0": "1",
+  "quality_score": false,
+  "promotion": false,
+  "protocol": {
+    "path": "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/research/final-serving-protocol.json",
+    "sha256": "8c8ce3254ca32d73970ee176c15e507498b2a8ef3b04436aedf70c48002eb85f"
+  },
+  "source_freeze": {
+    "path": "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/research/final-serving-source-freeze-v6.json",
+    "sha256": "768d8924006a5ac23bca3f58c4f818cddfb46b59a27c162931690739f22c9ae7"
+  },
+  "analysis_source": {
+    "path": "/home/crown/Documents/ChatGPT/Ornith1.5agent/ornith-iu4-correctness-20261010/tools/final_measurement_compare_v4.py",
+    "sha256": "f921b583261b0fabb8506ce3033f65311831b819100453a6077510010754c7fd"
+  }
+}

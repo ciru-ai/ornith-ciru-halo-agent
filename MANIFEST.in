@@ -4,3 +4,7 @@ recursive-include patches *.py *.patch *.json
 recursive-include scripts *.py *.sh
 recursive-include tests/native_tools *.py *.json
 recursive-include plugin-site/ornith_g256/_xgrammar_native *.so *.json
+recursive-include tests/correctness *.py *.json
+recursive-include plugin-site/ornith_g256/iu4_correctness *.json
+recursive-include docs/CIRU-V4.1.3 *.md
+include CIRU-V4.1.3-RELEASE.json CIRU-V4.1.3-VALIDATION.json

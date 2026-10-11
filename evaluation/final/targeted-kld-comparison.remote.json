@@ -1,0 +1,23 @@
+{
+  "schema": "ciru.ornith.k037.hf-remote-receipt.v1",
+  "status": "EXACT_QUALIFIED_RECEIPT_HOSTED_ON_HF",
+  "receipt": {
+    "hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
+    "hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+    "path": "evaluation/final/targeted-kld-comparison.json",
+    "sha256": "50e406eac6c931f7305cf5d5ca8a9954b03335debd5ff57cf3dbc55a0f013355",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/evaluation/final/targeted-kld-comparison.json",
+    "bytes": 3714881
+  },
+  "validation_report": {
+    "hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
+    "hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+    "path": "evaluation/CIRU-V4.1.3-VALIDATION.json",
+    "sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/evaluation/CIRU-V4.1.3-VALIDATION.json",
+    "github_path": "CIRU-V4.1.3-VALIDATION.json"
+  },
+  "original_bytes_sha256_verified_locally": true,
+  "original_receipt_stored_in_github": false,
+  "note": "The unchanged validation report binds the original receipt path and SHA on HF. This GitHub descriptor is not that receipt."
+}
