@@ -41,7 +41,7 @@
     "gdn_spec.py": "bdb0abf70c8b9ffbaa25a1334b0a260ae62ca0aebfa3ada8d9de72e3f0539624",
     "graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
     "iu4_correctness/__init__.py": "0f998843138e2d50cedc2092353aca8b2d86a21b9216f707da8f691dff72f597",
-    "iu4_correctness/adaptive_concurrent_k0.py": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+    "iu4_correctness/adaptive_concurrent_k0.py": "62e23d6689c1a9e4642f2e8f099d30e1bf595f50e340caf595139668492eebe2",
     "iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
     "iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
     "iu4_correctness/adaptive_k3_geometry.py": "88210bc120dda6527d85ca56a6d0d91323c2ff7d28c4506ea5d1a828dc6ff155",
@@ -103,6 +103,7 @@
     "strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
     "worker.py": "b2004e6fcbd3bd3cc5b42db666af3dabd1157734689fbae7151e363ff6671968",
     "worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868",
-    "xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
+    "xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623",
+    "iu4_correctness/prefill_service.py": "ab52765ec35e9fa59b090ea04a97382993f6389acb94cb41e7cd66936058e50c"
   }
 }

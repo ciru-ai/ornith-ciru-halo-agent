@@ -1,3 +1,7 @@
+# Ciru v4.1.5 bounded long-prefill service release
+
+This release adds bounded native prefill scheduling while preserving the installed pinned engine, weights and numerical kernels. Use this release's runtime/UPGRADE-CIRU.py for the 4.1.5 distribution. The preceding release and caches remain available for rollback. Fresh long-arrival, ON/OFF normal-profile and correctness checks are recorded in evaluation/CIRU-V4.1.5-VALIDATION.json.
+
 # Ciru v4.1.4 concurrency update
 
 Reuse the installed pinned engine and weights. Use this release's runtime/UPGRADE-CIRU.py for the 4.1.4 distribution. The preceding release and caches remain available for rollback. Numerical and serving qualification is scoped to the new validation report.

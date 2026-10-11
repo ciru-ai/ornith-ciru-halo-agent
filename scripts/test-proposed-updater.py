@@ -114,12 +114,12 @@ def run_checks(updater_path, prepared_release):
     updater_path, prepared_release = Path(updater_path).resolve(), Path(prepared_release).resolve()
     module = _load(updater_path)
     release = json.loads((prepared_release / 'RELEASE.json').read_text())
-    assert release['version'] == '4.1.4'
+    assert release['version'] == '4.1.5'
     assert _sha(prepared_release / 'runtime/UPGRADE-CIRU.py') == _sha(updater_path), 'Prepared updater differs from the tested script'
     controls = _controls(module, prepared_release)
     names = [p.relative_to(prepared_release).as_posix() for p in controls]
     assert 'bundle/paths.env' in names
-    assert 'bundle/plugin-site/ciru_ornith_g256-4.1.4.dist-info/METADATA' in names
+    assert 'bundle/plugin-site/ciru_ornith_g256-4.1.5.dist-info/METADATA' in names
     for path, name in zip(controls, names):
         if name != 'RELEASE.json':
             assert release['payload_sha256'].get(name) == _sha(path), 'Prepared control hash mismatch: '+name
@@ -149,10 +149,10 @@ def run_checks(updater_path, prepared_release):
             _unchanged(installed, preserve)
             result = json.loads((installed / 'UPGRADE-RECEIPT.json').read_text())
             assert result['verified_files'] == len(names)-1
-            assert result['version'] == '4.1.4' and result['weights_preserved'] and result['compile_cache_preserved']
+            assert result['version'] == '4.1.5' and result['weights_preserved'] and result['compile_cache_preserved']
             assert not result['weights_downloaded']
             distributions = sorted(p.name for p in (installed / 'bundle/plugin-site').glob('ciru_ornith_g256-*.dist-info'))
-            assert distributions == ['ciru_ornith_g256-4.1.4.dist-info'], distributions
+            assert distributions == ['ciru_ornith_g256-4.1.5.dist-info'], distributions
             return {'verified_files': result['verified_files'], 'weight_and_cache_paths_preserved': len(preserve),
                     'new_distribution_only': True, 'sha_and_inode_preservation': True}
         check('offline_complete_control_upgrade_preserves_weights_and_cache', success)
@@ -212,7 +212,7 @@ def run_checks(updater_path, prepared_release):
             injected = []
             def interrupted_copy(source, destination, *args, **kwargs):
                 if (not injected and Path(destination) == installed / 'README.md'
-                        and (installed / 'bundle/plugin-site/ciru_ornith_g256-4.1.4.dist-info').is_dir()):
+                        and (installed / 'bundle/plugin-site/ciru_ornith_g256-4.1.5.dist-info').is_dir()):
                     injected.append(True)
                     raise OSError('Injected top-level copy failure after bundle replacement')
                 return original_copy(source, destination, *args, **kwargs)
@@ -226,7 +226,7 @@ def run_checks(updater_path, prepared_release):
             assert injected == [True]
             _unchanged(installed, before)
             assert not (installed / 'UPGRADE-RECEIPT.json').exists()
-            assert not (installed / 'bundle/plugin-site/ciru_ornith_g256-4.1.4.dist-info').exists()
+            assert not (installed / 'bundle/plugin-site/ciru_ornith_g256-4.1.5.dist-info').exists()
             return {'injected_after_bundle_replacement': True, 'all_original_paths_preserved': len(before),
                     'all_original_file_hashes_and_inodes_preserved': True}
         check('post_replacement_failure_rolls_back_complete_old_installation', rollback)

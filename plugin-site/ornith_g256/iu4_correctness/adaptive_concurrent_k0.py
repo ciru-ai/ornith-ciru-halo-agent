@@ -153,7 +153,8 @@ def _bind_scheduler(module, state):
     @wraps(frozen_schedule)
     def schedule(scheduler, *args, **kwargs):
         _emit_install(state)
-        output = frozen_schedule(scheduler, *args, **kwargs)
+        from .prefill_service import schedule as schedule_with_prefill_service
+        output = schedule_with_prefill_service(frozen_schedule, scheduler, *args, **kwargs)
         ids = tuple(output.num_scheduled_tokens)
         active = _enabled(scheduler)
         guard = getattr(scheduler, '_ornith_concurrent_k0_guard', False)

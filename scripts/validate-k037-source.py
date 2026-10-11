@@ -13,7 +13,7 @@ def main():
     assert __debug__, 'Run without -O'
     plugin = ROOT/'plugin-site/ornith_g256'
     pins = json.loads((plugin/'iu4_correctness/source-pins.json').read_text())['files']
-    assert len(pins)==102 and pins[GRAMMAR]==EXPECTED_GRAMMAR
+    assert len(pins)==103 and pins[GRAMMAR]==EXPECTED_GRAMMAR
     for name,h in pins.items():
         path=plugin/name
         if name==GRAMMAR and not path.exists(): continue
@@ -31,6 +31,13 @@ def main():
             assert sha(original) == row['staged_sha256']
             assert staged_text.replace(after, before) == original_text
             assert normalized(original_text) == normalized(staged_text.replace(after, before))
+        elif name == 'adaptive_concurrent_k0.py':
+            old = '        output = frozen_schedule(scheduler, *args, **kwargs)'
+            new = '        from .prefill_service import schedule as schedule_with_prefill_service\n        output = schedule_with_prefill_service(frozen_schedule, scheduler, *args, **kwargs)'
+            original_text, staged_text = original.read_text(), staged.read_text()
+            assert sha(original) == row['staged_sha256']
+            assert staged_text.count(new) == 1
+            assert normalized(original_text) == normalized(staged_text.replace(new, old))
         else:
             assert sha(staged)==row['staged_sha256'], name
             assert normalized(original.read_text())==normalized(staged.read_text()), name
@@ -42,7 +49,13 @@ def main():
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     stream=io.StringIO();result=unittest.TextTestRunner(stream=stream).run(unittest.defaultTestLoader.loadTestsFromModule(module))
     assert result.wasSuccessful() and result.testsRun==25, stream.getvalue()
-    print(json.dumps(dict(passed=True, source_pins=102, source_files_local=101 if not (plugin/GRAMMAR).exists() else 102,
+    path=ROOT/'tests/correctness/test_prefill_service.py'
+    spec=importlib.util.spec_from_file_location('source_prefill_cpu_tests',path)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    service_result=unittest.TextTestRunner(stream=stream).run(unittest.defaultTestLoader.loadTestsFromModule(module))
+    assert service_result.wasSuccessful() and service_result.testsRun==13, stream.getvalue()
+    print(json.dumps(dict(passed=True, source_pins=103, source_files_local=102 if not (plugin/GRAMMAR).exists() else 103,
+        prefill_service_cpu_tests=service_result.testsRun,
         compiled_grammar_packaged_hf_only=not (plugin/GRAMMAR).exists(), grammar_sha256=EXPECTED_GRAMMAR,
         helper_ports_ast_equal=len(inputs['qualified_input_mapping']), guard_cpu_tests=result.testsRun,
         native_sources_unchanged=True, model_executed=False, publication=False),indent=2))

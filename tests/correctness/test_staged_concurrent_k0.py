@@ -119,7 +119,12 @@ class ConcurrentK0Tests(unittest.TestCase):
             self.adapter = None
         else:
             path = STAGE / 'plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py'
-            spec = importlib.util.spec_from_file_location('staged_concurrent_guard', path)
+            package = ModuleType('staged_iu4')
+            package.__path__ = [str(path.parent)]
+            sys.modules['staged_iu4'] = package
+            env = patch.dict(os.environ, CIRU_PREFILL_CADENCE='1')
+            env.start(); self.addCleanup(env.stop)
+            spec = importlib.util.spec_from_file_location('staged_iu4.adaptive_concurrent_k0', path)
             adaptive_concurrent_k0 = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(adaptive_concurrent_k0)
             self.adapter = adaptive_concurrent_k0

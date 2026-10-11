@@ -23,6 +23,9 @@ tags:
   - image-text-to-text
 ---
 
+**Long-prefill service update (4.1.5):** Bounded native scheduling gives existing replies decode service while long prompts arrive. In the matched 8k/128k arrival pilot, the existing reply delivered 12.29 tokens/s versus 0.52, and its worst delivery pause during the new prompt's TTFT fell to 1.54s from 5.63s. The new prompt's TTFT increased to 154.7s from 114.5s (+35.1%) because decode receives service during prefill. Sozo checks passed three fresh 128k arrivals during an established 8k reply, with at least 8 incumbent tokens/s over each complete newcomer TTFT and no delivery pause above 2 seconds within that phase. Uncapped short/8k/64k, cold C8, vision/thinking ON and text/thinking OFF checks also passed. Weights, numerical kernels, K0/cache protections and the sole-prefill path are retained. A fresh mixed K0 diagnostic passed paired logits, full probabilities, emitted IDs and discarded-row RNG checks. This is a decode-service/arrival-latency tradeoff; it is not a general PP speedup. Previous numerical and agent-quality results remain historical; K15 stays parked. See [validation](evaluation/CIRU-V4.1.5-VALIDATION.json).
+
+
 **Concurrency update (4.1.4):** Fixed concurrent K0 decode falling outside the target Q1 graphs and partitioned attention path. Sozo checks passed exact batched-versus-single attention parity, GPU graph replay, complete uncapped mixed 87k/8k C2 and cold 8k C8 replies, and normal vision/thinking ON and text/thinking OFF checks. Native overlapping generation measured 52.50 tokens/s for C2 and 151.85 tokens/s for C8; these are current-run rates, not a matched full-model speedup comparison. Previous quality results remain historical; K15 stays parked. See [validation](evaluation/CIRU-V4.1.4-VALIDATION.json) and [installation details](INSTALL.md).
 
 

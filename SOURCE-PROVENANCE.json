@@ -1,7 +1,7 @@
 {
-  "release": "Ciru v4.1.4 bounded concurrency release",
-  "package_version": "4.1.4",
-  "qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "release": "Ciru v4.1.5 bounded long-prefill service release",
+  "package_version": "4.1.5",
+  "qualified_build_sha256": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
   "native": [
     {
       "source": "kernels/dense/dense_g256_consumer.cpp",
@@ -114,7 +114,7 @@
     "plugin-site/ornith_g256/gdn_spec.py": "bdb0abf70c8b9ffbaa25a1334b0a260ae62ca0aebfa3ada8d9de72e3f0539624",
     "plugin-site/ornith_g256/graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
     "plugin-site/ornith_g256/iu4_correctness/__init__.py": "0f998843138e2d50cedc2092353aca8b2d86a21b9216f707da8f691dff72f597",
-    "plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+    "plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py": "62e23d6689c1a9e4642f2e8f099d30e1bf595f50e340caf595139668492eebe2",
     "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
     "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
     "plugin-site/ornith_g256/iu4_correctness/adaptive_k3_geometry.py": "88210bc120dda6527d85ca56a6d0d91323c2ff7d28c4506ea5d1a828dc6ff155",
@@ -125,11 +125,12 @@
     "plugin-site/ornith_g256/iu4_correctness/gates_phase.py": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
     "plugin-site/ornith_g256/iu4_correctness/gates_projection.py": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
     "plugin-site/ornith_g256/iu4_correctness/integration.py": "883c76aa0bf2f47b3c54de11edda48285a18c4870f0432fffc54dd704c6e0f94",
+    "plugin-site/ornith_g256/iu4_correctness/prefill_service.py": "ab52765ec35e9fa59b090ea04a97382993f6389acb94cb41e7cd66936058e50c",
     "plugin-site/ornith_g256/iu4_correctness/rng_exact_restore.py": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
     "plugin-site/ornith_g256/iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
     "plugin-site/ornith_g256/iu4_correctness/shared_kernel.py": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
     "plugin-site/ornith_g256/iu4_correctness/shared_live.py": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
-    "plugin-site/ornith_g256/iu4_correctness/source-pins.json": "eaefee5b1001b959dc4de8b4a93261e6e4eaa292342353017b9cf1559f3ac916",
+    "plugin-site/ornith_g256/iu4_correctness/source-pins.json": "11bad6a8ebb5ddd7ec229d89485aae676470f4b54bfdf5572004bbe8dd1a21ba",
     "plugin-site/ornith_g256/iu4_correctness/worker.py": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
     "plugin-site/ornith_g256/launch.py": "f724b1130de4c5c38bdcda8c46dafb754bbf94887a8cb9e23a0b765d82d4bbe0",
     "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
@@ -180,8 +181,8 @@
     "plugin-site/ornith_g256/xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623"
   },
   "runtime_native_grammar": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
-  "parent_qualified_build_sha256": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
-  "executable_bundle_fingerprint": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "parent_qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "executable_bundle_fingerprint": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
   "community_pr": "https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2",
   "community_pr_head": "7220d47a9428ec75dd0b1506168541b8bd9203b4",
   "reference_data_sha256": "11552ec53b62b229d0ab42b4e865d0175724cd51c4eef01c05e66e930f27d2eb",
@@ -194,21 +195,21 @@
     "measured_candidate_fingerprint": "4358fccd283da2caefe3c4709eae41aa4bc88fa352170c670fe684fe4e272ccc",
     "stage": "QUALIFIED_FOR_PUBLICATION"
   },
-  "stage": "CONCURRENCY_V414_SCOPED_RUNTIME_QUALIFIED_FOR_PUBLICATION",
-  "note": "New-build qualification is limited to CPU source/guard checks, exact attention GPU numerical/graph checks, and completed uncapped installed serving checks. Prior model-quality/performance scopes retain their original build and were not rerun. Tested executable bundle, source wheel/archive and engine bytes are preserved.",
+  "stage": "PREFILL_SERVICE_V415_SCOPED_RUNTIME_QUALIFIED_FOR_PUBLICATION",
+  "note": "Fresh complete-model long-arrival, normal-profile and correctness regression gates. Unchanged parent numerical and agent-quality scopes remain historical.",
   "publication_ready": true,
-  "parent_release": "4.1.3",
-  "parent_hf_revision": "c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c",
-  "proposed_source_inventory_sha256": "d4e675d08980d2e8273bceb8451db1321312354544541f0c76caf73167799810",
+  "parent_release": "4.1.4",
+  "parent_hf_revision": "b4708c958986241aeca8f0ceaa90073b2187adf1",
+  "proposed_source_inventory_sha256": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
   "concurrent_k0_source_sha256": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
   "underlying_shared_checkpoint_ownership_repaired": false,
   "updater_patch": {
-    "source_sha256": "b948a925586a1f13eae9ed226bd38567b5854bc420b823542b7137df6391ed0d",
-    "cpu_check_source_sha256": "08aa8ba7c746f861a82d31dc0e7d43e4e3eb73a29731ae79e05839cb4d1fd324",
-    "change": "Exact version-only 4.1.3 to 4.1.4 compatibility transformation; safety logic unchanged.",
-    "version_only_parent_sha256": "172bc492f169c9bcf5612183ac10cd7b8b49d2582b4b18731b844833e630c886",
-    "cpu_check_parent_sha256": "b4acdad3f30528e55950e1598b65934d8a664638079bd15dbe76ff5ed971b1fe",
-    "cpu_check_change": "Version advanced; distribution assertion restricted to ciru_ornith_g256 namespace, preserving unrelated installed packages.",
+    "source_sha256": "8bf0b8eeae17bab9bddaa19267ed1a12eac24cbeb572b2ddb546949a99174212",
+    "cpu_check_source_sha256": "774d8febc267cf742487420a04f8c46f0615cb1ab88446447cfde5b821d300e4",
+    "change": "Exact version-only 4.1.4 to 4.1.5 compatibility transformation; safety logic unchanged.",
+    "version_only_parent_sha256": "b948a925586a1f13eae9ed226bd38567b5854bc420b823542b7137df6391ed0d",
+    "cpu_check_parent_sha256": "08aa8ba7c746f861a82d31dc0e7d43e4e3eb73a29731ae79e05839cb4d1fd324",
+    "cpu_check_change": "Exact version-only transformation; existing owned distribution assertion and all eight safety cases retained.",
     "final_manifest_safety_checks_required": 8
   },
   "qualification_receipts": [
@@ -271,24 +272,24 @@
   "source_port_audit": "evaluation/SOURCE-PORT-CPU-AUDIT.json",
   "port_input_mapping": "tests/correctness/port-inputs.json",
   "production_promoted": false,
-  "assembled_bundle_fingerprint": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
-  "parent_bundle_fingerprint": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
+  "assembled_bundle_fingerprint": "6f0253eb18a8505235bc91c9bc45555987de732bec4eeca5d8caf4db9c025cac",
+  "parent_bundle_fingerprint": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
   "source_wheel": {
     "passed": true,
-    "source_pins": 102,
-    "record_entries": 119,
-    "sha256": "558a862c6d7b5117117e74909ac219cec7c965bd377ff7e1a9f5ebe7ca683c02",
-    "filename": "ciru_ornith_g256-4.1.4-py3-none-linux_x86_64.whl",
+    "source_pins": 103,
+    "record_entries": 120,
+    "sha256": "f7519ff869711cefa347bc5fe1d53ff6fff2f40ebe7abf3295b726601ac132af",
+    "filename": "ciru_ornith_g256-4.1.5-py3-none-linux_x86_64.whl",
     "native_payload_rebuilt": false,
     "runtime_qualified": false
   },
   "source_archive": {
     "filename": "ciru-v4-ornith-source.tar.gz",
-    "sha256": "c6d98c7b7ba1d9d3aa1e8a2452be19b561f73770124ba966f5547fe96e2fbe59",
+    "sha256": "1e28c4cda7ac9ed318cdd0cf791a84a7aab8e38c703ac3768dd60342df006aa7",
     "native_built": false,
-    "source_stage_sha256": "2059b6c29c4e949b817308f2d7d2f635404b01acd0b5675df629b0e30947c907"
+    "source_stage_sha256": "ec0398102a958c05b9f7ea4db2486b3f945299e36cc9678b5c428300ac520626"
   },
-  "status": "CONCURRENCY_V414_NUMERICAL_GRAPH_AND_UNCAPPED_SERVING_GATES_PASS",
+  "status": "PREFILL_SERVICE_V415_FRESH_LONG_ARRIVAL_NORMAL_AND_CORRECTNESS_GATES_PASS",
   "historical_assembly_proposal": {
     "release": "Ciru v4.1.3 source proposal",
     "package_version": "4.1.3",
@@ -524,60 +525,50 @@
     },
     "status": "ASSEMBLED_PENDING_PRODUCTION_NAMESPACE_QUALIFICATION"
   },
-  "source_inventory_sha256": "d4e675d08980d2e8273bceb8451db1321312354544541f0c76caf73167799810",
-  "source_stage_fingerprint": "d4e675d08980d2e8273bceb8451db1321312354544541f0c76caf73167799810",
+  "source_inventory_sha256": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
+  "source_stage_fingerprint": "62a77605e734223b0cb1500d75d090d5072ff835ff5d92247dc8c77c8ff41dd3",
   "production_activated": false,
   "current_selector_preserved": true,
   "runtime_validation": {
-    "status": "CONCURRENCY_V414_NUMERICAL_GRAPH_AND_UNCAPPED_SERVING_GATES_PASS",
-    "report": "evaluation/CIRU-V4.1.4-VALIDATION.json",
-    "report_sha256": "afbe22514d9a8eeaf4d7130d3191eeb65eb216b777f30c48e7fd67f22c955e0e",
+    "status": "PREFILL_SERVICE_V415_FRESH_LONG_ARRIVAL_NORMAL_AND_CORRECTNESS_GATES_PASS",
+    "report": "evaluation/CIRU-V4.1.5-VALIDATION.json",
+    "report_sha256": "eb57b700a473bb397d141ac4c00adcf0af36624bc12812ad63c4580f28debccc",
     "required_scopes": [
-      "bounded_concurrency_numerical",
-      "matched_c2_serving",
-      "cold_c8_serving",
-      "normal_profiles"
+      "long_mixed_arrival_serving",
+      "normal_profiles",
+      "correctness_regressions"
     ],
     "scopes": {
-      "bounded_concurrency_numerical": {
+      "long_mixed_arrival_serving": {
         "status": "PASS",
         "receipt_targets": [
-          "evaluation/concurrency-v414/attention-gpu-oracle.json"
+          "evaluation/prefill-service-v415/on/arrival-full/long-prefill-arrival-regression.json",
+          "evaluation/prefill-service-v415/candidate-pilot/arrival-pilot/long-prefill-arrival-regression.json"
         ],
-        "strict_batched_vs_c1_bit_parity": true,
-        "actual_gpu_graph_replay": true
-      },
-      "matched_c2_serving": {
-        "status": "PASS",
-        "receipt_targets": [
-          "evaluation/concurrency-v414/on/mixed-c2/concurrent-q1-serving.json"
-        ],
-        "rendered_context_targets": [
-          87337,
-          8093
-        ],
-        "actual_rendered_contexts": [
-          87331,
-          8082
-        ],
-        "whole_model_ab_comparison": false
-      },
-      "cold_c8_serving": {
-        "status": "PASS",
-        "receipt_targets": [
-          "evaluation/concurrency-v414/on/cold-c8/concurrent-q1-serving.json"
-        ],
-        "completion_cap_omitted": true,
-        "fresh_prompt_marker_distinct_from_c2": true,
-        "all_eight_cached_tokens_zero": true
+        "repeated_arrivals": 3,
+        "full_ttft_covered": true,
+        "max_delivered_gap_portion_within_ttft_s": 2,
+        "minimum_incumbent_tokens_per_s": 8
       },
       "normal_profiles": {
         "status": "PASS",
         "receipt_targets": [
-          "evaluation/concurrency-v414/on/normal-profile-smoke.json",
-          "evaluation/concurrency-v414/off/normal-profile-smoke.json"
+          "evaluation/prefill-service-v415/on/normal-profile-smoke.json",
+          "evaluation/prefill-service-v415/off/normal-profile-smoke.json"
         ],
         "completion_cap_omitted": true
+      },
+      "correctness_regressions": {
+        "status": "PASS",
+        "receipt_targets": [
+          "evaluation/prefill-service-v415/on/c1-guardrails/c1-guardrails.json",
+          "evaluation/prefill-service-v415/on/cold-c8/concurrent-q1-serving.json",
+          "evaluation/prefill-service-v415/on/arrival-full/long-prefill-arrival-regression.json",
+          "evaluation/prefill-service-v415/numerical/mixed-long-numerical-summary.json"
+        ],
+        "natural_stop": true,
+        "native_reasoning_unrestricted": true,
+        "paired_mixed_numerical_positions_exact": 64
       }
     },
     "limitations": {
@@ -593,17 +584,17 @@
     "concurrent_k7_qualified": false,
     "unrestricted_agent_quality_scored": false
   },
-  "version": "4.1.4",
-  "runtime_version": "4.1.4",
-  "parent_release_sha256": "5e0b05572daa9a615eb859f76fcde2fb728bdb44de9c10672e64db1d17ea3ecc",
+  "version": "4.1.5",
+  "runtime_version": "4.1.5",
+  "parent_release_sha256": "79e2173eb2643304b0b408c61de1ccc8d60548b31b49d1770e4b9ddaf2e9b0a3",
   "parent_evidence": {
-    "hf_revision": "c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c",
-    "release_sha256": "5e0b05572daa9a615eb859f76fcde2fb728bdb44de9c10672e64db1d17ea3ecc",
-    "qualified_build_sha256": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
-    "previous_scope_report": "history/concurrency-v414-parent/evaluation/CIRU-V4.1.3-VALIDATION.json",
+    "hf_revision": "b4708c958986241aeca8f0ceaa90073b2187adf1",
+    "release_sha256": "79e2173eb2643304b0b408c61de1ccc8d60548b31b49d1770e4b9ddaf2e9b0a3",
+    "qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+    "previous_scope_report": "history/prefill-service-v415-parent/evaluation/CIRU-V4.1.4-VALIDATION.json",
     "previous_scopes_reexecuted": false,
     "previous_scopes_are_new_build_qualification": false,
-    "previous_scope_report_sha256": "b64c75796650cf6ba6ae82210dbfd72cce016572f243bfc11f1d45caae8cce43"
+    "previous_scope_report_sha256": "afbe22514d9a8eeaf4d7130d3191eeb65eb216b777f30c48e7fd67f22c955e0e"
   },
   "concurrency_receipts": {
     "gpu_oracle": {
@@ -641,5 +632,41 @@
       }
     }
   },
-  "all_bundle_payload_unchanged_since_gpu_gates": true
+  "all_bundle_payload_unchanged_since_gpu_gates": true,
+  "prefill_service_receipts": {
+    "long_arrival": {
+      "path": "evaluation/prefill-service-v415/on/arrival-full/long-prefill-arrival-regression.json",
+      "sha256": "fdd7062ac7c50954794e08e33ed7df2612d0f471706827c9612bad3b2c38de10"
+    },
+    "baseline_arrival": {
+      "path": "evaluation/prefill-service-v415/baseline-arrival/long-prefill-arrival-regression.json",
+      "sha256": "50dc84475e800d2356f0e69073658a843d4a454a38a48571a5243acf25c52b3a"
+    },
+    "pilot_arrival": {
+      "path": "evaluation/prefill-service-v415/candidate-pilot/arrival-pilot/long-prefill-arrival-regression.json",
+      "sha256": "768046d9aa3d26400f8cf5e6e6fbe37bc2d40a1cf1c2d41d79b6a4913cc11394"
+    },
+    "c1_guardrails": {
+      "path": "evaluation/prefill-service-v415/on/c1-guardrails/c1-guardrails.json",
+      "sha256": "488a8728dba96e58b88c83b49ee403430c8f5312003b95b97867bea50eb9b140"
+    },
+    "cold_c8": {
+      "path": "evaluation/prefill-service-v415/on/cold-c8/concurrent-q1-serving.json",
+      "sha256": "c17d748c7b79c311f4df9a52b7577df0888be0617e92be635fce721824407011"
+    },
+    "numerical": {
+      "path": "evaluation/prefill-service-v415/numerical/mixed-long-numerical-summary.json",
+      "sha256": "270d8a7523f983b5a901f0add0454f9395a2058e06c794d9ef992095bddc5810"
+    },
+    "normal_smokes": {
+      "on": {
+        "path": "evaluation/prefill-service-v415/on/normal-profile-smoke.json",
+        "sha256": "5f1fc5759727ed25f92ee99684ab9013bd65d36210caa9b216101ef1afbe7f50"
+      },
+      "off": {
+        "path": "evaluation/prefill-service-v415/off/normal-profile-smoke.json",
+        "sha256": "5c3485816f703899a7456eba05100b7b024ea563990981fccb38ff18cb2864d9"
+      }
+    }
+  }
 }
