@@ -3,29 +3,29 @@
   "model": "Ornith1.5 IU4",
   "qualification": "SCOPED_K0_K3_K7_RELEASE_GATES_PASS",
   "published_hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
-  "published_hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
-  "github_source_parent_revision": "ed7f716befa632766223a7e1c8711dc9895a5fa1",
-  "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
-  "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "published_hf_revision": "c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c",
+  "github_source_parent_revision": "88a6d2d0d0dcb35d422e3e3696b379dfed0cefa5",
+  "qualified_build_sha256": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
+  "source_inventory_sha256": "2f19a19343ea5ad5839da4184f5ff881d0f22ec4b3d8f85c4969a33b824a6e2f",
   "release_manifest": {
     "path": "RELEASE.json",
-    "sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
-    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/RELEASE.json"
+    "sha256": "5e0b05572daa9a615eb859f76fcde2fb728bdb44de9c10672e64db1d17ea3ecc",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c/RELEASE.json"
   },
   "source_provenance": {
     "path": "SOURCE-PROVENANCE.json",
-    "sha256": "f5f98059f18eb11fe8e6b2336a60de23682adc4651d08110a0894539ddc66cf5",
-    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/SOURCE-PROVENANCE.json"
+    "sha256": "e0552b1b9d45eea9f5e80f5a6bbfc670eb31677ce7063eea00f114e620f3e608",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c/SOURCE-PROVENANCE.json"
   },
   "source_archive": {
     "path": "runtime/ciru-v4-ornith-source.tar.gz",
-    "sha256": "55c8fb7191cb3bcfa3d5a28fd2fa0a8e9fae824a19709a5166d0ef090fad1f7f",
-    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/runtime/ciru-v4-ornith-source.tar.gz"
+    "sha256": "164e0f79ef655444286d3348466b32cbde123554e35a7a4e3066645f6aee7a10",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c/runtime/ciru-v4-ornith-source.tar.gz"
   },
   "source_wheel": {
     "path": "runtime/wheels/ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl",
-    "sha256": "86b8feeaa47ca14e12216d7e9499ffc19305d6b1f87a4fba33964cb720929fa7",
-    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/runtime/wheels/ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl"
+    "sha256": "68431206a0fe68275202eb239ab47be56b8080dfab697e7a83b013232eb5029e",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c/runtime/wheels/ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl"
   },
   "updater": {
     "path": "runtime/UPGRADE-CIRU.py",
@@ -34,13 +34,13 @@
   },
   "validation": {
     "path": "evaluation/CIRU-V4.1.3-VALIDATION.json",
-    "sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
-    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/evaluation/CIRU-V4.1.3-VALIDATION.json"
+    "sha256": "b64c75796650cf6ba6ae82210dbfd72cce016572f243bfc11f1d45caae8cce43",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c/evaluation/CIRU-V4.1.3-VALIDATION.json"
   },
   "validation_source": "CIRU-V4.1.3-VALIDATION.json",
   "actual_hf_publication_readback": {
-    "path": "evaluation/final/HF-PUBLICATION-READBACK-v4.1.3.json",
-    "sha256": "52e5216b5347eec3768abe4ab854d4f4bb41003c05a63c2e55aa893ff8d24e10"
+    "path": "evaluation/final/HF-CACHE-LAUNCH-PUBLICATION-READBACK-v4.1.3.json",
+    "sha256": "6e1af3ad884bde693652b3b5a80c22edf05d3274904cb658f565827b641a57b6"
   },
   "source_pins": {
     "__init__.py": "6b8b03b748a722d0b37919d8316ea72ca9918848f9eaca30667e96278a88a945",
@@ -115,7 +115,7 @@
     "optimized/grammar_parallel.py": "e9c3608438712521980d7fcd60f58862d0b0a2876620183f304c64a03817edea",
     "optimized/greedy.py": "386443ad8729f8fe21ec5fef84ead3acfbd4d6c5dd3b4c1e50a7995ed1d1761f",
     "optimized/greedy_kernel.py": "2ebe2a25d1011a45eea7eda3c0964ca1eb2638df7d60f54db02c91435550dc42",
-    "optimized/launch.py": "880679b2e33881306916db83dd3844d56e3923bd6676a4f196940a8627e393dd",
+    "optimized/launch.py": "2fe8fcbe3903306f44e3626e92b033c55d4bceb5e4622bb8026de0ce5ca992e9",
     "optimized/mixed_qk_sum.py": "17b18769ae84c2e9707a0257181e5c314e9774fc3b4796f8e6787a8302cb5e1f",
     "optimized/norm0_barrier.py": "9321a3721076171377f610c03870ea794e7239fc8159a6fad754061b4be21644",
     "optimized/output_ceiling.py": "3ab42553a52fb32b58bae9b987ffb4f796f3d60bab4345a5ecdf1e85117cf93c",
@@ -252,29 +252,92 @@
   "receipt_publication_scope": "The byte-exact original validation report uses HF receipt paths and hashes. Large receipts are hosted on its immutable HF revision and represented here by separately hashed .remote.json descriptors.",
   "other_models_requalified": false,
   "prior_release": "CIRU-V4.1.2-RELEASE.json",
-  "hf_metadata_compatibility": {
-    "schema": "ciru.ornith.k037.hf-generated-attributes-compatibility.v1",
-    "passed": true,
-    "adapter_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
-    "complete_verifier_sha256": "d47349a6bd0943fd865fe11ef416b4aa5948900ae039526142a9624a236e0910",
-    "repair_parent_commit": "435b03aa65b4c176587cca797977babe84c0f424",
-    "historical_parent_commit": "d8bd86d618c792522efaaad49adcd0de837bb523",
-    "exception_path": ".gitattributes",
-    "original_attributes_sha256": "e8738eab56c30a9c4e6b144e2314425c6cf04e66d46b3a3a44e4d1da65e18ea4",
-    "actual_attributes_sha256": "4046f7ada80584e1fb51a04c3c9a40e38073bd8a69252d2211b1b3999a9ee7f5",
-    "added_line": "evaluation/final/final-serving-independent-raw-audit.json filter=lfs diff=lfs merge=lfs -text",
-    "original_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
-    "reverse_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
-    "repaired_release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
-    "payload_files": 277,
-    "all_other_release_bytes_unchanged": true,
-    "all_other_payload_manifest_entries_unchanged": true,
-    "qualified_code_source_report_defaults_unchanged": true,
-    "credentials_accessed": false,
-    "network_accessed": false,
-    "runtime_or_gpu_accessed": false,
-    "candidate_modified": false
+  "preceding_release_metadata_compatibility": {
+    "scope": "Historical metadata-only repair of the preceding HF release; no exception applied to this cache delta.",
+    "release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
+    "proof": {
+      "schema": "ciru.ornith.k037.hf-generated-attributes-compatibility.v1",
+      "passed": true,
+      "adapter_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
+      "complete_verifier_sha256": "d47349a6bd0943fd865fe11ef416b4aa5948900ae039526142a9624a236e0910",
+      "repair_parent_commit": "435b03aa65b4c176587cca797977babe84c0f424",
+      "historical_parent_commit": "d8bd86d618c792522efaaad49adcd0de837bb523",
+      "exception_path": ".gitattributes",
+      "original_attributes_sha256": "e8738eab56c30a9c4e6b144e2314425c6cf04e66d46b3a3a44e4d1da65e18ea4",
+      "actual_attributes_sha256": "4046f7ada80584e1fb51a04c3c9a40e38073bd8a69252d2211b1b3999a9ee7f5",
+      "added_line": "evaluation/final/final-serving-independent-raw-audit.json filter=lfs diff=lfs merge=lfs -text",
+      "original_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
+      "reverse_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
+      "repaired_release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
+      "payload_files": 277,
+      "all_other_release_bytes_unchanged": true,
+      "all_other_payload_manifest_entries_unchanged": true,
+      "qualified_code_source_report_defaults_unchanged": true,
+      "credentials_accessed": false,
+      "network_accessed": false,
+      "runtime_or_gpu_accessed": false,
+      "candidate_modified": false
+    },
+    "source_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
+    "github_preparer_source_sha256": "2712fede0ff0274234e33a23c4da9f0ace7cf4e8f8406b00e337b2558f3af1ee"
   },
-  "metadata_compatibility_source_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
-  "github_preparer_compatibility_source_sha256": "2712fede0ff0274234e33a23c4da9f0ace7cf4e8f8406b00e337b2558f3af1ee"
+  "retained_core_evidence": {
+    "hf_commit": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+    "release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
+    "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+    "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+    "original_report_sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
+    "numerical_gates_reexecuted": false,
+    "all101_other_pinned_sources_unchanged": true
+  },
+  "cache_launch_delta": {
+    "status": "CPU_AND_FRESH_NORMAL_ON_OFF_SMOKES_PASS",
+    "core_preservation_receipt": "evaluation/final/cache-launch-core-preservation.json",
+    "core_preservation_sha256": "74bfb17667fdfb90e22664c4e79ef43fee8717f6b87196c13e58325eab4f4fc9",
+    "cpu_receipt": "evaluation/final/cache-launch-cpu-checks.json",
+    "cpu_receipt_sha256": "22d44a1c851536171ae23637d3aad26a944326ffa37bf03c061b6436a25f425d",
+    "fresh_on_off_smokes_passed": true,
+    "normal_modes": {
+      "on": {
+        "source_binding": {
+          "target": "evaluation/cache-launch/on/source-binding.json",
+          "sha256": "7f8515a7c83ff91ec178df6068ce94508650df5bd2eb4176f7da0b6a902988a3"
+        },
+        "smoke": {
+          "target": "evaluation/cache-launch/on/normal-profile-smoke.json",
+          "sha256": "a896f96a80af2f7b7e868e63862d31fd901f70a5f98ca025833f40058a99878a"
+        },
+        "restoration": {
+          "target": "evaluation/cache-launch/on/restoration.json",
+          "sha256": "1aef286454cdbb7299a0502bc413e48729933ee85e7a757132131b4b99ddaff5"
+        },
+        "observed_engine_pid": 3972080,
+        "observed_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+        "cache_namespace": "vision-1"
+      },
+      "off": {
+        "source_binding": {
+          "target": "evaluation/cache-launch/off/source-binding.json",
+          "sha256": "da267444a6756298c4d4bc318d70e141f767cb860e14aa379344fa4efc18f6d6"
+        },
+        "smoke": {
+          "target": "evaluation/cache-launch/off/normal-profile-smoke.json",
+          "sha256": "a2ffc6feb695ea57dfa985c29bf3d7f422bc95533c1322b966d91275e7a17f2c"
+        },
+        "restoration": {
+          "target": "evaluation/cache-launch/off/restoration.json",
+          "sha256": "2b51039c1068dc2a159a589b51e59080999761ff18529843f6e503ee996c0746"
+        },
+        "observed_engine_pid": 3950351,
+        "observed_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+        "cache_namespace": "text-only"
+      }
+    },
+    "all_bundle_payload_unchanged_since_smokes": true,
+    "observed_smoke_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+    "normal_client_sha256": "d5048e609714e772328cc32ddc7e8eac50feddefa81716bb8ebd82eadf2f2e3a",
+    "normal_launcher_sha256": "2dbf7bd223b68820210600bbc46bc919cf4833bc92973c6e7d63630d684afbed",
+    "capture_helper_sha256": "18e760749e0d4943660ee9b3815711aa75ef79b29f6c9cfd6107fa4bc4544865"
+  },
+  "cache_delta_publication_scope": "Launcher-only cache repair; original large numerical/serving descriptors retain their immutable preceding-revision bindings."
 }

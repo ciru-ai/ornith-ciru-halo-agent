@@ -1,5 +1,7 @@
 # Ornith1.5 Ciru Halo Agent
 
+**Cache-mode repair:** The upstream launcher now separates text-only and vision compiled caches before vLLM imports. The previous seven numerical/serving scopes are retained as unchanged-core evidence; fresh uncapped ON/OFF mode checks are recorded in the updated validation report. [Pinned updated release](https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/tree/c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c).
+
 ## Ciru v4.1.3 — October 11, 2026
 
 The Ornith IU4 runtime now uses qualified K0/K3/K7 adaptive DFlash2, canonical native sampling, and conservative depth-zero concurrent serving with fresh-request prefix-read isolation. K15 remains parked; the underlying cached checkpoint ownership issue remains unresolved. The scored agent benchmarks keep their original build labels.

@@ -74,7 +74,7 @@
     "optimized/grammar_parallel.py": "e9c3608438712521980d7fcd60f58862d0b0a2876620183f304c64a03817edea",
     "optimized/greedy.py": "386443ad8729f8fe21ec5fef84ead3acfbd4d6c5dd3b4c1e50a7995ed1d1761f",
     "optimized/greedy_kernel.py": "2ebe2a25d1011a45eea7eda3c0964ca1eb2638df7d60f54db02c91435550dc42",
-    "optimized/launch.py": "880679b2e33881306916db83dd3844d56e3923bd6676a4f196940a8627e393dd",
+    "optimized/launch.py": "2fe8fcbe3903306f44e3626e92b033c55d4bceb5e4622bb8026de0ce5ca992e9",
     "optimized/mixed_qk_sum.py": "17b18769ae84c2e9707a0257181e5c314e9774fc3b4796f8e6787a8302cb5e1f",
     "optimized/norm0_barrier.py": "9321a3721076171377f610c03870ea794e7239fc8159a6fad754061b4be21644",
     "optimized/output_ceiling.py": "3ab42553a52fb32b58bae9b987ffb4f796f3d60bab4345a5ecdf1e85117cf93c",

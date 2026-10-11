@@ -149,3 +149,8 @@ First startup compiles/loads GPU kernels and creates caches. Wait for `/health` 
 Use the [Ciru v4 source snapshot](runtime/ciru-v4-ornith-source.tar.gz) for the exact combined plugin, all eight native kernel sources and the build script. The [source repository](https://github.com/ciru-ai/ornith-ciru-halo-agent) retains the development history. See its `BUILD.md` for the native rebuild command. Runtime source archives are provided in this Hugging Face repository under `runtime/`; they include the matching vLLM/AITER source, licenses and release overlay notes. The binary installation above is the tested way to assemble the pinned engine; native source rebuilding is separate from retraining or requantizing the model.
 
 Pinned runtime: vLLM `0.1.0rc2.dev9+g9255fd9fb9.rocm100` (base `9255fd9fb9fedf4b29d574a8d8bb21d93892cc98` plus supplied cache overlay), AITER `0.1.0rc1`, Python 3.14.3, PyTorch `2.13.0+rocm10.0.0`, ROCm SDK 10.0.0 and Transformers 5.16.1. Preserve included third-party licenses when redistributing.
+
+
+### 4.1.3 upstream cache-mode repair
+
+The optimized launcher derives its compiled-cache namespace from the fully resolved image configuration before starting vLLM. Vision ON and text-only OFF use separate directories under the executable build cache. Use the normal ON/OFF profile choices; do not copy compiled graphs between modes. Old cache directories and the preceding release remain available for rollback. This changes startup cache selection; weights, native libraries, pinned engine wheels, numerical helpers and draft policy are preserved. The validation report distinguishes retained numerical/performance evidence from fresh ON/OFF startup and uncapped smoke checks.

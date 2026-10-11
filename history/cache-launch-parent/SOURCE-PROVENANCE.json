@@ -1,0 +1,343 @@
+{
+  "release": "Ciru v4.1.3",
+  "package_version": "4.1.3",
+  "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+  "native": [
+    {
+      "source": "kernels/dense/dense_g256_consumer.cpp",
+      "library": "libornith_dense_g256.so",
+      "source_sha256": "28fe913a6fd5b3e97ae106563a3fe843cf55ba84413a989a7e414ec3357a8150",
+      "measured_library_sha256": "dc9bbf04f02f951fb444feaea2f612671867aad44929a30fdfadef8e5d5513a9"
+    },
+    {
+      "source": "kernels/routed/routed_direct_consumer.cpp",
+      "library": "libornith_routed_direct.so",
+      "source_sha256": "aea3b68893e7e2a8b70ddb1f83a24c444cae6ff8b995ff9794dc545da447a0ff",
+      "measured_library_sha256": "5b3ca6826547e0ff1c417e733229e104721cec403ccd8f88f7fcdb1726d6f4ed"
+    },
+    {
+      "source": "kernels/head/head_i8_tile_consumer.cpp",
+      "library": "libornith_head_i8_tile.so",
+      "source_sha256": "5b3513522291bde48ca641fe532728fe92a8cc8a22e33860bbe3f9e56f85901b",
+      "measured_library_sha256": "99ccdf750ebfd3286c8039287032f221861b81963dcbece2701831c83bb3746e"
+    },
+    {
+      "source": "kernels/routed_n32/routed_n32_consumer.cpp",
+      "library": "libornith_routed_n32.so",
+      "source_sha256": "f045389d4cb804fe43d34425ce6c02e817a89bd8cbdb453547f20e36f060be52",
+      "measured_library_sha256": "48415e71f6c85e3aefcecf99d72607bb05900244b4aaa9a7ba2c58378d92f5fb"
+    },
+    {
+      "source": "kernels/routed_storage/routed_storage_n32_consumer.cpp",
+      "library": "libornith_routed_storage_n32.so",
+      "source_sha256": "0473c486c66d83088dca393db9ca67ca937387e6176ddd03ca6a9985b005fea9",
+      "measured_library_sha256": "d1d7d7eafebf90091c3f996825e41592c311be62bebac653062ea8a4e31f1c56"
+    },
+    {
+      "source": "kernels/attention/prefill.cpp",
+      "library": "libornith_attention_iu4.so",
+      "source_sha256": "7d0a21917fbeff75811d7a7ed9df9438852762c28914eb61ec3b1ba31fc66dae",
+      "measured_library_sha256": "3d29cf3616c69f9fe2b89f8d3564d479dda682fdc06572886e7b60faccc9a53a"
+    },
+    {
+      "source": "kernels/attention/persistent.cpp",
+      "library": "libornith_persistent_iu4.so",
+      "source_sha256": "b430bee407b2c00ee7c2e75dcc39b8dab504767219755c24259f42327975b055",
+      "measured_library_sha256": "c70ba14d5aebf67b761ea54cfc9a38f8bbedf74cfca8b19050048acda9c8a06c"
+    },
+    {
+      "source": "kernels/dense_n32/dense_g256_consumer.cpp",
+      "library": "libornith_dense_g256_n32.so",
+      "source_sha256": "ca9daffa3e1cf1724a3586295b4b8d1065b019c23a6b1cdafebf0012e7ebadc2",
+      "measured_library_sha256": "504b832eea9279f98be4eab3342f0ddd31a5b3d191235f856acaf1c1b0e970c9"
+    }
+  ],
+  "native_source_files": {
+    "kernels/attention/persistent.cpp": "b430bee407b2c00ee7c2e75dcc39b8dab504767219755c24259f42327975b055",
+    "kernels/attention/prefill.cpp": "7d0a21917fbeff75811d7a7ed9df9438852762c28914eb61ec3b1ba31fc66dae",
+    "kernels/dense/dense_g256_api.h": "487320b066d2b033982a02cd8e94b3e2075dbec9f7bdb2f7c53b895a060813a2",
+    "kernels/dense/dense_g256_consumer.cpp": "28fe913a6fd5b3e97ae106563a3fe843cf55ba84413a989a7e414ec3357a8150",
+    "kernels/dense_n32/dense_g256_api.h": "487320b066d2b033982a02cd8e94b3e2075dbec9f7bdb2f7c53b895a060813a2",
+    "kernels/dense_n32/dense_g256_consumer.cpp": "ca9daffa3e1cf1724a3586295b4b8d1065b019c23a6b1cdafebf0012e7ebadc2",
+    "kernels/head/head_i8_tile_api.h": "ad11ace0f655b8a883d8888f07f214cb75ba5ff12471ec50a54bd2601f572463",
+    "kernels/head/head_i8_tile_consumer.cpp": "5b3513522291bde48ca641fe532728fe92a8cc8a22e33860bbe3f9e56f85901b",
+    "kernels/routed/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed/routed_direct_consumer.cpp": "aea3b68893e7e2a8b70ddb1f83a24c444cae6ff8b995ff9794dc545da447a0ff",
+    "kernels/routed/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_n32/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_n32/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_n32/routed_direct_prefill.h": "0c6a9be68211d3c0fd7c404a7cccaba93a58e996d4326a1e29122c90abe3b5f8",
+    "kernels/routed_n32/routed_n32_consumer.cpp": "f045389d4cb804fe43d34425ce6c02e817a89bd8cbdb453547f20e36f060be52",
+    "kernels/routed_storage/portable_exp.h": "d118a773477b611a0f0eb53c1b403479d0c2d35b02e9970ba3c24bb882da8781",
+    "kernels/routed_storage/routed_direct_api.h": "ac2c0076a7db7570f91eed658c8b4646218d98d2dbdb39e84d07c6284ab271d0",
+    "kernels/routed_storage/routed_storage_n32_consumer.cpp": "0473c486c66d83088dca393db9ca67ca937387e6176ddd03ca6a9985b005fea9",
+    "kernels/routed_storage/routed_storage_n32_prefill.h": "15e5f92d7c3f06a05010bb997ee07556007122858c04332ceb794a4c3d1a2bf9"
+  },
+  "plugin_sha256": {
+    "plugin-site/ornith_g256/__init__.py": "6b8b03b748a722d0b37919d8316ea72ca9918848f9eaca30667e96278a88a945",
+    "plugin-site/ornith_g256/adaptive_c1.py": "8e48fd874fbdf65183c20bcc7c748d2562dbcafa97e004f18a2818b98980a809",
+    "plugin-site/ornith_g256/attention.py": "2fdd3c0ed84dcb052a9e8f9df4068ddf80a969931bea0a295e022d36b753cda1",
+    "plugin-site/ornith_g256/attention_compact.py": "50df61a02a3890a2825b205ed18c7d18a2b002333d382c572440b58ca9b2b9fe",
+    "plugin-site/ornith_g256/attention_fast.py": "27b1a133cadb87ff3a63c027049e1da81e4112fd5d5260a4440fde85491f838a",
+    "plugin-site/ornith_g256/attention_folded.py": "73dac8203032bce6ceedf213d7eefe5987c921768ae237129e232fefd8d9bba3",
+    "plugin-site/ornith_g256/attention_iu4.py": "15c5341fc848c43ac956546e563cf8ab7f7649f05a674fb0153b0e2d76438cae",
+    "plugin-site/ornith_g256/attention_iu4_persistent.py": "cef74ae423974063212637a49cd64a5a10b9077f3a5e2287746722749a1e6297",
+    "plugin-site/ornith_g256/attention_mixed.py": "cbb530697f2555be6532b7d4d3401f3a33c4c58982659e88892720d21691110a",
+    "plugin-site/ornith_g256/attention_partition.py": "a8748277d2c121f26e2570581af5a57f1bc1a1a7072f8a213c8cd04d874333a7",
+    "plugin-site/ornith_g256/attention_storage.py": "3ab813e221835370bdb503b2ab7d48f46294441b1dd9c652c5dc976438bdb6e2",
+    "plugin-site/ornith_g256/attention_tile.py": "f2bf007132bc712c8e61e036ea8a94b54f18a813d9bdd334eee46436a3ca1fea",
+    "plugin-site/ornith_g256/attention_verify.py": "3a329599694265f4badecc2f9b709b280d9960b967d7192f3959ad9e0d8c6077",
+    "plugin-site/ornith_g256/attention_window.py": "78534f9a1b0beae9ecf80cc5b2a613e4fe4827036c8df0acc7e4dfd956aae1c5",
+    "plugin-site/ornith_g256/cache_full1120.py": "3d4240a749d9671c0bf9b3937200e1cd8d4abfe6699d8c1d6857b188c2ef8a8c",
+    "plugin-site/ornith_g256/column_backend.py": "a035b839369e733b05f68ce83df0d022cb62455016fccf30c2978127ab3c5403",
+    "plugin-site/ornith_g256/column_kernel.py": "27fb053d970184732a46212026afd3152ec07a0dfc3dc4c5cc5cc0d539f17c81",
+    "plugin-site/ornith_g256/config.py": "23210d8b625ef375638e2d6043a92a26181a5b5f1c537d9d4b34c91b7109f36f",
+    "plugin-site/ornith_g256/dense_n32.py": "119fb7d25e9d28b6e520b5285c10de86c7d8ec2fe29a2399e9c086173d765903",
+    "plugin-site/ornith_g256/dense_source.py": "cdc7dd6a13c2439cd405596069c301fe28cb95ff32278f1bafe8118fe357d48e",
+    "plugin-site/ornith_g256/dflash_conv_boundary.py": "a5f46458194cade5ddcbfbb51af30c662d12b9086fc459ecbeb17463339febb1",
+    "plugin-site/ornith_g256/dflash_spec.py": "c948b99eab22d2af5c5fc0ca9f764a0855a3d86aca0609362bf5474a9beff1b3",
+    "plugin-site/ornith_g256/dynamic_graphs.py": "6f51f0dd740f6546829e46bbbe840df2780ce8c49978658eb3a05092554ff90c",
+    "plugin-site/ornith_g256/gdn_canonical_kernel.py": "f49e3b0136771ab52360e2fbd1e85ae9ef12e14a97ee72e3043c4c5fd42bc0be",
+    "plugin-site/ornith_g256/gdn_compact.py": "8b5c062d10f386d78bc9926ab0576e56359401e5d1621c397a2922e2b426ccab",
+    "plugin-site/ornith_g256/gdn_compact_kernel.py": "c6d5940ca2c64e1d814ee274610b2b85be96395c86f46f215c0ba0ac133be6c1",
+    "plugin-site/ornith_g256/gdn_spec.py": "bdb0abf70c8b9ffbaa25a1334b0a260ae62ca0aebfa3ada8d9de72e3f0539624",
+    "plugin-site/ornith_g256/graph_phase_guard.py": "6cabaf7d4e3be04bbac7a642544d38948de2e07ea7ca38f5927f91bf3ad39163",
+    "plugin-site/ornith_g256/launch.py": "f724b1130de4c5c38bdcda8c46dafb754bbf94887a8cb9e23a0b765d82d4bbe0",
+    "plugin-site/ornith_g256/lifecycle.py": "3285552177cb8ce8a0149a01f8168d2bc44a739a9395ca84e15acccbb20a0b73",
+    "plugin-site/ornith_g256/loader.py": "a853c6d014214a7adf298548f9175b6e18dd05338917aec16ebcb4fc3c3ecb13",
+    "plugin-site/ornith_g256/method.py": "fc301af72efd234430dbfb839d56e74328457b5b83e14a044aeb9554d8acc707",
+    "plugin-site/ornith_g256/moe_base.py": "26fb517415f2497859f2e3ff1aed8f31e7c56a4aacccfb34c6638e65d7df07c4",
+    "plugin-site/ornith_g256/moe_shared.py": "b1ba457cc20d6ad150dc1fc6854e73365a7476c80d57e687dec7d085d47b98c1",
+    "plugin-site/ornith_g256/native.py": "49cce0d67987b9659feb556aafb247423490c2153b7d77b750f055a4fdcda331",
+    "plugin-site/ornith_g256/native_tool_schema.py": "910060689d72b47ad4a7bb1e51ef301e41ff0be1beb9cc6b3df01c423d2edef5",
+    "plugin-site/ornith_g256/no_spec.py": "561106b75328fe0e161fa1243aca4cf50c5049d8e785d22c90aacb3e1e1a0104",
+    "plugin-site/ornith_g256/parser_contract.py": "2cebab403dc882569f3ce67d12798df14cebd5c162c72f82becd37bcdd7e2a28",
+    "plugin-site/ornith_g256/phase_dispatch.py": "1a4ebdf2af709e6ca519e0a08f6a537602df178ca575332045617631640f8137",
+    "plugin-site/ornith_g256/prefill_draft.py": "d79bb29a124639543a64e198908e2eaef4cbcf492f2e5e14debcfc9c867816f5",
+    "plugin-site/ornith_g256/prefix_cache.py": "65fb972e285e37741f53b221d2f6380ec464d34a39f36bb66a82dcaacab727d0",
+    "plugin-site/ornith_g256/runtime.py": "db43b1c3766720e0dbee4e8617aee673a533c30d36fcc1fbf43919717d8ab149",
+    "plugin-site/ornith_g256/runtime_canonical_attention.py": "790b1af6cb1ad470ee72f078357fcc64634797aecdce728050a06fdbdd335b9e",
+    "plugin-site/ornith_g256/runtime_correctness.py": "08f41773e623a4f99cf8ab19e434d7e33bac9cfa5eb05a9dc0f4511aab8ba4bc",
+    "plugin-site/ornith_g256/worker.py": "b2004e6fcbd3bd3cc5b42db666af3dabd1157734689fbae7151e363ff6671968",
+    "plugin-site/ornith_g256/worker_base.py": "a00ef1295172e655c8b3c7d790cfd0316114a9492e483dedfdea036d3b7bf868",
+    "plugin-site/ornith_g256/xgrammar_native.py": "d19c546e124cb11311e4cc31f5833dc663e2789d45090091c0f8fec8a9626623",
+    "plugin-site/ornith_g256/_vllm_correctness/__init__.py": "963097106407a87b62b275041516144de15713dee65108accc29e27036ffc059",
+    "plugin-site/ornith_g256/_vllm_correctness/causal_conv1d.py": "230f3e554f5f1d609a37022578c84e42d5c71d46e684101278a7e21af4f7d418",
+    "plugin-site/ornith_g256/_vllm_correctness/chat_completion_serving_r03.py": "5720371f5bcb351e340a3e8d9a0235ec01ff27ed93e4f35542e31b83a055ef45",
+    "plugin-site/ornith_g256/_vllm_correctness/gdn_attn.py": "a3c361d502e8bca2aa46a0baed5ec753a3c62e3d027a298e3ed4692794f9f6ec",
+    "plugin-site/ornith_g256/_vllm_correctness/gpu_model_runner.py": "ef0009acaa67a1a5e066984f34bf619b06e85220ff953a3d9511376f0146dccf",
+    "plugin-site/ornith_g256/_vllm_correctness/manifest.json": "cb6c229fee608c33fd60dfe9e5db48ef8e26917f90fbc53af9d721f1637c2266",
+    "plugin-site/ornith_g256/_vllm_correctness/qwen_gdn_linear_attn.py": "9fee739a1298621642513492962df81802be8f8283d520771ba055b369549b6f",
+    "plugin-site/ornith_g256/_xgrammar_native/build-receipt.json": "3bdf77657e5157c35938b66dfb46266608ade3b599a62ce74abb3f807d579e84",
+    "plugin-site/ornith_g256/_xgrammar_native/selection.json": "7cb93b3fe902de6d604bf96f79fdc3efbd8d612e494da838f6a8f0d731eb89ae",
+    "plugin-site/ornith_g256/optimized/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+    "plugin-site/ornith_g256/optimized/compile_scope.py": "18971a73b3a5ad80e6212de7f7e419a1dd00eb7380a5e6c8559f5ac6f5ec8d4d",
+    "plugin-site/ornith_g256/optimized/draft.py": "e801301cf03d69998758d35fb5463754ccc30a18e030ed2b988b26cef43f429c",
+    "plugin-site/ornith_g256/optimized/draft_kernel.py": "3d6da6ef0c144505f888cbd35ba50b6b95ad8e48c376ab73297746bff228919e",
+    "plugin-site/ornith_g256/optimized/first_draft_norm.py": "e72ab94df04ef209b7db1f005aa4796b2c94e5c3fc6c0807bf14c71738eef59d",
+    "plugin-site/ornith_g256/optimized/grammar_parallel.py": "e9c3608438712521980d7fcd60f58862d0b0a2876620183f304c64a03817edea",
+    "plugin-site/ornith_g256/optimized/greedy.py": "386443ad8729f8fe21ec5fef84ead3acfbd4d6c5dd3b4c1e50a7995ed1d1761f",
+    "plugin-site/ornith_g256/optimized/greedy_kernel.py": "2ebe2a25d1011a45eea7eda3c0964ca1eb2638df7d60f54db02c91435550dc42",
+    "plugin-site/ornith_g256/optimized/launch.py": "880679b2e33881306916db83dd3844d56e3923bd6676a4f196940a8627e393dd",
+    "plugin-site/ornith_g256/optimized/mixed_qk_sum.py": "17b18769ae84c2e9707a0257181e5c314e9774fc3b4796f8e6787a8302cb5e1f",
+    "plugin-site/ornith_g256/optimized/norm0_barrier.py": "9321a3721076171377f610c03870ea794e7239fc8159a6fad754061b4be21644",
+    "plugin-site/ornith_g256/optimized/output_ceiling.py": "3ab42553a52fb32b58bae9b987ffb4f796f3d60bab4345a5ecdf1e85117cf93c",
+    "plugin-site/ornith_g256/optimized/postconv.py": "c58ee5d2b8418fbf69eda5d9ee4f342b11cc012ab77ae25b6ce2b2aea51aa50f",
+    "plugin-site/ornith_g256/optimized/prefix.py": "c695a899ab12b58c3b89b6ecc276e82efa3f0833a319911a8528cc4e237710cd",
+    "plugin-site/ornith_g256/optimized/qk.py": "33f9d0775079253400ece382003e66bbe4aae582d2206da5a469025515ac3639",
+    "plugin-site/ornith_g256/optimized/qk_schedule.py": "911206de6a416264fd2207262dc91077d733f7dc1c5145a19b13ee128ef7bdee",
+    "plugin-site/ornith_g256/optimized/worker.py": "dd32a2ab0b1eb6749584dcbf117329702d82b02c9d2f05f6fe59386675f9af9b",
+    "plugin-site/ornith_g256/strict_qwen/__init__.py": "ee8a5055249f1413fc22f46421ab77b5485aa39b199c68eb5b56c75dcc40922d",
+    "plugin-site/ornith_g256/strict_qwen/qwen3.py": "33c653447a144b72257e508ccd92610db6d30578e28f98c69c99281773dead1c",
+    "plugin-site/ornith_g256/strict_qwen/qwen3_contract.py": "29c083659c54c81144fdb6c8329c75aaa62cf69d1c45fa7da8bdeeeca4856eaf",
+    "plugin-site/ornith_g256/iu4_correctness/__init__.py": "0f998843138e2d50cedc2092353aca8b2d86a21b9216f707da8f691dff72f597",
+    "plugin-site/ornith_g256/iu4_correctness/gates.py": "3c729a9006fc925aef16cb97aab9e198ab12d2c3dacb9a84aee6163f466641d4",
+    "plugin-site/ornith_g256/iu4_correctness/gates_phase.py": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
+    "plugin-site/ornith_g256/iu4_correctness/gates_projection.py": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
+    "plugin-site/ornith_g256/iu4_correctness/shared_live.py": "edb525c42b81c902fda88881cdb74b9464acbd67e8b2c3b9a440692170626dfd",
+    "plugin-site/ornith_g256/iu4_correctness/shared_kernel.py": "c6395f0d7835976e59384e9e867ff6274ef4fb8dbef5067ece53153fe029fd76",
+    "plugin-site/ornith_g256/iu4_correctness/rng_exact_restore.py": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
+    "plugin-site/ornith_g256/iu4_correctness/final_sampler.py": "5d4d0f147c534c1ee76fc0e5adc25d7ecad54e6c5716471449ebb33058077e72",
+    "plugin-site/ornith_g256/iu4_correctness/final_native_sampling.py": "3f12035cafe8da230099c990d40c3b62947eda2bcf5938f23505c358b2d2009f",
+    "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_policy.py": "6e8be45ea6cee7b995009f967f08190a32b18327a42fd768b252faa875dbed5e",
+    "plugin-site/ornith_g256/iu4_correctness/adaptive_fallback_ceiling.py": "7cb29dabdbbd45787df2feab35e1f11ba0a22a7c6aa410de411260c4a7c53780",
+    "plugin-site/ornith_g256/iu4_correctness/adaptive_k3_geometry.py": "70c5a9f610e7ce2d7e94e0b94b6420ca76dc43c0aefdbdb812221dd42999f9f5",
+    "plugin-site/ornith_g256/iu4_correctness/final_router_ablation.py": "fdafb01eaf8095c281cbbd1145443d6a4cddf9362d4519b51087785ced6e9cc9",
+    "plugin-site/ornith_g256/iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
+    "plugin-site/ornith_g256/iu4_correctness/integration.py": "883c76aa0bf2f47b3c54de11edda48285a18c4870f0432fffc54dd704c6e0f94",
+    "plugin-site/ornith_g256/iu4_correctness/worker.py": "9d2dd61a69a99484624f5687593d5d4968e85e2abbe020275804b42eae1f5064",
+    "plugin-site/ornith_g256/iu4_correctness/source-pins.json": "ac3a2b9722a0cb82f6aa801a531c21faa9af0c54a39249bb14276df74e6e7d97",
+    "plugin-site/ornith_g256/iu4_correctness/adaptive_concurrent_k0.py": "107334094bba5928c87d7d71469c7f36f5f0d2f89030a8a154e191039a09a3aa",
+    "plugin-site/ornith_g256/optimized/pipeline/SOURCE-PROOF.json": "5939bc8a53a831715d05d0fa0290beaa0cb00eda1597fe3bf1f1cfc53699fd0d",
+    "plugin-site/ornith_g256/optimized/pipeline/__init__.py": "0297f5d476afdddb0556f4f236f95e514db6b9b96788df672a4a0bc0074fd835",
+    "plugin-site/ornith_g256/optimized/pipeline/adapter.py": "6af97a8d5e0d79b7dfc32f2f0fe5f5c53b5c1c50d03542ff99c64cae7f3909e1",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/causal_conv1d.py": "254c540f77b01694696a1ab535abd0e5a23d54e7211e202cf9beead04face16b",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/chunk_o.py": "a93f951048958265b4d1c3f9e67341329196e7a57525433934215fde4b16e61b",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/chunk_scaled_dot_kkt.py": "71735d2b1c4a19eecbb6058708481817bb610426c48f96a5f646784afcf0c65c",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/solve_tril.py": "bdd04b69c0f91562048d25834bd53d298dc1f1bd068b9494af88776b2bf4b1d1",
+    "plugin-site/ornith_g256/optimized/pipeline/candidate/wy_fast.py": "4cc0be519bfcf3812d810a4bebb3dd45fb9b13a8d0ab62d0ad463a1a2e36f61f"
+  },
+  "runtime_native_grammar": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7",
+  "parent_qualified_build_sha256": "4358fccd283da2caefe3c4709eae41aa4bc88fa352170c670fe684fe4e272ccc",
+  "executable_bundle_fingerprint": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+  "community_pr": "https://github.com/ciru-ai/ornith-ciru-halo-agent/pull/2",
+  "community_pr_head": "7220d47a9428ec75dd0b1506168541b8bd9203b4",
+  "reference_data_sha256": "11552ec53b62b229d0ab42b4e865d0175724cd51c4eef01c05e66e930f27d2eb",
+  "weights_modified": false,
+  "pinned_engine_wheels_modified": false,
+  "previous_qualified_build_sha256": "097e85f3ce1ba97e835bc609de9f1961a165e09bd8b3ba3c9e70fd5166c24f10",
+  "patch_validation": "CIRU-V4.1.3-VALIDATION.json",
+  "previous_release_details": {
+    "note": "Same measured model libraries and plugin code; R04 source pinned by patches/xgrammar/SOURCE.json. Portable recipe includes output32 compile definition. Rebuilding with another toolchain need not produce identical binaries.",
+    "identity_note": "Apodex: one blank line in qk.py (identical complete AST); conditionally apply 0.35 utilization for pools <=16 GiB with exact same settings at measured 8 GiB. Ornith: executable payload identical.",
+    "measured_candidate_fingerprint": "4358fccd283da2caefe3c4709eae41aa4bc88fa352170c670fe684fe4e272ccc",
+    "stage": "QUALIFIED_FOR_PUBLICATION"
+  },
+  "stage": "PASS_SCOPED_PATCH",
+  "note": "Ornith IU4 only: source bytes match the readback-verified HF v4.1.3 release. Seven scoped gates pass; cached shared checkpoint ownership remains unresolved, K15 and concurrent K7 remain unqualified, and unrestricted agent quality was not rescored. Native sources, prior releases and attribution are retained. Compiled grammar stays HF-only with its existing rebuild recipe.",
+  "model": "Ornith1.5",
+  "source_revision": "ed7f716befa632766223a7e1c8711dc9895a5fa1",
+  "published_hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
+  "published_hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+  "packaged_only_sha256": {
+    "plugin-site/ornith_g256/_xgrammar_native/libxgrammar-candidate.so": "92ab36bfae20c6c4df3f5321ca375204799ac833252921d9d8f6a206491d35f7"
+  },
+  "historical_source_provenance": {
+    "path": "history/SOURCE-PROVENANCE-v4.0.1.json",
+    "sha256": "db35b33c25e0078cb06a5d096bb90552ba143699b45c12468bbc824e65e63999"
+  },
+  "published_packages": "CIRU-V4.1.3-RELEASE.json",
+  "github_source_parent_revision": "ed7f716befa632766223a7e1c8711dc9895a5fa1",
+  "source_revision_scope": "Parent used for this atomic source overlay; current source is the commit containing this file",
+  "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "source_pins_count": 102,
+  "source_archive": {
+    "path": "runtime/ciru-v4-ornith-source.tar.gz",
+    "sha256": "55c8fb7191cb3bcfa3d5a28fd2fa0a8e9fae824a19709a5166d0ef090fad1f7f",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/runtime/ciru-v4-ornith-source.tar.gz"
+  },
+  "source_wheel": {
+    "path": "runtime/wheels/ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl",
+    "sha256": "86b8feeaa47ca14e12216d7e9499ffc19305d6b1f87a4fba33964cb720929fa7",
+    "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/runtime/wheels/ciru_ornith_g256-4.1.3-py3-none-linux_x86_64.whl"
+  },
+  "previous_source_provenance": {
+    "path": "history/SOURCE-PROVENANCE-v4.1.2-github.json",
+    "sha256": "78e56dbab20cd3691a8bcb13d25c454feb6579707de895e279cf99de9dc57b21"
+  },
+  "required_scopes": [
+    "teacher_fixed_prefix",
+    "production_c1",
+    "production_cold_c8",
+    "production_auto_transition",
+    "balanced_serving",
+    "source_ports",
+    "packaged_engine_sources"
+  ],
+  "limits": {
+    "cached_shared_checkpoint_ownership_repaired": false,
+    "k15_active": false,
+    "concurrent_k7_qualified": false,
+    "unrestricted_agent_quality_scored": false
+  },
+  "remote_receipt_targets": [
+    {
+      "hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
+      "hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+      "path": "evaluation/final/targeted-kld-comparison.json",
+      "sha256": "50e406eac6c931f7305cf5d5ca8a9954b03335debd5ff57cf3dbc55a0f013355",
+      "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/evaluation/final/targeted-kld-comparison.json",
+      "bytes": 3714881,
+      "github_descriptor_target": "evaluation/final/targeted-kld-comparison.remote.json",
+      "github_descriptor_sha256": "b9eb2295aabeef2ed4cbe376628f8925f5816b660c9a90c8a7c6359f751d8953",
+      "validation_report_sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
+      "original_receipt_stored_in_github": false
+    },
+    {
+      "hf_repo": "jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo",
+      "hf_revision": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+      "path": "evaluation/final/final-serving-independent-raw-audit.json",
+      "sha256": "2eb942f9625156e3e80546f49cfd1569dcad86d632436ebe21df8036ed6bdb93",
+      "url": "https://huggingface.co/jcbtc/Ornith1.5-Ciru-Halo-Agent-vllm-strix-halo/resolve/2bf99aea28065e2bb67159f8fe19153b0a6e850f/evaluation/final/final-serving-independent-raw-audit.json",
+      "bytes": 19705518,
+      "github_descriptor_target": "evaluation/final/final-serving-independent-raw-audit.remote.json",
+      "github_descriptor_sha256": "a71c9eb719511c4eb43cda7a83a38dbf7c291d85c5e00f45177bd5689f6c1a41",
+      "validation_report_sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
+      "original_receipt_stored_in_github": false
+    }
+  ],
+  "local_receipt_targets": [
+    {
+      "target": "evaluation/final/final-c1-production-independent-audit.json",
+      "sha256": "56c4ae4f8af9abfae8f55954f6e6f2d5c03f76afff1e8c988cc20071c9d7bbc8",
+      "bytes": 29959
+    },
+    {
+      "target": "evaluation/final/final-cold-k0-production-independent-audit.json",
+      "sha256": "48f0240f2999eb730a1d6140cbbc2899fed0aed07dc70cf43b7592194c6ac8ce",
+      "bytes": 32830
+    },
+    {
+      "target": "evaluation/final/final-concurrent-transition-production-independent-audit.json",
+      "sha256": "c8a19e86b8d14b96c551ce632b23e7ff3b88abab999cbca98f28ac9b1aa3d67b",
+      "bytes": 30981
+    },
+    {
+      "target": "evaluation/final/final-serving-comparison.json",
+      "sha256": "d03df9bb35df3d6bf8e1a7814135405f416e05918bdb44b88ccb55afbe655afa",
+      "bytes": 17903
+    },
+    {
+      "target": "evaluation/final/final-serving-sampler-path-v3-cpu-audit.json",
+      "sha256": "820f35c89ddb88d9faa8fcbedc710d49a43ec33858d72458db8dca502c8e7061",
+      "bytes": 3041
+    },
+    {
+      "target": "evaluation/final/final-serving-root-independent-review.json",
+      "sha256": "ba251ad1eab8d78f864eab7c54f57263aeb23434975a133382b50820f6ff9ee7",
+      "bytes": 59718
+    },
+    {
+      "target": "evaluation/final/production-source-stage-v4.1.3-cpu-audit.json",
+      "sha256": "317a09da886ed94bf06826e39b69b25d69437ea8b5dbeb68ff7f8adcbaf11d56",
+      "bytes": 14521
+    },
+    {
+      "target": "evaluation/final/v413-release-assembly-v3.json",
+      "sha256": "0dbca174ea46281f0bbc1a22f1477b3f7a6a1e581a3d5790e6584e71e7866c13",
+      "bytes": 31744
+    },
+    {
+      "target": "evaluation/final/final-packaged-engine-source-pin-v1.json",
+      "sha256": "572a65b004794de138e5d842cc6c43397936641c4b00fae71ff0d49e6a2a88d3",
+      "bytes": 706
+    }
+  ],
+  "receipt_publication_scope": "The byte-exact original validation report uses HF receipt paths and hashes. Large receipts are hosted on its immutable HF revision and represented here by separately hashed .remote.json descriptors.",
+  "hf_metadata_compatibility": {
+    "schema": "ciru.ornith.k037.hf-generated-attributes-compatibility.v1",
+    "passed": true,
+    "adapter_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
+    "complete_verifier_sha256": "d47349a6bd0943fd865fe11ef416b4aa5948900ae039526142a9624a236e0910",
+    "repair_parent_commit": "435b03aa65b4c176587cca797977babe84c0f424",
+    "historical_parent_commit": "d8bd86d618c792522efaaad49adcd0de837bb523",
+    "exception_path": ".gitattributes",
+    "original_attributes_sha256": "e8738eab56c30a9c4e6b144e2314425c6cf04e66d46b3a3a44e4d1da65e18ea4",
+    "actual_attributes_sha256": "4046f7ada80584e1fb51a04c3c9a40e38073bd8a69252d2211b1b3999a9ee7f5",
+    "added_line": "evaluation/final/final-serving-independent-raw-audit.json filter=lfs diff=lfs merge=lfs -text",
+    "original_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
+    "reverse_release_sha256": "da3e612b4d791beb3dadfa3c155b7054cdaefb5b05ef0b81425f50cbca6beb3a",
+    "repaired_release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
+    "payload_files": 277,
+    "all_other_release_bytes_unchanged": true,
+    "all_other_payload_manifest_entries_unchanged": true,
+    "qualified_code_source_report_defaults_unchanged": true,
+    "credentials_accessed": false,
+    "network_accessed": false,
+    "runtime_or_gpu_accessed": false,
+    "candidate_modified": false
+  },
+  "metadata_compatibility_source_sha256": "1a905d29d91787c2020b44a9fb0bcbb86a16a08deafd603e5395aaaca105bc0d",
+  "github_preparer_compatibility_source_sha256": "2712fede0ff0274234e33a23c4da9f0ace7cf4e8f8406b00e337b2558f3af1ee"
+}

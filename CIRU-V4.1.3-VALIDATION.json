@@ -5,10 +5,10 @@
   "publication_ready": true,
   "production_activated": false,
   "current_selector_preserved": true,
-  "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
-  "executable_bundle_fingerprint": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
-  "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
-  "source_stage_fingerprint": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+  "qualified_build_sha256": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
+  "executable_bundle_fingerprint": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
+  "source_inventory_sha256": "2f19a19343ea5ad5839da4184f5ff881d0f22ec4b3d8f85c4969a33b824a6e2f",
+  "source_stage_fingerprint": "2f19a19343ea5ad5839da4184f5ff881d0f22ec4b3d8f85c4969a33b824a6e2f",
   "required_scopes": [
     "teacher_fixed_prefix",
     "production_c1",
@@ -21,56 +21,70 @@
   "scopes": {
     "teacher_fixed_prefix": {
       "status": "PASS",
-      "scope": "Full 1,980-position, seven-case BF16 teacher fixed-prefix panel; aggregate fidelity with documented turn regressions, not unrestricted agent quality.",
+      "scope": "Retained unchanged-core evidence from preceding build. Full 1,980-position, seven-case BF16 teacher fixed-prefix panel; aggregate fidelity with documented turn regressions, not unrestricted agent quality.",
       "receipt_targets": [
         "evaluation/final/targeted-kld-comparison.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "production_c1": {
       "status": "PASS",
-      "scope": "Actual packaged production Worker exact target p/q at 157 K3/K7 proposed positions across 8K/64K; coupled diagnostic acceptance is not natural acceptance.",
+      "scope": "Retained unchanged-core evidence from preceding build. Actual packaged production Worker exact target p/q at 157 K3/K7 proposed positions across 8K/64K; coupled diagnostic acceptance is not natural acceptance.",
       "receipt_targets": [
         "evaluation/final/final-c1-production-independent-audit.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "production_cold_c8": {
       "status": "PASS",
-      "scope": "Actual packaged production Worker 256-position ordered cold C8 native K0 paired numerical replay, including discarded-row RNG restoration. Cached shared-checkpoint ownership remains held.",
+      "scope": "Retained unchanged-core evidence from preceding build. Actual packaged production Worker 256-position ordered cold C8 native K0 paired numerical replay, including discarded-row RNG restoration. Cached shared-checkpoint ownership remains held.",
       "receipt_targets": [
         "evaluation/final/final-cold-k0-production-independent-audit.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "production_auto_transition": {
       "status": "PASS",
-      "scope": "Actual native production C1/C8/C1 lifecycle clears real pending drafts, forces current/future K0 under concurrency, preserves ongoing committed state and returns to AUTO. Scheduling/isolation scope, not a numerical quality score.",
+      "scope": "Retained unchanged-core evidence from preceding build. Actual native production C1/C8/C1 lifecycle clears real pending drafts, forces current/future K0 under concurrency, preserves ongoing committed state and returns to AUTO. Scheduling/isolation scope, not a numerical quality score.",
       "receipt_targets": [
         "evaluation/final/final-concurrent-transition-production-independent-audit.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "balanced_serving": {
       "status": "PASS",
-      "scope": "Four fresh Sozo engines live/candidate/candidate/live with frozen bounded 8K/64K and cold C8 serving diagnostics, source-bound counters, raw SSE, admission and memory observations. Timing mirrors and short-reply regressions remain visible.",
+      "scope": "Retained unchanged-core evidence from preceding build. Four fresh Sozo engines live/candidate/candidate/live with frozen bounded 8K/64K and cold C8 serving diagnostics, source-bound counters, raw SSE, admission and memory observations. Timing mirrors and short-reply regressions remain visible.",
       "receipt_targets": [
         "evaluation/final/final-serving-comparison.json",
         "evaluation/final/final-serving-independent-raw-audit.json",
         "evaluation/final/final-serving-sampler-path-v3-cpu-audit.json",
         "evaluation/final/final-serving-root-independent-review.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "source_ports": {
       "status": "PASS",
-      "scope": "Byte-pinned portable production implementation, selected source inventory, CPU source-port checks and actual production namespace tests. No blanket optimizer or unrestricted agent-quality claim.",
+      "scope": "Retained unchanged-core evidence from preceding build. Byte-pinned portable production implementation, selected source inventory, CPU source-port checks and actual production namespace tests. No blanket optimizer or unrestricted agent-quality claim.",
       "receipt_targets": [
         "evaluation/final/production-source-stage-v4.1.3-cpu-audit.json",
         "evaluation/final/v413-release-assembly-v3.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     },
     "packaged_engine_sources": {
       "status": "PASS",
-      "scope": "Unmodified packaged vLLM wheel scheduler/request sources exactly match the actual qualified runtime.",
+      "scope": "Retained unchanged-core evidence from preceding build. Unmodified packaged vLLM wheel scheduler/request sources exactly match the actual qualified runtime.",
       "receipt_targets": [
         "evaluation/final/final-packaged-engine-source-pin-v1.json"
-      ]
+      ],
+      "retained_from_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+      "numerical_or_performance_reexecuted": false
     }
   },
   "receipts": [
@@ -141,5 +155,63 @@
     "k15_active": false,
     "concurrent_k7_qualified": false,
     "unrestricted_agent_quality_scored": false
+  },
+  "retained_core_evidence": {
+    "hf_commit": "2bf99aea28065e2bb67159f8fe19153b0a6e850f",
+    "release_sha256": "f8f0c3b7282843ae59ab4e7759d0d403490493b3eb83798db2122fff350c53d3",
+    "qualified_build_sha256": "2c9517073e053bfe1008f7bb37c8135b69feaac579fb79aad66d56e6df2bcc14",
+    "source_inventory_sha256": "43c19be7cc0cd55517ee34b7c792c0762a2b2286a133c44dd9bce5a6b52894d9",
+    "original_report_sha256": "086843e341e5cf0b24a6a02950c12b3315a69eccb0430994b08c99dbe1a8bf66",
+    "numerical_gates_reexecuted": false,
+    "all101_other_pinned_sources_unchanged": true
+  },
+  "cache_launch_delta": {
+    "status": "CPU_AND_FRESH_NORMAL_ON_OFF_SMOKES_PASS",
+    "core_preservation_receipt": "evaluation/final/cache-launch-core-preservation.json",
+    "core_preservation_sha256": "74bfb17667fdfb90e22664c4e79ef43fee8717f6b87196c13e58325eab4f4fc9",
+    "cpu_receipt": "evaluation/final/cache-launch-cpu-checks.json",
+    "cpu_receipt_sha256": "22d44a1c851536171ae23637d3aad26a944326ffa37bf03c061b6436a25f425d",
+    "fresh_on_off_smokes_passed": true,
+    "normal_modes": {
+      "on": {
+        "source_binding": {
+          "target": "evaluation/cache-launch/on/source-binding.json",
+          "sha256": "7f8515a7c83ff91ec178df6068ce94508650df5bd2eb4176f7da0b6a902988a3"
+        },
+        "smoke": {
+          "target": "evaluation/cache-launch/on/normal-profile-smoke.json",
+          "sha256": "a896f96a80af2f7b7e868e63862d31fd901f70a5f98ca025833f40058a99878a"
+        },
+        "restoration": {
+          "target": "evaluation/cache-launch/on/restoration.json",
+          "sha256": "1aef286454cdbb7299a0502bc413e48729933ee85e7a757132131b4b99ddaff5"
+        },
+        "observed_engine_pid": 3972080,
+        "observed_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+        "cache_namespace": "vision-1"
+      },
+      "off": {
+        "source_binding": {
+          "target": "evaluation/cache-launch/off/source-binding.json",
+          "sha256": "da267444a6756298c4d4bc318d70e141f767cb860e14aa379344fa4efc18f6d6"
+        },
+        "smoke": {
+          "target": "evaluation/cache-launch/off/normal-profile-smoke.json",
+          "sha256": "a2ffc6feb695ea57dfa985c29bf3d7f422bc95533c1322b966d91275e7a17f2c"
+        },
+        "restoration": {
+          "target": "evaluation/cache-launch/off/restoration.json",
+          "sha256": "2b51039c1068dc2a159a589b51e59080999761ff18529843f6e503ee996c0746"
+        },
+        "observed_engine_pid": 3950351,
+        "observed_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+        "cache_namespace": "text-only"
+      }
+    },
+    "all_bundle_payload_unchanged_since_smokes": true,
+    "observed_smoke_release_sha256": "e2c1e131e1abb8caddffd17e7acb76203b543be98ec6424c7a282f8e1281b5df",
+    "normal_client_sha256": "d5048e609714e772328cc32ddc7e8eac50feddefa81716bb8ebd82eadf2f2e3a",
+    "normal_launcher_sha256": "2dbf7bd223b68820210600bbc46bc919cf4833bc92973c6e7d63630d684afbed",
+    "capture_helper_sha256": "18e760749e0d4943660ee9b3815711aa75ef79b29f6c9cfd6107fa4bc4544865"
   }
 }
