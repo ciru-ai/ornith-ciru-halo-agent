@@ -62,10 +62,11 @@ def chunked_prefill_paged_decode_tile16(
                 k_scale, v_scale, alibi_slopes, sliding_window, sm_scale,
                 output_scale, sinks, is_block_table_ptr, causal):
             return output
-    # Q1/C1 uses the existing partitioned decoder; shape-only eligibility
+    # Q1/C1..C8 uses the existing partitioned decoder; shape-only eligibility
     # is identical during graph capture and replay as sequence length grows.
     if (_folded_decode and max_query_len == 1
-            and query.shape == (1,16,256) and seq_lens.numel() == 1
+            and 1 <= seq_lens.numel() <= 8
+            and query.shape == (seq_lens.numel(),16,256)
             and target_cache
             and query.dtype == key_cache.dtype == value_cache.dtype == output.dtype == torch.bfloat16
             and kv_cache_dtype == 'auto' and causal and not is_block_table_ptr

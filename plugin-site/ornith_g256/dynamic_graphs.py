@@ -1,4 +1,4 @@
-"""C1 adaptive fallback: exact Q1/C1 target graph; retain Q16/Q8 keys.
+"""Adaptive fallback: exact Q1/C1..8 target graphs; retain Q16/Q8 keys.
 
 Copy into the experimental ornith_g256 package and call install() before
 GPUModelRunner construction. Installed vLLM files and drafter hooks stay intact.
@@ -119,7 +119,7 @@ def _enabled(runner):
 def _supported_query_len(num_tokens, num_reqs, max_query_len):
     if num_tokens != num_reqs * max_query_len:
         return None
-    if max_query_len == 1 and num_reqs == 1:
+    if max_query_len == 1 and 1 <= num_reqs <= 8:
         return 1
     if max_query_len == 16 and num_reqs == 1:
         return 16
@@ -158,11 +158,13 @@ def _replace_full_keys(runner):
     if len(lookup) <= 64 or lookup[16] != 16 or lookup[64] != 64:
         raise ValueError("Dynamic target graphs require capture sizes 16 and 64")
     # Do not change global capture sizes: those also configure DFlash.
-    # Add only an exact target Q1/C1 key after upstream's Q16 initialization.
-    lookup[1] = 1
-    lookup[8] = 8
-    keys = {BatchDescriptor(num_tokens=1, num_reqs=1, uniform=True),
-            BatchDescriptor(num_tokens=16, num_reqs=1, uniform=True)}
+    # Exact target Q1 keys retain the native request count at K0. Padding a
+    # two-request Q1 batch into a speculative Q8 graph is not compatible.
+    for num_reqs in range(1, 9):
+        lookup[num_reqs] = num_reqs
+    keys = {BatchDescriptor(num_tokens=num_reqs, num_reqs=num_reqs, uniform=True)
+            for num_reqs in range(1, 9)}
+    keys.add(BatchDescriptor(num_tokens=16, num_reqs=1, uniform=True))
     for num_reqs in range(1, 9):
         padded = lookup[num_reqs * 8]
         if padded % 8 or not 8 <= padded <= 64:
@@ -212,8 +214,11 @@ def install():
             # A one-token prompt/tail is not proof of decode. CPU metadata is
             # already available; no GPU read or synchronization is added.
             batch = runner.input_batch
-            if not (batch.num_reqs == 1 and
-                    batch.num_computed_tokens_cpu[0] >= batch.num_prompt_tokens[0]):
+            if not (batch.num_reqs == num_reqs and
+                    len(num_scheduled_tokens_np) == num_reqs and
+                    all(count == 1 for count in num_scheduled_tokens_np) and
+                    all(batch.num_computed_tokens_cpu[index] >= batch.num_prompt_tokens[index]
+                        for index in range(num_reqs))):
                 query_len = None
         if query_len is None or not _enabled(runner):
             return original_dispatch(
@@ -242,8 +247,8 @@ def install():
         if query_len is None or not _enabled(runner):
             return original_capture(runner, desc, *args, **kwargs)
         if query_len == 1:
-            # Only target Q1 is captured. The K0 diagnostic never uses the
-            # drafter, whose trained convolution cannot warm up a one-row input.
+            # Only target Q1 is captured. K0 skips the drafter query forward,
+            # whose trained convolution cannot warm up a one-row query width.
             # Retain all its ordinary Q8/Q16 warmup and construction unchanged.
             drafter = runner.drafter
             had_override = 'dummy_run' in drafter.__dict__

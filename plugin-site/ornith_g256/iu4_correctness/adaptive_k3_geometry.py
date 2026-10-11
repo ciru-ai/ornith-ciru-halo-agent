@@ -15,7 +15,7 @@ from pathlib import Path
 import textwrap
 
 
-GRAPH_SHA256 = '6f51f0dd740f6546829e46bbbe840df2780ce8c49978658eb3a05092554ff90c'
+GRAPH_SHA256 = 'fa4ddbb0609ed4ba0065b9eb2753a7a4a9f79edb37cb75ea875973b9fb0eab67'
 BOUNDARY_SHA256 = 'a5f46458194cade5ddcbfbb51af30c662d12b9086fc459ecbeb17463339febb1'
 _Q4_ALLOWED = ContextVar('ornith_iu4_k3_q4_decode_allowed', default=True)
 

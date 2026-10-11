@@ -20,13 +20,13 @@ def control_file(name, include_engine=False):
         return not name.startswith(('bundle/models/', 'bundle/cache/'))
     if name.startswith('runtime/'):
         return include_engine or name.endswith(('.py', '.sh', '.json', '.lock', '.nix')) or '/ciru-v4-' in name
-    return name in ('README.md', 'INSTALL.md', 'RELEASE.json', 'SOURCE-PROVENANCE.json', 'RUNTIME-FIXES.md', 'CREDITS.md', '.gitattributes', 'PATCH-NOTES-4.1.3.md') or name.startswith(('evaluation/', 'assets/'))
+    return name in ('README.md', 'INSTALL.md', 'RELEASE.json', 'SOURCE-PROVENANCE.json', 'RUNTIME-FIXES.md', 'CREDITS.md', '.gitattributes', 'PATCH-NOTES-4.1.4.md') or name.startswith(('evaluation/', 'assets/'))
 
 def verify_selected_controls(payload, release, include_engine=False):
     """Refuse an incomplete selected payload before moving the installed bundle."""
     hashes = release['payload_sha256']
     required = ('bundle/paths.env',
-                'bundle/plugin-site/ciru_ornith_g256-4.1.3.dist-info/METADATA')
+                'bundle/plugin-site/ciru_ornith_g256-4.1.4.dist-info/METADATA')
     for name in required:
         if name not in hashes:
             raise RuntimeError(f'Required release control hash is missing: {name}')
@@ -87,8 +87,8 @@ def main():
             names = [f.rfilename for f in info.siblings if control_file(f.rfilename, bool(args.install_runtime))]
             snapshot_download(REPOS[args.model], revision=revision, local_dir=payload, allow_patterns=names)
         release = json.loads((payload/'RELEASE.json').read_text())
-        if release['version'] != '4.1.3':
-            raise RuntimeError('This updater requires the 4.1.3 release; no installation files changed.')
+        if release['version'] != '4.1.4':
+            raise RuntimeError('This updater requires the 4.1.4 release; no installation files changed.')
         if not args.prepared_directory and not release.get('publication_ready'):
             raise RuntimeError('This release is not ready for installation; no installation files changed.')
         verify_selected_controls(payload, release, bool(args.install_runtime))
@@ -102,7 +102,7 @@ def main():
                 if expected is None or hashlib.sha256(p.read_bytes()).hexdigest() != expected:
                     raise RuntimeError(f'Release checksum mismatch: {rel}')
                 checked += 1
-        if not (payload/'bundle/plugin-site/ciru_ornith_g256-4.1.3.dist-info/METADATA').is_file():
+        if not (payload/'bundle/plugin-site/ciru_ornith_g256-4.1.4.dist-info/METADATA').is_file():
             raise RuntimeError('New distribution metadata is missing.')
         if args.install_runtime:
             runtime = args.install_runtime.expanduser().resolve()
@@ -110,7 +110,7 @@ def main():
                 raise RuntimeError('Choose a NEW runtime directory; existing runtimes are preserved.')
             installer = payload/'runtime'/('INSTALL-ORNITH-RUNTIME.sh' if args.model=='ornith' else 'INSTALL-APODEX-RUNTIME.sh')
             subprocess.run(['bash',str(installer),str(runtime)],check=True)
-        backup = destination/'.ciru-upgrade-backups'/f'4.1.3-{time.time_ns()}'
+        backup = destination/'.ciru-upgrade-backups'/f'4.1.4-{time.time_ns()}'
         backup.mkdir(parents=True)
         os.replace(bundle, backup/'bundle')
         for name in ('models','cache'):
@@ -133,7 +133,7 @@ def main():
                     created_files.append(target)
                 target.parent.mkdir(parents=True,exist_ok=True)
                 shutil.copy2(p,target)
-        receipt = dict(version='4.1.3', repo=REPOS[args.model], revision=revision, verified_files=checked, backup=str(backup), weights_downloaded=False, weights_preserved=True, compile_cache_preserved=True)
+        receipt = dict(version='4.1.4', repo=REPOS[args.model], revision=revision, verified_files=checked, backup=str(backup), weights_downloaded=False, weights_preserved=True, compile_cache_preserved=True)
         (destination/'UPGRADE-RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
         print(json.dumps(receipt,indent=2))
         if args.install_runtime:

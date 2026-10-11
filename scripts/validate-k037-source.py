@@ -21,8 +21,19 @@ def main():
     inputs=json.loads((ROOT/'tests/correctness/port-inputs.json').read_text())
     for name,row in inputs['qualified_input_mapping'].items():
         original=ROOT/row['source'];staged=ROOT/row['staged']
-        assert sha(original)==row['source_sha256'] and sha(staged)==row['staged_sha256'], name
-        assert normalized(original.read_text())==normalized(staged.read_text()), name
+        assert sha(original)==row['source_sha256'], name
+        if name == 'adaptive_k3_geometry.py':
+            before = "GRAPH_SHA256 = '6f51f0dd740f6546829e46bbbe840df2780ce8c49978658eb3a05092554ff90c'"
+            after = "GRAPH_SHA256 = 'fa4ddbb0609ed4ba0065b9eb2753a7a4a9f79edb37cb75ea875973b9fb0eab67'"
+            original_text, staged_text = original.read_text(), staged.read_text()
+            assert pins['dynamic_graphs.py'] == 'fa4ddbb0609ed4ba0065b9eb2753a7a4a9f79edb37cb75ea875973b9fb0eab67'
+            assert original_text.count(before) == staged_text.count(after) == 1
+            assert sha(original) == row['staged_sha256']
+            assert staged_text.replace(after, before) == original_text
+            assert normalized(original_text) == normalized(staged_text.replace(after, before))
+        else:
+            assert sha(staged)==row['staged_sha256'], name
+            assert normalized(original.read_text())==normalized(staged.read_text()), name
     provenance=json.loads((ROOT/'SOURCE-PROVENANCE.json').read_text())
     for name,h in provenance['native_source_files'].items(): assert sha(ROOT/name)==h, name
     for path in plugin.rglob('*.py'): compile(path.read_text(),str(path),'exec')

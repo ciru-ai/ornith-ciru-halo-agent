@@ -1,0 +1,203 @@
+{
+  "schema": "ciru.ornith.concurrency-v414.validation.v1",
+  "status": "CONCURRENCY_V414_NUMERICAL_GRAPH_AND_UNCAPPED_SERVING_GATES_PASS",
+  "passed": true,
+  "publication_ready": true,
+  "version": "4.1.4",
+  "qualified_build_sha256": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "executable_bundle_fingerprint": "e601b07980ff86dba551623aeaeca059c0fa6ae264ffe6b72f9b6a6b51a35f0c",
+  "source_inventory_sha256": "d4e675d08980d2e8273bceb8451db1321312354544541f0c76caf73167799810",
+  "source_pins_sha256": "eaefee5b1001b959dc4de8b4a93261e6e4eaa292342353017b9cf1559f3ac916",
+  "required_scopes": [
+    "bounded_concurrency_numerical",
+    "matched_c2_serving",
+    "cold_c8_serving",
+    "normal_profiles"
+  ],
+  "scopes": {
+    "bounded_concurrency_numerical": {
+      "status": "PASS",
+      "receipt_targets": [
+        "evaluation/concurrency-v414/attention-gpu-oracle.json"
+      ],
+      "strict_batched_vs_c1_bit_parity": true,
+      "actual_gpu_graph_replay": true
+    },
+    "matched_c2_serving": {
+      "status": "PASS",
+      "receipt_targets": [
+        "evaluation/concurrency-v414/on/mixed-c2/concurrent-q1-serving.json"
+      ],
+      "rendered_context_targets": [
+        87337,
+        8093
+      ],
+      "actual_rendered_contexts": [
+        87331,
+        8082
+      ],
+      "whole_model_ab_comparison": false
+    },
+    "cold_c8_serving": {
+      "status": "PASS",
+      "receipt_targets": [
+        "evaluation/concurrency-v414/on/cold-c8/concurrent-q1-serving.json"
+      ],
+      "completion_cap_omitted": true,
+      "fresh_prompt_marker_distinct_from_c2": true,
+      "all_eight_cached_tokens_zero": true
+    },
+    "normal_profiles": {
+      "status": "PASS",
+      "receipt_targets": [
+        "evaluation/concurrency-v414/on/normal-profile-smoke.json",
+        "evaluation/concurrency-v414/off/normal-profile-smoke.json"
+      ],
+      "completion_cap_omitted": true
+    }
+  },
+  "source_delta": {
+    "path": "evaluation/concurrency-v414/source-delta.json",
+    "sha256": "6e70e5c0ff2a867940534c97d91691f3e231f7481f877b1ec700aa11858e6bd2"
+  },
+  "parent_evidence": {
+    "hf_revision": "c57e66e76ad1dcdac4afa2ca5866ac04d0004f5c",
+    "release_sha256": "5e0b05572daa9a615eb859f76fcde2fb728bdb44de9c10672e64db1d17ea3ecc",
+    "qualified_build_sha256": "5bdfa357499ddd21e23d85d2d775f7c2e07720d007d88877b91c7b73f21a5c1c",
+    "previous_scope_report": "history/concurrency-v414-parent/evaluation/CIRU-V4.1.3-VALIDATION.json",
+    "previous_scopes_reexecuted": false,
+    "previous_scopes_are_new_build_qualification": false,
+    "previous_scope_report_sha256": "b64c75796650cf6ba6ae82210dbfd72cce016572f243bfc11f1d45caae8cce43"
+  },
+  "limits": {
+    "cached_shared_checkpoint_ownership_repaired": false,
+    "k15_active": false,
+    "concurrent_k7_qualified": false,
+    "unrestricted_agent_quality_scored": false
+  },
+  "production_activated": false,
+  "current_selector_preserved": true,
+  "observed_serving_release_sha256": "a4e3541a732852274d14fe75cf57b7ab05672650c4bf73572fcb9dd448f47e38",
+  "receipt_groups": {
+    "gpu_oracle": {
+      "path": "evaluation/concurrency-v414/attention-gpu-oracle.json",
+      "sha256": "9304b39639d3cb6f74af7d4414f7a27de35ef73da593113aec991888b6a004a9"
+    },
+    "installed_source_bindings": {
+      "on": {
+        "path": "evaluation/concurrency-v414/on/source-binding.json",
+        "sha256": "2e7cb6b8ec049421a06cc1eb0bf593380358d46c99299910c796398065701dfa"
+      },
+      "off": {
+        "path": "evaluation/concurrency-v414/off/source-binding.json",
+        "sha256": "e46af531a23a0affad547e6a9d592495e99a9a79ff8af050b6b35e95c579c987"
+      }
+    },
+    "normal_smokes": {
+      "on": {
+        "path": "evaluation/concurrency-v414/on/normal-profile-smoke.json",
+        "sha256": "cdfe8e6b6b81319e68d34db84d4c189f4a7e2622c243f64476f2ca55638d842f"
+      },
+      "off": {
+        "path": "evaluation/concurrency-v414/off/normal-profile-smoke.json",
+        "sha256": "7680d3e24d834cfc2570f75b7a8ea8e850b241b53e599211f4c01be9a24fcb9d"
+      }
+    },
+    "concurrent_serving": {
+      "mixed-c2": {
+        "path": "evaluation/concurrency-v414/on/mixed-c2/concurrent-q1-serving.json",
+        "sha256": "88630d5c26e79deebd9c8ce0905e687059fedc421afa182c7551cda2f083d6e3"
+      },
+      "cold-c8": {
+        "path": "evaluation/concurrency-v414/on/cold-c8/concurrent-q1-serving.json",
+        "sha256": "3f29563a4fbb858e20c87d97565657e2a6a4b94c905b7e730a50885d10dae98f"
+      }
+    }
+  },
+  "launcher_sha256_by_mode": {
+    "on": "a51dd671c0e84d8661e5bbac609e04e4a38718a3b33c96382230fbb66de17efb",
+    "off": "ba82f9dcd3055b96dbe16f300cf63c75302ff4e41065e9ec66cf570797ca76b3"
+  },
+  "concurrent_client_snapshot_sha256_by_mode": {
+    "on": "6562252e9ddb5eea08c23d5ddb62c180397e8602aa4c23c48aaa57dbca326e74",
+    "off": "92aecfa670afff77b055c9ff743603ddbecfccc69acf43e8eaf506f679d0db40"
+  },
+  "cold_c8_prefix_cache": {
+    "c2_prompt_markers": [
+      "c9e66ea55f8247139f54d418372a7439",
+      "f93b572be50644e1a29e66636d5b9ef3"
+    ],
+    "c8_prompt_marker": "2b50323d91474113abc5622b079d918e",
+    "c8_marker_distinct_from_c2": true,
+    "marker_before_first_cache_block": true,
+    "all_eight_c8_cached_tokens_zero": true
+  },
+  "all_bundle_payload_unchanged_since_gpu_gates": true,
+  "gpu_scope": "Exact attention/partition/engine-helper operator sources; numerical/graph parity and warmed operator timing.",
+  "serving_scope": "Completed uncapped native ON mixed 87k+8k C2, cold 8k C8, ON/OFF text and tool checks, and ON vision. No full-agent quality rescore or matched whole-model baseline speedup claim.",
+  "current_serving_metrics": {
+    "mixed-c2": {
+      "actual_prompt_tokens": [
+        87331,
+        8082
+      ],
+      "aggregate_overlap_tps": 52.498516522962035,
+      "shared_generation_overlap_s": 35.461030556005426
+    },
+    "cold-c8": {
+      "actual_prompt_tokens": [
+        8174,
+        8174,
+        8174,
+        8174,
+        8174,
+        8174,
+        8174,
+        8174
+      ],
+      "aggregate_overlap_tps": 151.84517537248232,
+      "shared_generation_overlap_s": 48.557685796986334
+    }
+  },
+  "normal_modes": {
+    "on": {
+      "cases": 4,
+      "observed_engine_pid": 1410209,
+      "entered_with_main_active": false,
+      "restored_previously_active_main": false
+    },
+    "off": {
+      "cases": 3,
+      "observed_engine_pid": 1376123,
+      "entered_with_main_active": false,
+      "restored_previously_active_main": false
+    }
+  },
+  "receipts": [
+    {
+      "scope": "bounded_concurrency_numerical",
+      "target": "evaluation/concurrency-v414/attention-gpu-oracle.json",
+      "sha256": "9304b39639d3cb6f74af7d4414f7a27de35ef73da593113aec991888b6a004a9"
+    },
+    {
+      "scope": "matched_c2_serving",
+      "target": "evaluation/concurrency-v414/on/mixed-c2/concurrent-q1-serving.json",
+      "sha256": "88630d5c26e79deebd9c8ce0905e687059fedc421afa182c7551cda2f083d6e3"
+    },
+    {
+      "scope": "cold_c8_serving",
+      "target": "evaluation/concurrency-v414/on/cold-c8/concurrent-q1-serving.json",
+      "sha256": "3f29563a4fbb858e20c87d97565657e2a6a4b94c905b7e730a50885d10dae98f"
+    },
+    {
+      "scope": "normal_profiles",
+      "target": "evaluation/concurrency-v414/on/normal-profile-smoke.json",
+      "sha256": "cdfe8e6b6b81319e68d34db84d4c189f4a7e2622c243f64476f2ca55638d842f"
+    },
+    {
+      "scope": "normal_profiles",
+      "target": "evaluation/concurrency-v414/off/normal-profile-smoke.json",
+      "sha256": "7680d3e24d834cfc2570f75b7a8ea8e850b241b53e599211f4c01be9a24fcb9d"
+    }
+  ]
+}
