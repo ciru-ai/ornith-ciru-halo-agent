@@ -29,7 +29,12 @@ def load_selection(require_concurrency=False):
     assert value['active_c1_depths'] == [0, 3, 7]
     assert value['default_policy'] == 'auto' and value['initial_auto_depth'] == 3
     assert value['auto_ceiling'] == 7 and value['allocation_depth'] == 15
-    assert value['context'] == 262144 and value['max_sequences'] == 8 and value['kv_cache_gib'] == 44
+    if os.environ.get('ORNITH_CUSTOM_PROFILE') == '1':
+        if not (65536 <= value['context'] <= 262144 and value['max_sequences'] == 8 and 0 < value['kv_cache_gib'] <= 44):
+            raise RuntimeError('ORNITH_CUSTOM_PROFILE permits 65536..262144 context, 8 sequences, and a positive pool up to 44 GiB')
+        print('ORNITH_CUSTOM_PROFILE=1: relaxed profile equality asserts to range checks; release receipts cover the pinned production profile only', file=sys.stderr)
+    else:
+        assert value['context'] == 262144 and value['max_sequences'] == 8 and value['kv_cache_gib'] == 44
     assert value['native_forward'] and value['filter_backend'] == 'native-pytorch'
     assert value['mixed_routed_adapter'] is False
     if require_concurrency and (type(value['concurrency_depth']) is not int or value['concurrency_depth'] not in (0, 7)):

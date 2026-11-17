@@ -52,7 +52,7 @@
     "iu4_correctness/gates.py": "3c729a9006fc925aef16cb97aab9e198ab12d2c3dacb9a84aee6163f466641d4",
     "iu4_correctness/gates_phase.py": "9e224fbd907c97120c84baedd68988783679edb32227c8c0fe750fc94e7bc2cf",
     "iu4_correctness/gates_projection.py": "5558c0edcbd0a424aae55b7e383c482ffa47ba21a6f584ee041c7d73999f8c98",
-    "iu4_correctness/integration.py": "883c76aa0bf2f47b3c54de11edda48285a18c4870f0432fffc54dd704c6e0f94",
+    "iu4_correctness/integration.py": "722ce31587ef2981ff1e118f806f91fb46ad01c6ca69ea42d71fd1768ce3bea5",
     "iu4_correctness/prefill_service.py": "ab52765ec35e9fa59b090ea04a97382993f6389acb94cb41e7cd66936058e50c",
     "iu4_correctness/rng_exact_restore.py": "a25537137fb6dac8fc461a2712971c79ad33753a727241d4f8c7f77dfd03adf1",
     "iu4_correctness/selection.json": "8e9ef3472e3b7bff3b42e9d56a93d36182a20adf910ad1b86f5f8f7609035781",
